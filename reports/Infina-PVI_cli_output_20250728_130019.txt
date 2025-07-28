@@ -1,0 +1,1615 @@
+newman
+
+Infina-PVI
+
+❏ PVI / SignIn
+↳ SignIn & Relogin
+  POST https://staging.realstake.co/api/graphiql  
+  200 OK ★ 1425ms time ★ 2.62kB↑ 3.29kB↓ size ★ 11↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 2.23kB
+  │ {
+  │     "operationName": "signin_v2",
+  │     "variables": {
+  │         "email": "0931895560",
+  │         "password": "12345678",
+  │         "fcm_token": "9a8b3bfa-8138-4d63-a511-c9697f66
+  │ beba:APA91bFVsdSihx4iIvzKHqkmnSg15GpP2QyQwvMx6-Zrj-A3b
+  │ 9OGozt1Sg2NNdr0mfqBGENGhDyt8Dh0P_XEi6gjrDP0D-yyOjErOUt
+  │ Y8KNZ__gu0LP3rHs",
+  │         "app_instance_id": "f299bfbc-b9a2-4f99-ad24-3c
+  │ 0bea686727",
+  │         "platform":"PostmanTest"
+  │     },
+  │     "query":"mutation signin_v2($email: String, $passw
+  │ ord: String, $app_instance_id: String, $fcm_token: Str
+  │ ing, $platform: String) {\n  signin_v2(\n    input: {e
+  │ mail: $email, password: $password, app_instance_id: $a
+  │ pp_instance_id, fcm_token: $fcm_token, platform: $plat
+  │ form}\n  ) {\n    access_token\n    ip_address\n    re
+  │ fresh_token\n    user {\n      id\n      ip_address\n 
+  │      uid\n      email\n      phone\n      first_name\n
+  │       last_name\n      status\n      has_pin_code\n   
+  │    pin_type\n      pin_blocking_duration\n      pin_al
+  │ lowed_attempts\n      freshchat_restore_id\n      avat
+  │ ar\n      confirm_contract\n      contract_signed_at\n
+  │       kyc {\n        status\n        address\n        
+  │ passport_issue_date\n        passport_issue_place\n   
+  │      document_type\n        document_number\n        i
+  │ dcard_issue_date\n        idcard_issue_place\n        
+  │ idcard_type\n        cmnd\n        first_name\n       
+  │  manual_review\n        last_name\n        full_name\n
+  │         idcard_back_page\n        idcard_front_page\n 
+  │        __typename\n      }\n      user_credits {\n    
+  │     id\n        reward_balance\n        expired_at\n  
+  │       __typename\n      }\n      documents {\n        
+  │ url\n        created_at\n        __typename\n      }\n
+  │       verified_phone\n      verified_email\n      refe
+  │ rral_code\n      referral_url\n      custom_referral_c
+  │ ode\n      bank_info {\n        bank_name\n        ban
+  │ k_city\n        bank_branch\n        account_number\n 
+  │        account_owner\n        bank_support\n        ve
+  │ rified\n        __typename\n      }\n      referred_co
+  │ de\n      created_at\n      discourse {\n        is_si
+  │ gn_up\n        sign_up
+  │ (showing 2.05kB/2.23kB)
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 3kB
+  │ {"data":{"signin_v2":{"access_token":"eyJhbGciOiJIUzI1
+  │ NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjNhNDNlNzg3YzQ1M
+  │ zU0NzkyNzEyMTk5IiwiY2xpZW50X2lkIjoiNjg4NzE0NDE5ODAzMTU
+  │ zYzA4OGYyODA2IiwiaWF0IjoxNzUzNjgzMDA5LCJleHAiOjE3NTM2O
+  │ Tc0MDl9.UfX0J0MCdM3Xii6ZhJ5kwj1CoCHbRuuYg0vhoTx8U6s","
+  │ ip_address":"52.77.39.125","refresh_token":"eyJhbGciOi
+  │ JIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjNhNDNlNzg
+  │ 3YzQ1MzU0NzkyNzEyMTk5IiwiY2xpZW50X2lkIjoiNjg4NzE0NDE5O
+  │ DAzMTUzYzA4OGYyODA2IiwidG9rZW5UeXBlIjoicmVmcmVzaCIsIml
+  │ hdCI6MTc1MzY4MzAwOSwiZXhwIjoxNzU2Mjc1MDA5fQ.G2yPaa1WT2
+  │ e5GfgwM-cTqbCNrOfJDBCc_ayNEYIFzWs","user":{"id":"63a43
+  │ e787c45354792712199","ip_address":null,"uid":"U5666252
+  │ 087","email":"diep.huynh@realstake.io","phone":"093189
+  │ 5560","first_name":"NGỌC ĐIỆP","last_name":"HUỲNH","st
+  │ atus":"invested","has_pin_code":true,"pin_type":"6-dig
+  │ it","pin_blocking_duration":12,"pin_allowed_attempts":
+  │ 5,"freshchat_restore_id":"d5d5e554-b770-4422-a71a-f45b
+  │ c24f44cf","avatar":"https://djemclypbm8gi.cloudfront.n
+  │ et/images/1753329065-6A6F9BB7_1D32_40E2_BC93_2B2E60B9E
+  │ BAC.jpg","confirm_contract":true,"contract_signed_at":
+  │ "2024-05-06 06:46:46+0000","kyc":{"status":"approved",
+  │ "address":"B6/146, ẤP 2 ĐA PHƯỚC, BÌNH CHÁNH, TP. HỒ C
+  │ HÍ MINH","passport_issue_date":null,"passport_issue_pl
+  │ ace":null,"document_type":"IDCARD","document_number":"
+  │ 079089015560","idcard_issue_date":"2022-01-16 00:00:00
+  │ +0000","idcard_issue_place":"CỤC TRƯỞNG CỤC CẢNH SÁT Q
+  │ UẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI","idcard_type":"cc
+  │ cd_chip_ms","cmnd":"079089015560","first_name":"NGỌC Đ
+  │ IỆP","manual_review":"success","last_name":"HUỲNH","fu
+  │ ll_name":"HUỲNH NGỌC ĐIỆP","idcard_back_page":"https:/
+  │ /d1b9m82b7i6paa.cloudfront.net/images/kyc/63a43e787c45
+  │ 354792712199/1729141764187-id-back","idcard_front_page
+  │ ":"https://d1b9m82b7i6paa.cloudfront.net/images/kyc/63
+  │ a43e787c45354792712199/1729141762664-id-front","__type
+  │ name":"KycResult"},"user_credits":[{"id":"63a43e787c45
+  │ 3578e271219e","reward_balance":0,"expired_at":"2025-06
+  │ -26 08:00:42+0000","__typename":"UserCreditResult"}],"
+  │ documents":[{"url":"https://d1b9m82b7i6paa.cloudfr
+  │ (showing 2.05kB/3kB)
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total  
+  5ms       17ms   1ms          82ms            480ms           827ms            15ms       388µs     1430ms 
+
+  ✓  Handle login response
+  ✓  Status code is 200
+  ✓  Body matches signin_v2
+
+❏ PVI / Home
+↳ insurance_total_policy_activated
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 554ms time ★ 808B↑ 390B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 176B
+  │ {
+  │     "operationName": "insurance_total_policy_activated
+  │ ",
+  │     "variables": {},
+  │     "query": "query insurance_total_policy_activated {
+  │ \n  insurance_total_policy_activated\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 49B
+  │ {"data":{"insurance_total_policy_activated":71}}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  968µs     1ms    1ms          96ms            188ms           263ms            2ms        96µs      555ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Validate insurance_total_policy_activated response 
+  │ is valid!'
+  └
+  ✓  ✅ Validate insurance_total_policy_activated response
+
+↳ insurance_transactions (All)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 834ms time ★ 1.54kB↑ 10.93kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 906B
+  │ {
+  │     "operationName": "insurance_transactions",
+  │     "variables": {
+  │         "reverse": true,
+  │         "sort_keys": "CREATED_AT"
+  │     },
+  │     "query": "query insurance_transactions($after: Str
+  │ ing, $before: String, $first: Int, $last: Int, $revers
+  │ e: Boolean, $sort_keys: InsurancePolicySortKeys, $quer
+  │ y: String) {\n  insurance_transactions(\n    after: $a
+  │ fter\n    before: $before\n    first: $first\n    last
+  │ : $last\n    reverse: $reverse\n    sort_keys: $sort_k
+  │ eys\n    query: $query\n  ) {\n    nodes {\n      id\n
+  │       created_at\n      updated_at\n      user_id\n   
+  │    policy_id\n      policy_name\n      amount\n      s
+  │ tatus\n      payment_method\n      transfer_message\n 
+  │      reference_id\n      reference_code\n      paid_at
+  │ \n      __typename\n    }\n    page_info {\n      star
+  │ t_cursor\n      end_cursor\n      has_next_page\n     
+  │  has_previous_page\n      __typename\n    }\n    __typ
+  │ ename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 10.58kB
+  │ {"data":{"insurance_transactions":{"nodes":[{"id":"cmd
+  │ mmy082095n23z9a76r3s49","created_at":"2025-07-28T04:56
+  │ :14.498Z","updated_at":"2025-07-28T04:56:16.241Z","use
+  │ r_id":"63a43e787c45354792712199","policy_id":"cmdmmy08
+  │ 2095m23z9cwbn733t","policy_name":"BH bắt buộc TNDS ô t
+  │ ô","amount":480700,"status":"SUCCESS","payment_method"
+  │ :"NORMAL_FLEXIBLE_SAVINGS","transfer_message":"ILU5666
+  │ 252087IS6RMSAY","reference_id":"dce84b7d-bec5-476b-828
+  │ 4-c876862df009","reference_code":"BXNGGJBESEOH","paid_
+  │ at":"2025-07-28T04:56:14.891Z","__typename":"Insurance
+  │ Transaction"},{"id":"cmdmmxk65095223z93bjk91d4","creat
+  │ ed_at":"2025-07-28T04:55:53.693Z","updated_at":"2025-0
+  │ 7-28T04:56:11.248Z","user_id":"63a43e787c4535479271219
+  │ 9","policy_id":"cmdmmxk64095123z9ag7ugv0n","policy_nam
+  │ e":"BH bắt buộc TNDS xe máy","amount":66000,"status":"
+  │ SUCCESS","payment_method":"NORMAL_FLEXIBLE_SAVINGS","t
+  │ ransfer_message":"ILU5666252087IS1UIUDT","reference_id
+  │ ":"ad9a29fd-50c6-424f-8b31-6cc4a7182100","reference_co
+  │ de":"EJROCKEFLKFD","paid_at":"2025-07-28T04:56:00.873Z
+  │ ","__typename":"InsuranceTransaction"},{"id":"cmdmlrcl
+  │ 6094j23z9ba43ex4x","created_at":"2025-07-28T04:23:04.3
+  │ 14Z","updated_at":"2025-07-28T04:23:06.476Z","user_id"
+  │ :"63a43e787c45354792712199","policy_id":"cmdmlrcl5094i
+  │ 23z9hz6i1xyu","policy_name":"BH bắt buộc TNDS ô tô","a
+  │ mount":480700,"status":"SUCCESS","payment_method":"NOR
+  │ MAL_FLEXIBLE_SAVINGS","transfer_message":"ILU566625208
+  │ 7IS236VED","reference_id":"0df3ee0e-39a4-4ea0-9492-4ab
+  │ 6d738e892","reference_code":"SNYYFLGHEKJC","paid_at":"
+  │ 2025-07-28T04:23:04.803Z","__typename":"InsuranceTrans
+  │ action"},{"id":"cmdmlqwk0093y23z99v6yete1","created_at
+  │ ":"2025-07-28T04:22:43.536Z","updated_at":"2025-07-28T
+  │ 04:23:01.271Z","user_id":"63a43e787c45354792712199","p
+  │ olicy_id":"cmdmlqwk0093x23z9hqax3ze8","policy_name":"B
+  │ H bắt buộc TNDS xe máy","amount":66000,"status":"SUCCE
+  │ SS","payment_method":"NORMAL_FLEXIBLE_SAVINGS","transf
+  │ er_message":"ILU5666252087ISLZQ6EF","reference_id":"7b
+  │ f43796-7c0d-496c-9442-539736918468","reference_code":"
+  │ BMXKCDVJOENX","paid_at":"2025-07-28T04:22:50.607Z"
+  │ (showing 2.05kB/10.58kB)
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  959µs     1ms    (cache)      (cache)         (cache)         830ms            2ms        158µs     834ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Validate All insurance_transactions response is val
+  │ id!'
+  └
+  ✓  ✅ Validate All insurance_transactions response
+
+↳ insurance_transactions (PENDING)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 402ms time ★ 1.57kB↑ 560B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 941B
+  │ {
+  │     "operationName": "insurance_transactions",
+  │     "variables": {
+  │         "reverse": true,
+  │         "sort_keys": "CREATED_AT",
+  │         "query": "status:PENDING"
+  │     },
+  │     "query": "query insurance_transactions($after: Str
+  │ ing, $before: String, $first: Int, $last: Int, $revers
+  │ e: Boolean, $sort_keys: InsurancePolicySortKeys, $quer
+  │ y: String) {\n  insurance_transactions(\n    after: $a
+  │ fter\n    before: $before\n    first: $first\n    last
+  │ : $last\n    reverse: $reverse\n    sort_keys: $sort_k
+  │ eys\n    query: $query\n  ) {\n    nodes {\n      id\n
+  │       created_at\n      updated_at\n      user_id\n   
+  │    policy_id\n      policy_name\n      amount\n      s
+  │ tatus\n      payment_method\n      transfer_message\n 
+  │      reference_id\n      reference_code\n      paid_at
+  │ \n      __typename\n    }\n    page_info {\n      star
+  │ t_cursor\n      end_cursor\n      has_next_page\n     
+  │  has_previous_page\n      __typename\n    }\n    __typ
+  │ ename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 219B
+  │ {"data":{"insurance_transactions":{"nodes":[],"page_in
+  │ fo":{"start_cursor":null,"end_cursor":null,"has_next_p
+  │ age":false,"has_previous_page":false,"__typename":"Pag
+  │ eInfo"},"__typename":"InsuranceTransactionConnection"}
+  │ }}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  681µs     610µs   (cache)      (cache)         (cache)         399ms            1ms        67µs      401ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Validate Pending insurance_transactions response is
+  │  valid!'
+  └
+  ✓  ✅ Validate Pending insurance_transactions response
+
+❏ PVI / Moto
+↳ insurance_policy_plan_policy_extra_info_list (Moto)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 114ms time ★ 1.25kB↑ 2.99kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 618B
+  │ {
+  │     "operationName": "insurance_policy_plan_policy_ext
+  │ ra_info_list",
+  │     "variables": {
+  │         "plan_id": "clm8w3cax000008mm54uf73xg",
+  │         "insurer_id": "clm8vpju1000008idhiaxd0uz"
+  │     },
+  │     "query": "query insurance_policy_plan_policy_extra
+  │ _info_list($plan_id: ID!, $insurer_id: ID!) {\n  insur
+  │ ance_policy_plan_policy_extra_info_list(\n    plan_id:
+  │  $plan_id\n    insurer_id: $insurer_id\n  ) {\n    id\
+  │ n    plan_id\n    insurer_id\n    is_required\n    is_
+  │ multiple\n    extra_info {\n      id\n      created_at
+  │ \n      updated_at\n      code\n      data_type\n     
+  │  __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 2.64kB
+  │ {"data":{"insurance_policy_plan_policy_extra_info_list
+  │ ":[{"id":"cln3cb7ik000108joendvdnqe","plan_id":"clm8w3
+  │ cax000008mm54uf73xg","insurer_id":"clm8vpju1000008idhi
+  │ axd0uz","is_required":true,"is_multiple":false,"extra_
+  │ info":{"id":"cln3be8en000008mh1b011ime","created_at":"
+  │ 2023-10-17T12:34:45.606Z","updated_at":"2023-10-17T12:
+  │ 34:45.606Z","code":"VEHCILE_INSURANCE_DRIVER_NAME","da
+  │ ta_type":"STRING","__typename":"InsurancePolicyExtraIn
+  │ fo"},"__typename":"InsurancePolicyPlanPolicyExtraInfo"
+  │ },{"id":"cln3cgdkc000408jo1zfwb2ut","plan_id":"clm8w3c
+  │ ax000008mm54uf73xg","insurer_id":"clm8vpju1000008idhia
+  │ xd0uz","is_required":true,"is_multiple":false,"extra_i
+  │ nfo":{"id":"cln3bhigb000308mhdumd7p4h","created_at":"2
+  │ 023-10-17T12:34:45.606Z","updated_at":"2023-10-17T12:3
+  │ 4:45.606Z","code":"COMMON_ADDRESS","data_type":"STRING
+  │ ","__typename":"InsurancePolicyExtraInfo"},"__typename
+  │ ":"InsurancePolicyPlanPolicyExtraInfo"},{"id":"cln3cgq
+  │ o0000608jof92z9yc1","plan_id":"clm8w3cax000008mm54uf73
+  │ xg","insurer_id":"clm8vpju1000008idhiaxd0uz","is_requi
+  │ red":false,"is_multiple":false,"extra_info":{"id":"cln
+  │ 3bloyd000508mhf3ucgg22","created_at":"2023-10-17T12:34
+  │ :45.606Z","updated_at":"2023-10-17T12:34:45.606Z","cod
+  │ e":"VEHICLE_INSURANCE_REGISTRATION_PLATE","data_type":
+  │ "STRING","__typename":"InsurancePolicyExtraInfo"},"__t
+  │ ypename":"InsurancePolicyPlanPolicyExtraInfo"},{"id":"
+  │ cln3cgzow000708jo0zqhheib","plan_id":"clm8w3cax000008m
+  │ m54uf73xg","insurer_id":"clm8vpju1000008idhiaxd0uz","i
+  │ s_required":false,"is_multiple":false,"extra_info":{"i
+  │ d":"cln3bnab9000608mh61o14oga","created_at":"2023-10-1
+  │ 7T12:34:45.606Z","updated_at":"2023-10-17T12:34:45.606
+  │ Z","code":"VEHICLE_INSURANCE_ENGINE_NUMBER","data_type
+  │ ":"STRING","__typename":"InsurancePolicyExtraInfo"},"_
+  │ _typename":"InsurancePolicyPlanPolicyExtraInfo"},{"id"
+  │ :"cln3cggjz000508jo1tpg3pvf","plan_id":"clm8w3cax00000
+  │ 8mm54uf73xg","insurer_id":"clm8vpju1000008idhiaxd0uz",
+  │ "is_required":true,"is_multiple":false,"extra_info":{"
+  │ id":"cln3bot7n000a08mh35high2g","created_at":"2023-10-
+  │ 17T12:34:45.606Z","updated_at":"2023-10-17T12:34:4
+  │ (showing 2.05kB/2.64kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  852µs     658µs   (cache)      (cache)         (cache)         111ms            1ms        111µs     114ms 
+
+  ✓  Status code is 200
+  ✓  Response has correct structure
+  ✓  All extra info items have required fields
+  ✓  Validate specific field values and requirements
+  ✓  Validate data types for extra info fields
+  ✓  All timestamps are in ISO 8601 format
+  ✓  All items belong to same plan and insurer
+
+↳ insurance_policy_extra_info_metadata_list (Moto#1)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 120ms time ★ 1.07kB↑ 898B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 441B
+  │ {
+  │     "operationName": "insurance_policy_extra_info_meta
+  │ data_list",
+  │     "variables": {
+  │         "extra_info_id": "cln3bot7n000a08mh35high2g"
+  │     },
+  │     "query": "query insurance_policy_extra_info_metada
+  │ ta_list($extra_info_id: ID!, $parent_id: ID) {\n  insu
+  │ rance_policy_extra_info_metadata_list(\n    extra_info
+  │ _id: $extra_info_id\n    parent_id: $parent_id\n  ) {\
+  │ n    id\n    extra_info_id\n    parent_id\n    name\n 
+  │    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 556B
+  │ {"data":{"insurance_policy_extra_info_metadata_list":[
+  │ {"id":"clmekqlfl000008l02usz3hwc","extra_info_id":"cln
+  │ 3bot7n000a08mh35high2g","parent_id":null,"name":"Xe > 
+  │ 50 cc","__typename":"InsurancePolicyExtraInfoMetadata"
+  │ },{"id":"clmekz6hi000008mpf0udfl90","extra_info_id":"c
+  │ ln3bot7n000a08mh35high2g","parent_id":null,"name":"Xe 
+  │ ≤ 50 cc","__typename":"InsurancePolicyExtraInfoMetadat
+  │ a"},{"id":"clmekz9h4000108mpf42l8ezq","extra_info_id":
+  │ "cln3bot7n000a08mh35high2g","parent_id":null,"name":"X
+  │ e máy điện","__typename":"InsurancePolicyExtraInfoMeta
+  │ data"}]}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       757µs   (cache)      (cache)         (cache)         117ms            1ms        74µs      121ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Validate MOTO insurance_policy_extra_info_metadata_
+  │ list response is valid!'
+  └
+  ✓  ✅ Validate insurance_policy_extra_info_metadata_list response
+
+↳ insurance_policy_extra_info_metadata_list (Moto#2)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 2s time ★ 1.07kB↑ 22.74kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 441B
+  │ {
+  │     "operationName": "insurance_policy_extra_info_meta
+  │ data_list",
+  │     "variables": {
+  │         "extra_info_id": "cln3boeas000908mh50vj2n4b"
+  │     },
+  │     "query": "query insurance_policy_extra_info_metada
+  │ ta_list($extra_info_id: ID!, $parent_id: ID) {\n  insu
+  │ rance_policy_extra_info_metadata_list(\n    extra_info
+  │ _id: $extra_info_id\n    parent_id: $parent_id\n  ) {\
+  │ n    id\n    extra_info_id\n    parent_id\n    name\n 
+  │    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 22.39kB
+  │ {"data":{"insurance_policy_extra_info_metadata_list":[
+  │ {"id":"clmokjhdn0000ffpm97al67ih","extra_info_id":"cln
+  │ 3boeas000908mh50vj2n4b","parent_id":"clmh9uu22000308mi
+  │ 2c5x7ncy","name":"2","__typename":"InsurancePolicyExtr
+  │ aInfoMetadata"},{"id":"clmokjhdn0001ffpm9km49les","ext
+  │ ra_info_id":"cln3boeas000908mh50vj2n4b","parent_id":"c
+  │ lmh9uu22000308mi2c5x7ncy","name":"3","__typename":"Ins
+  │ urancePolicyExtraInfoMetadata"},{"id":"clmokjhdn0002ff
+  │ pmbnw8fn3p","extra_info_id":"cln3boeas000908mh50vj2n4b
+  │ ","parent_id":"clmh9uu22000308mi2c5x7ncy","name":"4","
+  │ __typename":"InsurancePolicyExtraInfoMetadata"},{"id":
+  │ "clmokjhdn0003ffpm9nkp6hyv","extra_info_id":"cln3boeas
+  │ 000908mh50vj2n4b","parent_id":"clmh9uu22000308mi2c5x7n
+  │ cy","name":"5","__typename":"InsurancePolicyExtraInfoM
+  │ etadata"},{"id":"clmokk8cy0000ghpmcy3mf0vi","extra_inf
+  │ o_id":"cln3boeas000908mh50vj2n4b","parent_id":"clmh9uw
+  │ m7000408mi92ow23ei","name":"6","__typename":"Insurance
+  │ PolicyExtraInfoMetadata"},{"id":"clmokk8cy0001ghpm1cfz
+  │ fuxu","extra_info_id":"cln3boeas000908mh50vj2n4b","par
+  │ ent_id":"clmh9uwm7000408mi92ow23ei","name":"7","__type
+  │ name":"InsurancePolicyExtraInfoMetadata"},{"id":"clmok
+  │ k8cy0002ghpmcr3y8as2","extra_info_id":"cln3boeas000908
+  │ mh50vj2n4b","parent_id":"clmh9uwm7000408mi92ow23ei","n
+  │ ame":"8","__typename":"InsurancePolicyExtraInfoMetadat
+  │ a"},{"id":"clmokk8cy0003ghpmf0w54doz","extra_info_id":
+  │ "cln3boeas000908mh50vj2n4b","parent_id":"clmh9uwm70004
+  │ 08mi92ow23ei","name":"9","__typename":"InsurancePolicy
+  │ ExtraInfoMetadata"},{"id":"clmokk8cz0004ghpm7uvzgctl",
+  │ "extra_info_id":"cln3boeas000908mh50vj2n4b","parent_id
+  │ ":"clmh9uwm7000408mi92ow23ei","name":"10","__typename"
+  │ :"InsurancePolicyExtraInfoMetadata"},{"id":"clmokk8cz0
+  │ 005ghpmdbg7bpfn","extra_info_id":"cln3boeas000908mh50v
+  │ j2n4b","parent_id":"clmh9uwm7000408mi92ow23ei","name":
+  │ "11","__typename":"InsurancePolicyExtraInfoMetadata"},
+  │ {"id":"clmokl6s50000hspmaygp45oj","extra_info_id":"cln
+  │ 3boeas000908mh50vj2n4b","parent_id":"clmh9uzyg000508mi
+  │ gq7t0yvi","name":"12","__typename":"InsurancePolicyExt
+  │ raInfoMetadata"},{"id":"clmokl6s50001hspm4pmv238o"
+  │ (showing 2.05kB/22.39kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  667µs     823µs   (cache)      (cache)         (cache)         1769ms           319ms      113µs     2s    
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Validate MOTO insurance_policy_extra_info_metadata_
+  │ list response is valid!'
+  └
+  ✓  ✅ Validate insurance_policy_extra_info_metadata_list response
+
+↳ insurance_policy_extra_info_metadata_list (Moto - parent_id)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 118ms time ★ 1.12kB↑ 1.11kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 491B
+  │ {
+  │     "operationName": "insurance_policy_extra_info_meta
+  │ data_list",
+  │     "variables": {
+  │         "extra_info_id": "cln3boeas000908mh50vj2n4b",
+  │         "parent_id": "clmh9uu22000308mi2c5x7ncy"
+  │     },
+  │     "query": "query insurance_policy_extra_info_metada
+  │ ta_list($extra_info_id: ID!, $parent_id: ID) {\n  insu
+  │ rance_policy_extra_info_metadata_list(\n    extra_info
+  │ _id: $extra_info_id\n    parent_id: $parent_id\n  ) {\
+  │ n    id\n    extra_info_id\n    parent_id\n    name\n 
+  │    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 769B
+  │ {"data":{"insurance_policy_extra_info_metadata_list":[
+  │ {"id":"clmokjhdn0000ffpm97al67ih","extra_info_id":"cln
+  │ 3boeas000908mh50vj2n4b","parent_id":"clmh9uu22000308mi
+  │ 2c5x7ncy","name":"2","__typename":"InsurancePolicyExtr
+  │ aInfoMetadata"},{"id":"clmokjhdn0001ffpm9km49les","ext
+  │ ra_info_id":"cln3boeas000908mh50vj2n4b","parent_id":"c
+  │ lmh9uu22000308mi2c5x7ncy","name":"3","__typename":"Ins
+  │ urancePolicyExtraInfoMetadata"},{"id":"clmokjhdn0002ff
+  │ pmbnw8fn3p","extra_info_id":"cln3boeas000908mh50vj2n4b
+  │ ","parent_id":"clmh9uu22000308mi2c5x7ncy","name":"4","
+  │ __typename":"InsurancePolicyExtraInfoMetadata"},{"id":
+  │ "clmokjhdn0003ffpm9nkp6hyv","extra_info_id":"cln3boeas
+  │ 000908mh50vj2n4b","parent_id":"clmh9uu22000308mi2c5x7n
+  │ cy","name":"5","__typename":"InsurancePolicyExtraInfoM
+  │ etadata"}]}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  960µs     671µs   (cache)      (cache)         (cache)         115ms            1ms        98µs      118ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Validate MOTO Parent insurance_policy_extra_info_me
+  │ tadata_list response is valid!'
+  └
+  ✓  ✅ Validate insurance_policy_extra_info_metadata_list response
+
+↳ insurance_calculate_premium (Moto)
+  ┌
+  │ 'Set effected_at to end of day:', '2025-07-28T17:00:00
+  │ .000Z'
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 306ms time ★ 1.19kB↑ 388B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 557B
+  │ {
+  │   "operationName": "insurance_calculate_premium",
+  │   "variables": {
+  │     "input": {
+  │       "plan_id": "clm8w3cax000008mm54uf73xg",
+  │       "insurer_id": "clm8vpju1000008idhiaxd0uz",
+  │       "duration_year": 1,
+  │       "effected_at": "2025-07-28T17:00:00.000Z",
+  │       "extra_info_list": [
+  │         {
+  │           "code": "VEHICLE_INSURANCE_MOTOR_TYPE",
+  │           "value": "clmekqlfl000008l02usz3hwc"
+  │         }
+  │       ]
+  │     }
+  │   },
+  │   "query": "query insurance_calculate_premium($input: 
+  │ InsuranceCalculatePremiumInput!) {\n  insurance_calcul
+  │ ate_premium(input: $input)\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 47B
+  │ {"data":{"insurance_calculate_premium":66000}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       824µs   (cache)      (cache)         (cache)         303ms            1ms        58µs      307ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Validate MOTO insurance_calculate_premium response 
+  │ is valid!'
+  └
+  ✓  ✅ Validate insurance_calculate_premium response
+
+↳ insurance_issue_policy (Buy Moto)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  │ 'Set effected_at to end of day:', '2025-07-28T17:00:00
+  │ .000Z'
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 555ms time ★ 2.34kB↑ 1.01kB↓ size ★ 16↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.49kB
+  │ {
+  │   "operationName": "insurance_issue_policy",
+  │   "variables": {
+  │     "input": {
+  │       "is_renew": false,
+  │       "plan_id": "clm8w3cax000008mm54uf73xg",
+  │       "insurer_id": "clm8vpju1000008idhiaxd0uz",
+  │       "email": "diep.huynh@realstake.io",
+  │       "duration_year": 1,
+  │       "effected_at": "2025-07-28T17:00:00.000Z",
+  │       "payment_method": "NORMAL_FLEXIBLE_SAVINGS",
+  │       "extra_info_list": [
+  │         {
+  │           "code": "VEHCILE_INSURANCE_DRIVER_NAME",
+  │           "value": "HUỲNH NGỌC A"
+  │         },
+  │         {
+  │           "code": "COMMON_ADDRESS",
+  │           "value": "TP. HỒ CHÍ MINH"
+  │         },
+  │         {
+  │           "code": "VEHICLE_INSURANCE_MOTOR_TYPE",
+  │           "value": "clmekqlfl000008l02usz3hwc"
+  │         },
+  │         {
+  │           "code": "VEHICLE_INSURANCE_VIN_NUMBER",
+  │           "value": "11112222"
+  │         },
+  │         {
+  │           "code": "VEHICLE_INSURANCE_REGISTRATION_PLAT
+  │ E",
+  │           "value": "59N-12345"
+  │         }
+  │       ]
+  │     }
+  │   },
+  │   "query": "mutation insurance_issue_policy($input: In
+  │ suranceIssuePolicyInput!) {\n  insurance_issue_policy(
+  │ input: $input) {\n    status\n    error_message\n    p
+  │ olicy {\n      transaction {\n        id\n        crea
+  │ ted_at\n        updated_at\n        user_id\n        p
+  │ olicy_id\n        amount\n        status\n        paym
+  │ ent_method\n        transfer_message\n        expired_
+  │ at\n        reference_id\n        reference_code\n    
+  │     paid_at\n        policy_name\n        __typename\n
+  │       }\n      __typename\n    }\n    __typename\n  }\
+  │ n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 666B
+  │ {"data":{"insurance_issue_policy":{"status":"success",
+  │ "error_message":null,"policy":{"transaction":{"id":"cm
+  │ dmpld7w096623z9gew3fqyc","created_at":"2025-07-28T06:1
+  │ 0:23.660Z","updated_at":"2025-07-28T06:10:23.660Z","us
+  │ er_id":"63a43e787c45354792712199","policy_id":"cmdmpld
+  │ 7v096523z9gjth9ya7","amount":66000,"status":"PENDING",
+  │ "payment_method":"NORMAL_FLEXIBLE_SAVINGS","transfer_m
+  │ essage":"ILU5666252087ISI4K5R5","expired_at":"2025-07-
+  │ 29T06:10:23.660Z","reference_id":null,"reference_code"
+  │ :null,"paid_at":null,"policy_name":"BH bắt buộc TNDS x
+  │ e máy","__typename":"InsuranceTransaction"},"__typenam
+  │ e":"InsurancePolicy"},"__typename":"InsuranceIssuePoli
+  │ cyResult"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       855µs   (cache)      (cache)         (cache)         550ms            3ms        219µs     556ms 
+
+  ✓  Status code is 200
+  ✓  Response has valid JSON body
+  ✓  Response has correct structure
+  ✓  Policy issuance result is valid
+  ✓  Policy object is valid
+  ✓  MOTO Transaction details are valid
+  ✓  Timestamps are in correct sequence
+  ┌
+  │ 'Stored transaction ID:', 'cmdmpld7w096623z9gew3fqyc'
+  │ 'Stored policy ID:', 'cmdmpld7v096523z9gjth9ya7'
+  └
+  ✓  Store transaction details
+
+↳ insurance_policies (cert list)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 2.5s time ★ 2.43kB↑ 73.7kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.8kB
+  │ {
+  │     "operationName": "insurance_policies",
+  │     "variables": {
+  │         "reverse": true,
+  │         "sort_keys": "CREATED_AT",
+  │         "query": "status:SUCCESS,PROCESSING,EXPIRED,CA
+  │ NCELLED"
+  │     },
+  │     "query": "query insurance_policies($after: String,
+  │  $before: String, $first: Int, $last: Int, $reverse: B
+  │ oolean, $sort_keys: InsurancePolicySortKeys, $query: S
+  │ tring) {\n  insurance_policies(\n    after: $after\n  
+  │   before: $before\n    first: $first\n    last: $last\
+  │ n    reverse: $reverse\n    sort_keys: $sort_keys\n   
+  │  query: $query\n  ) {\n    nodes {\n      id\n      cr
+  │ eated_at\n      updated_at\n      user_id\n      plan_
+  │ id\n      insurer_id\n      policy_number\n      seria
+  │ l_number\n      premium\n      document_url\n      sta
+  │ tus\n      email\n      effected_at\n      expired_at\
+  │ n      extra_info_list {\n        id\n        created_
+  │ at\n        updated_at\n        code\n        value\n 
+  │        data_type\n        metadata_value\n        __ty
+  │ pename\n      }\n      plan {\n        id\n        cre
+  │ ated_at\n        updated_at\n        type_id\n        
+  │ name\n        description\n        status\n        ins
+  │ urers {\n          insurer_id\n          premium\n    
+  │       insurer {\n            id\n            created_a
+  │ t\n            updated_at\n            code\n         
+  │    name\n            status\n            description\n
+  │             logo\n            __typename\n          }\
+  │ n          __typename\n        }\n        policy_type 
+  │ {\n          id\n          created_at\n          updat
+  │ ed_at\n          name\n          code\n          icon\
+  │ n          status\n          __typename\n        }\n  
+  │       __typename\n      }\n      __typename\n    }\n  
+  │   page_info {\n      start_cursor\n      end_cursor\n 
+  │      has_next_page\n      has_previous_page\n      __t
+  │ ypename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 73.35kB
+  │ {"data":{"insurance_policies":{"nodes":[{"id":"cmdmpld
+  │ 7v096523z9gjth9ya7","created_at":"2025-07-28T06:10:23.
+  │ 660Z","updated_at":"2025-07-28T06:10:31.076Z","user_id
+  │ ":"63a43e787c45354792712199","plan_id":"clm8w3cax00000
+  │ 8mm54uf73xg","insurer_id":"clm8vpju1000008idhiaxd0uz",
+  │ "policy_number":null,"serial_number":null,"premium":66
+  │ 000,"document_url":null,"status":"PROCESSING","email":
+  │ "diep.huynh@realstake.io","effected_at":"2025-07-28T17
+  │ :00:00.000Z","expired_at":"2026-07-28T16:59:59.999Z","
+  │ extra_info_list":[{"id":"cmdmpld5r096023z929gy4nx5","c
+  │ reated_at":"2025-07-28T06:10:23.583Z","updated_at":"20
+  │ 25-07-28T06:10:23.583Z","code":"VEHCILE_INSURANCE_DRIV
+  │ ER_NAME","value":"HUỲNH NGỌC A","data_type":"STRING","
+  │ metadata_value":null,"__typename":"InsurancePolicyPoli
+  │ cyExtraInfo"},{"id":"cmdmpld5r096223z99mtt7ukj","creat
+  │ ed_at":"2025-07-28T06:10:23.583Z","updated_at":"2025-0
+  │ 7-28T06:10:23.583Z","code":"VEHICLE_INSURANCE_MOTOR_TY
+  │ PE","value":"1002","data_type":"METADATA","metadata_va
+  │ lue":"Xe > 50 cc","__typename":"InsurancePolicyPolicyE
+  │ xtraInfo"},{"id":"cmdmpld5r096423z92o813ldh","created_
+  │ at":"2025-07-28T06:10:23.583Z","updated_at":"2025-07-2
+  │ 8T06:10:23.583Z","code":"VEHICLE_INSURANCE_REGISTRATIO
+  │ N_PLATE","value":"59N-12345","data_type":"STRING","met
+  │ adata_value":null,"__typename":"InsurancePolicyPolicyE
+  │ xtraInfo"},{"id":"cmdmpld5r096323z957slfycp","created_
+  │ at":"2025-07-28T06:10:23.583Z","updated_at":"2025-07-2
+  │ 8T06:10:23.583Z","code":"VEHICLE_INSURANCE_VIN_NUMBER"
+  │ ,"value":"11112222","data_type":"STRING","metadata_val
+  │ ue":null,"__typename":"InsurancePolicyPolicyExtraInfo"
+  │ },{"id":"cmdmpld5r096123z9cv5tg45q","created_at":"2025
+  │ -07-28T06:10:23.583Z","updated_at":"2025-07-28T06:10:2
+  │ 3.583Z","code":"COMMON_ADDRESS","value":"TP. HỒ CHÍ MI
+  │ NH","data_type":"STRING","metadata_value":null,"__type
+  │ name":"InsurancePolicyPolicyExtraInfo"}],"plan":{"id":
+  │ "clm8w3cax000008mm54uf73xg","created_at":"2023-10-17T1
+  │ 2:34:45.606Z","updated_at":"2023-10-17T12:34:45.606Z",
+  │ "type_id":"clm8ubpff000008k2gdpg1jw6","name":"Bảo hiểm
+  │  bắt buộc TNDS xe máy","description":"[\"Giấy chứn
+  │ (showing 2.05kB/73.35kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       606µs   (cache)      (cache)         (cache)         942ms            1580ms     286µs     2.5s  
+
+  ✓  Status code is 200
+  ✓  Response has correct structure
+  ✓  All policy nodes have required fields
+  ✓  Extra info list items have correct structure
+  ✓  Plan information is valid
+  ✓  Policy date ranges are valid
+  ✓  Page info is valid
+  ┌
+  │ 'Potential test data found in policy cmdmpld7v096523z9
+  │ gjth9ya7: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdmmxk64095123z9
+  │ ag7ugv0n: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdmlqwk0093x23z9
+  │ hqax3ze8: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdml2qki092t23z9
+  │ hzpge8l3: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdipl0e6090323z9
+  │ hp1b426q: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdiox60t08yv23z9
+  │ 62wt2emy: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdiodmc108xa23z9
+  │ 0tu53eqv: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdinqx9w08th23z9
+  │ bqih5gon: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdik2lmz08fc23z9
+  │ d4ti0v75: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdh75s4s07pl23z9
+  │ 83i60tk7: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  └
+  ✓  Check for test data patterns
+  ┌
+  │ '✅ Validate insurance_policies response is valid!'
+  └
+  ✓  Premium amounts match expected values
+
+↳ insurance_policy (cert detail)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 2.3s time ★ 2.15kB↑ 3.58kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.52kB
+  │ {
+  │     "operationName": "insurance_policy",
+  │     "variables": {
+  │         "policy_id": "cmdmpld7v096523z9gjth9ya7"
+  │     },
+  │     "query": "query insurance_policy($policy_id: ID!) 
+  │ {\n  insurance_policy(policy_id: $policy_id) {\n    ..
+  │ . on InsurancePolicy {\n      id\n      created_at\n  
+  │     updated_at\n      user_id\n      plan_id\n      in
+  │ surer_id\n      policy_number\n      serial_number\n  
+  │     premium\n      document_url\n      status\n      e
+  │ mail\n      effected_at\n      expired_at\n      extra
+  │ _info_list {\n        id\n        created_at\n        
+  │ updated_at\n        code\n        value\n        data_
+  │ type\n        metadata_value\n        __typename\n    
+  │   }\n      plan {\n        id\n        created_at\n   
+  │      updated_at\n        type_id\n        name\n      
+  │   description\n        status\n        insurers {\n   
+  │        insurer_id\n          premium\n          insure
+  │ r {\n            id\n            created_at\n         
+  │    updated_at\n            code\n            name\n   
+  │          status\n            description\n            
+  │ logo\n            __typename\n          }\n          _
+  │ _typename\n        }\n        policy_type {\n         
+  │  id\n          created_at\n          updated_at\n     
+  │      name\n          code\n          icon\n          s
+  │ tatus\n          __typename\n        }\n        __type
+  │ name\n      }\n      transaction {\n        id\n      
+  │   __typename\n      }\n      __typename\n    }\n    ..
+  │ . on InsurancePolicyNotFoundError {\n      error_messa
+  │ ge\n      __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 3.24kB
+  │ {"data":{"insurance_policy":{"id":"cmdmpld7v096523z9gj
+  │ th9ya7","created_at":"2025-07-28T06:10:23.660Z","updat
+  │ ed_at":"2025-07-28T06:10:31.076Z","user_id":"63a43e787
+  │ c45354792712199","plan_id":"clm8w3cax000008mm54uf73xg"
+  │ ,"insurer_id":"clm8vpju1000008idhiaxd0uz","policy_numb
+  │ er":null,"serial_number":null,"premium":66000,"documen
+  │ t_url":null,"status":"PROCESSING","email":"diep.huynh@
+  │ realstake.io","effected_at":"2025-07-28T17:00:00.000Z"
+  │ ,"expired_at":"2026-07-28T16:59:59.999Z","extra_info_l
+  │ ist":[{"id":"cmdmpld5r096123z9cv5tg45q","created_at":"
+  │ 2025-07-28T06:10:23.583Z","updated_at":"2025-07-28T06:
+  │ 10:23.583Z","code":"COMMON_ADDRESS","value":"TP. HỒ CH
+  │ Í MINH","data_type":"STRING","metadata_value":null,"__
+  │ typename":"InsurancePolicyPolicyExtraInfo"},{"id":"cmd
+  │ mpld5r096023z929gy4nx5","created_at":"2025-07-28T06:10
+  │ :23.583Z","updated_at":"2025-07-28T06:10:23.583Z","cod
+  │ e":"VEHCILE_INSURANCE_DRIVER_NAME","value":"HUỲNH NGỌC
+  │  A","data_type":"STRING","metadata_value":null,"__type
+  │ name":"InsurancePolicyPolicyExtraInfo"},{"id":"cmdmpld
+  │ 5r096223z99mtt7ukj","created_at":"2025-07-28T06:10:23.
+  │ 583Z","updated_at":"2025-07-28T06:10:23.583Z","code":"
+  │ VEHICLE_INSURANCE_MOTOR_TYPE","value":"1002","data_typ
+  │ e":"METADATA","metadata_value":"Xe > 50 cc","__typenam
+  │ e":"InsurancePolicyPolicyExtraInfo"},{"id":"cmdmpld5r0
+  │ 96423z92o813ldh","created_at":"2025-07-28T06:10:23.583
+  │ Z","updated_at":"2025-07-28T06:10:23.583Z","code":"VEH
+  │ ICLE_INSURANCE_REGISTRATION_PLATE","value":"59N-12345"
+  │ ,"data_type":"STRING","metadata_value":null,"__typenam
+  │ e":"InsurancePolicyPolicyExtraInfo"},{"id":"cmdmpld5r0
+  │ 96323z957slfycp","created_at":"2025-07-28T06:10:23.583
+  │ Z","updated_at":"2025-07-28T06:10:23.583Z","code":"VEH
+  │ ICLE_INSURANCE_VIN_NUMBER","value":"11112222","data_ty
+  │ pe":"STRING","metadata_value":null,"__typename":"Insur
+  │ ancePolicyPolicyExtraInfo"}],"plan":{"id":"clm8w3cax00
+  │ 0008mm54uf73xg","created_at":"2023-10-17T12:34:45.606Z
+  │ ","updated_at":"2023-10-17T12:34:45.606Z","type_id":"c
+  │ lm8ubpff000008k2gdpg1jw6","name":"Bảo hiểm bắt buộc TN
+  │ DS xe máy","description":"[\"Giấy chứng nhận điện 
+  │ (showing 2.05kB/3.24kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  989µs     580µs   (cache)      (cache)         (cache)         2.3s             1ms        56µs      2.3s  
+
+  ✓  Status code is 200
+  ✓  Response has correct structure
+  1. Policy object has all required fields
+  ✓  Policy dates are valid
+  2. Document URL is valid
+  ✓  Extra info list has required fields
+  ✓  Plan object is valid
+  ✓  Transaction object is valid
+  ✓  Required extra info fields are present
+  ✓  Metadata values are valid
+
+❏ PVI / Auto
+↳ insurance_policy_plan_policy_extra_info_list (Auto)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 738ms time ★ 1.25kB↑ 4.29kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 618B
+  │ {
+  │     "operationName": "insurance_policy_plan_policy_ext
+  │ ra_info_list",
+  │     "variables": {
+  │         "plan_id": "clm8w62m0000108mmg0vg92n6",
+  │         "insurer_id": "clm8vpju1000008idhiaxd0uz"
+  │     },
+  │     "query": "query insurance_policy_plan_policy_extra
+  │ _info_list($plan_id: ID!, $insurer_id: ID!) {\n  insur
+  │ ance_policy_plan_policy_extra_info_list(\n    plan_id:
+  │  $plan_id\n    insurer_id: $insurer_id\n  ) {\n    id\
+  │ n    plan_id\n    insurer_id\n    is_required\n    is_
+  │ multiple\n    extra_info {\n      id\n      created_at
+  │ \n      updated_at\n      code\n      data_type\n     
+  │  __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 3.95kB
+  │ {"data":{"insurance_policy_plan_policy_extra_info_list
+  │ ":[{"id":"cln3cn2jc000e08jo4pva4qzh","plan_id":"clm8w6
+  │ 2m0000108mmg0vg92n6","insurer_id":"clm8vpju1000008idhi
+  │ axd0uz","is_required":true,"is_multiple":false,"extra_
+  │ info":{"id":"cln3be8en000008mh1b011ime","created_at":"
+  │ 2023-10-17T12:34:45.606Z","updated_at":"2023-10-17T12:
+  │ 34:45.606Z","code":"VEHCILE_INSURANCE_DRIVER_NAME","da
+  │ ta_type":"STRING","__typename":"InsurancePolicyExtraIn
+  │ fo"},"__typename":"InsurancePolicyPlanPolicyExtraInfo"
+  │ },{"id":"cln3cp6fy000f08jocc9ofqke","plan_id":"clm8w62
+  │ m0000108mmg0vg92n6","insurer_id":"clm8vpju1000008idhia
+  │ xd0uz","is_required":true,"is_multiple":false,"extra_i
+  │ nfo":{"id":"cln3bhigb000308mhdumd7p4h","created_at":"2
+  │ 023-10-17T12:34:45.606Z","updated_at":"2023-10-17T12:3
+  │ 4:45.606Z","code":"COMMON_ADDRESS","data_type":"STRING
+  │ ","__typename":"InsurancePolicyExtraInfo"},"__typename
+  │ ":"InsurancePolicyPlanPolicyExtraInfo"},{"id":"cln3cpf
+  │ dv000i08jo1gfw18mp","plan_id":"clm8w62m0000108mmg0vg92
+  │ n6","insurer_id":"clm8vpju1000008idhiaxd0uz","is_requi
+  │ red":false,"is_multiple":false,"extra_info":{"id":"cln
+  │ 3bloyd000508mhf3ucgg22","created_at":"2023-10-17T12:34
+  │ :45.606Z","updated_at":"2023-10-17T12:34:45.606Z","cod
+  │ e":"VEHICLE_INSURANCE_REGISTRATION_PLATE","data_type":
+  │ "STRING","__typename":"InsurancePolicyExtraInfo"},"__t
+  │ ypename":"InsurancePolicyPlanPolicyExtraInfo"},{"id":"
+  │ cln3cpcyk000h08jo1gsa27jh","plan_id":"clm8w62m0000108m
+  │ mg0vg92n6","insurer_id":"clm8vpju1000008idhiaxd0uz","i
+  │ s_required":false,"is_multiple":false,"extra_info":{"i
+  │ d":"cln3bnab9000608mh61o14oga","created_at":"2023-10-1
+  │ 7T12:34:45.606Z","updated_at":"2023-10-17T12:34:45.606
+  │ Z","code":"VEHICLE_INSURANCE_ENGINE_NUMBER","data_type
+  │ ":"STRING","__typename":"InsurancePolicyExtraInfo"},"_
+  │ _typename":"InsurancePolicyPlanPolicyExtraInfo"},{"id"
+  │ :"cln3csqfm000j08jo2t1xh2u4","plan_id":"clm8w62m000010
+  │ 8mmg0vg92n6","insurer_id":"clm8vpju1000008idhiaxd0uz",
+  │ "is_required":true,"is_multiple":false,"extra_info":{"
+  │ id":"cln3bnd6v000708mh64zugryh","created_at":"2023-10-
+  │ 17T12:34:45.606Z","updated_at":"2023-10-17T12:34:4
+  │ (showing 2.05kB/3.95kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  912µs     717µs   (cache)      (cache)         (cache)         735ms            1ms        80µs      738ms 
+
+  ✓  Status code is 200
+  ✓  Response has correct structure
+  ✓  Validate specific field values and requirements
+  ✓  Validate required fields for auto insurance plan
+  ✓  Validate optional fields for auto insurance plan
+  ✓  Validate all items belong to same plan and insurer
+  ✓  Validate METADATA type fields
+  ✓  Check for duplicate field codes
+  ✓  Consistency check with previous motorcycle plan response
+
+↳ insurance_policy_extra_info_metadata_list (Auto#1)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 204ms time ★ 1.07kB↑ 2.8kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 441B
+  │ {
+  │     "operationName": "insurance_policy_extra_info_meta
+  │ data_list",
+  │     "variables": {
+  │         "extra_info_id": "cln3clq07000c08jo8o4g0us4"
+  │     },
+  │     "query": "query insurance_policy_extra_info_metada
+  │ ta_list($extra_info_id: ID!, $parent_id: ID) {\n  insu
+  │ rance_policy_extra_info_metadata_list(\n    extra_info
+  │ _id: $extra_info_id\n    parent_id: $parent_id\n  ) {\
+  │ n    id\n    extra_info_id\n    parent_id\n    name\n 
+  │    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 2.45kB
+  │ {"data":{"insurance_policy_extra_info_metadata_list":[
+  │ {"id":"clmh9uu22000308mi2c5x7ncy","extra_info_id":"cln
+  │ 3clq07000c08jo8o4g0us4","parent_id":"clmh9rfa4000008mi
+  │ 6wd85n4u","name":"Dưới 6 chỗ ngồi","__typename":"Insur
+  │ ancePolicyExtraInfoMetadata"},{"id":"clmh9uwm7000408mi
+  │ 92ow23ei","extra_info_id":"cln3clq07000c08jo8o4g0us4",
+  │ "parent_id":"clmh9rfa4000008mi6wd85n4u","name":"Từ 6 đ
+  │ ến 11 chỗ ngồi","__typename":"InsurancePolicyExtraInfo
+  │ Metadata"},{"id":"clmh9uzyg000508migq7t0yvi","extra_in
+  │ fo_id":"cln3clq07000c08jo8o4g0us4","parent_id":"clmh9r
+  │ fa4000008mi6wd85n4u","name":"Từ 12 đến 24 chỗ ngồi","_
+  │ _typename":"InsurancePolicyExtraInfoMetadata"},{"id":"
+  │ clmh9v3ms000608mi32c1eb5b","extra_info_id":"cln3clq070
+  │ 00c08jo8o4g0us4","parent_id":"clmh9rfa4000008mi6wd85n4
+  │ u","name":"Trên 24 chỗ ngồi","__typename":"InsurancePo
+  │ licyExtraInfoMetadata"},{"id":"clmh9v6x5000708mie1hpeg
+  │ jf","extra_info_id":"cln3clq07000c08jo8o4g0us4","paren
+  │ t_id":"clmh9rfa4000008mi6wd85n4u","name":"Xe bán tải (
+  │ pickup)","__typename":"InsurancePolicyExtraInfoMetadat
+  │ a"},{"id":"clmh9va9o000808mi44n5eaqv","extra_info_id":
+  │ "cln3clq07000c08jo8o4g0us4","parent_id":"clmh9rfa40000
+  │ 08mi6wd85n4u","name":"Xe tải VAN","__typename":"Insura
+  │ ncePolicyExtraInfoMetadata"},{"id":"clmh9zwvf001irypm6
+  │ uxya4tc","extra_info_id":"cln3clq07000c08jo8o4g0us4","
+  │ parent_id":"clmh9s3fg000108mi7rebcqd3","name":"Xe bán 
+  │ tải (pickup)","__typename":"InsurancePolicyExtraInfoMe
+  │ tadata"},{"id":"clmh9zwvf001jrypmdwx6gdlt","extra_info
+  │ _id":"cln3clq07000c08jo8o4g0us4","parent_id":"clmh9s3f
+  │ g000108mi7rebcqd3","name":"Xe tải VAN","__typename":"I
+  │ nsurancePolicyExtraInfoMetadata"},{"id":"clmhad1dr0000
+  │ 08jv9h3iangh","extra_info_id":"cln3clq07000c08jo8o4g0u
+  │ s4","parent_id":"clmh9s3fg000108mi7rebcqd3","name":"Dư
+  │ ới 6 chỗ ngồi","__typename":"InsurancePolicyExtraInfoM
+  │ etadata"},{"id":"clo57f3ff001m3b6i7bl0mx21","extra_inf
+  │ o_id":"cln3clq07000c08jo8o4g0us4","parent_id":"clmh9s3
+  │ fg000108mi7rebcqd3","name":"Từ 6 đến 11 chỗ ngồi","__t
+  │ ypename":"InsurancePolicyExtraInfoMetadata"},{"id":"cl
+  │ o57f3ff001n3b6ifyt8as13","extra_info_id":"cln3clq0
+  │ (showing 2.05kB/2.45kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  873µs     653µs   (cache)      (cache)         (cache)         200ms            2ms        121µs     204ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Validate AUTO insurance_policy_extra_info_metadata_
+  │ list response is valid!'
+  └
+  ✓  ✅ Validate insurance_policy_extra_info_metadata_list response
+
+↳ insurance_policy_extra_info_metadata_list (Auto#2)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 821ms time ★ 1.07kB↑ 22.74kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 441B
+  │ {
+  │     "operationName": "insurance_policy_extra_info_meta
+  │ data_list",
+  │     "variables": {
+  │         "extra_info_id": "cln3boeas000908mh50vj2n4b"
+  │     },
+  │     "query": "query insurance_policy_extra_info_metada
+  │ ta_list($extra_info_id: ID!, $parent_id: ID) {\n  insu
+  │ rance_policy_extra_info_metadata_list(\n    extra_info
+  │ _id: $extra_info_id\n    parent_id: $parent_id\n  ) {\
+  │ n    id\n    extra_info_id\n    parent_id\n    name\n 
+  │    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 22.39kB
+  │ {"data":{"insurance_policy_extra_info_metadata_list":[
+  │ {"id":"clmokjhdn0000ffpm97al67ih","extra_info_id":"cln
+  │ 3boeas000908mh50vj2n4b","parent_id":"clmh9uu22000308mi
+  │ 2c5x7ncy","name":"2","__typename":"InsurancePolicyExtr
+  │ aInfoMetadata"},{"id":"clmokjhdn0001ffpm9km49les","ext
+  │ ra_info_id":"cln3boeas000908mh50vj2n4b","parent_id":"c
+  │ lmh9uu22000308mi2c5x7ncy","name":"3","__typename":"Ins
+  │ urancePolicyExtraInfoMetadata"},{"id":"clmokjhdn0002ff
+  │ pmbnw8fn3p","extra_info_id":"cln3boeas000908mh50vj2n4b
+  │ ","parent_id":"clmh9uu22000308mi2c5x7ncy","name":"4","
+  │ __typename":"InsurancePolicyExtraInfoMetadata"},{"id":
+  │ "clmokjhdn0003ffpm9nkp6hyv","extra_info_id":"cln3boeas
+  │ 000908mh50vj2n4b","parent_id":"clmh9uu22000308mi2c5x7n
+  │ cy","name":"5","__typename":"InsurancePolicyExtraInfoM
+  │ etadata"},{"id":"clmokk8cy0000ghpmcy3mf0vi","extra_inf
+  │ o_id":"cln3boeas000908mh50vj2n4b","parent_id":"clmh9uw
+  │ m7000408mi92ow23ei","name":"6","__typename":"Insurance
+  │ PolicyExtraInfoMetadata"},{"id":"clmokk8cy0001ghpm1cfz
+  │ fuxu","extra_info_id":"cln3boeas000908mh50vj2n4b","par
+  │ ent_id":"clmh9uwm7000408mi92ow23ei","name":"7","__type
+  │ name":"InsurancePolicyExtraInfoMetadata"},{"id":"clmok
+  │ k8cy0002ghpmcr3y8as2","extra_info_id":"cln3boeas000908
+  │ mh50vj2n4b","parent_id":"clmh9uwm7000408mi92ow23ei","n
+  │ ame":"8","__typename":"InsurancePolicyExtraInfoMetadat
+  │ a"},{"id":"clmokk8cy0003ghpmf0w54doz","extra_info_id":
+  │ "cln3boeas000908mh50vj2n4b","parent_id":"clmh9uwm70004
+  │ 08mi92ow23ei","name":"9","__typename":"InsurancePolicy
+  │ ExtraInfoMetadata"},{"id":"clmokk8cz0004ghpm7uvzgctl",
+  │ "extra_info_id":"cln3boeas000908mh50vj2n4b","parent_id
+  │ ":"clmh9uwm7000408mi92ow23ei","name":"10","__typename"
+  │ :"InsurancePolicyExtraInfoMetadata"},{"id":"clmokk8cz0
+  │ 005ghpmdbg7bpfn","extra_info_id":"cln3boeas000908mh50v
+  │ j2n4b","parent_id":"clmh9uwm7000408mi92ow23ei","name":
+  │ "11","__typename":"InsurancePolicyExtraInfoMetadata"},
+  │ {"id":"clmokl6s50000hspmaygp45oj","extra_info_id":"cln
+  │ 3boeas000908mh50vj2n4b","parent_id":"clmh9uzyg000508mi
+  │ gq7t0yvi","name":"12","__typename":"InsurancePolicyExt
+  │ raInfoMetadata"},{"id":"clmokl6s50001hspm4pmv238o"
+  │ (showing 2.05kB/22.39kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  765µs     548µs   (cache)      (cache)         (cache)         734ms            85ms       287µs     821ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Validate AUTO insurance_policy_extra_info_metadata_
+  │ list response is valid!'
+  └
+  ✓  ✅ Validate insurance_policy_extra_info_metadata_list response
+
+↳ insurance_policy_extra_info_metadata_list (Auto#3)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 108ms time ★ 1.07kB↑ 778B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 441B
+  │ {
+  │     "operationName": "insurance_policy_extra_info_meta
+  │ data_list",
+  │     "variables": {
+  │         "extra_info_id": "cln3bnpgz000808mh73z5fhmg"
+  │     },
+  │     "query": "query insurance_policy_extra_info_metada
+  │ ta_list($extra_info_id: ID!, $parent_id: ID) {\n  insu
+  │ rance_policy_extra_info_metadata_list(\n    extra_info
+  │ _id: $extra_info_id\n    parent_id: $parent_id\n  ) {\
+  │ n    id\n    extra_info_id\n    parent_id\n    name\n 
+  │    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 436B
+  │ {"data":{"insurance_policy_extra_info_metadata_list":[
+  │ {"id":"clmh9rfa4000008mi6wd85n4u","extra_info_id":"cln
+  │ 3bnpgz000808mh73z5fhmg","parent_id":null,"name":"Xe ô 
+  │ tô không kinh doanh vận tải","__typename":"InsurancePo
+  │ licyExtraInfoMetadata"},{"id":"clmh9s3fg000108mi7rebcq
+  │ d3","extra_info_id":"cln3bnpgz000808mh73z5fhmg","paren
+  │ t_id":null,"name":"Xe ô tô kinh doanh vận tải","__type
+  │ name":"InsurancePolicyExtraInfoMetadata"}]}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  735µs     500µs   (cache)      (cache)         (cache)         105ms            1ms        78µs      108ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Validate AUTO insurance_policy_extra_info_metadata_
+  │ list response is valid!'
+  └
+  ✓  ✅ Validate insurance_policy_extra_info_metadata_list response
+
+↳ insurance_policy_extra_info_metadata_list (Auto - parent_id)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 214ms time ★ 1.12kB↑ 1.6kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 491B
+  │ {
+  │     "operationName": "insurance_policy_extra_info_meta
+  │ data_list",
+  │     "variables": {
+  │         "extra_info_id": "cln3clq07000c08jo8o4g0us4",
+  │         "parent_id": "clmh9rfa4000008mi6wd85n4u"
+  │     },
+  │     "query": "query insurance_policy_extra_info_metada
+  │ ta_list($extra_info_id: ID!, $parent_id: ID) {\n  insu
+  │ rance_policy_extra_info_metadata_list(\n    extra_info
+  │ _id: $extra_info_id\n    parent_id: $parent_id\n  ) {\
+  │ n    id\n    extra_info_id\n    parent_id\n    name\n 
+  │    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 1.25kB
+  │ {"data":{"insurance_policy_extra_info_metadata_list":[
+  │ {"id":"clmh9uu22000308mi2c5x7ncy","extra_info_id":"cln
+  │ 3clq07000c08jo8o4g0us4","parent_id":"clmh9rfa4000008mi
+  │ 6wd85n4u","name":"Dưới 6 chỗ ngồi","__typename":"Insur
+  │ ancePolicyExtraInfoMetadata"},{"id":"clmh9uwm7000408mi
+  │ 92ow23ei","extra_info_id":"cln3clq07000c08jo8o4g0us4",
+  │ "parent_id":"clmh9rfa4000008mi6wd85n4u","name":"Từ 6 đ
+  │ ến 11 chỗ ngồi","__typename":"InsurancePolicyExtraInfo
+  │ Metadata"},{"id":"clmh9uzyg000508migq7t0yvi","extra_in
+  │ fo_id":"cln3clq07000c08jo8o4g0us4","parent_id":"clmh9r
+  │ fa4000008mi6wd85n4u","name":"Từ 12 đến 24 chỗ ngồi","_
+  │ _typename":"InsurancePolicyExtraInfoMetadata"},{"id":"
+  │ clmh9v3ms000608mi32c1eb5b","extra_info_id":"cln3clq070
+  │ 00c08jo8o4g0us4","parent_id":"clmh9rfa4000008mi6wd85n4
+  │ u","name":"Trên 24 chỗ ngồi","__typename":"InsurancePo
+  │ licyExtraInfoMetadata"},{"id":"clmh9v6x5000708mie1hpeg
+  │ jf","extra_info_id":"cln3clq07000c08jo8o4g0us4","paren
+  │ t_id":"clmh9rfa4000008mi6wd85n4u","name":"Xe bán tải (
+  │ pickup)","__typename":"InsurancePolicyExtraInfoMetadat
+  │ a"},{"id":"clmh9va9o000808mi44n5eaqv","extra_info_id":
+  │ "cln3clq07000c08jo8o4g0us4","parent_id":"clmh9rfa40000
+  │ 08mi6wd85n4u","name":"Xe tải VAN","__typename":"Insura
+  │ ncePolicyExtraInfoMetadata"}]}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  784µs     656µs   (cache)      (cache)         (cache)         210ms            2ms        76µs      214ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Validate AUTO Parent insurance_policy_extra_info_me
+  │ tadata_list response is valid!'
+  └
+  ✓  ✅ Validate insurance_policy_extra_info_metadata_list response
+
+↳ insurance_calculate_premium (Auto)
+  ┌
+  │ 'Set effected_at to end of day:', '2025-07-28T17:00:00
+  │ .000Z'
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 293ms time ★ 1.31kB↑ 389B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 682B
+  │ {
+  │   "operationName": "insurance_calculate_premium",
+  │   "variables": {
+  │     "input": {
+  │       "plan_id": "clm8w62m0000108mmg0vg92n6",
+  │       "insurer_id": "clm8vpju1000008idhiaxd0uz",
+  │       "duration_year": 1,
+  │       "extra_info_list": [
+  │         {
+  │           "code": "VEHICLE_INSURANCE_AUTO_USAGE_PURPOS
+  │ E",
+  │           "value": "clmh9rfa4000008mi6wd85n4u"
+  │         },
+  │         {
+  │           "code": "VEHICLE_INSURANCE_AUTO_SLOT",
+  │           "value": "clmokjhdn0002ffpmbnw8fn3p"
+  │         }
+  │       ],
+  │       "effected_at": "2025-07-28T17:00:00.000Z"
+  │     }
+  │   },
+  │   "query": "query insurance_calculate_premium($input: 
+  │ InsuranceCalculatePremiumInput!) {\n  insurance_calcul
+  │ ate_premium(input: $input)\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 48B
+  │ {"data":{"insurance_calculate_premium":480700}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  767µs     571µs   (cache)      (cache)         (cache)         289ms            1ms        80µs      293ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Validate AUTO insurance_calculate_premium response 
+  │ is valid!'
+  └
+  ✓  ✅ Validate insurance_calculate_premium response
+
+↳ insurance_issue_policy (Buy Auto)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  │ 'Set effected_at to end of day:', '2025-07-28T17:00:00
+  │ .000Z'
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 553ms time ★ 2.69kB↑ 1.01kB↓ size ★ 16↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.84kB
+  │ {
+  │   "operationName": "insurance_issue_policy",
+  │   "variables": {
+  │     "input": {
+  │       "is_renew": false,
+  │       "effected_at": "2025-07-28T17:00:00.000Z",
+  │       "plan_id": "clm8w62m0000108mmg0vg92n6",
+  │       "insurer_id": "clm8vpju1000008idhiaxd0uz",
+  │       "email": "diep.huynh@realstake.io",
+  │       "duration_year": 1,
+  │       "payment_method": "NORMAL_FLEXIBLE_SAVINGS",
+  │       "extra_info_list": [
+  │         {
+  │           "code": "VEHCILE_INSURANCE_DRIVER_NAME",
+  │           "value": "HUỲNH NGỌC A"
+  │         },
+  │         {
+  │           "code": "COMMON_ADDRESS",
+  │           "value": "TP. HỒ CHÍ MINH"
+  │         },
+  │         {
+  │           "code": "VEHICLE_INSURANCE_VEHICLE_BRAND",
+  │           "value": "Honda"
+  │         },
+  │         {
+  │           "code": "VEHICLE_INSURANCE_AUTO_USAGE_PURPOS
+  │ E",
+  │           "value": "clmh9rfa4000008mi6wd85n4u"
+  │         },
+  │         {
+  │           "code": "VEHICLE_INSURANCE_AUTO_TYPE",
+  │           "value": "clmh9uu22000308mi2c5x7ncy"
+  │         },
+  │         {
+  │           "code": "VEHICLE_INSURANCE_AUTO_SLOT",
+  │           "value": "clmokjhdn0002ffpmbnw8fn3p"
+  │         },
+  │         {
+  │           "code": "VEHICLE_INSURANCE_VIN_NUMBER",
+  │           "value": "88889999"
+  │         },
+  │         {
+  │           "code": "VEHICLE_INSURANCE_REGISTRATION_PLAT
+  │ E",
+  │           "value": "59A-56789"
+  │         }
+  │       ]
+  │     }
+  │   },
+  │   "query": "mutation insurance_issue_policy($input: In
+  │ suranceIssuePolicyInput!) {\n  insurance_issue_policy(
+  │ input: $input) {\n    status\n    error_message\n    p
+  │ olicy {\n      transaction {\n        id\n        crea
+  │ ted_at\n        updated_at\n        user_id\n        p
+  │ olicy_id\n        amount\n        status\n        paym
+  │ ent_method\n        transfer_message\n        expired_
+  │ at\n        reference_id\n        reference_code\n    
+  │     paid_at\n        policy_name\n        __typename\n
+  │       }\n      __typename\n    }\n    __typename\n  }\
+  │ n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 666B
+  │ {"data":{"insurance_issue_policy":{"status":"success",
+  │ "error_message":null,"policy":{"transaction":{"id":"cm
+  │ dmplyfe096r23z9dnpr4b7g","created_at":"2025-07-28T06:1
+  │ 0:51.146Z","updated_at":"2025-07-28T06:10:51.146Z","us
+  │ er_id":"63a43e787c45354792712199","policy_id":"cmdmply
+  │ fd096q23z99rup2gdy","amount":480700,"status":"PENDING"
+  │ ,"payment_method":"NORMAL_FLEXIBLE_SAVINGS","transfer_
+  │ message":"ILU5666252087ISTX35OA","expired_at":"2025-07
+  │ -29T06:10:51.146Z","reference_id":null,"reference_code
+  │ ":null,"paid_at":null,"policy_name":"BH bắt buộc TNDS 
+  │ ô tô","__typename":"InsuranceTransaction"},"__typename
+  │ ":"InsurancePolicy"},"__typename":"InsuranceIssuePolic
+  │ yResult"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  735µs     508µs   (cache)      (cache)         (cache)         550ms            1ms        43µs      553ms 
+
+  ✓  Status code is 200
+  ✓  Response has valid JSON body
+  ✓  Response has correct structure
+  ✓  Policy issuance result is valid
+  ✓  Policy object is valid
+  ✓  AUTO Transaction details are valid
+  ✓  Timestamps are in correct sequence
+  ┌
+  │ 'Stored transaction ID:', 'cmdmplyfe096r23z9dnpr4b7g'
+  │ 'Stored policy ID:', 'cmdmplyfd096q23z99rup2gdy'
+  └
+  ✓  Store transaction details
+
+↳ insurance_policies (cert list)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 6.1s time ★ 2.43kB↑ 74.36kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.8kB
+  │ {
+  │     "operationName": "insurance_policies",
+  │     "variables": {
+  │         "reverse": true,
+  │         "sort_keys": "CREATED_AT",
+  │         "query": "status:SUCCESS,PROCESSING,EXPIRED,CA
+  │ NCELLED"
+  │     },
+  │     "query": "query insurance_policies($after: String,
+  │  $before: String, $first: Int, $last: Int, $reverse: B
+  │ oolean, $sort_keys: InsurancePolicySortKeys, $query: S
+  │ tring) {\n  insurance_policies(\n    after: $after\n  
+  │   before: $before\n    first: $first\n    last: $last\
+  │ n    reverse: $reverse\n    sort_keys: $sort_keys\n   
+  │  query: $query\n  ) {\n    nodes {\n      id\n      cr
+  │ eated_at\n      updated_at\n      user_id\n      plan_
+  │ id\n      insurer_id\n      policy_number\n      seria
+  │ l_number\n      premium\n      document_url\n      sta
+  │ tus\n      email\n      effected_at\n      expired_at\
+  │ n      extra_info_list {\n        id\n        created_
+  │ at\n        updated_at\n        code\n        value\n 
+  │        data_type\n        metadata_value\n        __ty
+  │ pename\n      }\n      plan {\n        id\n        cre
+  │ ated_at\n        updated_at\n        type_id\n        
+  │ name\n        description\n        status\n        ins
+  │ urers {\n          insurer_id\n          premium\n    
+  │       insurer {\n            id\n            created_a
+  │ t\n            updated_at\n            code\n         
+  │    name\n            status\n            description\n
+  │             logo\n            __typename\n          }\
+  │ n          __typename\n        }\n        policy_type 
+  │ {\n          id\n          created_at\n          updat
+  │ ed_at\n          name\n          code\n          icon\
+  │ n          status\n          __typename\n        }\n  
+  │       __typename\n      }\n      __typename\n    }\n  
+  │   page_info {\n      start_cursor\n      end_cursor\n 
+  │      has_next_page\n      has_previous_page\n      __t
+  │ ypename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 74.01kB
+  │ {"data":{"insurance_policies":{"nodes":[{"id":"cmdmply
+  │ fd096q23z99rup2gdy","created_at":"2025-07-28T06:10:51.
+  │ 146Z","updated_at":"2025-07-28T06:10:51.401Z","user_id
+  │ ":"63a43e787c45354792712199","plan_id":"clm8w62m000010
+  │ 8mmg0vg92n6","insurer_id":"clm8vpju1000008idhiaxd0uz",
+  │ "policy_number":null,"serial_number":null,"premium":48
+  │ 0700,"document_url":null,"status":"PROCESSING","email"
+  │ :"diep.huynh@realstake.io","effected_at":"2025-07-28T1
+  │ 7:00:00.000Z","expired_at":"2026-07-28T16:59:59.999Z",
+  │ "extra_info_list":[{"id":"cmdmplycv096l23z973fl232j","
+  │ created_at":"2025-07-28T06:10:51.055Z","updated_at":"2
+  │ 025-07-28T06:10:51.055Z","code":"COMMON_ADDRESS","valu
+  │ e":"TP. HỒ CHÍ MINH","data_type":"STRING","metadata_va
+  │ lue":null,"__typename":"InsurancePolicyPolicyExtraInfo
+  │ "},{"id":"cmdmplycv096j23z92hft4bho","created_at":"202
+  │ 5-07-28T06:10:51.055Z","updated_at":"2025-07-28T06:10:
+  │ 51.055Z","code":"VEHICLE_INSURANCE_AUTO_SLOT","value":
+  │ "3001","data_type":"METADATA","metadata_value":"4","__
+  │ typename":"InsurancePolicyPolicyExtraInfo"},{"id":"cmd
+  │ mplycw096p23z9cb8lejfu","created_at":"2025-07-28T06:10
+  │ :51.056Z","updated_at":"2025-07-28T06:10:51.056Z","cod
+  │ e":"VEHICLE_INSURANCE_AUTO_TYPE","value":"na","data_ty
+  │ pe":"METADATA","metadata_value":"Dưới 6 chỗ ngồi","__t
+  │ ypename":"InsurancePolicyPolicyExtraInfo"},{"id":"cmdm
+  │ plycv096i23z9fc905etg","created_at":"2025-07-28T06:10:
+  │ 51.055Z","updated_at":"2025-07-28T06:10:51.055Z","code
+  │ ":"VEHICLE_INSURANCE_AUTO_USAGE_PURPOSE","value":"1","
+  │ data_type":"METADATA","metadata_value":"Xe ô tô không 
+  │ kinh doanh vận tải","__typename":"InsurancePolicyPolic
+  │ yExtraInfo"},{"id":"cmdmplycv096k23z9g37f03hg","create
+  │ d_at":"2025-07-28T06:10:51.055Z","updated_at":"2025-07
+  │ -28T06:10:51.055Z","code":"VEHCILE_INSURANCE_DRIVER_NA
+  │ ME","value":"HUỲNH NGỌC A","data_type":"STRING","metad
+  │ ata_value":null,"__typename":"InsurancePolicyPolicyExt
+  │ raInfo"},{"id":"cmdmplycw096o23z96l4reqz8","created_at
+  │ ":"2025-07-28T06:10:51.056Z","updated_at":"2025-07-28T
+  │ 06:10:51.056Z","code":"VEHICLE_INSURANCE_REGISTRATION_
+  │ PLATE","value":"59A-56789","data_type":"STRING","m
+  │ (showing 2.05kB/74.01kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       919µs   (cache)      (cache)         (cache)         2.1s             4s         316µs     6.1s  
+
+  ✓  Status code is 200
+  ✓  Response has correct structure
+  ✓  All policy nodes have required fields
+  ✓  Extra info list items have correct structure
+  ✓  Plan information is valid
+  ✓  Policy date ranges are valid
+  ✓  Page info is valid
+  ┌
+  │ 'Potential test data found in policy cmdmpld7v096523z9
+  │ gjth9ya7: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdmmxk64095123z9
+  │ ag7ugv0n: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdmlqwk0093x23z9
+  │ hqax3ze8: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdml2qki092t23z9
+  │ hzpge8l3: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdipl0e6090323z9
+  │ hp1b426q: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdiox60t08yv23z9
+  │ 62wt2emy: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdiodmc108xa23z9
+  │ 0tu53eqv: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdinqx9w08th23z9
+  │ bqih5gon: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  │ 'Potential test data found in policy cmdik2lmz08fc23z9
+  │ d4ti0v75: VEHICLE_INSURANCE_REGISTRATION_PLATE=59N-123
+  │ 45'
+  └
+  ✓  Check for test data patterns
+  ┌
+  │ '✅ Validate insurance_policies response is valid!'
+  └
+  ✓  Premium amounts match expected values
+
+↳ insurance_policy (cert detail)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 592ms time ★ 2.15kB↑ 4.41kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.52kB
+  │ {
+  │     "operationName": "insurance_policy",
+  │     "variables": {
+  │         "policy_id": "cmdmplyfd096q23z99rup2gdy"
+  │     },
+  │     "query": "query insurance_policy($policy_id: ID!) 
+  │ {\n  insurance_policy(policy_id: $policy_id) {\n    ..
+  │ . on InsurancePolicy {\n      id\n      created_at\n  
+  │     updated_at\n      user_id\n      plan_id\n      in
+  │ surer_id\n      policy_number\n      serial_number\n  
+  │     premium\n      document_url\n      status\n      e
+  │ mail\n      effected_at\n      expired_at\n      extra
+  │ _info_list {\n        id\n        created_at\n        
+  │ updated_at\n        code\n        value\n        data_
+  │ type\n        metadata_value\n        __typename\n    
+  │   }\n      plan {\n        id\n        created_at\n   
+  │      updated_at\n        type_id\n        name\n      
+  │   description\n        status\n        insurers {\n   
+  │        insurer_id\n          premium\n          insure
+  │ r {\n            id\n            created_at\n         
+  │    updated_at\n            code\n            name\n   
+  │          status\n            description\n            
+  │ logo\n            __typename\n          }\n          _
+  │ _typename\n        }\n        policy_type {\n         
+  │  id\n          created_at\n          updated_at\n     
+  │      name\n          code\n          icon\n          s
+  │ tatus\n          __typename\n        }\n        __type
+  │ name\n      }\n      transaction {\n        id\n      
+  │   __typename\n      }\n      __typename\n    }\n    ..
+  │ . on InsurancePolicyNotFoundError {\n      error_messa
+  │ ge\n      __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 4.06kB
+  │ {"data":{"insurance_policy":{"id":"cmdmplyfd096q23z99r
+  │ up2gdy","created_at":"2025-07-28T06:10:51.146Z","updat
+  │ ed_at":"2025-07-28T06:10:51.401Z","user_id":"63a43e787
+  │ c45354792712199","plan_id":"clm8w62m0000108mmg0vg92n6"
+  │ ,"insurer_id":"clm8vpju1000008idhiaxd0uz","policy_numb
+  │ er":null,"serial_number":null,"premium":480700,"docume
+  │ nt_url":null,"status":"PROCESSING","email":"diep.huynh
+  │ @realstake.io","effected_at":"2025-07-28T17:00:00.000Z
+  │ ","expired_at":"2026-07-28T16:59:59.999Z","extra_info_
+  │ list":[{"id":"cmdmplycv096l23z973fl232j","created_at":
+  │ "2025-07-28T06:10:51.055Z","updated_at":"2025-07-28T06
+  │ :10:51.055Z","code":"COMMON_ADDRESS","value":"TP. HỒ C
+  │ HÍ MINH","data_type":"STRING","metadata_value":null,"_
+  │ _typename":"InsurancePolicyPolicyExtraInfo"},{"id":"cm
+  │ dmplycv096j23z92hft4bho","created_at":"2025-07-28T06:1
+  │ 0:51.055Z","updated_at":"2025-07-28T06:10:51.055Z","co
+  │ de":"VEHICLE_INSURANCE_AUTO_SLOT","value":"3001","data
+  │ _type":"METADATA","metadata_value":"4","__typename":"I
+  │ nsurancePolicyPolicyExtraInfo"},{"id":"cmdmplycw096p23
+  │ z9cb8lejfu","created_at":"2025-07-28T06:10:51.056Z","u
+  │ pdated_at":"2025-07-28T06:10:51.056Z","code":"VEHICLE_
+  │ INSURANCE_AUTO_TYPE","value":"na","data_type":"METADAT
+  │ A","metadata_value":"Dưới 6 chỗ ngồi","__typename":"In
+  │ surancePolicyPolicyExtraInfo"},{"id":"cmdmplycv096i23z
+  │ 9fc905etg","created_at":"2025-07-28T06:10:51.055Z","up
+  │ dated_at":"2025-07-28T06:10:51.055Z","code":"VEHICLE_I
+  │ NSURANCE_AUTO_USAGE_PURPOSE","value":"1","data_type":"
+  │ METADATA","metadata_value":"Xe ô tô không kinh doanh v
+  │ ận tải","__typename":"InsurancePolicyPolicyExtraInfo"}
+  │ ,{"id":"cmdmplycv096k23z9g37f03hg","created_at":"2025-
+  │ 07-28T06:10:51.055Z","updated_at":"2025-07-28T06:10:51
+  │ .055Z","code":"VEHCILE_INSURANCE_DRIVER_NAME","value":
+  │ "HUỲNH NGỌC A","data_type":"STRING","metadata_value":n
+  │ ull,"__typename":"InsurancePolicyPolicyExtraInfo"},{"i
+  │ d":"cmdmplycw096o23z96l4reqz8","created_at":"2025-07-2
+  │ 8T06:10:51.056Z","updated_at":"2025-07-28T06:10:51.056
+  │ Z","code":"VEHICLE_INSURANCE_REGISTRATION_PLATE","valu
+  │ e":"59A-56789","data_type":"STRING","metadata_valu
+  │ (showing 2.05kB/4.06kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       691µs   (cache)      (cache)         (cache)         589ms            960µs      69µs      592ms 
+
+  ✓  Status code is 200
+  ✓  Response has correct structure
+  3. Policy object has all required fields
+  ✓  Policy dates are valid
+  4. Document URL is valid
+  ✓  Extra info list has required fields
+  ✓  Plan object is valid
+  ✓  Transaction object is valid
+  ✓  Required extra info fields are present
+  ✓  Premium matches plan insurer premium
+  ✓  Metadata values are valid
+
+❏ PVI / SignOut
+↳ signout
+  POST https://staging.realstake.co/api/graphiql  
+  200 OK ★ 2s time ★ 828B↑ 348B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 194B
+  │ {
+  │     "variables": {
+  │         "onesignal_id": "d94a83aa-4a3c-4c1a-9171-ac369
+  │ 00e0523"
+  │     },
+  │     "query": "mutation ($onesignal_id: String) {\n  si
+  │ gnout(input: {onesignal_id: $onesignal_id})\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 58B
+  │ {"data":{"signout":"success"},"extensions":{"timing":5
+  │ 20}}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  770µs     3ms    2ms          1332ms          79ms            611ms            1ms        117µs     2s    
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Signout Response is valid!'
+  └
+  ✓  ✅ Validate Signout Response
+  ┌
+  │ 'Clearing 20 collection variables:', [
+  │   'baseUrl',
+  │   'x-infina-api-key',
+  │   'x-infina-app-version',
+  │   'requestSecret',
+  │   'phoneNumber',
+  │   'password',
+  │   'pinCode',
+  │   'access_token',
+  │   'refresh_token',
+  │   'userid',
+  │   'uid',
+  │   'MapId',
+  │   'motoPlanId',
+  │   'motoInsureId',
+  │   'insurance_transaction_id',
+  │   'insurance_policy_id',
+  │   'insurance_transfer_message',
+  │   'policyId',
+  │   'autoPlanId',
+  │   'autoInsureId'
+  │ ]
+  └
+  ✓  Clear all collection variables after signout
+
+┌─────────────────────────┬─────────────────────┬─────────────────────┐
+│                         │            executed │              failed │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              iterations │                   1 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│                requests │                  22 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│            test-scripts │                  44 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│      prerequest-scripts │                  44 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              assertions │                 101 │                   4 │
+├─────────────────────────┴─────────────────────┴─────────────────────┤
+│ total run duration: 1m 6.7s                                         │
+├─────────────────────────────────────────────────────────────────────┤
+│ total data received: 226.84kB (approx)                              │
+├─────────────────────────────────────────────────────────────────────┤
+│ average response time: 1050ms [min: 108ms, max: 6.1s, s.d.: 1349ms] │
+├─────────────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 1ms [min: 1ms, max: 2ms, s.d.: 303µs]      │
+├─────────────────────────────────────────────────────────────────────┤
+│ average first byte time: 668ms [min: 105ms, max: 2.3s, s.d.: 618ms] │
+└─────────────────────────────────────────────────────────────────────┘
+
+[31m  # [39m[31m failure        [39m[31m detail                                               [39m
+[90m    [39m[90m                [39m[90m                                                      [39m
+ 1.  AssertionError  Policy object has all required fields                
+                     expected null to be a string                         
+                     at assertion:2 in test-script                        
+                     inside "PVI / Moto / insurance_policy (cert detail)" 
+[90m    [39m[90m                [39m[90m                                                      [39m
+ 2.  AssertionError  Document URL is valid                                
+                     expected null to be a string                         
+                     at assertion:4 in test-script                        
+                     inside "PVI / Moto / insurance_policy (cert detail)" 
+[90m    [39m[90m                [39m[90m                                                      [39m
+ 3.  AssertionError  Policy object has all required fields                
+                     expected null to be a string                         
+                     at assertion:2 in test-script                        
+                     inside "PVI / Auto / insurance_policy (cert detail)" 
+[90m    [39m[90m                [39m[90m                                                      [39m
+ 4.  AssertionError  Document URL is valid                                
+                     expected null to be a string                         
+                     at assertion:4 in test-script                        
+                     inside "PVI / Auto / insurance_policy (cert detail)" 

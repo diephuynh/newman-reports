@@ -1,0 +1,2640 @@
+newman
+
+Infina-Kafi
+
+❏ Kafi / SignIn
+↳ SignIn & Relogin
+  POST https://staging.realstake.co/api/graphiql  
+  200 OK ★ 1288ms time ★ 2.62kB↑ 3.29kB↓ size ★ 11↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 2.23kB
+  │ {
+  │     "operationName": "signin_v2",
+  │     "variables": {
+  │         "email": "0931895560",
+  │         "password": "12345678",
+  │         "fcm_token": "7cbcd79a-cc9c-4804-bae3-5ad5f02e
+  │ e217:APA91bFVsdSihx4iIvzKHqkmnSg15GpP2QyQwvMx6-Zrj-A3b
+  │ 9OGozt1Sg2NNdr0mfqBGENGhDyt8Dh0P_XEi6gjrDP0D-yyOjErOUt
+  │ Y8KNZ__gu0LP3rHs",
+  │         "app_instance_id": "e668d017-d8a5-4150-a4dd-8f
+  │ 43628a548a",
+  │         "platform":"PostmanTest"
+  │     },
+  │     "query":"mutation signin_v2($email: String, $passw
+  │ ord: String, $app_instance_id: String, $fcm_token: Str
+  │ ing, $platform: String) {\n  signin_v2(\n    input: {e
+  │ mail: $email, password: $password, app_instance_id: $a
+  │ pp_instance_id, fcm_token: $fcm_token, platform: $plat
+  │ form}\n  ) {\n    access_token\n    ip_address\n    re
+  │ fresh_token\n    user {\n      id\n      ip_address\n 
+  │      uid\n      email\n      phone\n      first_name\n
+  │       last_name\n      status\n      has_pin_code\n   
+  │    pin_type\n      pin_blocking_duration\n      pin_al
+  │ lowed_attempts\n      freshchat_restore_id\n      avat
+  │ ar\n      confirm_contract\n      contract_signed_at\n
+  │       kyc {\n        status\n        address\n        
+  │ passport_issue_date\n        passport_issue_place\n   
+  │      document_type\n        document_number\n        i
+  │ dcard_issue_date\n        idcard_issue_place\n        
+  │ idcard_type\n        cmnd\n        first_name\n       
+  │  manual_review\n        last_name\n        full_name\n
+  │         idcard_back_page\n        idcard_front_page\n 
+  │        __typename\n      }\n      user_credits {\n    
+  │     id\n        reward_balance\n        expired_at\n  
+  │       __typename\n      }\n      documents {\n        
+  │ url\n        created_at\n        __typename\n      }\n
+  │       verified_phone\n      verified_email\n      refe
+  │ rral_code\n      referral_url\n      custom_referral_c
+  │ ode\n      bank_info {\n        bank_name\n        ban
+  │ k_city\n        bank_branch\n        account_number\n 
+  │        account_owner\n        bank_support\n        ve
+  │ rified\n        __typename\n      }\n      referred_co
+  │ de\n      created_at\n      discourse {\n        is_si
+  │ gn_up\n        sign_up
+  │ (showing 2.05kB/2.23kB)
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 3kB
+  │ {"data":{"signin_v2":{"access_token":"eyJhbGciOiJIUzI1
+  │ NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjNhNDNlNzg3YzQ1M
+  │ zU0NzkyNzEyMTk5IiwiY2xpZW50X2lkIjoiNjg4NzI0MmQ5ODAzMTU
+  │ zYzA4OGYzMGNlIiwiaWF0IjoxNzUzNjg3MDg1LCJleHAiOjE3NTM3M
+  │ DE0ODV9.mcXogK1tyMFtMnHik06G-XGyihnt62cS7oQyEYxltjE","
+  │ ip_address":"52.77.39.125","refresh_token":"eyJhbGciOi
+  │ JIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjNhNDNlNzg
+  │ 3YzQ1MzU0NzkyNzEyMTk5IiwiY2xpZW50X2lkIjoiNjg4NzI0MmQ5O
+  │ DAzMTUzYzA4OGYzMGNlIiwidG9rZW5UeXBlIjoicmVmcmVzaCIsIml
+  │ hdCI6MTc1MzY4NzA4NSwiZXhwIjoxNzU2Mjc5MDg1fQ.BxbhAjk-H0
+  │ SeJ2gVgu1JyzF2CNCbTE0EmqFD932GOLY","user":{"id":"63a43
+  │ e787c45354792712199","ip_address":null,"uid":"U5666252
+  │ 087","email":"diep.huynh@realstake.io","phone":"093189
+  │ 5560","first_name":"NGỌC ĐIỆP","last_name":"HUỲNH","st
+  │ atus":"invested","has_pin_code":true,"pin_type":"6-dig
+  │ it","pin_blocking_duration":12,"pin_allowed_attempts":
+  │ 5,"freshchat_restore_id":"d5d5e554-b770-4422-a71a-f45b
+  │ c24f44cf","avatar":"https://djemclypbm8gi.cloudfront.n
+  │ et/images/1753329065-6A6F9BB7_1D32_40E2_BC93_2B2E60B9E
+  │ BAC.jpg","confirm_contract":true,"contract_signed_at":
+  │ "2024-05-06 06:46:46+0000","kyc":{"status":"approved",
+  │ "address":"B6/146, ẤP 2 ĐA PHƯỚC, BÌNH CHÁNH, TP. HỒ C
+  │ HÍ MINH","passport_issue_date":null,"passport_issue_pl
+  │ ace":null,"document_type":"IDCARD","document_number":"
+  │ 079089015560","idcard_issue_date":"2022-01-16 00:00:00
+  │ +0000","idcard_issue_place":"CỤC TRƯỞNG CỤC CẢNH SÁT Q
+  │ UẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI","idcard_type":"cc
+  │ cd_chip_ms","cmnd":"079089015560","first_name":"NGỌC Đ
+  │ IỆP","manual_review":"success","last_name":"HUỲNH","fu
+  │ ll_name":"HUỲNH NGỌC ĐIỆP","idcard_back_page":"https:/
+  │ /d1b9m82b7i6paa.cloudfront.net/images/kyc/63a43e787c45
+  │ 354792712199/1729141764187-id-back","idcard_front_page
+  │ ":"https://d1b9m82b7i6paa.cloudfront.net/images/kyc/63
+  │ a43e787c45354792712199/1729141762664-id-front","__type
+  │ name":"KycResult"},"user_credits":[{"id":"63a43e787c45
+  │ 3578e271219e","reward_balance":0,"expired_at":"2025-06
+  │ -26 08:00:42+0000","__typename":"UserCreditResult"}],"
+  │ documents":[{"url":"https://d1b9m82b7i6paa.cloudfr
+  │ (showing 2.05kB/3kB)
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total  
+  7ms       24ms   1ms          76ms            168ms           1001ms           15ms       448µs     1295ms 
+
+  ✓  Handle login response
+  ✓  Status code is 200
+  ✓  Body matches signin_v2
+
+❏ Kafi / Home
+↳ savings_account (Kafi total_amount)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 493ms time ★ 1.01kB↑ 662B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 379B
+  │ {
+  │     "query": "query savings_account($partner_id:ID!){s
+  │ avings_account(partner_id:$partner_id){...on SavingsAc
+  │ count{id created_at updated_at rejected_reason status 
+  │ virtual_account_number virtual_account_bank_code portf
+  │ olio{total_amount total_profit}}...on SavingsAccountNo
+  │ tFoundError{error_message}}}",
+  │     "variables": {
+  │         "partner_id": "clhin6ff300013b6i58le4r6u"
+  │     }
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 319B
+  │ {"data":{"savings_account":{"id":"cm5qjtaz002n523qkhdh
+  │ 6fa33","created_at":"2025-01-10T09:22:02.316Z","update
+  │ d_at":"2025-01-10T09:22:51.593Z","rejected_reason":nul
+  │ l,"status":"APPROVED","virtual_account_number":"KFI901
+  │ 3872","virtual_account_bank_code":"VIB","portfolio":{"
+  │ total_amount":25000971,"total_profit":106408}}}}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       2ms    99ms         78ms            82ms            225ms            3ms        119µs     493ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Savings account object exists
+  ✓  Contains all required fields
+  ✓  ID has correct format
+  ✓  Timestamps are valid
+  ✓  Status is valid
+  ✓  Approved account has null rejected_reason
+  ✓  Virtual account details are valid
+  ✓  Portfolio has correct structure
+  ✓  No extra fields in response
+
+↳ savings_partner (main)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 115ms time ★ 820B↑ 449B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 188B
+  │ {
+  │     "query": "query savings_partner($code:SavingsPartn
+  │ erCode!){savings_partner(code:$code){...on SavingsPart
+  │ ner{id code name status}}}",
+  │     "variables": {
+  │         "code": "KAFI"
+  │     }
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 108B
+  │ {"data":{"savings_partner":{"id":"clhin6ff300013b6i58l
+  │ e4r6u","code":"KF","name":"Kafi","status":"ACTIVE"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  902µs     849µs   (cache)      (cache)         (cache)         112ms            1ms        73µs      115ms 
+
+  ✓  Status code is 200
+  ✓  Contains 'data.savings_partner'
+  ✓  'id' is a non-empty string
+  ✓  'code' equals 'KF'
+  ✓  'name' equals 'Kafi'
+  ✓  'status' equals 'ACTIVE'
+
+↳ savings_active_partner_maintenance
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 119ms time ★ 854B↑ 391B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 222B
+  │ {
+  │     "query": "query savings_active_partner_maintenance
+  │ ($partnerId:ID!){savings_active_partner_maintenance(pa
+  │ rtnerId:$partnerId){code from to}}",
+  │     "variables": {
+  │         "partnerId": "clhin6ff300013b6i58le4r6u"
+  │     }
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 51B
+  │ {"data":{"savings_active_partner_maintenance":[]}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       706µs   (cache)      (cache)         (cache)         115ms            1ms        87µs      119ms 
+
+  ✓  Status code is 200
+  ✓  ✅ Validate savings_active_partner_maintenance response
+
+↳ savings_products
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 106ms time ★ 943B↑ 1.95kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 311B
+  │ {
+  │     "query": "query savings_products($partnerId:ID!){s
+  │ avings_products(partnerId:$partnerId){id created_at up
+  │ dated_at partner_id name code status min_deposit max_d
+  │ eposit logo_url description rates{duration duration_un
+  │ it rate type}}}",
+  │     "variables": {
+  │         "partnerId": "clhin6ff300013b6i58le4r6u"
+  │     }
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 1.61kB
+  │ {"data":{"savings_products":[{"id":"clqaoh1ow000108jl9
+  │ bvz7t14","created_at":"2024-01-02T04:36:11.411Z","upda
+  │ ted_at":"2025-07-25T17:00:35.417Z","partner_id":"clhin
+  │ 6ff300013b6i58le4r6u","name":"K-90","code":"KF_90","st
+  │ atus":"ACTIVE","min_deposit":50000,"max_deposit":30000
+  │ 000000,"logo_url":"/static/infina-apps-v2/home-saving-
+  │ screen/k-90-without-profit.png","description":"Lợi nhu
+  │ ận rút trước hạn 3.0%/năm\\nKỳ hạn 90 ngày","rates":[{
+  │ "duration":null,"duration_unit":null,"rate":0.02,"type
+  │ ":"PENALTY"},{"duration":90,"duration_unit":"DAY","rat
+  │ e":0.065,"type":"INTEREST"}]},{"id":"clqaogy7y000008jl
+  │ 9bfs2b39","created_at":"2024-01-02T04:36:11.411Z","upd
+  │ ated_at":"2025-07-25T17:00:35.417Z","partner_id":"clhi
+  │ n6ff300013b6i58le4r6u","name":"K-Seven","code":"KF_SEV
+  │ EN","status":"ACTIVE","min_deposit":50000,"max_deposit
+  │ ":30000000000,"logo_url":"/static/infina-apps-v2/home-
+  │ saving-screen/k-7-without-profit.png","description":"N
+  │ ộp rút bất kỳ lúc nào không bị mất lợi nhuận\\nLợi nhu
+  │ ận 7.0%/năm chỉ sau 7 tuần","rates":[{"duration":null,
+  │ "duration_unit":null,"rate":null,"type":"PENALTY"},{"d
+  │ uration":1,"duration_unit":"WEEK","rate":0.035,"type":
+  │ "INTEREST"},{"duration":2,"duration_unit":"WEEK","rate
+  │ ":0.04,"type":"INTEREST"},{"duration":3,"duration_unit
+  │ ":"WEEK","rate":0.045,"type":"INTEREST"},{"duration":4
+  │ ,"duration_unit":"WEEK","rate":0.05,"type":"INTEREST"}
+  │ ,{"duration":5,"duration_unit":"WEEK","rate":0.055,"ty
+  │ pe":"INTEREST"},{"duration":6,"duration_unit":"WEEK","
+  │ rate":0.06,"type":"INTEREST"},{"duration":7,"duration_
+  │ unit":"WEEK","rate":0.065,"type":"INTEREST"}]}]}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       624µs   (cache)      (cache)         (cache)         102ms            2ms        115µs     106ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Savings products array exists and has items
+  ✓  Product 1 has required fields
+  ✓  Product 1 ID has correct format
+  ✓  Product 1 timestamps are valid
+  ✓  Product 1 partner ID is valid
+  ✓  Product 1 details are valid
+  ✓  Product 1 rates array is valid
+  ✓  Product 1 Rate 1 has required fields
+  ✓  Product 1 Rate 1 type is valid
+  ✓  Product 1 Rate 1 penalty rate can be null
+  ✓  Product 1 Rate 2 has required fields
+  ✓  Product 1 Rate 2 type is valid
+  ✓  Product 1 Rate 2 interest rate is valid
+  ✓  Product 1 Rate 2 duration is valid for interest rate
+  ✓  Product 1 has no extra fields
+  ✓  Product 2 has required fields
+  ✓  Product 2 ID has correct format
+  ✓  Product 2 timestamps are valid
+  ✓  Product 2 partner ID is valid
+  ✓  Product 2 details are valid
+  ✓  Product 2 rates array is valid
+  ✓  Product 2 Rate 1 has required fields
+  ✓  Product 2 Rate 1 type is valid
+  ✓  Product 2 Rate 1 penalty rate can be null
+  ✓  Product 2 Rate 2 has required fields
+  ✓  Product 2 Rate 2 type is valid
+  ✓  Product 2 Rate 2 interest rate is valid
+  ✓  Product 2 Rate 2 duration is valid for interest rate
+  ✓  Product 2 Rate 3 has required fields
+  ✓  Product 2 Rate 3 type is valid
+  ✓  Product 2 Rate 3 interest rate is valid
+  ✓  Product 2 Rate 3 duration is valid for interest rate
+  ✓  Product 2 Rate 4 has required fields
+  ✓  Product 2 Rate 4 type is valid
+  ✓  Product 2 Rate 4 interest rate is valid
+  ✓  Product 2 Rate 4 duration is valid for interest rate
+  ✓  Product 2 Rate 5 has required fields
+  ✓  Product 2 Rate 5 type is valid
+  ✓  Product 2 Rate 5 interest rate is valid
+  ✓  Product 2 Rate 5 duration is valid for interest rate
+  ✓  Product 2 Rate 6 has required fields
+  ✓  Product 2 Rate 6 type is valid
+  ✓  Product 2 Rate 6 interest rate is valid
+  ✓  Product 2 Rate 6 duration is valid for interest rate
+  ✓  Product 2 Rate 7 has required fields
+  ✓  Product 2 Rate 7 type is valid
+  ✓  Product 2 Rate 7 interest rate is valid
+  ✓  Product 2 Rate 7 duration is valid for interest rate
+  ✓  Product 2 Rate 8 has required fields
+  ✓  Product 2 Rate 8 type is valid
+  ✓  Product 2 Rate 8 interest rate is valid
+  ✓  Product 2 Rate 8 duration is valid for interest rate
+  ✓  Product 2 has no extra fields
+
+↳ savings_account (main)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 103ms time ★ 974B↑ 601B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 342B
+  │ {
+  │     "query": "query savings_account($partner_id:ID!){s
+  │ avings_account(partner_id:$partner_id){...on SavingsAc
+  │ count{id created_at updated_at rejected_reason status 
+  │ virtual_account_number virtual_account_bank_code}...on
+  │  SavingsAccountNotFoundError{error_message}}}",
+  │     "variables": {
+  │         "partner_id": "clhin6ff300013b6i58le4r6u"
+  │     }
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 259B
+  │ {"data":{"savings_account":{"id":"cm5qjtaz002n523qkhdh
+  │ 6fa33","created_at":"2025-01-10T09:22:02.316Z","update
+  │ d_at":"2025-01-10T09:22:51.593Z","rejected_reason":nul
+  │ l,"status":"APPROVED","virtual_account_number":"KFI901
+  │ 3872","virtual_account_bank_code":"VIB"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  860µs     597µs   (cache)      (cache)         (cache)         100ms            1ms        82µs      103ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Savings account object exists
+  ✓  Contains all required fields
+  ✓  ID has correct format
+  ✓  Timestamps are valid and chronological
+  ✓  Status is valid and APPROVED
+  ✓  Rejected reason is null for approved account
+  ✓  Virtual account details are valid
+  ✓  No extra fields in response
+  ┌
+  │ 'Validated savings account cm5qjtaz002n523qkhdh6fa33 w
+  │ ith status APPROVED'
+  │ 'Virtual Account: KFI9013872 @ VIB'
+  └
+
+↳ savings_partner_working_time
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 103ms time ★ 796B↑ 460B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 164B
+  │ {
+  │     "operationName": "savings_partner_working_time",
+  │     "variables": {},
+  │     "query": "query savings_partner_working_time {\n  
+  │ savings_partner_working_time\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 119B
+  │ {"data":{"savings_partner_working_time":{"KAFI":{"from
+  │ ":"2025-07-27T17:00:00.000Z","to":"2025-07-28T16:59:00
+  │ .000Z"}}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  829µs     701µs   (cache)      (cache)         (cache)         101ms            1ms        61µs      103ms 
+
+  ✓  Status code is 200
+  ✓  ✅ Validate savings_partner_working_time response
+
+↳ savings_contracts (status:APPROVED)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 238ms time ★ 1.9kB↑ 7.62kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.26kB
+  │ {
+  │     "operationName": "savings_contracts",
+  │     "variables": {
+  │         "first": 100,
+  │         "reverse": true,
+  │         "sort_keys": "CREATED_AT",
+  │         "query": "status:APPROVED"
+  │     },
+  │     "query": "query savings_contracts($after: String, 
+  │ $before: String, $first: Int, $last: Int, $reverse: Bo
+  │ olean, $sort_keys: SavingsContractSortKeys, $query: St
+  │ ring) {\n  savings_contracts(\n    after: $after\n    
+  │ before: $before\n    first: $first\n    last: $last\n 
+  │    reverse: $reverse\n    sort_keys: $sort_keys\n    q
+  │ uery: $query\n  ) {\n    nodes {\n      id\n      crea
+  │ ted_at\n      updated_at\n      amount\n      availabl
+  │ e_amount\n      estimated_profit\n      matured_at\n  
+  │     maturity_date\n      approved_at\n      terminated
+  │ _at\n      status\n      interest_rate\n      code\n  
+  │     promotion_rate\n      penalty_rate\n      product 
+  │ {\n        id\n        partner_id\n        name\n     
+  │    code\n        status\n        logo_url\n        rat
+  │ es {\n          duration\n          duration_unit\n   
+  │        rate\n          type\n          __typename\n   
+  │      }\n        __typename\n      }\n      __typename\
+  │ n    }\n    page_info {\n      start_cursor\n      end
+  │ _cursor\n      has_next_page\n      has_previous_page\
+  │ n      __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 7.28kB
+  │ {"data":{"savings_contracts":{"nodes":[{"id":"cmc08icm
+  │ l000208l8d8t01laa","created_at":"2025-06-17T08:01:31.2
+  │ 45Z","updated_at":"2025-07-28T06:09:10.876Z","amount":
+  │ 2000000,"available_amount":2000000,"estimated_profit":
+  │ 82191,"matured_at":"2025-07-08T00:00:38.289Z","maturit
+  │ y_date":"2025-06-30T17:00:00.000Z","approved_at":"2025
+  │ -06-18T17:00:00.000Z","terminated_at":null,"status":"A
+  │ PPROVED","interest_rate":0.075,"code":"IJHNL7","promot
+  │ ion_rate":0,"penalty_rate":0.02,"product":{"id":"clqao
+  │ h1ow000108jl9bvz7t14","partner_id":"clhin6ff300013b6i5
+  │ 8le4r6u","name":"K-90","code":"KF_90","status":"ACTIVE
+  │ ","logo_url":"/static/infina-apps-v2/home-saving-scree
+  │ n/k-90-without-profit.png","rates":[{"duration":null,"
+  │ duration_unit":null,"rate":0.02,"type":"PENALTY","__ty
+  │ pename":"SavingsProductRate"},{"duration":90,"duration
+  │ _unit":"DAY","rate":0.065,"type":"INTEREST","__typenam
+  │ e":"SavingsProductRate"}],"__typename":"SavingsProduct
+  │ "},"__typename":"SavingsContract"},{"id":"cmc08icmk000
+  │ 108l80cce8lgj","created_at":"2025-06-17T08:01:31.244Z"
+  │ ,"updated_at":"2025-07-28T06:09:31.372Z","amount":2000
+  │ 000,"available_amount":2000000,"estimated_profit":1726
+  │ 0,"matured_at":"2025-07-08T00:00:38.346Z","maturity_da
+  │ te":"2025-06-30T17:00:00.000Z","approved_at":"2025-01-
+  │ 14T17:00:00.000Z","terminated_at":null,"status":"APPRO
+  │ VED","interest_rate":0.045,"code":"ZTQMHQ","promotion_
+  │ rate":0,"penalty_rate":0,"product":{"id":"clqaogy7y000
+  │ 008jl9bfs2b39","partner_id":"clhin6ff300013b6i58le4r6u
+  │ ","name":"K-Seven","code":"KF_SEVEN","status":"ACTIVE"
+  │ ,"logo_url":"/static/infina-apps-v2/home-saving-screen
+  │ /k-7-without-profit.png","rates":[{"duration":null,"du
+  │ ration_unit":null,"rate":null,"type":"PENALTY","__type
+  │ name":"SavingsProductRate"},{"duration":1,"duration_un
+  │ it":"WEEK","rate":0.035,"type":"INTEREST","__typename"
+  │ :"SavingsProductRate"},{"duration":2,"duration_unit":"
+  │ WEEK","rate":0.04,"type":"INTEREST","__typename":"Savi
+  │ ngsProductRate"},{"duration":3,"duration_unit":"WEEK",
+  │ "rate":0.045,"type":"INTEREST","__typename":"SavingsPr
+  │ oductRate"},{"duration":4,"duration_unit":"WEEK","
+  │ (showing 2.05kB/7.28kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  723µs     592µs   (cache)      (cache)         (cache)         235ms            2ms        127µs     238ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Contracts data has required fields
+  ✓  Contracts nodes array is valid
+  ✓  Contract 1 has required fields
+  ✓  Contract 1 ID has correct format
+  ✓  Contract 1 status and code are valid
+  ✓  Contract 1 rate fields are valid
+  ✓  Contract 1 product is valid
+  ✓  Contract 1 product rates are valid
+  ✓  Contract 2 has required fields
+  ✓  Contract 2 ID has correct format
+  ✓  Contract 2 status and code are valid
+  ✓  Contract 2 rate fields are valid
+  ✓  Contract 2 product is valid
+  ✓  Contract 2 product rates are valid
+  ✓  Contract 3 has required fields
+  ✓  Contract 3 ID has correct format
+  ✓  Contract 3 status and code are valid
+  ✓  Contract 3 rate fields are valid
+  ✓  Contract 3 product is valid
+  ✓  Contract 3 product rates are valid
+  ✓  Contract 4 has required fields
+  ✓  Contract 4 ID has correct format
+  ✓  Contract 4 status and code are valid
+  ✓  Contract 4 rate fields are valid
+  ✓  Contract 4 product is valid
+  ✓  Contract 4 product rates are valid
+  ✓  Contract 5 has required fields
+  ✓  Contract 5 ID has correct format
+  ✓  Contract 5 status and code are valid
+  ✓  Contract 5 rate fields are valid
+  ✓  Contract 5 product is valid
+  ✓  Contract 5 product rates are valid
+  ✓  Page info is valid
+  ┌
+  │ 'Found 5 savings contracts'
+  │ 'First contract: IJHNL7 (K-90)'
+  │ 'Second contract: ZTQMHQ (K-Seven)'
+  │ '3rd contract: DVG4BI (K-Seven)'
+  │ '4th contract: SP7JYJ (K-Seven)'
+  └
+
+↳ savings_transactions (History list)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 4.9s time ★ 2.29kB↑ 96.36kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.65kB
+  │ {
+  │     "operationName": "savings_transactions",
+  │     "variables": {
+  │         "first": 100,
+  │         "reverse": true,
+  │         "sort_keys": "CREATED_AT"
+  │     },
+  │     "query": "query savings_transactions($after: Strin
+  │ g, $before: String, $first: Int, $last: Int, $reverse:
+  │  Boolean, $sort_keys: SavingsTransactionSortKeys, $que
+  │ ry: String) {\n  savings_transactions(\n    after: $af
+  │ ter\n    before: $before\n    first: $first\n    last:
+  │  $last\n    reverse: $reverse\n    sort_keys: $sort_ke
+  │ ys\n    query: $query\n  ) {\n    edges {\n      curso
+  │ r\n      node {\n        id\n        created_at\n     
+  │    updated_at\n        amount\n        initial_amount\
+  │ n        status\n        type\n        transfer_messag
+  │ e\n        deposited_at\n        contract {\n         
+  │  ... on SavingsContract {\n            id\n           
+  │  available_amount\n            product {\n            
+  │   name\n              __typename\n            }\n     
+  │        maturity_date\n            __typename\n        
+  │   }\n          __typename\n        }\n        __typena
+  │ me\n      }\n      __typename\n    }\n    nodes {\n   
+  │    id\n      created_at\n      updated_at\n      amoun
+  │ t\n      initial_amount\n      status\n      type\n   
+  │    transfer_message\n      deposited_at\n      contrac
+  │ t {\n        ... on SavingsContract {\n          id\n 
+  │          available_amount\n          product {\n      
+  │       name\n            __typename\n          }\n     
+  │      maturity_date\n          __typename\n        }\n 
+  │        __typename\n      }\n      __typename\n    }\n 
+  │    page_info {\n      start_cursor\n      end_cursor\n
+  │       has_next_page\n      has_previous_page\n      __
+  │ typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 96.02kB
+  │ {"data":{"savings_transactions":{"edges":[{"cursor":"c
+  │ mdmpk8vg03bi3tt42pdndhig","node":{"id":"cmdmpk8vg03bi3
+  │ tt42pdndhig","created_at":"2025-07-28T06:09:31.372Z","
+  │ updated_at":"2025-07-28T06:09:31.372Z","amount":100000
+  │ 0,"initial_amount":4000000,"status":"PENDING","type":"
+  │ WITHDRAWAL","transfer_message":null,"deposited_at":nul
+  │ l,"contract":{"id":"cmc08icmk000108l80cce8lgj","availa
+  │ ble_amount":2000000,"product":{"name":"K-Seven","__typ
+  │ ename":"SavingsProduct"},"maturity_date":"2025-06-30T1
+  │ 7:00:00.000Z","__typename":"SavingsContract"},"__typen
+  │ ame":"SavingsTransaction"},"__typename":"TransactionEd
+  │ ge"},{"cursor":"cmdmpjt2503b83tt4ee2949ey","node":{"id
+  │ ":"cmdmpjt2503b83tt4ee2949ey","created_at":"2025-07-28
+  │ T06:09:10.877Z","updated_at":"2025-07-28T06:09:10.877Z
+  │ ","amount":1000000,"initial_amount":4000000,"status":"
+  │ PENDING","type":"WITHDRAWAL","transfer_message":null,"
+  │ deposited_at":null,"contract":{"id":"cmc08icml000208l8
+  │ d8t01laa","available_amount":2000000,"product":{"name"
+  │ :"K-90","__typename":"SavingsProduct"},"maturity_date"
+  │ :"2025-06-30T17:00:00.000Z","__typename":"SavingsContr
+  │ act"},"__typename":"SavingsTransaction"},"__typename":
+  │ "TransactionEdge"},{"cursor":"cmdmlq49h039b3tt4d7rudbi
+  │ o","node":{"id":"cmdmlq49h039b3tt4d7rudbio","created_a
+  │ t":"2025-07-28T04:22:06.869Z","updated_at":"2025-07-28
+  │ T04:22:06.869Z","amount":1000000,"initial_amount":4000
+  │ 000,"status":"PENDING","type":"WITHDRAWAL","transfer_m
+  │ essage":null,"deposited_at":null,"contract":{"id":"cmc
+  │ 08icmk000108l80cce8lgj","available_amount":2000000,"pr
+  │ oduct":{"name":"K-Seven","__typename":"SavingsProduct"
+  │ },"maturity_date":"2025-06-30T17:00:00.000Z","__typena
+  │ me":"SavingsContract"},"__typename":"SavingsTransactio
+  │ n"},"__typename":"TransactionEdge"},{"cursor":"cmdmlps
+  │ w803913tt44llqd4po","node":{"id":"cmdmlpsw803913tt44ll
+  │ qd4po","created_at":"2025-07-28T04:21:52.136Z","update
+  │ d_at":"2025-07-28T04:21:52.136Z","amount":1000000,"ini
+  │ tial_amount":4000000,"status":"PENDING","type":"WITHDR
+  │ AWAL","transfer_message":null,"deposited_at":null,"con
+  │ tract":{"id":"cmc08icml000208l8d8t01laa","availabl
+  │ (showing 2.05kB/96.02kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       788µs   (cache)      (cache)         (cache)         2.5s             2.4s       286µs     4.9s  
+
+  ✓  Status code is 200
+  ✓  Response has valid JSON body
+  ✓  Pagination structure is valid for first:100
+  ✓  Cursor values are valid and stored correctly
+  ✓  Page info reflects first:100 pagination
+  ┌
+  │ 'First cursor:', 'cmdmpk8vg03bi3tt42pdndhig'
+  │ 'Last cursor:', 'cm5uu8rs3044623qk6puvecxa'
+  │ 'All cursors:', [
+  │   'cmdmpk8vg03bi3tt42pdndhig',
+  │   'cmdmpjt2503b83tt4ee2949ey',
+  │   'cmdmlq49h039b3tt4d7rudbio',
+  │   'cmdmlpsw803913tt44llqd4po',
+  │   'cmdml1yg503863tt4folyftg9',
+  │   'cmdipk7tw03473tt485iz6svj',
+  │   'cmdipjw98033x3tt43imud5qy',
+  │   'cmdiowdz4032v3tt4678k61lv',
+  │   'cmdiow2o7032l3tt45bhx1635',
+  │   'cmdiocttw031f3tt421b6ch7r',
+  │   'cmdiociyh03133tt46k5jcobu',
+  │   'cmdinq4wm02z33tt4b5j52t68',
+  │   'cmdinpuaq02yr3tt4epc1d6d3',
+  │   'cmdik1taq02r73tt48ths26vf',
+  │   'cmdik1i4202qx3tt4fsd32bku',
+  │   'cmdh74nbv026x3tt4fkbf1r2z',
+  │   'cmdh706f0024o3tt4b0n0fye0',
+  │   'cmdh6zx80024a3tt4ah2h4j9j',
+  │   'cmdh6jmt401zx3tt4521rflq8',
+  │   'cmdh6jc0p01zl3tt4hw910z9k',
+  │   'cmdfsw2i200on3tt453bthp5g',
+  │   'cmd5o3o5600tx2zt45g6m3g3o',
+  │   'cmd5o3kkv00tn2zt47gozd2v1',
+  │   'cmd5o1hgb00sx2zt41x7wdky2',
+  │   'cmd5nwig700s12zt4hgh72yhl',
+  │   'cmcph99s1000008l9b7xs45b9',
+  │   'cmc4bbqfd000508l8a0q3gs92',
+  │   'cmc08idvm000f08l8aduk5rlg',
+  │   'cmc08idvm000g08l898715ruc',
+  │   'cmc08idvm000h08l8c36r8eiw',
+  │   'cmc08idvm000i08l83fwm0bf8',
+  │   'cmc08idvm000j08l83l6sdio4',
+  │   'cmc08idvm000k08l88kezdxzd',
+  │   'cmc08idgk000908l86kb41bsg',
+  │   'cmc08idgl000a08l81ijgd8in',
+  │   'cmc08idgl000b08l80cnr8b5z',
+  │   'cmc08idgl000c08l85ga354f3',
+  │   'cmc08idgl000d08l81y2661q7',
+  │   'cmc08idgl000e08l8b53r93ka',
+  │   'cmbekbrwr05eg2zt4fon55elk',
+  │   'cmbekbb9g05du2zt43pi95lej',
+  │   'cma0vdzim03ni23rq1mwv5rqh',
+  │   'cma0vdqi403n423rq7dq5bufe',
+  │   'cm9ux4pe200m023rqh4go4ajg',
+  │   'cm9uwz4hu00ki23rq1fhxcuab',
+  │   'cm9mn7m5k04rz8cnb7lw2amz4',
+  │   'cm9mn7bxg04rl8cnb8t0o91hf',
+  │   'cm9b3xa7802gn6inb5j675rqb',
+  │   'cm9b3wyr002g96inbat8ugqte',
+  │   'cm8qgxei2000508jm0m7adal7',
+  │   'cm8qgxe94000408jmhl7735r8',
+  │   'cm8ps1jew011e4cnb159kd16w',
+  │   'cm8ps1bdx01104cnb7wufc0h0',
+  │   'cm8jbq50a000608ia0g2ch3tv',
+  │   'cm8jbq4wp000508iaa0p683ma',
+  │   'cm8jbq4oz000408iadx312140',
+  │   'cm86grh87000c08lh5akwg41n',
+  │   'cm86grh4x000b08lh85cr54sa',
+  │   'cm86grh1d000a08lhap7t570r',
+  │   'cm86grgwk000808lhhhs0bbw7',
+  │   'cm86grgsa000708lh8iy70wtz',
+  │   'cm86grglm000608lh6f4mc0u5',
+  │   'cm82u4u8f01tc23t19qfnc57g',
+  │   'cm7xw4d5o000608js3t6mdtz2',
+  │   'cm7xw4cyx000508js75200fkp',
+  │   'cm7jxvx9202mk24se9vzbgjes',
+  │   'cm7jxvmsa02m624seh09la3i7',
+  │   'cm7iu0syj025w24sednqdagal',
+  │   'cm7iu0lc9025i24seck0386h9',
+  │   'cm7irib6501ta24se03r1cc7a',
+  │   'cm7cupn0v009425ta5thy8blm',
+  │   'cm7cupdll008q25ta0t26amom',
+  │   'cm7cuf28r007725ta528ja9w3',
+  │   'cm7cueepp006p25ta3ef5brc2',
+  │   'cm7cucee3005t25ta7qkbhvv7',
+  │   'cm7al3kbd000808l7e6mbfjob',
+  │   'cm7al3k7s000708l71707ewcb',
+  │   'cm735jtjm00ao23p4834icc8s',
+  │   'cm735jhvs009z23p4098q92os',
+  │   'cm735capr007523p4d9uugncn',
+  │   'cm73515um005l23p44bp7cxn4',
+  │   'cm5yy1ji101d824ol1x361uvv',
+  │   'cm5yy129w01cr24ol8tisdkck',
+  │   'cm5ysxr6k013o24ol3b120wph',
+  │   'cm5yqvk0h00u324ol7k9jhnl1',
+  │   'cm5ynyz1u00rd24ol4c42aima',
+  │   'cm5xomxje00hd24olhar239rv',
+  │   'cm5xmorp900g724olbmxm6hm2',
+  │   'cm5wlpa7900bb24ol7puvgrl7',
+  │   'cm5wlompj00av24ol0j2x4ajo',
+  │   'cm5wlnk7m00af24ol8gpv7q6d',
+  │   'cm5wlh5mh009424oldnr128vb',
+  │   'cm5uu8rs3044623qk6puvecxa'
+  │ ]
+  └
+
+↳ savings_transactions (History detail)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 119ms time ★ 1.4kB↑ 902B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 772B
+  │ {
+  │     "operationName": "savings_transaction",
+  │     "variables": {
+  │         "transactionId": "cmdmpk8vg03bi3tt42pdndhig"
+  │     },
+  │     "query": "query savings_transaction($transactionId
+  │ : ID!) {\n  savings_transaction(transactionId: $transa
+  │ ctionId) {\n    ... on SavingsTransaction {\n      id\
+  │ n      created_at\n      updated_at\n      initial_amo
+  │ unt\n      amount\n      status\n      type\n      tra
+  │ nsfer_message\n      deposited_at\n      receive_metho
+  │ d\n      tax\n      profit\n      contract {\n        
+  │ ... on SavingsContract {\n          id\n          code
+  │ \n          product {\n            name\n            _
+  │ _typename\n          }\n          maturity_date\n     
+  │      __typename\n        }\n        __typename\n      
+  │ }\n      __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 560B
+  │ {"data":{"savings_transaction":{"id":"cmdmpk8vg03bi3tt
+  │ 42pdndhig","created_at":"2025-07-28T06:09:31.372Z","up
+  │ dated_at":"2025-07-28T06:09:31.372Z","initial_amount":
+  │ 4000000,"amount":1000000,"status":"PENDING","type":"WI
+  │ THDRAWAL","transfer_message":null,"deposited_at":null,
+  │ "receive_method":"BANK_TRANSFER","tax":863,"profit":17
+  │ 260,"contract":{"id":"cmc08icmk000108l80cce8lgj","code
+  │ ":"ZTQMHQ","product":{"name":"K-Seven","__typename":"S
+  │ avingsProduct"},"maturity_date":"2025-06-30T17:00:00.0
+  │ 00Z","__typename":"SavingsContract"},"__typename":"Sav
+  │ ingsTransaction"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  869µs     634µs   (cache)      (cache)         (cache)         115ms            2ms        201µs     119ms 
+
+  ✓  Status code is 200
+  ✓  Response has valid JSON body
+  ✓  Response has correct structure
+  ✓  Transaction has all required fields
+  ┌
+  │ 'Stored transaction ID:', 'cmdmpk8vg03bi3tt42pdndhig'
+  │ 'Stored amount:', 1000000
+  └
+  ✓  Store transaction data
+
+↳ savings_transactions (type DEPOSIT,OPEN)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 122ms time ★ 2.34kB↑ 567B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.71kB
+  │ {
+  │     "operationName": "savings_transactions",
+  │     "variables": {
+  │         "first": 100,
+  │         "reverse": true,
+  │         "sort_keys": "CREATED_AT",
+  │         "query": "type:DEPOSIT,OPEN status:NEW,PENDING
+  │ "
+  │     },
+  │     "query": "query savings_transactions($after: Strin
+  │ g, $before: String, $first: Int, $last: Int, $reverse:
+  │  Boolean, $sort_keys: SavingsTransactionSortKeys, $que
+  │ ry: String) {\n  savings_transactions(\n    after: $af
+  │ ter\n    before: $before\n    first: $first\n    last:
+  │  $last\n    reverse: $reverse\n    sort_keys: $sort_ke
+  │ ys\n    query: $query\n  ) {\n    edges {\n      curso
+  │ r\n      node {\n        id\n        created_at\n     
+  │    updated_at\n        amount\n        initial_amount\
+  │ n        status\n        type\n        transfer_messag
+  │ e\n        deposited_at\n        contract {\n         
+  │  ... on SavingsContract {\n            id\n           
+  │  available_amount\n            product {\n            
+  │   name\n              __typename\n            }\n     
+  │        maturity_date\n            __typename\n        
+  │   }\n          __typename\n        }\n        __typena
+  │ me\n      }\n      __typename\n    }\n    nodes {\n   
+  │    id\n      created_at\n      updated_at\n      amoun
+  │ t\n      initial_amount\n      status\n      type\n   
+  │    transfer_message\n      deposited_at\n      contrac
+  │ t {\n        ... on SavingsContract {\n          id\n 
+  │          available_amount\n          product {\n      
+  │       name\n            __typename\n          }\n     
+  │      maturity_date\n          __typename\n        }\n 
+  │        __typename\n      }\n      __typename\n    }\n 
+  │    page_info {\n      start_cursor\n      end_cursor\n
+  │       has_next_page\n      has_previous_page\n      __
+  │ typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 226B
+  │ {"data":{"savings_transactions":{"edges":[],"nodes":[]
+  │ ,"page_info":{"start_cursor":null,"end_cursor":null,"h
+  │ as_next_page":false,"has_previous_page":false,"__typen
+  │ ame":"PageInfo"},"__typename":"SavingsTransactionConne
+  │ ction"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  774µs     547µs   (cache)      (cache)         (cache)         118ms            1ms        105µs     122ms 
+
+  ✓  Status code is 200
+  ✓  Response contains data.savings_transactions
+
+↳ savings_transactions (type WITHDRAW,OPEN)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 120ms time ★ 2.35kB↑ 567B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.71kB
+  │ {
+  │     "operationName": "savings_transactions",
+  │     "variables": {
+  │         "first": 100,
+  │         "reverse": true,
+  │         "sort_keys": "CREATED_AT",
+  │         "query": "type:WITHDRAW,OPEN status:NEW,PENDIN
+  │ G"
+  │     },
+  │     "query": "query savings_transactions($after: Strin
+  │ g, $before: String, $first: Int, $last: Int, $reverse:
+  │  Boolean, $sort_keys: SavingsTransactionSortKeys, $que
+  │ ry: String) {\n  savings_transactions(\n    after: $af
+  │ ter\n    before: $before\n    first: $first\n    last:
+  │  $last\n    reverse: $reverse\n    sort_keys: $sort_ke
+  │ ys\n    query: $query\n  ) {\n    edges {\n      curso
+  │ r\n      node {\n        id\n        created_at\n     
+  │    updated_at\n        amount\n        initial_amount\
+  │ n        status\n        type\n        transfer_messag
+  │ e\n        deposited_at\n        contract {\n         
+  │  ... on SavingsContract {\n            id\n           
+  │  available_amount\n            product {\n            
+  │   name\n              __typename\n            }\n     
+  │        maturity_date\n            __typename\n        
+  │   }\n          __typename\n        }\n        __typena
+  │ me\n      }\n      __typename\n    }\n    nodes {\n   
+  │    id\n      created_at\n      updated_at\n      amoun
+  │ t\n      initial_amount\n      status\n      type\n   
+  │    transfer_message\n      deposited_at\n      contrac
+  │ t {\n        ... on SavingsContract {\n          id\n 
+  │          available_amount\n          product {\n      
+  │       name\n            __typename\n          }\n     
+  │      maturity_date\n          __typename\n        }\n 
+  │        __typename\n      }\n      __typename\n    }\n 
+  │    page_info {\n      start_cursor\n      end_cursor\n
+  │       has_next_page\n      has_previous_page\n      __
+  │ typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 226B
+  │ {"data":{"savings_transactions":{"edges":[],"nodes":[]
+  │ ,"page_info":{"start_cursor":null,"end_cursor":null,"h
+  │ as_next_page":false,"has_previous_page":false,"__typen
+  │ ame":"PageInfo"},"__typename":"SavingsTransactionConne
+  │ ction"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  688µs     559µs   (cache)      (cache)         (cache)         117ms            1ms        67µs      120ms 
+
+  ✓  Status code is 200
+  ✓  Response contains data.savings_transactions
+
+❏ Kafi / K-easy
+↳ savings_account (K-easy contractId)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 1242ms time ★ 945B↑ 542B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 313B
+  │ {
+  │     "query": "query savings_account($partner_id:ID!){s
+  │ avings_account(partner_id:$partner_id){...on SavingsAc
+  │ count{id status virtual_account_number cash_balance {b
+  │ alance contract_id}}...on SavingsAccountNotFoundError{
+  │ error_message}}}",
+  │     "variables": {
+  │         "partner_id": "clhin6ff300013b6i58le4r6u"
+  │     }
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 199B
+  │ {"data":{"savings_account":{"id":"cm5qjtaz002n523qkhdh
+  │ 6fa33","status":"APPROVED","virtual_account_number":"K
+  │ FI9013872","cash_balance":{"balance":1000000,"contract
+  │ _id":"cm5qjugc8000008jm28l02uus"}}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total  
+  369µs     283µs   (cache)      (cache)         (cache)         1238ms           3ms        91µs      1242ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Savings account has required fields
+  ✓  Account ID has correct format
+  ✓  Account status is APPROVED
+  ✓  Virtual account number is valid
+  ✓  Cash balance object is valid
+  ✓  No extra fields in response
+  ┌
+  │ 'Validated savings account cm5qjtaz002n523qkhdh6fa33'
+  │ 'Status: APPROVED'
+  │ 'Virtual Account: KFI9013872'
+  │ 'K-Easy Current Balance: 1000000'
+  └
+
+↳ savings_withdraw (K-easy)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 980ms time ★ 1.22kB↑ 500B↓ size ★ 16↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 368B
+  │ {
+  │     "operationName": "savings_withdraw",
+  │     "variables": {
+  │         "input": {
+  │             "contract_id": "cm5qjugc8000008jm28l02uus"
+  │ ,
+  │             "amount": 1000000
+  │         }
+  │     },
+  │     "query": "mutation savings_withdraw($input: Saving
+  │ sWithdrawContractInput!) {\n  savings_withdraw_contrac
+  │ t(input: $input) {\n    status\n    error_message\n   
+  │  __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 158B
+  │ {"data":{"savings_withdraw_contract":{"status":"failed
+  │ ","error_message":"Request failed with status code 502
+  │ ","__typename":"SavingsWithdrawContractResult"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  612µs     457µs   (cache)      (cache)         (cache)         978ms            862µs      29µs      980ms 
+
+  ✓  Status code is 200
+  ✓  Response has 'data.savings_withdraw_contract'
+  1. Status is 'success'
+  2. Error message is null
+  ✓  __typename is 'SavingsWithdrawContractResult'
+
+↳ savings_confirm_withdrawal_contract (K-easy)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 1216ms time ★ 1.53kB↑ 538B↓ size ★ 16↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 679B
+  │ {
+  │     "operationName": "savings_confirm_withdrawal_contr
+  │ act",
+  │     "variables": {
+  │         "input": {
+  │             "contract_id": "cm5qjugc8000008jm28l02uus"
+  │ ,
+  │             "otp": "111111"
+  │         }
+  │     },
+  │     "query": "mutation savings_confirm_withdrawal_cont
+  │ ract($input: SavingsConfirmWithdrawContractInput!) {\n
+  │   savings_confirm_withdrawal_contract(input: $input) {
+  │ \n    status\n    error_message\n    transaction {\n  
+  │     id\n      amount\n      contract {\n        ... on
+  │  SavingsContract {\n          product {\n            n
+  │ ame\n            __typename\n          }\n          __
+  │ typename\n        }\n        __typename\n      }\n    
+  │   __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 196B
+  │ {"data":{"savings_confirm_withdrawal_contract":{"statu
+  │ s":"failed","error_message":"Request failed with statu
+  │ s code 502","transaction":null,"__typename":"SavingsCo
+  │ nfirmWithdrawalContractResult"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total  
+  693µs     363µs   (cache)      (cache)         (cache)         1213ms           1ms        81µs      1216ms 
+
+  ✓  Status code is 200
+  ✓  Contains data.savings_confirm_withdrawal_contract
+  3. Withdrawal result structure is valid
+  4. Transaction object is valid
+  5⠄ TypeError in test-script
+
+↳ savings_update_transaction_refs (K-easy)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 110ms time ★ 1.17kB↑ 496B↓ size ★ 14↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 399B
+  │ {
+  │     "variables": {
+  │         "input": {
+  │             "transaction_id": "{{keasy_transactionId}}
+  │ ",
+  │             "ref_transaction_id": "Postman_test_ref_tr
+  │ ansaction_id",
+  │             "ref_product_code": "TS"
+  │         }
+  │     },
+  │     "query": "mutation ($input: SavingsUpdateTransacti
+  │ onRefsInput!) {\n  savings_update_transaction_refs(inp
+  │ ut: $input) {\n    status\n    error_message\n    __ty
+  │ pename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 155B
+  │ {"data":{"savings_update_transaction_refs":{"status":"
+  │ failed","error_message":"Incorrect CUID format","__typ
+  │ ename":"SavingsUpdateTransactionRefsResult"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  506µs     337µs   (cache)      (cache)         (cache)         108ms            813µs      28µs      110ms 
+
+  ✓  Status code is 200
+  ✓  Content-Type is JSON
+  ✓  Has valid structure
+  ✓  Contains all required fields
+  6. All fields have correct types
+  7. Status is 'success'
+  ✓  Correct __typename
+  ✓  No unexpected fields
+  ┌
+  │ 'Transaction References Update Validation Results:'
+  │ 'Status: failed'
+  │ 'Error Message: Incorrect CUID format'
+  │ 'Type: SavingsUpdateTransactionRefsResult'
+  └
+  ✓  Error message should exist when status is not success
+
+❏ Kafi / K90
+↳ savings_products (K90)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 105ms time ★ 967B↑ 928B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 335B
+  │ {
+  │     "query": "query savings_product($productId:String!
+  │ ){savings_product(productId:$productId){...on SavingsP
+  │ roduct{id created_at updated_at partner_id name code s
+  │ tatus min_deposit max_deposit logo_url description rat
+  │ es{duration duration_unit rate type}}}}",
+  │     "variables": {
+  │         "productId": "clqaoh1ow000108jl9bvz7t14"
+  │     }
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 586B
+  │ {"data":{"savings_product":{"id":"clqaoh1ow000108jl9bv
+  │ z7t14","created_at":"2024-01-02T04:36:11.411Z","update
+  │ d_at":"2025-07-25T17:00:35.417Z","partner_id":"clhin6f
+  │ f300013b6i58le4r6u","name":"K-90","code":"KF_90","stat
+  │ us":"ACTIVE","min_deposit":50000,"max_deposit":3000000
+  │ 0000,"logo_url":"/static/infina-apps-v2/home-saving-sc
+  │ reen/k-90-without-profit.png","description":"Lợi nhuận
+  │  rút trước hạn 3.0%/năm\\nKỳ hạn 90 ngày","rates":[{"d
+  │ uration":null,"duration_unit":null,"rate":0.02,"type":
+  │ "PENALTY"},{"duration":90,"duration_unit":"DAY","rate"
+  │ :0.065,"type":"INTEREST"}]}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  460µs     327µs   (cache)      (cache)         (cache)         103ms            783µs      31µs      104ms 
+
+  ✓  Status code is 200
+  ✓  Content-Type is JSON
+  ✓  Response time < 500ms
+  ✓  Has valid structure
+  ✓  Product has required fields
+  ✓  IDs have correct format
+  ✓  Product details match K-90
+  ✓  Deposit limits are valid
+  ✓  Rates array has correct structure
+  ✓  Penalty rate is valid
+  ✓  Interest rate is valid
+  ✓  Interest rate > Penalty rate
+  ✓  No unexpected fields
+  ┌
+  │ 'Validated K-90 Product: K-90 (KF_90)'
+  │ 'Interest Rate: 6.5% for 90 DAYs'
+  │ 'Penalty Rate: 2%'
+  └
+
+↳ savings_promotion (K90)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 1345ms time ★ 1.1kB↑ 462B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 470B
+  │ {
+  │     "operationName": "savings_promotion",
+  │     "variables": {
+  │         "product_id": "clqaoh1ow000108jl9bvz7t14",
+  │         "amount": 1,
+  │         "promotion_code": "INFINA2024"
+  │     },
+  │     "query": "query savings_promotion($product_id: ID!
+  │ , $amount: Float!, $promotion_code: String!) {\n  savi
+  │ ngs_promotion(\n    product_id: $product_id\n    amoun
+  │ t: $amount\n    promotion_code: $promotion_code\n  ) {
+  │ \n    is_valid\n    rate\n    remaining_amount\n    __
+  │ typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 120B
+  │ {"data":{"savings_promotion":{"is_valid":true,"rate":0
+  │ .01,"remaining_amount":4000000,"__typename":"SavingsPr
+  │ omotion"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total  
+  278µs     194µs   (cache)      (cache)         (cache)         1343ms           926µs      38µs      1344ms 
+
+  ✓  Status code is 200
+  ✓  Success response structure is valid
+
+↳ savings_product_available_balance (K90)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 116ms time ★ 913B↑ 399B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 281B
+  │ {
+  │     "operationName": "savings_product_available_balanc
+  │ e",
+  │     "variables": {
+  │         "product_id": "clqaoh1ow000108jl9bvz7t14"
+  │     },
+  │     "query": "query savings_product_available_balance(
+  │ $product_id: String!) {\n  savings_product_available_b
+  │ alance(product_id: $product_id)\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 59B
+  │ {"data":{"savings_product_available_balance":299980000
+  │ 00}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  328µs     259µs   (cache)      (cache)         (cache)         114ms            994µs      36µs      115ms 
+
+  ✓  Status code is 200
+  ✓  Contains data.savings_product_available_balance
+  ✓  Available balance is a number and non-negative
+
+↳ savings_contracts (K90 contract detail)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 202ms time ★ 1.5kB↑ 1.31kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 872B
+  │ {
+  │     "operationName": "savings_contract",
+  │     "variables": {
+  │         "contractId": "cmc08icml000208l8d8t01laa"
+  │     },
+  │     "query": "query savings_contract($contractId: ID!)
+  │  {\n  savings_contract(contractId: $contractId) {\n   
+  │  ... on SavingsContract {\n      id\n      created_at\
+  │ n      updated_at\n      amount\n      available_amoun
+  │ t\n      estimated_profit\n      matured_at\n      mat
+  │ urity_date\n      approved_at\n      terminated_at\n  
+  │     status\n      code\n      interest_rate\n      pro
+  │ motion_rate\n      penalty_rate\n      max_interest_ra
+  │ te\n      product {\n        id\n        partner_id\n 
+  │        name\n        code\n        status\n        log
+  │ o_url\n        rates {\n          duration\n          
+  │ duration_unit\n          rate\n          type\n       
+  │    __typename\n        }\n        __typename\n      }\
+  │ n      __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 970B
+  │ {"data":{"savings_contract":{"id":"cmc08icml000208l8d8
+  │ t01laa","created_at":"2025-06-17T08:01:31.245Z","updat
+  │ ed_at":"2025-07-28T06:09:10.876Z","amount":2000000,"av
+  │ ailable_amount":2000000,"estimated_profit":82191,"matu
+  │ red_at":"2025-07-08T00:00:38.289Z","maturity_date":"20
+  │ 25-06-30T17:00:00.000Z","approved_at":"2025-06-18T17:0
+  │ 0:00.000Z","terminated_at":null,"status":"APPROVED","c
+  │ ode":"IJHNL7","interest_rate":0.075,"promotion_rate":0
+  │ ,"penalty_rate":0.02,"max_interest_rate":0.065,"produc
+  │ t":{"id":"clqaoh1ow000108jl9bvz7t14","partner_id":"clh
+  │ in6ff300013b6i58le4r6u","name":"K-90","code":"KF_90","
+  │ status":"ACTIVE","logo_url":"/static/infina-apps-v2/ho
+  │ me-saving-screen/k-90-without-profit.png","rates":[{"d
+  │ uration":null,"duration_unit":null,"rate":0.02,"type":
+  │ "PENALTY","__typename":"SavingsProductRate"},{"duratio
+  │ n":90,"duration_unit":"DAY","rate":0.065,"type":"INTER
+  │ EST","__typename":"SavingsProductRate"}],"__typename":
+  │ "SavingsProduct"},"__typename":"SavingsContract"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  439µs     375µs   (cache)      (cache)         (cache)         199ms            1ms        52µs      202ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Contract has all required fields
+  ✓  Contract ID has correct format
+  ✓  Timestamps are valid and chronological
+  ✓  Amount fields are valid
+  ✓  Status and related fields are valid
+  ✓  Rate fields are valid
+  ✓  Product object is valid
+  ✓  Product rates are valid
+  ✓  Correct __typename values
+  ┌
+  │ 'Validated contract IJHNL7 with status APPROVED'
+  │ 'Amount: 2000000 | Available: 2000000'
+  │ 'Product: K-90 (KF_90)'
+  └
+
+↳ savings_withdraw (K90)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 607ms time ★ 1.22kB↑ 468B↓ size ★ 16↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 368B
+  │ {
+  │     "operationName": "savings_withdraw",
+  │     "variables": {
+  │         "input": {
+  │             "contract_id": "cmc08icml000208l8d8t01laa"
+  │ ,
+  │             "amount": 1000000
+  │         }
+  │     },
+  │     "query": "mutation savings_withdraw($input: Saving
+  │ sWithdrawContractInput!) {\n  savings_withdraw_contrac
+  │ t(input: $input) {\n    status\n    error_message\n   
+  │  __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 126B
+  │ {"data":{"savings_withdraw_contract":{"status":"succes
+  │ s","error_message":null,"__typename":"SavingsWithdrawC
+  │ ontractResult"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  629µs     453µs   (cache)      (cache)         (cache)         603ms            1ms        78µs      606ms 
+
+  ✓  Status code is 200
+  ✓  Response has 'data.savings_withdraw_contract'
+  ✓  Status is 'success'
+  ✓  Error message is null
+  ✓  __typename is 'SavingsWithdrawContractResult'
+
+↳ savings_confirm_withdrawal_contract (K90)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 1451ms time ★ 1.53kB↑ 539B↓ size ★ 16↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 679B
+  │ {
+  │     "operationName": "savings_confirm_withdrawal_contr
+  │ act",
+  │     "variables": {
+  │         "input": {
+  │             "contract_id": "cmc08icml000208l8d8t01laa"
+  │ ,
+  │             "otp": "111111"
+  │         }
+  │     },
+  │     "query": "mutation savings_confirm_withdrawal_cont
+  │ ract($input: SavingsConfirmWithdrawContractInput!) {\n
+  │   savings_confirm_withdrawal_contract(input: $input) {
+  │ \n    status\n    error_message\n    transaction {\n  
+  │     id\n      amount\n      contract {\n        ... on
+  │  SavingsContract {\n          product {\n            n
+  │ ame\n            __typename\n          }\n          __
+  │ typename\n        }\n        __typename\n      }\n    
+  │   __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 196B
+  │ {"data":{"savings_confirm_withdrawal_contract":{"statu
+  │ s":"failed","error_message":"Request failed with statu
+  │ s code 502","transaction":null,"__typename":"SavingsCo
+  │ nfirmWithdrawalContractResult"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total  
+  1ms       450µs   (cache)      (cache)         (cache)         1448ms           1ms        59µs      1451ms 
+
+  ✓  Status code is 200
+  ✓  Contains data.savings_confirm_withdrawal_contract
+  8. Withdrawal result structure is valid
+  9. Transaction object is valid
+ 10. Contract and Product fields are correct
+
+↳ savings_termination_info (K90)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 553ms time ★ 1.02kB↑ 541B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 384B
+  │ {
+  │     "operationName": "savings_termination_info",
+  │     "variables": {
+  │         "contract_id": "cmc08icml000208l8d8t01laa"
+  │     },
+  │     "query": "query savings_termination_info($contract
+  │ _id: ID!) {\n  savings_termination_info(contract_id: $
+  │ contract_id) {\n    amount\n    profit\n    penalty_ra
+  │ te\n    net_income\n    tax_amount\n    tax_rate\n    
+  │ interest_rate\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 199B
+  │ {"data":{"savings_termination_info":{"amount":1000000,
+  │ "profit":0,"penalty_rate":0,"net_income":1000000,"tax_
+  │ amount":863,"tax_rate":0.05,"interest_rate":0.035,"__t
+  │ ypename":"SavingsTerminationInfo"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  476µs     366µs   (cache)      (cache)         (cache)         550ms            1ms        65µs      552ms 
+
+  ✓  Status code is 200
+  ✓  Content-Type is JSON
+  ✓  Has valid structure
+  ✓  Contains all required fields
+  ✓  All fields have correct types
+  ✓  Penalty rate is zero
+  ✓  Correct __typename
+  ✓  No unexpected fields
+  ┌
+  │ 'Savings Termination Validation Results:'
+  │ 'Principal Amount: 1000000'
+  │ 'Profit: 0'
+  │ 'Tax (5%): 863'
+  │ 'Net Income: 1000000'
+  │ 'Interest Rate: 3.5000000000000004%'
+  │ 'Penalty Rate: 0%'
+  └
+
+↳ savings_transactions (K90 History list)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 5.5s time ★ 2.29kB↑ 96.36kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.65kB
+  │ {
+  │     "operationName": "savings_transactions",
+  │     "variables": {
+  │         "first": 100,
+  │         "reverse": true,
+  │         "sort_keys": "CREATED_AT"
+  │     },
+  │     "query": "query savings_transactions($after: Strin
+  │ g, $before: String, $first: Int, $last: Int, $reverse:
+  │  Boolean, $sort_keys: SavingsTransactionSortKeys, $que
+  │ ry: String) {\n  savings_transactions(\n    after: $af
+  │ ter\n    before: $before\n    first: $first\n    last:
+  │  $last\n    reverse: $reverse\n    sort_keys: $sort_ke
+  │ ys\n    query: $query\n  ) {\n    edges {\n      curso
+  │ r\n      node {\n        id\n        created_at\n     
+  │    updated_at\n        amount\n        initial_amount\
+  │ n        status\n        type\n        transfer_messag
+  │ e\n        deposited_at\n        contract {\n         
+  │  ... on SavingsContract {\n            id\n           
+  │  available_amount\n            product {\n            
+  │   name\n              __typename\n            }\n     
+  │        maturity_date\n            __typename\n        
+  │   }\n          __typename\n        }\n        __typena
+  │ me\n      }\n      __typename\n    }\n    nodes {\n   
+  │    id\n      created_at\n      updated_at\n      amoun
+  │ t\n      initial_amount\n      status\n      type\n   
+  │    transfer_message\n      deposited_at\n      contrac
+  │ t {\n        ... on SavingsContract {\n          id\n 
+  │          available_amount\n          product {\n      
+  │       name\n            __typename\n          }\n     
+  │      maturity_date\n          __typename\n        }\n 
+  │        __typename\n      }\n      __typename\n    }\n 
+  │    page_info {\n      start_cursor\n      end_cursor\n
+  │       has_next_page\n      has_previous_page\n      __
+  │ typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 96.02kB
+  │ {"data":{"savings_transactions":{"edges":[{"cursor":"c
+  │ mdmpk8vg03bi3tt42pdndhig","node":{"id":"cmdmpk8vg03bi3
+  │ tt42pdndhig","created_at":"2025-07-28T06:09:31.372Z","
+  │ updated_at":"2025-07-28T06:09:31.372Z","amount":100000
+  │ 0,"initial_amount":4000000,"status":"PENDING","type":"
+  │ WITHDRAWAL","transfer_message":null,"deposited_at":nul
+  │ l,"contract":{"id":"cmc08icmk000108l80cce8lgj","availa
+  │ ble_amount":2000000,"product":{"name":"K-Seven","__typ
+  │ ename":"SavingsProduct"},"maturity_date":"2025-06-30T1
+  │ 7:00:00.000Z","__typename":"SavingsContract"},"__typen
+  │ ame":"SavingsTransaction"},"__typename":"TransactionEd
+  │ ge"},{"cursor":"cmdmpjt2503b83tt4ee2949ey","node":{"id
+  │ ":"cmdmpjt2503b83tt4ee2949ey","created_at":"2025-07-28
+  │ T06:09:10.877Z","updated_at":"2025-07-28T06:09:10.877Z
+  │ ","amount":1000000,"initial_amount":4000000,"status":"
+  │ PENDING","type":"WITHDRAWAL","transfer_message":null,"
+  │ deposited_at":null,"contract":{"id":"cmc08icml000208l8
+  │ d8t01laa","available_amount":2000000,"product":{"name"
+  │ :"K-90","__typename":"SavingsProduct"},"maturity_date"
+  │ :"2025-06-30T17:00:00.000Z","__typename":"SavingsContr
+  │ act"},"__typename":"SavingsTransaction"},"__typename":
+  │ "TransactionEdge"},{"cursor":"cmdmlq49h039b3tt4d7rudbi
+  │ o","node":{"id":"cmdmlq49h039b3tt4d7rudbio","created_a
+  │ t":"2025-07-28T04:22:06.869Z","updated_at":"2025-07-28
+  │ T04:22:06.869Z","amount":1000000,"initial_amount":4000
+  │ 000,"status":"PENDING","type":"WITHDRAWAL","transfer_m
+  │ essage":null,"deposited_at":null,"contract":{"id":"cmc
+  │ 08icmk000108l80cce8lgj","available_amount":2000000,"pr
+  │ oduct":{"name":"K-Seven","__typename":"SavingsProduct"
+  │ },"maturity_date":"2025-06-30T17:00:00.000Z","__typena
+  │ me":"SavingsContract"},"__typename":"SavingsTransactio
+  │ n"},"__typename":"TransactionEdge"},{"cursor":"cmdmlps
+  │ w803913tt44llqd4po","node":{"id":"cmdmlpsw803913tt44ll
+  │ qd4po","created_at":"2025-07-28T04:21:52.136Z","update
+  │ d_at":"2025-07-28T04:21:52.136Z","amount":1000000,"ini
+  │ tial_amount":4000000,"status":"PENDING","type":"WITHDR
+  │ AWAL","transfer_message":null,"deposited_at":null,"con
+  │ tract":{"id":"cmc08icml000208l8d8t01laa","availabl
+  │ (showing 2.05kB/96.02kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  718µs     490µs   (cache)      (cache)         (cache)         2.1s             3.3s       276µs     5.5s  
+
+  ✓  Status code is 200
+  ✓  Response has valid JSON body
+  ✓  Pagination structure is valid for first:100
+  ✓  Cursor values are valid and stored correctly
+  ✓  Page info reflects first:100 pagination
+  ┌
+  │ 'First cursor:', 'cmdmpk8vg03bi3tt42pdndhig'
+  │ 'Last cursor:', 'cm5uu8rs3044623qk6puvecxa'
+  │ 'All cursors:', [
+  │   'cmdmpk8vg03bi3tt42pdndhig',
+  │   'cmdmpjt2503b83tt4ee2949ey',
+  │   'cmdmlq49h039b3tt4d7rudbio',
+  │   'cmdmlpsw803913tt44llqd4po',
+  │   'cmdml1yg503863tt4folyftg9',
+  │   'cmdipk7tw03473tt485iz6svj',
+  │   'cmdipjw98033x3tt43imud5qy',
+  │   'cmdiowdz4032v3tt4678k61lv',
+  │   'cmdiow2o7032l3tt45bhx1635',
+  │   'cmdiocttw031f3tt421b6ch7r',
+  │   'cmdiociyh03133tt46k5jcobu',
+  │   'cmdinq4wm02z33tt4b5j52t68',
+  │   'cmdinpuaq02yr3tt4epc1d6d3',
+  │   'cmdik1taq02r73tt48ths26vf',
+  │   'cmdik1i4202qx3tt4fsd32bku',
+  │   'cmdh74nbv026x3tt4fkbf1r2z',
+  │   'cmdh706f0024o3tt4b0n0fye0',
+  │   'cmdh6zx80024a3tt4ah2h4j9j',
+  │   'cmdh6jmt401zx3tt4521rflq8',
+  │   'cmdh6jc0p01zl3tt4hw910z9k',
+  │   'cmdfsw2i200on3tt453bthp5g',
+  │   'cmd5o3o5600tx2zt45g6m3g3o',
+  │   'cmd5o3kkv00tn2zt47gozd2v1',
+  │   'cmd5o1hgb00sx2zt41x7wdky2',
+  │   'cmd5nwig700s12zt4hgh72yhl',
+  │   'cmcph99s1000008l9b7xs45b9',
+  │   'cmc4bbqfd000508l8a0q3gs92',
+  │   'cmc08idvm000f08l8aduk5rlg',
+  │   'cmc08idvm000g08l898715ruc',
+  │   'cmc08idvm000h08l8c36r8eiw',
+  │   'cmc08idvm000i08l83fwm0bf8',
+  │   'cmc08idvm000j08l83l6sdio4',
+  │   'cmc08idvm000k08l88kezdxzd',
+  │   'cmc08idgk000908l86kb41bsg',
+  │   'cmc08idgl000a08l81ijgd8in',
+  │   'cmc08idgl000b08l80cnr8b5z',
+  │   'cmc08idgl000c08l85ga354f3',
+  │   'cmc08idgl000d08l81y2661q7',
+  │   'cmc08idgl000e08l8b53r93ka',
+  │   'cmbekbrwr05eg2zt4fon55elk',
+  │   'cmbekbb9g05du2zt43pi95lej',
+  │   'cma0vdzim03ni23rq1mwv5rqh',
+  │   'cma0vdqi403n423rq7dq5bufe',
+  │   'cm9ux4pe200m023rqh4go4ajg',
+  │   'cm9uwz4hu00ki23rq1fhxcuab',
+  │   'cm9mn7m5k04rz8cnb7lw2amz4',
+  │   'cm9mn7bxg04rl8cnb8t0o91hf',
+  │   'cm9b3xa7802gn6inb5j675rqb',
+  │   'cm9b3wyr002g96inbat8ugqte',
+  │   'cm8qgxei2000508jm0m7adal7',
+  │   'cm8qgxe94000408jmhl7735r8',
+  │   'cm8ps1jew011e4cnb159kd16w',
+  │   'cm8ps1bdx01104cnb7wufc0h0',
+  │   'cm8jbq50a000608ia0g2ch3tv',
+  │   'cm8jbq4wp000508iaa0p683ma',
+  │   'cm8jbq4oz000408iadx312140',
+  │   'cm86grh87000c08lh5akwg41n',
+  │   'cm86grh4x000b08lh85cr54sa',
+  │   'cm86grh1d000a08lhap7t570r',
+  │   'cm86grgwk000808lhhhs0bbw7',
+  │   'cm86grgsa000708lh8iy70wtz',
+  │   'cm86grglm000608lh6f4mc0u5',
+  │   'cm82u4u8f01tc23t19qfnc57g',
+  │   'cm7xw4d5o000608js3t6mdtz2',
+  │   'cm7xw4cyx000508js75200fkp',
+  │   'cm7jxvx9202mk24se9vzbgjes',
+  │   'cm7jxvmsa02m624seh09la3i7',
+  │   'cm7iu0syj025w24sednqdagal',
+  │   'cm7iu0lc9025i24seck0386h9',
+  │   'cm7irib6501ta24se03r1cc7a',
+  │   'cm7cupn0v009425ta5thy8blm',
+  │   'cm7cupdll008q25ta0t26amom',
+  │   'cm7cuf28r007725ta528ja9w3',
+  │   'cm7cueepp006p25ta3ef5brc2',
+  │   'cm7cucee3005t25ta7qkbhvv7',
+  │   'cm7al3kbd000808l7e6mbfjob',
+  │   'cm7al3k7s000708l71707ewcb',
+  │   'cm735jtjm00ao23p4834icc8s',
+  │   'cm735jhvs009z23p4098q92os',
+  │   'cm735capr007523p4d9uugncn',
+  │   'cm73515um005l23p44bp7cxn4',
+  │   'cm5yy1ji101d824ol1x361uvv',
+  │   'cm5yy129w01cr24ol8tisdkck',
+  │   'cm5ysxr6k013o24ol3b120wph',
+  │   'cm5yqvk0h00u324ol7k9jhnl1',
+  │   'cm5ynyz1u00rd24ol4c42aima',
+  │   'cm5xomxje00hd24olhar239rv',
+  │   'cm5xmorp900g724olbmxm6hm2',
+  │   'cm5wlpa7900bb24ol7puvgrl7',
+  │   'cm5wlompj00av24ol0j2x4ajo',
+  │   'cm5wlnk7m00af24ol8gpv7q6d',
+  │   'cm5wlh5mh009424oldnr128vb',
+  │   'cm5uu8rs3044623qk6puvecxa'
+  │ ]
+  └
+
+↳ savings_transactions (K90 History detail)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 116ms time ★ 1.4kB↑ 902B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 772B
+  │ {
+  │     "operationName": "savings_transaction",
+  │     "variables": {
+  │         "transactionId": "cmdmpk8vg03bi3tt42pdndhig"
+  │     },
+  │     "query": "query savings_transaction($transactionId
+  │ : ID!) {\n  savings_transaction(transactionId: $transa
+  │ ctionId) {\n    ... on SavingsTransaction {\n      id\
+  │ n      created_at\n      updated_at\n      initial_amo
+  │ unt\n      amount\n      status\n      type\n      tra
+  │ nsfer_message\n      deposited_at\n      receive_metho
+  │ d\n      tax\n      profit\n      contract {\n        
+  │ ... on SavingsContract {\n          id\n          code
+  │ \n          product {\n            name\n            _
+  │ _typename\n          }\n          maturity_date\n     
+  │      __typename\n        }\n        __typename\n      
+  │ }\n      __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 560B
+  │ {"data":{"savings_transaction":{"id":"cmdmpk8vg03bi3tt
+  │ 42pdndhig","created_at":"2025-07-28T06:09:31.372Z","up
+  │ dated_at":"2025-07-28T06:09:31.372Z","initial_amount":
+  │ 4000000,"amount":1000000,"status":"PENDING","type":"WI
+  │ THDRAWAL","transfer_message":null,"deposited_at":null,
+  │ "receive_method":"BANK_TRANSFER","tax":863,"profit":17
+  │ 260,"contract":{"id":"cmc08icmk000108l80cce8lgj","code
+  │ ":"ZTQMHQ","product":{"name":"K-Seven","__typename":"S
+  │ avingsProduct"},"maturity_date":"2025-06-30T17:00:00.0
+  │ 00Z","__typename":"SavingsContract"},"__typename":"Sav
+  │ ingsTransaction"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  880µs     607µs   (cache)      (cache)         (cache)         113ms            1ms        65µs      116ms 
+
+  ✓  Status code is 200
+  ✓  Response has valid JSON body
+  ✓  Response has correct structure
+  ✓  Transaction has all required fields
+ 11. K-90 Contract validation
+  ┌
+  │ 'Stored transaction ID:', 'cmdmpk8vg03bi3tt42pdndhig'
+  │ 'Stored amount:', 1000000
+  └
+  ✓  Store transaction data
+
+❏ Kafi / K7
+↳ savings_products (K7)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 111ms time ★ 967B↑ 1.39kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 335B
+  │ {
+  │     "query": "query savings_product($productId:String!
+  │ ){savings_product(productId:$productId){...on SavingsP
+  │ roduct{id created_at updated_at partner_id name code s
+  │ tatus min_deposit max_deposit logo_url description rat
+  │ es{duration duration_unit rate type}}}}",
+  │     "variables": {
+  │         "productId": "clqaogy7y000008jl9bfs2b39"
+  │     }
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 1.05kB
+  │ {"data":{"savings_product":{"id":"clqaogy7y000008jl9bf
+  │ s2b39","created_at":"2024-01-02T04:36:11.411Z","update
+  │ d_at":"2025-07-25T17:00:35.417Z","partner_id":"clhin6f
+  │ f300013b6i58le4r6u","name":"K-Seven","code":"KF_SEVEN"
+  │ ,"status":"ACTIVE","min_deposit":50000,"max_deposit":3
+  │ 0000000000,"logo_url":"/static/infina-apps-v2/home-sav
+  │ ing-screen/k-7-without-profit.png","description":"Nộp 
+  │ rút bất kỳ lúc nào không bị mất lợi nhuận\\nLợi nhuận 
+  │ 7.0%/năm chỉ sau 7 tuần","rates":[{"duration":null,"du
+  │ ration_unit":null,"rate":null,"type":"PENALTY"},{"dura
+  │ tion":1,"duration_unit":"WEEK","rate":0.035,"type":"IN
+  │ TEREST"},{"duration":2,"duration_unit":"WEEK","rate":0
+  │ .04,"type":"INTEREST"},{"duration":3,"duration_unit":"
+  │ WEEK","rate":0.045,"type":"INTEREST"},{"duration":4,"d
+  │ uration_unit":"WEEK","rate":0.05,"type":"INTEREST"},{"
+  │ duration":5,"duration_unit":"WEEK","rate":0.055,"type"
+  │ :"INTEREST"},{"duration":6,"duration_unit":"WEEK","rat
+  │ e":0.06,"type":"INTEREST"},{"duration":7,"duration_uni
+  │ t":"WEEK","rate":0.065,"type":"INTEREST"}]}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  460µs     390µs   (cache)      (cache)         (cache)         108ms            1ms        95µs      111ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Product has all required fields
+  ✓  ID fields have correct format
+  ✓  Timestamps are valid and chronological
+  ✓  Product details are valid
+  ✓  Deposit amounts are valid
+  ✓  Rates array is valid
+  ✓  Rate 1 has required fields
+  ✓  Rate 1 type is valid
+  ✓  Rate 1 penalty rate can be null
+  ✓  Rate 2 has required fields
+  ✓  Rate 2 type is valid
+  ✓  Rate 2 interest rate is valid
+  ✓  Rate 3 has required fields
+  ✓  Rate 3 type is valid
+  ✓  Rate 3 interest rate is valid
+  ✓  Rate 4 has required fields
+  ✓  Rate 4 type is valid
+  ✓  Rate 4 interest rate is valid
+  ✓  Rate 5 has required fields
+  ✓  Rate 5 type is valid
+  ✓  Rate 5 interest rate is valid
+  ✓  Rate 6 has required fields
+  ✓  Rate 6 type is valid
+  ✓  Rate 6 interest rate is valid
+  ✓  Rate 7 has required fields
+  ✓  Rate 7 type is valid
+  ✓  Rate 7 interest rate is valid
+  ✓  Rate 8 has required fields
+  ✓  Rate 8 type is valid
+  ✓  Rate 8 interest rate is valid
+  ✓  Interest rates follow expected progression
+  ✓  No extra fields in product object
+  ┌
+  │ 'Validated product: K-Seven (KF_SEVEN)'
+  │ 'Status: ACTIVE | Min Deposit: 50000'
+  │ 'Found 8 rate tiers'
+  └
+
+↳ savings_promotion (K7)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 1114ms time ★ 1.11kB↑ 463B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 476B
+  │ {
+  │     "operationName": "savings_promotion",
+  │     "variables": {
+  │         "product_id": "clqaogy7y000008jl9bfs2b39",
+  │         "amount": 7000000,
+  │         "promotion_code": "INFINA2024"
+  │     },
+  │     "query": "query savings_promotion($product_id: ID!
+  │ , $amount: Float!, $promotion_code: String!) {\n  savi
+  │ ngs_promotion(\n    product_id: $product_id\n    amoun
+  │ t: $amount\n    promotion_code: $promotion_code\n  ) {
+  │ \n    is_valid\n    rate\n    remaining_amount\n    __
+  │ typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 120B
+  │ {"data":{"savings_promotion":{"is_valid":true,"rate":0
+  │ .01,"remaining_amount":4000000,"__typename":"SavingsPr
+  │ omotion"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total  
+  678µs     417µs   (cache)      (cache)         (cache)         1111ms           1ms        71µs      1114ms 
+
+  ✓  Status code is 200
+  ✓  Success response structure is valid
+
+↳ savings_product_available_balance (K7)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 112ms time ★ 913B↑ 399B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 281B
+  │ {
+  │     "operationName": "savings_product_available_balanc
+  │ e",
+  │     "variables": {
+  │         "product_id": "clqaogy7y000008jl9bfs2b39"
+  │     },
+  │     "query": "query savings_product_available_balance(
+  │ $product_id: String!) {\n  savings_product_available_b
+  │ alance(product_id: $product_id)\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 59B
+  │ {"data":{"savings_product_available_balance":299769990
+  │ 29}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  557µs     509µs   (cache)      (cache)         (cache)         110ms            878µs      40µs      112ms 
+
+  ✓  Status code is 200
+  ✓  Contains data.savings_product_available_balance
+  ✓  Available balance is a number and non-negative
+
+↳ savings_contracts (K7 contract detail)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 356ms time ★ 1.5kB↑ 1.93kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 872B
+  │ {
+  │     "operationName": "savings_contract",
+  │     "variables": {
+  │         "contractId": "cmc08icmk000108l80cce8lgj"
+  │     },
+  │     "query": "query savings_contract($contractId: ID!)
+  │  {\n  savings_contract(contractId: $contractId) {\n   
+  │  ... on SavingsContract {\n      id\n      created_at\
+  │ n      updated_at\n      amount\n      available_amoun
+  │ t\n      estimated_profit\n      matured_at\n      mat
+  │ urity_date\n      approved_at\n      terminated_at\n  
+  │     status\n      code\n      interest_rate\n      pro
+  │ motion_rate\n      penalty_rate\n      max_interest_ra
+  │ te\n      product {\n        id\n        partner_id\n 
+  │        name\n        code\n        status\n        log
+  │ o_url\n        rates {\n          duration\n          
+  │ duration_unit\n          rate\n          type\n       
+  │    __typename\n        }\n        __typename\n      }\
+  │ n      __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 1.59kB
+  │ {"data":{"savings_contract":{"id":"cmc08icmk000108l80c
+  │ ce8lgj","created_at":"2025-06-17T08:01:31.244Z","updat
+  │ ed_at":"2025-07-28T06:09:31.372Z","amount":2000000,"av
+  │ ailable_amount":2000000,"estimated_profit":17260,"matu
+  │ red_at":"2025-07-08T00:00:38.346Z","maturity_date":"20
+  │ 25-06-30T17:00:00.000Z","approved_at":"2025-01-14T17:0
+  │ 0:00.000Z","terminated_at":null,"status":"APPROVED","c
+  │ ode":"ZTQMHQ","interest_rate":0.045,"promotion_rate":0
+  │ ,"penalty_rate":0,"max_interest_rate":0.065,"product":
+  │ {"id":"clqaogy7y000008jl9bfs2b39","partner_id":"clhin6
+  │ ff300013b6i58le4r6u","name":"K-Seven","code":"KF_SEVEN
+  │ ","status":"ACTIVE","logo_url":"/static/infina-apps-v2
+  │ /home-saving-screen/k-7-without-profit.png","rates":[{
+  │ "duration":null,"duration_unit":null,"rate":null,"type
+  │ ":"PENALTY","__typename":"SavingsProductRate"},{"durat
+  │ ion":1,"duration_unit":"WEEK","rate":0.035,"type":"INT
+  │ EREST","__typename":"SavingsProductRate"},{"duration":
+  │ 2,"duration_unit":"WEEK","rate":0.04,"type":"INTEREST"
+  │ ,"__typename":"SavingsProductRate"},{"duration":3,"dur
+  │ ation_unit":"WEEK","rate":0.045,"type":"INTEREST","__t
+  │ ypename":"SavingsProductRate"},{"duration":4,"duration
+  │ _unit":"WEEK","rate":0.05,"type":"INTEREST","__typenam
+  │ e":"SavingsProductRate"},{"duration":5,"duration_unit"
+  │ :"WEEK","rate":0.055,"type":"INTEREST","__typename":"S
+  │ avingsProductRate"},{"duration":6,"duration_unit":"WEE
+  │ K","rate":0.06,"type":"INTEREST","__typename":"Savings
+  │ ProductRate"},{"duration":7,"duration_unit":"WEEK","ra
+  │ te":0.065,"type":"INTEREST","__typename":"SavingsProdu
+  │ ctRate"}],"__typename":"SavingsProduct"},"__typename":
+  │ "SavingsContract"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  444µs     373µs   (cache)      (cache)         (cache)         353ms            1ms        80µs      356ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Contract has all required fields
+  ✓  Contract ID has correct format
+  ✓  Status and related fields are valid
+  ✓  Rate fields are valid
+  ✓  Product object is valid
+  ✓  Product rates are valid
+  ✓  Correct __typename values
+  ┌
+  │ 'Validated contract ZTQMHQ with status APPROVED'
+  │ 'Amount: 2000000 | Available: 2000000'
+  │ 'Product: K-Seven (KF_SEVEN)'
+  └
+
+↳ savings_withdraw (K7)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 933ms time ★ 1.22kB↑ 500B↓ size ★ 16↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 368B
+  │ {
+  │     "operationName": "savings_withdraw",
+  │     "variables": {
+  │         "input": {
+  │             "contract_id": "cmc08icmk000108l80cce8lgj"
+  │ ,
+  │             "amount": 1000000
+  │         }
+  │     },
+  │     "query": "mutation savings_withdraw($input: Saving
+  │ sWithdrawContractInput!) {\n  savings_withdraw_contrac
+  │ t(input: $input) {\n    status\n    error_message\n   
+  │  __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 158B
+  │ {"data":{"savings_withdraw_contract":{"status":"failed
+  │ ","error_message":"Request failed with status code 502
+  │ ","__typename":"SavingsWithdrawContractResult"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  491µs     374µs   (cache)      (cache)         (cache)         930ms            1ms        74µs      933ms 
+
+  ✓  Status code is 200
+  ✓  Response has 'data.savings_withdraw_contract'
+ 12. Status is 'success'
+ 13. Error message is null
+  ✓  __typename is 'SavingsWithdrawContractResult'
+
+↳ savings_confirm_withdrawal_contract (K7)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 133ms time ★ 1.53kB↑ 539B↓ size ★ 16↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 679B
+  │ {
+  │     "operationName": "savings_confirm_withdrawal_contr
+  │ act",
+  │     "variables": {
+  │         "input": {
+  │             "contract_id": "cmc08icmk000108l80cce8lgj"
+  │ ,
+  │             "otp": "111111"
+  │         }
+  │     },
+  │     "query": "mutation savings_confirm_withdrawal_cont
+  │ ract($input: SavingsConfirmWithdrawContractInput!) {\n
+  │   savings_confirm_withdrawal_contract(input: $input) {
+  │ \n    status\n    error_message\n    transaction {\n  
+  │     id\n      amount\n      contract {\n        ... on
+  │  SavingsContract {\n          product {\n            n
+  │ ame\n            __typename\n          }\n          __
+  │ typename\n        }\n        __typename\n      }\n    
+  │   __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 198B
+  │ {"data":{"savings_confirm_withdrawal_contract":{"statu
+  │ s":"failed","error_message":"contract_withdrawal_reque
+  │ st_not_found","transaction":null,"__typename":"Savings
+  │ ConfirmWithdrawalContractResult"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  509µs     438µs   (cache)      (cache)         (cache)         130ms            1ms        75µs      133ms 
+
+  ✓  Status code is 200
+  ✓  Contains data.savings_confirm_withdrawal_contract
+ 14. Withdrawal result structure is valid
+ 15. Transaction object is valid
+ 16. Contract and Product fields are correct
+
+↳ savings_termination_info (K7)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 591ms time ★ 1.02kB↑ 541B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 384B
+  │ {
+  │     "operationName": "savings_termination_info",
+  │     "variables": {
+  │         "contract_id": "cmc08icmk000108l80cce8lgj"
+  │     },
+  │     "query": "query savings_termination_info($contract
+  │ _id: ID!) {\n  savings_termination_info(contract_id: $
+  │ contract_id) {\n    amount\n    profit\n    penalty_ra
+  │ te\n    net_income\n    tax_amount\n    tax_rate\n    
+  │ interest_rate\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 199B
+  │ {"data":{"savings_termination_info":{"amount":1000000,
+  │ "profit":0,"penalty_rate":0,"net_income":1000000,"tax_
+  │ amount":863,"tax_rate":0.05,"interest_rate":0.035,"__t
+  │ ypename":"SavingsTerminationInfo"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  359µs     268µs   (cache)      (cache)         (cache)         588ms            1ms        84µs      591ms 
+
+  ✓  Status code is 200
+  ✓  Content-Type is JSON
+  ✓  Has valid structure
+  ✓  Contains all required fields
+  ✓  All fields have correct types
+  ✓  Interest rate is valid
+  ✓  Correct __typename
+  ✓  No unexpected fields
+  ┌
+  │ 'Savings Termination Validation Results:'
+  │ 'Principal Amount: 1000000'
+  │ 'Profit: 0'
+  │ 'Tax (5%): 863'
+  │ 'Net Income: 1000000'
+  │ 'Interest Rate: 3.5000000000000004%'
+  │ 'Penalty Rate: 0%'
+  └
+
+↳ savings_transactions (K7 History list)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 4.1s time ★ 2.29kB↑ 96.36kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.65kB
+  │ {
+  │     "operationName": "savings_transactions",
+  │     "variables": {
+  │         "first": 100,
+  │         "reverse": true,
+  │         "sort_keys": "CREATED_AT"
+  │     },
+  │     "query": "query savings_transactions($after: Strin
+  │ g, $before: String, $first: Int, $last: Int, $reverse:
+  │  Boolean, $sort_keys: SavingsTransactionSortKeys, $que
+  │ ry: String) {\n  savings_transactions(\n    after: $af
+  │ ter\n    before: $before\n    first: $first\n    last:
+  │  $last\n    reverse: $reverse\n    sort_keys: $sort_ke
+  │ ys\n    query: $query\n  ) {\n    edges {\n      curso
+  │ r\n      node {\n        id\n        created_at\n     
+  │    updated_at\n        amount\n        initial_amount\
+  │ n        status\n        type\n        transfer_messag
+  │ e\n        deposited_at\n        contract {\n         
+  │  ... on SavingsContract {\n            id\n           
+  │  available_amount\n            product {\n            
+  │   name\n              __typename\n            }\n     
+  │        maturity_date\n            __typename\n        
+  │   }\n          __typename\n        }\n        __typena
+  │ me\n      }\n      __typename\n    }\n    nodes {\n   
+  │    id\n      created_at\n      updated_at\n      amoun
+  │ t\n      initial_amount\n      status\n      type\n   
+  │    transfer_message\n      deposited_at\n      contrac
+  │ t {\n        ... on SavingsContract {\n          id\n 
+  │          available_amount\n          product {\n      
+  │       name\n            __typename\n          }\n     
+  │      maturity_date\n          __typename\n        }\n 
+  │        __typename\n      }\n      __typename\n    }\n 
+  │    page_info {\n      start_cursor\n      end_cursor\n
+  │       has_next_page\n      has_previous_page\n      __
+  │ typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 96.02kB
+  │ {"data":{"savings_transactions":{"edges":[{"cursor":"c
+  │ mdmpk8vg03bi3tt42pdndhig","node":{"id":"cmdmpk8vg03bi3
+  │ tt42pdndhig","created_at":"2025-07-28T06:09:31.372Z","
+  │ updated_at":"2025-07-28T06:09:31.372Z","amount":100000
+  │ 0,"initial_amount":4000000,"status":"PENDING","type":"
+  │ WITHDRAWAL","transfer_message":null,"deposited_at":nul
+  │ l,"contract":{"id":"cmc08icmk000108l80cce8lgj","availa
+  │ ble_amount":2000000,"product":{"name":"K-Seven","__typ
+  │ ename":"SavingsProduct"},"maturity_date":"2025-06-30T1
+  │ 7:00:00.000Z","__typename":"SavingsContract"},"__typen
+  │ ame":"SavingsTransaction"},"__typename":"TransactionEd
+  │ ge"},{"cursor":"cmdmpjt2503b83tt4ee2949ey","node":{"id
+  │ ":"cmdmpjt2503b83tt4ee2949ey","created_at":"2025-07-28
+  │ T06:09:10.877Z","updated_at":"2025-07-28T06:09:10.877Z
+  │ ","amount":1000000,"initial_amount":4000000,"status":"
+  │ PENDING","type":"WITHDRAWAL","transfer_message":null,"
+  │ deposited_at":null,"contract":{"id":"cmc08icml000208l8
+  │ d8t01laa","available_amount":2000000,"product":{"name"
+  │ :"K-90","__typename":"SavingsProduct"},"maturity_date"
+  │ :"2025-06-30T17:00:00.000Z","__typename":"SavingsContr
+  │ act"},"__typename":"SavingsTransaction"},"__typename":
+  │ "TransactionEdge"},{"cursor":"cmdmlq49h039b3tt4d7rudbi
+  │ o","node":{"id":"cmdmlq49h039b3tt4d7rudbio","created_a
+  │ t":"2025-07-28T04:22:06.869Z","updated_at":"2025-07-28
+  │ T04:22:06.869Z","amount":1000000,"initial_amount":4000
+  │ 000,"status":"PENDING","type":"WITHDRAWAL","transfer_m
+  │ essage":null,"deposited_at":null,"contract":{"id":"cmc
+  │ 08icmk000108l80cce8lgj","available_amount":2000000,"pr
+  │ oduct":{"name":"K-Seven","__typename":"SavingsProduct"
+  │ },"maturity_date":"2025-06-30T17:00:00.000Z","__typena
+  │ me":"SavingsContract"},"__typename":"SavingsTransactio
+  │ n"},"__typename":"TransactionEdge"},{"cursor":"cmdmlps
+  │ w803913tt44llqd4po","node":{"id":"cmdmlpsw803913tt44ll
+  │ qd4po","created_at":"2025-07-28T04:21:52.136Z","update
+  │ d_at":"2025-07-28T04:21:52.136Z","amount":1000000,"ini
+  │ tial_amount":4000000,"status":"PENDING","type":"WITHDR
+  │ AWAL","transfer_message":null,"deposited_at":null,"con
+  │ tract":{"id":"cmc08icml000208l8d8t01laa","availabl
+  │ (showing 2.05kB/96.02kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  433µs     455µs   (cache)      (cache)         (cache)         2.4s             1687ms     307µs     4.1s  
+
+  ✓  Status code is 200
+  ✓  Response has valid JSON body
+  ✓  Pagination structure is valid for first:100
+  ✓  Cursor values are valid and stored correctly
+  ✓  Page info reflects first:100 pagination
+  ┌
+  │ 'First cursor:', 'cmdmpk8vg03bi3tt42pdndhig'
+  │ 'Last cursor:', 'cm5uu8rs3044623qk6puvecxa'
+  │ 'All cursors:', [
+  │   'cmdmpk8vg03bi3tt42pdndhig',
+  │   'cmdmpjt2503b83tt4ee2949ey',
+  │   'cmdmlq49h039b3tt4d7rudbio',
+  │   'cmdmlpsw803913tt44llqd4po',
+  │   'cmdml1yg503863tt4folyftg9',
+  │   'cmdipk7tw03473tt485iz6svj',
+  │   'cmdipjw98033x3tt43imud5qy',
+  │   'cmdiowdz4032v3tt4678k61lv',
+  │   'cmdiow2o7032l3tt45bhx1635',
+  │   'cmdiocttw031f3tt421b6ch7r',
+  │   'cmdiociyh03133tt46k5jcobu',
+  │   'cmdinq4wm02z33tt4b5j52t68',
+  │   'cmdinpuaq02yr3tt4epc1d6d3',
+  │   'cmdik1taq02r73tt48ths26vf',
+  │   'cmdik1i4202qx3tt4fsd32bku',
+  │   'cmdh74nbv026x3tt4fkbf1r2z',
+  │   'cmdh706f0024o3tt4b0n0fye0',
+  │   'cmdh6zx80024a3tt4ah2h4j9j',
+  │   'cmdh6jmt401zx3tt4521rflq8',
+  │   'cmdh6jc0p01zl3tt4hw910z9k',
+  │   'cmdfsw2i200on3tt453bthp5g',
+  │   'cmd5o3o5600tx2zt45g6m3g3o',
+  │   'cmd5o3kkv00tn2zt47gozd2v1',
+  │   'cmd5o1hgb00sx2zt41x7wdky2',
+  │   'cmd5nwig700s12zt4hgh72yhl',
+  │   'cmcph99s1000008l9b7xs45b9',
+  │   'cmc4bbqfd000508l8a0q3gs92',
+  │   'cmc08idvm000f08l8aduk5rlg',
+  │   'cmc08idvm000g08l898715ruc',
+  │   'cmc08idvm000h08l8c36r8eiw',
+  │   'cmc08idvm000i08l83fwm0bf8',
+  │   'cmc08idvm000j08l83l6sdio4',
+  │   'cmc08idvm000k08l88kezdxzd',
+  │   'cmc08idgk000908l86kb41bsg',
+  │   'cmc08idgl000a08l81ijgd8in',
+  │   'cmc08idgl000b08l80cnr8b5z',
+  │   'cmc08idgl000c08l85ga354f3',
+  │   'cmc08idgl000d08l81y2661q7',
+  │   'cmc08idgl000e08l8b53r93ka',
+  │   'cmbekbrwr05eg2zt4fon55elk',
+  │   'cmbekbb9g05du2zt43pi95lej',
+  │   'cma0vdzim03ni23rq1mwv5rqh',
+  │   'cma0vdqi403n423rq7dq5bufe',
+  │   'cm9ux4pe200m023rqh4go4ajg',
+  │   'cm9uwz4hu00ki23rq1fhxcuab',
+  │   'cm9mn7m5k04rz8cnb7lw2amz4',
+  │   'cm9mn7bxg04rl8cnb8t0o91hf',
+  │   'cm9b3xa7802gn6inb5j675rqb',
+  │   'cm9b3wyr002g96inbat8ugqte',
+  │   'cm8qgxei2000508jm0m7adal7',
+  │   'cm8qgxe94000408jmhl7735r8',
+  │   'cm8ps1jew011e4cnb159kd16w',
+  │   'cm8ps1bdx01104cnb7wufc0h0',
+  │   'cm8jbq50a000608ia0g2ch3tv',
+  │   'cm8jbq4wp000508iaa0p683ma',
+  │   'cm8jbq4oz000408iadx312140',
+  │   'cm86grh87000c08lh5akwg41n',
+  │   'cm86grh4x000b08lh85cr54sa',
+  │   'cm86grh1d000a08lhap7t570r',
+  │   'cm86grgwk000808lhhhs0bbw7',
+  │   'cm86grgsa000708lh8iy70wtz',
+  │   'cm86grglm000608lh6f4mc0u5',
+  │   'cm82u4u8f01tc23t19qfnc57g',
+  │   'cm7xw4d5o000608js3t6mdtz2',
+  │   'cm7xw4cyx000508js75200fkp',
+  │   'cm7jxvx9202mk24se9vzbgjes',
+  │   'cm7jxvmsa02m624seh09la3i7',
+  │   'cm7iu0syj025w24sednqdagal',
+  │   'cm7iu0lc9025i24seck0386h9',
+  │   'cm7irib6501ta24se03r1cc7a',
+  │   'cm7cupn0v009425ta5thy8blm',
+  │   'cm7cupdll008q25ta0t26amom',
+  │   'cm7cuf28r007725ta528ja9w3',
+  │   'cm7cueepp006p25ta3ef5brc2',
+  │   'cm7cucee3005t25ta7qkbhvv7',
+  │   'cm7al3kbd000808l7e6mbfjob',
+  │   'cm7al3k7s000708l71707ewcb',
+  │   'cm735jtjm00ao23p4834icc8s',
+  │   'cm735jhvs009z23p4098q92os',
+  │   'cm735capr007523p4d9uugncn',
+  │   'cm73515um005l23p44bp7cxn4',
+  │   'cm5yy1ji101d824ol1x361uvv',
+  │   'cm5yy129w01cr24ol8tisdkck',
+  │   'cm5ysxr6k013o24ol3b120wph',
+  │   'cm5yqvk0h00u324ol7k9jhnl1',
+  │   'cm5ynyz1u00rd24ol4c42aima',
+  │   'cm5xomxje00hd24olhar239rv',
+  │   'cm5xmorp900g724olbmxm6hm2',
+  │   'cm5wlpa7900bb24ol7puvgrl7',
+  │   'cm5wlompj00av24ol0j2x4ajo',
+  │   'cm5wlnk7m00af24ol8gpv7q6d',
+  │   'cm5wlh5mh009424oldnr128vb',
+  │   'cm5uu8rs3044623qk6puvecxa'
+  │ ]
+  └
+
+↳ savings_transactions (K7 History detail)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 399ms time ★ 1.4kB↑ 902B↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 772B
+  │ {
+  │     "operationName": "savings_transaction",
+  │     "variables": {
+  │         "transactionId": "cmdmpk8vg03bi3tt42pdndhig"
+  │     },
+  │     "query": "query savings_transaction($transactionId
+  │ : ID!) {\n  savings_transaction(transactionId: $transa
+  │ ctionId) {\n    ... on SavingsTransaction {\n      id\
+  │ n      created_at\n      updated_at\n      initial_amo
+  │ unt\n      amount\n      status\n      type\n      tra
+  │ nsfer_message\n      deposited_at\n      receive_metho
+  │ d\n      tax\n      profit\n      contract {\n        
+  │ ... on SavingsContract {\n          id\n          code
+  │ \n          product {\n            name\n            _
+  │ _typename\n          }\n          maturity_date\n     
+  │      __typename\n        }\n        __typename\n      
+  │ }\n      __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 560B
+  │ {"data":{"savings_transaction":{"id":"cmdmpk8vg03bi3tt
+  │ 42pdndhig","created_at":"2025-07-28T06:09:31.372Z","up
+  │ dated_at":"2025-07-28T06:09:31.372Z","initial_amount":
+  │ 4000000,"amount":1000000,"status":"PENDING","type":"WI
+  │ THDRAWAL","transfer_message":null,"deposited_at":null,
+  │ "receive_method":"BANK_TRANSFER","tax":863,"profit":17
+  │ 260,"contract":{"id":"cmc08icmk000108l80cce8lgj","code
+  │ ":"ZTQMHQ","product":{"name":"K-Seven","__typename":"S
+  │ avingsProduct"},"maturity_date":"2025-06-30T17:00:00.0
+  │ 00Z","__typename":"SavingsContract"},"__typename":"Sav
+  │ ingsTransaction"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  497µs     352µs   (cache)      (cache)         (cache)         396ms            1ms        68µs      398ms 
+
+  ✓  Status code is 200
+  ✓  Response has valid JSON body
+  ✓  Response has correct structure
+  ✓  Transaction has all required fields
+  ✓  K-Seven Contract validation
+  ┌
+  │ 'Stored transaction ID:', 'cmdmpk8vg03bi3tt42pdndhig'
+  │ 'Stored amount:', 1000000
+  └
+  ✓  Store transaction data
+
+❏ Kafi / Closed API
+↳ savings_render_partner_document (TnC)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 15s time ★ 970B↑ 131.92kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 338B
+  │ {
+  │     "operationName": "savings_render_partner_document"
+  │ ,
+  │     "variables": {
+  │         "partner_id": "clhin6ff300013b6i58le4r6u"
+  │     },
+  │     "query": "query savings_render_partner_document($p
+  │ artner_id: ID!) {\n  savings_render_partner_document(p
+  │ artner_id: $partner_id) {\n    status\n    error_messa
+  │ ge\n    content\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 131.57kB
+  │ {"data":{"savings_render_partner_document":{"status":"
+  │ success","error_message":null,"content":"<!DOCTYPE htm
+  │ l>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UT
+  │ F-8\">\n    <meta name=\"viewport\" content=\"width=de
+  │ vice-width, initial-scale=1.0\">\n    <title>Document<
+  │ /title>\n\n    <style>\n        \n.popup--contract {\n
+  │   width: 100%;\n  height: 100%;\n  background: #ffffff
+  │ ;\n  position: fixed;\n  z-index: 11;\n  top: 0px;\n  
+  │ left: 0px;\n}\n.popup--contract__nav-header {\n  width
+  │ : 100%;\n  border-bottom: 1px solid #F1F5F9;\n}\n.popu
+  │ p--contract__nav-header .logo {\n  padding: 10px;\n}\n
+  │ .popup--contract__nav-header ul {\n  position: absolut
+  │ e;\n  left: 0;\n  right: 0;\n  justify-content: center
+  │ ;\n}\n.popup--contract__nav-header ul li {\n  font-fam
+  │ ily: \"Inter\", sans-serif;\n  font-weight: 500;\n  fo
+  │ nt-size: 14px;\n  line-height: 20px;\n  color: #64748B
+  │ ;\n  display: inline-block;\n  width: 140px;\n  positi
+  │ on: relative;\n  text-align: center;\n  padding: 16px 
+  │ 0px;\n}\n.popup--contract__nav-header ul .active {\n  
+  │ font-family: \"Inter\", sans-serif;\n  font-weight: 60
+  │ 0;\n  color: #0F172A;\n}\n.popup--contract__nav-header
+  │  ul .active::after {\n  width: 100%;\n  height: 2px;\n
+  │   background: #00C694;\n  position: absolute;\n  botto
+  │ m: 0px;\n  left: 0px;\n  content: \"\";\n}\n.popup--co
+  │ ntract__content {\n  width: 100%;\n  height: calc(100v
+  │ h - 53px);\n  padding-top: 30px;\n  overflow: hidden;\
+  │ n}\n.popup--contract__content .contract-content {\n  w
+  │ idth: 100%;\n  height: calc(100% - 30px);\n  border: 8
+  │ px solid #CBD5E1;\n  overflow: auto;\n  margin: auto;\
+  │ n}\n.popup--contract__content .contract-content::-webk
+  │ it-scrollbar {\n  width: 0px;\n}\n.popup--contract__co
+  │ ntent .contract-content__page {\n  background-color: #
+  │ fff;\n  padding: 16px;\n  height: fit-content;\n  marg
+  │ in-bottom: 8px;\n  border-bottom: 8px solid #CBD5E1;\n
+  │ }\n.popup--contract__content .contract-content__page:l
+  │ ast-child {\n  margin-bottom: 0px;\n  border: none;\n}
+  │ \n.popup--contract__content .contract-content__page .h
+  │ eader-contract {\n  width: 100%;\n}\n.popup--contr
+  │ (showing 2.05kB/131.57kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  394µs     356µs   (cache)      (cache)         (cache)         13.3s            1702ms     359µs     15s   
+
+  ✓  Status code is 200
+  ✓  ✅ Validate savings_render_partner_document response
+
+↳ savings_store_open_account_step_data
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 149ms time ★ 1.76kB↑ 1.07kB↓ size ★ 16↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 849B
+  │ {
+  │     "operationName": "savings_store_open_account_step_
+  │ data",
+  │     "variables": {
+  │         "partner_id": "clhin6ff300013b6i58le4r6u",
+  │         "step_data": [
+  │             {
+  │                 "code": "EKYC",
+  │                 "status": "SUCCESS"
+  │             },
+  │             {
+  │                 "code": "PHONE",
+  │                 "status": "SUCCESS"
+  │             },
+  │             {
+  │                 "code": "EMAIL",
+  │                 "status": "SUCCESS"
+  │             }
+  │         ]
+  │     },
+  │     "query": "mutation savings_store_open_account_step
+  │ _data($partner_id: ID!, $step_data: [SavingsOpenAccoun
+  │ tStepUserInput!]!) {\n  savings_store_open_account_ste
+  │ p_data(\n    partner_id: $partner_id\n    step_data: $
+  │ step_data\n  ) {\n    status\n    error_message\n    o
+  │ pen_account_step_user {\n      id\n      status\n     
+  │  payload\n      __typename\n    }\n    __typename\n  }
+  │ \n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 727B
+  │ {"data":{"savings_store_open_account_step_data":{"stat
+  │ us":"success","error_message":null,"open_account_step_
+  │ user":[{"id":"cm5qiemr002h423qkcsp95tb5","status":"SUC
+  │ CESS","payload":null,"__typename":"SavingsOpenAccountS
+  │ tepUser"},{"id":"cm5qiemr002h523qk9g1obbgb","status":"
+  │ SUCCESS","payload":null,"__typename":"SavingsOpenAccou
+  │ ntStepUser"},{"id":"cm5qiemr002h623qk5n9sbc6x","status
+  │ ":"SUCCESS","payload":null,"__typename":"SavingsOpenAc
+  │ countStepUser"},{"id":"cm5qjtlct02n823qk6r5m23ye","sta
+  │ tus":"SUCCESS","payload":null,"__typename":"SavingsOpe
+  │ nAccountStepUser"},{"id":"cm5qju93802nl23qk82d88kbo","
+  │ status":"SUCCESS","payload":null,"__typename":"Savings
+  │ OpenAccountStepUser"}],"__typename":"SavingsStoreOpenA
+  │ ccountStepDataResult"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  652µs     483µs   (cache)      (cache)         (cache)         147ms            1ms        43µs      149ms 
+
+  ✓  Status code is 200
+  ✓  Response has valid JSON body
+  ✓  Response has correct structure
+  ✓  Step data has correct fields
+  ✓  open_account_step_user array has valid items
+
+↳ savings_partner (open_account_steps)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 115ms time ★ 1.14kB↑ 1.89kB↓ size ★ 12↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 503B
+  │ {
+  │     "operationName": "savings_partner",
+  │     "variables": {
+  │         "code": "KAFI"
+  │     },
+  │     "query": "query savings_partner($code: SavingsPart
+  │ nerCode!) {\n  savings_partner(code: $code) {\n    ...
+  │  on SavingsPartner {\n      open_account_steps {\n    
+  │     id\n        code\n        user_data {\n          i
+  │ d\n          created_at\n          updated_at\n       
+  │    status\n          payload\n          __typename\n  
+  │       }\n        __typename\n      }\n      __typename
+  │ \n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 1.54kB
+  │ {"data":{"savings_partner":{"open_account_steps":[{"id
+  │ ":"clhu7so1g000108i78na5438g","code":"EKYC","user_data
+  │ ":{"id":"cm5qiemr002h423qkcsp95tb5","created_at":"2025
+  │ -01-10T08:42:38.124Z","updated_at":"2025-07-28T07:19:2
+  │ 6.698Z","status":"SUCCESS","payload":null,"__typename"
+  │ :"SavingsOpenAccountStepUser"},"__typename":"SavingsOp
+  │ enAccountStep"},{"id":"clhu7utwi000208i7cgx40umx","cod
+  │ e":"EMAIL","user_data":{"id":"cm5qiemr002h623qk5n9sbc6
+  │ x","created_at":"2025-01-10T08:42:38.124Z","updated_at
+  │ ":"2025-07-28T07:19:26.698Z","status":"SUCCESS","paylo
+  │ ad":null,"__typename":"SavingsOpenAccountStepUser"},"_
+  │ _typename":"SavingsOpenAccountStep"},{"id":"clhu7ux0f0
+  │ 00308i7bspbd59c","code":"PHONE","user_data":{"id":"cm5
+  │ qiemr002h523qk9g1obbgb","created_at":"2025-01-10T08:42
+  │ :38.124Z","updated_at":"2025-07-28T07:19:26.698Z","sta
+  │ tus":"SUCCESS","payload":null,"__typename":"SavingsOpe
+  │ nAccountStepUser"},"__typename":"SavingsOpenAccountSte
+  │ p"},{"id":"clhu7uzwn000408i7b8woa6ar","code":"SIGN_CON
+  │ TRACT","user_data":{"id":"cm5qjtlct02n823qk6r5m23ye","
+  │ created_at":"2025-01-10T09:22:15.773Z","updated_at":"2
+  │ 025-01-10T09:22:15.773Z","status":"SUCCESS","payload":
+  │ null,"__typename":"SavingsOpenAccountStepUser"},"__typ
+  │ ename":"SavingsOpenAccountStep"},{"id":"clpkp0uh300000
+  │ 8l528o97ycd","code":"OTP","user_data":{"id":"cm5qju938
+  │ 02nl23qk82d88kbo","created_at":"2025-01-10T09:22:46.53
+  │ 2Z","updated_at":"2025-01-10T09:22:46.532Z","status":"
+  │ SUCCESS","payload":null,"__typename":"SavingsOpenAccou
+  │ ntStepUser"},"__typename":"SavingsOpenAccountStep"}],"
+  │ __typename":"SavingsPartner"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  473µs     393µs   (cache)      (cache)         (cache)         112ms            1ms        53µs      115ms 
+
+  ✓  Status code is 200
+  ✓  ✅ Validate open_account_steps with optional user_data
+
+↳ savings_open_account
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 112ms time ★ 1.12kB↑ 458B↓ size ★ 16↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 274B
+  │ {
+  │     "query": "mutation savings_open_account($partner_i
+  │ d:ID!){savings_open_account(input:{partner_id:$partner
+  │ _id}){status error_message account{id created_at updat
+  │ ed_at rejected_reason status}}}",
+  │     "variables": {
+  │         "partner_id": "clhin6ff300013b6i58le4r6u"
+  │     }
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 117B
+  │ {"data":{"savings_open_account":{"status":"failed","er
+  │ ror_message":"account_opening_not_supported","account"
+  │ :null}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  470µs     427µs   (cache)      (cache)         (cache)         107ms            3ms        344µs     112ms 
+
+  ✓  Status code is 200
+  ✓  Content-Type is JSON
+  ✓  Has valid error structure
+  ✓  Contains all required fields
+  ✓  All fields have correct types
+  ✓  Status is 'failed'
+  ✓  Error message indicates account opening not supported
+  ✓  Account is null for failed opening
+  ✓  No unexpected fields
+  ┌
+  │ 'Account Opening Failure Details:'
+  │ 'Status: failed'
+  │ 'Error Code: account_opening_not_supported'
+  │ 'No account was created'
+  └
+  ✓  Error message indicates a permanent restriction
+
+↳ savings_open_contract (K90)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 122ms time ★ 1.47kB↑ 502B↓ size ★ 16↑ 11↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 623B
+  │ {
+  │     "operationName": "savings_open_contract",
+  │     "variables": {
+  │         "input": {
+  │             "product_id": "clqaoh1ow000108jl9bvz7t14",
+  │             "amount": 9000000,
+  │             "payment_method": "BANK_TRANSFER"
+  │         }
+  │     },
+  │     "query": "mutation savings_open_contract($input: S
+  │ avingsOpenContractInput!) {\n  savings_open_contract(i
+  │ nput: $input) {\n    status\n    error_message\n    co
+  │ ntract {\n      id\n      created_at\n      updated_at
+  │ \n      available_amount\n      estimated_profit\n    
+  │   matured_at\n      approved_at\n      terminated_at\n
+  │       status\n      __typename\n    }\n    __typename\
+  │ n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 161B
+  │ {"data":{"savings_open_contract":{"status":"failed","e
+  │ rror_message":"contract_opening_not_supported","contra
+  │ ct":null,"__typename":"SavingsOpenContractResult"}}}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       1ms    (cache)      (cache)         (cache)         118ms            1ms        39µs      123ms 
+
+  ✓  Status code is 200
+  ✓  Content-Type is JSON
+  ✓  Response is JSON
+  ✓  Response has correct structure
+  ✓  Contains all required fields
+  ✓  Fields have correct types
+  ✓  Status is 'failed'
+  ✓  Error message indicates contract opening not supported
+  ✓  Contract is null for failed opening
+  ✓  Correct __typename value
+  ✓  No unexpected fields in response
+  ✓  Error indicates permanent restriction
+  ✓  Response time is reasonable
+  ┌
+  │ 'Contract Opening Failure Details:'
+  │ 'Status: failed'
+  │ 'Error: contract_opening_not_supported'
+  │ 'Type: SavingsOpenContractResult'
+  │ 'No contract was created'
+  └
+
+❏ Kafi / SignOut
+↳ signout
+  POST https://staging.realstake.co/api/graphiql  
+  200 OK ★ 1566ms time ★ 828B↑ 348B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 194B
+  │ {
+  │     "variables": {
+  │         "onesignal_id": "d94a83aa-4a3c-4c1a-9171-ac369
+  │ 00e0523"
+  │     },
+  │     "query": "mutation ($onesignal_id: String) {\n  si
+  │ gnout(input: {onesignal_id: $onesignal_id})\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 58B
+  │ {"data":{"signout":"success"},"extensions":{"timing":7
+  │ 79}}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total  
+  4ms       13ms   106ms        80ms            168ms           1193ms           2ms        145µs     1569ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Signout Response is valid!'
+  └
+  ✓  ✅ Validate Signout Response
+  ┌
+  │ 'Clearing 139 collection variables:', [
+  │   'baseUrl',
+  │   'x-infina-api-key',
+  │   'x-infina-app-version',
+  │   'requestSecret',
+  │   'phoneNumber',
+  │   'password',
+  │   'pinCode',
+  │   'access_token',
+  │   'refresh_token',
+  │   'userid',
+  │   'uid',
+  │   'MapId',
+  │   'savings_account_status',
+  │   'virtual_account_number',
+  │   'portfolio_total_amount',
+  │   'portfolio_total_profit',
+  │   'k90_savings_products',
+  │   'k7_savings_products',
+  │   'savings_products_count',
+  │   'k90_contract_id',
+  │   'k7_contract_id',
+  │   'all_cursors',
+  │   'first_cursor',
+  │   'last_cursor',
+  │   'cursor_0',
+  │   'cursor_1',
+  │   'cursor_2',
+  │   'cursor_3',
+  │   'cursor_4',
+  │   'cursor_5',
+  │   'cursor_6',
+  │   'cursor_7',
+  │   'cursor_8',
+  │   'cursor_9',
+  │   'cursor_10',
+  │   'cursor_11',
+  │   'cursor_12',
+  │   'cursor_13',
+  │   'cursor_14',
+  │   'cursor_15',
+  │   'cursor_16',
+  │   'cursor_17',
+  │   'cursor_18',
+  │   'cursor_19',
+  │   'cursor_20',
+  │   'cursor_21',
+  │   'cursor_22',
+  │   'cursor_23',
+  │   'cursor_24',
+  │   'cursor_25',
+  │   'cursor_26',
+  │   'cursor_27',
+  │   'cursor_28',
+  │   'cursor_29',
+  │   'cursor_30',
+  │   'cursor_31',
+  │   'cursor_32',
+  │   'cursor_33',
+  │   'cursor_34',
+  │   'cursor_35',
+  │   'cursor_36',
+  │   'cursor_37',
+  │   'cursor_38',
+  │   'cursor_39',
+  │   'cursor_40',
+  │   'cursor_41',
+  │   'cursor_42',
+  │   'cursor_43',
+  │   'cursor_44',
+  │   'cursor_45',
+  │   'cursor_46',
+  │   'cursor_47',
+  │   'cursor_48',
+  │   'cursor_49',
+  │   'cursor_50',
+  │   'cursor_51',
+  │   'cursor_52',
+  │   'cursor_53',
+  │   'cursor_54',
+  │   'cursor_55',
+  │   'cursor_56',
+  │   'cursor_57',
+  │   'cursor_58',
+  │   'cursor_59',
+  │   'cursor_60',
+  │   'cursor_61',
+  │   'cursor_62',
+  │   'cursor_63',
+  │   'cursor_64',
+  │   'cursor_65',
+  │   'cursor_66',
+  │   'cursor_67',
+  │   'cursor_68',
+  │   'cursor_69',
+  │   'cursor_70',
+  │   'cursor_71',
+  │   'cursor_72',
+  │   'cursor_73',
+  │   'cursor_74',
+  │   'cursor_75',
+  │   ... 39 more items
+  │ ]
+  └
+  ✓  Clear all collection variables after signout
+
+┌─────────────────────────┬─────────────────────┬─────────────────────┐
+│                         │            executed │              failed │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              iterations │                   1 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│                requests │                  40 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│            test-scripts │                  80 │                   1 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│      prerequest-scripts │                  80 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              assertions │                 342 │                  15 │
+├─────────────────────────┴─────────────────────┴─────────────────────┤
+│ total run duration: 1m 29.6s                                        │
+├─────────────────────────────────────────────────────────────────────┤
+│ total data received: 443.42kB (approx)                              │
+├─────────────────────────────────────────────────────────────────────┤
+│ average response time: 1162ms [min: 103ms, max: 15s, s.d.: 2.5s]    │
+├─────────────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 52ms [min: 1ms, max: 106ms, s.d.: 49ms]    │
+├─────────────────────────────────────────────────────────────────────┤
+│ average first byte time: 907ms [min: 100ms, max: 13.3s, s.d.: 2.1s] │
+└─────────────────────────────────────────────────────────────────────┘
+
+[31m   # [39m[31m failure        [39m[31m detail                                                                [39m
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 01.  AssertionError  Status is 'success'                                                   
+                      expected 'failed' to deeply equal 'success'                           
+                      at assertion:2 in test-script                                         
+                      inside "Kafi / K-easy / savings_withdraw (K-easy)"                    
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 02.  AssertionError  Error message is null                                                 
+                      expected 'Request failed with status code 502' to be null             
+                      at assertion:3 in test-script                                         
+                      inside "Kafi / K-easy / savings_withdraw (K-easy)"                    
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 03.  AssertionError  Withdrawal result structure is valid                                  
+                      expected 'failed' to be one of [ 'success', 'failure' ]               
+                      at assertion:2 in test-script                                         
+                      inside "Kafi / K-easy / savings_confirm_withdrawal_contract (K-easy)" 
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 04.  TypeError       Transaction object is valid                                           
+                      Cannot convert undefined or null to object                            
+                      at assertion:3 in test-script                                         
+                      inside "Kafi / K-easy / savings_confirm_withdrawal_contract (K-easy)" 
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 05.  TypeError                                                                             
+                      Cannot read properties of null (reading 'id')                         
+                      at test-script                                                        
+                      inside "Kafi / K-easy / savings_confirm_withdrawal_contract (K-easy)" 
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 06.  AssertionError  All fields have correct types                                         
+                      expected 'Incorrect CUID format' to be null                           
+                      at assertion:4 in test-script                                         
+                      inside "Kafi / K-easy / savings_update_transaction_refs (K-easy)"     
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 07.  AssertionError  Status is 'success'                                                   
+                      expected 'failed' to equal 'success'                                  
+                      at assertion:5 in test-script                                         
+                      inside "Kafi / K-easy / savings_update_transaction_refs (K-easy)"     
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 08.  AssertionError  Withdrawal result structure is valid                                  
+                      expected 'failed' to be one of [ 'success', 'failure' ]               
+                      at assertion:2 in test-script                                         
+                      inside "Kafi / K90 / savings_confirm_withdrawal_contract (K90)"       
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 09.  TypeError       Transaction object is valid                                           
+                      Cannot convert undefined or null to object                            
+                      at assertion:3 in test-script                                         
+                      inside "Kafi / K90 / savings_confirm_withdrawal_contract (K90)"       
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 10.  TypeError       Contract and Product fields are correct                               
+                      Cannot read properties of null (reading 'contract')                   
+                      at assertion:4 in test-script                                         
+                      inside "Kafi / K90 / savings_confirm_withdrawal_contract (K90)"       
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 11.  AssertionError  K-90 Contract validation                                              
+                      expected 'K-Seven' to equal 'K-90'                                    
+                      at assertion:4 in test-script                                         
+                      inside "Kafi / K90 / savings_transactions (K90 History detail)"       
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 12.  AssertionError  Status is 'success'                                                   
+                      expected 'failed' to deeply equal 'success'                           
+                      at assertion:2 in test-script                                         
+                      inside "Kafi / K7 / savings_withdraw (K7)"                            
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 13.  AssertionError  Error message is null                                                 
+                      expected 'Request failed with status code 502' to be null             
+                      at assertion:3 in test-script                                         
+                      inside "Kafi / K7 / savings_withdraw (K7)"                            
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 14.  AssertionError  Withdrawal result structure is valid                                  
+                      expected 'failed' to be one of [ 'success', 'failure' ]               
+                      at assertion:2 in test-script                                         
+                      inside "Kafi / K7 / savings_confirm_withdrawal_contract (K7)"         
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 15.  TypeError       Transaction object is valid                                           
+                      Cannot convert undefined or null to object                            
+                      at assertion:3 in test-script                                         
+                      inside "Kafi / K7 / savings_confirm_withdrawal_contract (K7)"         
+[90m     [39m[90m                [39m[90m                                                                       [39m
+ 16.  TypeError       Contract and Product fields are correct                               
+                      Cannot read properties of null (reading 'contract')                   
+                      at assertion:4 in test-script                                         
+                      inside "Kafi / K7 / savings_confirm_withdrawal_contract (K7)"         
