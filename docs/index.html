@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2C API Test Results</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .section h2 {
+            color: #555;
+            margin-top: 0;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+        }
+        .file-list li {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f8f9fa;
+            border-radius: 3px;
+            border-left: 4px solid #007bff;
+        }
+        .file-list a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .file-list a:hover {
+            text-decoration: underline;
+        }
+        .test-results {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin: 5px;
+        }
+        .status.pass {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 B2C API Test Results Dashboard</h1>
+        
+        <div class="section">
+            <h2>📊 Test Results</h2>
+            <div class="test-results">
+                <p><strong>Last Updated:</strong> <span id="last-updated">Loading...</span></p>
+                <div id="test-summary">
+                    <p>Test results will be displayed here after running the tests.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📁 Data Files</h2>
+            <ul class="file-list">
+                <li><a href="sample.json" target="_blank">📄 sample.json</a> - Test data configuration</li>
+                <li><a href="sample.html" target="_blank">🌐 sample.html</a> - Test results template</li>
+                <li><a href="sample.txt" target="_blank">📝 sample.txt</a> - API configuration</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔧 Test Scripts</h2>
+            <ul class="file-list">
+                <li><a href="../scripts/api-test-collection.json" target="_blank">📋 Postman Collection</a> - API test collection</li>
+                <li><a href="../scripts/environment.json" target="_blank">⚙️ Environment Config</a> - Test environment variables</li>
+                <li><a href="../scripts/run-tests.js" target="_blank">🔄 Test Runner</a> - Newman automation script</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📈 Quick Actions</h2>
+            <p>To run tests locally:</p>
+            <code>npm install && npm test</code>
+            <br><br>
+            <p>To run tests with Newman directly:</p>
+            <code>npm run test:newman</code>
+        </div>
+    </div>
+
+    <script>
+        // Load and display test results if available
+        fetch('results.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('last-updated').textContent = new Date().toLocaleString();
+                
+                const summary = data.run.stats;
+                const testSummary = document.getElementById('test-summary');
+                
+                testSummary.innerHTML = `
+                    <div class="status pass">Total: ${summary.total}</div>
+                    <div class="status pass">Passed: ${summary.passed}</div>
+                    <div class="status ${summary.failed > 0 ? 'fail' : 'pass'}">Failed: ${summary.failed}</div>
+                    <div class="status pass">Skipped: ${summary.skipped}</div>
+                `;
+            })
+            .catch(error => {
+                console.log('No test results available yet');
+            });
+    </script>
+</body>
+</html> 

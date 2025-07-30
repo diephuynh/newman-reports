@@ -1,0 +1,32 @@
+{
+  "name": "qa-auto-infina-b2c-api",
+  "version": "1.0.0",
+  "description": "Automated API testing for B2C application using Newman/Postman",
+  "main": "scripts/run-tests.js",
+  "scripts": {
+    "test": "node scripts/run-tests.js",
+    "test:newman": "newman run scripts/api-test-collection.json -e scripts/environment.json --reporters cli,json,html --reporter-json-export test-results/results.json --reporter-html-export test-results/report.html",
+    "setup": "npm install",
+    "docs": "cp -r data/* docs/ && cp test-results/* docs/ 2>/dev/null || true"
+  },
+  "keywords": [
+    "api-testing",
+    "newman",
+    "postman",
+    "automation",
+    "qa"
+  ],
+  "author": "Diep Huynh",
+  "license": "MIT",
+  "dependencies": {
+    "newman": "^5.3.2",
+    "newman-reporter-html": "^1.0.5",
+    "newman-reporter-json": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 

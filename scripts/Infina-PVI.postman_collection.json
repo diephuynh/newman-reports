@@ -1,0 +1,3243 @@
+{
+	"info": {
+		"_postman_id": "6e40336d-1148-4cea-a5f9-325586ab2ef8",
+		"name": "Infina-PVI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3169862",
+		"_collection_link": "https://dark-equinox-267507.postman.co/workspace/Infina-B2C---AutoWithdraw~258e2ddd-0762-413b-b252-4b5ee6799f06/collection/3169862-6e40336d-1148-4cea-a5f9-325586ab2ef8?action=share&source=collection_link&creator=3169862"
+	},
+	"item": [
+		{
+			"name": "PVI",
+			"item": [
+				{
+					"name": "SignIn",
+					"item": [
+						{
+							"name": "SignIn & Relogin",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set('phoneNumber', \"0931895560\"); //Users ekyc approved and signed Contract",
+											"pm.collectionVariables.set('password', \"12345678\");",
+											"pm.collectionVariables.set('pinCode', 111111);",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Handle login response\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    if (jsonData.errors && jsonData.errors.length > 0) {",
+											"        var error = jsonData.errors[0];",
+											"        ",
+											"        if (error.key === \"multiple_active_sessions\" && error.details && error.details.reLoginToken) {",
+											"            pm.environment.set(\"reLoginToken\", error.details.reLoginToken);",
+											"            ",
+											"            // Call API re_login after login multi session",
+											"            pm.sendRequest({",
+											"                url: pm.collectionVariables.get(\"baseUrl\"),",
+											"                method: \"POST\",",
+											"                header: {",
+											"                    \"Content-Type\": \"application/json\",",
+											"                    \"x-infina-app-version\": pm.collectionVariables.get(\"x-infina-app-version\"),",
+											"                    \"x-infina-api-key\": pm.collectionVariables.get(\"x-infina-api-key\")",
+											"                },",
+											"                body: {",
+											"                    mode: \"raw\",",
+											"                    raw: JSON.stringify({",
+											"                        variables: {",
+											"                            input: {",
+											"                                re_login_token: error.details.reLoginToken",
+											"                            }",
+											"                        },",
+											"                        query: \"mutation ($input: ReLoginInput) {\\n  re_login(input: $input) {\\n    api_client {\\n      access_token\\n      ip_address\\n      refresh_token\\n      user {\\n        id\\n        ip_address\\n        uid\\n        email\\n        phone\\n        first_name\\n        last_name\\n        status\\n        has_pin_code\\n        pin_type\\n        pin_blocking_duration\\n        pin_allowed_attempts\\n        freshchat_restore_id\\n        avatar\\n        confirm_contract\\n        contract_signed_at\\n        kyc {\\n          status\\n          address\\n          passport_issue_date\\n          passport_issue_place\\n          document_type\\n          document_number\\n          idcard_issue_date\\n          idcard_issue_place\\n          idcard_type\\n          cmnd\\n          first_name\\n          manual_review\\n          last_name\\n          full_name\\n          idcard_back_page\\n          idcard_front_page\\n          __typename\\n        }\\n        user_credits {\\n          id\\n          reward_balance\\n          expired_at\\n          __typename\\n        }\\n        documents {\\n          url\\n          created_at\\n          __typename\\n        }\\n        verified_phone\\n        verified_email\\n        referral_code\\n        referral_url\\n        custom_referral_code\\n        bank_info {\\n          bank_name\\n          bank_city\\n          bank_branch\\n          account_number\\n          account_owner\\n          bank_support\\n          verified\\n          __typename\\n        }\\n        referred_code\\n        created_at\\n        discourse {\\n          is_sign_up\\n          sign_up_at\\n          __typename\\n        }\\n        completed_challenge\\n        synced_ii_at\\n        pin_unblock_at\\n        pin_enable_manual_unblock\\n        __typename\\n      }\\n      __typename\\n    }\\n    flow\\n    __typename\\n  }\\n}\"",
+											"                    })",
+											"                }",
+											"            }, function (err, res) {",
+											"                if (!err && res.json().data && res.json().data.re_login.api_client) {",
+											"                    let reLoginData = res.json().data.re_login.api_client;",
+											"                    pm.collectionVariables.set(\"access_token\", reLoginData.access_token);",
+											"                    pm.collectionVariables.set(\"refresh_token\", reLoginData.refresh_token);",
+											"                    pm.collectionVariables.set(\"userid\", reLoginData.user.id);",
+											"                    pm.collectionVariables.set(\"uid\", reLoginData.user.uid);",
+											"                    pm.collectionVariables.set(\"MapId\", reLoginData.user.uid + '_SAV');",
+											"                }",
+											"                ",
+											"            });",
+											"        }",
+											"    } else if (jsonData.data && jsonData.data.signin_v2) {",
+											"        let loginData = jsonData.data.signin_v2;",
+											"        pm.collectionVariables.set(\"access_token\", loginData.access_token);",
+											"        pm.collectionVariables.set(\"refresh_token\", loginData.refresh_token);",
+											"        pm.collectionVariables.set(\"userid\", loginData.user.id);",
+											"        pm.collectionVariables.set(\"uid\", loginData.user.uid);",
+											"        pm.collectionVariables.set(\"MapId\", loginData.user.uid + '_SAV');",
+											"    }",
+											"});",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Body matches signin_v2\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"signin_v2\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}",
+										"type": "text"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"signin_v2\",\n    \"variables\": {\n        \"email\": \"{{phoneNumber}}\",\n        \"password\": \"{{password}}\",\n        \"fcm_token\": \"{{$guid}}:APA91bFVsdSihx4iIvzKHqkmnSg15GpP2QyQwvMx6-Zrj-A3b9OGozt1Sg2NNdr0mfqBGENGhDyt8Dh0P_XEi6gjrDP0D-yyOjErOUtY8KNZ__gu0LP3rHs\",\n        \"app_instance_id\": \"{{$guid}}\",\n        \"platform\":\"PostmanTest\"\n    },\n    \"query\":\"mutation signin_v2($email: String, $password: String, $app_instance_id: String, $fcm_token: String, $platform: String) {\\n  signin_v2(\\n    input: {email: $email, password: $password, app_instance_id: $app_instance_id, fcm_token: $fcm_token, platform: $platform}\\n  ) {\\n    access_token\\n    ip_address\\n    refresh_token\\n    user {\\n      id\\n      ip_address\\n      uid\\n      email\\n      phone\\n      first_name\\n      last_name\\n      status\\n      has_pin_code\\n      pin_type\\n      pin_blocking_duration\\n      pin_allowed_attempts\\n      freshchat_restore_id\\n      avatar\\n      confirm_contract\\n      contract_signed_at\\n      kyc {\\n        status\\n        address\\n        passport_issue_date\\n        passport_issue_place\\n        document_type\\n        document_number\\n        idcard_issue_date\\n        idcard_issue_place\\n        idcard_type\\n        cmnd\\n        first_name\\n        manual_review\\n        last_name\\n        full_name\\n        idcard_back_page\\n        idcard_front_page\\n        __typename\\n      }\\n      user_credits {\\n        id\\n        reward_balance\\n        expired_at\\n        __typename\\n      }\\n      documents {\\n        url\\n        created_at\\n        __typename\\n      }\\n      verified_phone\\n      verified_email\\n      referral_code\\n      referral_url\\n      custom_referral_code\\n      bank_info {\\n        bank_name\\n        bank_city\\n        bank_branch\\n        account_number\\n        account_owner\\n        bank_support\\n        verified\\n        __typename\\n      }\\n      referred_code\\n      created_at\\n      discourse {\\n        is_sign_up\\n        sign_up_at\\n        __typename\\n      }\\n      completed_challenge\\n      synced_ii_at\\n      pin_unblock_at\\n      pin_enable_manual_unblock\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://staging.realstake.co/api/graphiql",
+									"protocol": "https",
+									"host": [
+										"staging",
+										"realstake",
+										"co"
+									],
+									"path": [
+										"api",
+										"graphiql"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Home",
+					"item": [
+						{
+							"name": "insurance_total_policy_activated",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"✅ Validate insurance_total_policy_activated response\", function () {",
+											"    const jsonData = pm.response.json();",
+											"",
+											"    // Check that 'data.insurance_total_policy_activated' exists and is a number",
+											"    pm.expect(jsonData).to.have.nested.property(\"data.insurance_total_policy_activated\");",
+											"    pm.expect(jsonData.data.insurance_total_policy_activated).to.be.a(\"number\");",
+											"",
+											"    // Optional: Check that the value is non-negative",
+											"    pm.expect(jsonData.data.insurance_total_policy_activated).to.be.at.least(0);",
+											"",
+											"    console.log(\"✅ Validate insurance_total_policy_activated response is valid!\");",
+											"});",
+											"",
+											"",
+											"        ",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_total_policy_activated\",\n    \"variables\": {},\n    \"query\": \"query insurance_total_policy_activated {\\n  insurance_total_policy_activated\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_transactions (All)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"✅ Validate All insurance_transactions response\", function () {",
+											"    const jsonData = pm.response.json();",
+											"",
+											"    // Check root and connection",
+											"    pm.expect(jsonData).to.have.nested.property(\"data.insurance_transactions\");",
+											"    const txData = jsonData.data.insurance_transactions;",
+											"",
+											"    // Validate nodes is a non-empty array",
+											"    pm.expect(txData).to.have.property(\"nodes\").that.is.an(\"array\").with.length.greaterThan(0);",
+											"",
+											"    // Validate each transaction node",
+											"    txData.nodes.forEach((tx) => {",
+											"        pm.expect(tx).to.have.property(\"id\").that.is.a(\"string\");",
+											"        pm.expect(tx).to.have.property(\"created_at\").that.is.a(\"string\");",
+											"        pm.expect(tx).to.have.property(\"updated_at\").that.is.a(\"string\");",
+											"        pm.expect(tx).to.have.property(\"user_id\").that.is.a(\"string\");",
+											"        pm.expect(tx).to.have.property(\"policy_id\").that.is.a(\"string\");",
+											"        pm.expect(tx).to.have.property(\"policy_name\").that.is.a(\"string\");",
+											"        pm.expect(tx).to.have.property(\"amount\").that.is.a(\"number\").above(0);",
+											"        pm.expect(tx).to.have.property(\"status\").that.is.oneOf([\"SUCCESS\", \"FAILED\", \"PENDING\"]);",
+											"        pm.expect(tx).to.have.property(\"payment_method\").that.is.a(\"string\");",
+											"        pm.expect(tx).to.have.property(\"transfer_message\").that.is.a(\"string\");",
+											"        pm.expect(tx).to.have.property(\"__typename\", \"InsuranceTransaction\");",
+											"    });",
+											"",
+											"    // Validate page_info",
+											"    const pageInfo = txData.page_info;",
+											"    pm.expect(pageInfo).to.have.property(\"start_cursor\").that.is.a(\"string\");",
+											"    pm.expect(pageInfo).to.have.property(\"end_cursor\").that.is.a(\"string\");",
+											"    pm.expect(pageInfo).to.have.property(\"has_next_page\").that.is.a(\"boolean\");",
+											"    pm.expect(pageInfo).to.have.property(\"has_previous_page\").that.is.a(\"boolean\");",
+											"    pm.expect(pageInfo).to.have.property(\"__typename\", \"PageInfo\");",
+											"",
+											"    // Validate root __typename",
+											"    pm.expect(txData).to.have.property(\"__typename\", \"InsuranceTransactionConnection\");",
+											"",
+											"    console.log(\"✅ Validate All insurance_transactions response is valid!\");",
+											"});",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_transactions\",\n    \"variables\": {\n        \"reverse\": true,\n        \"sort_keys\": \"CREATED_AT\"\n    },\n    \"query\": \"query insurance_transactions($after: String, $before: String, $first: Int, $last: Int, $reverse: Boolean, $sort_keys: InsurancePolicySortKeys, $query: String) {\\n  insurance_transactions(\\n    after: $after\\n    before: $before\\n    first: $first\\n    last: $last\\n    reverse: $reverse\\n    sort_keys: $sort_keys\\n    query: $query\\n  ) {\\n    nodes {\\n      id\\n      created_at\\n      updated_at\\n      user_id\\n      policy_id\\n      policy_name\\n      amount\\n      status\\n      payment_method\\n      transfer_message\\n      reference_id\\n      reference_code\\n      paid_at\\n      __typename\\n    }\\n    page_info {\\n      start_cursor\\n      end_cursor\\n      has_next_page\\n      has_previous_page\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_transactions (PENDING)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"✅ Validate Pending insurance_transactions response\", function () {",
+											"    const jsonData = pm.response.json();",
+											"",
+											"    // Ensure 'insurance_transactions' exists",
+											"    pm.expect(jsonData).to.have.nested.property(\"data.insurance_transactions\");",
+											"    const transactions = jsonData.data.insurance_transactions;",
+											"",
+											"    // Validate 'nodes' is an array (empty or not)",
+											"    pm.expect(transactions).to.have.property(\"nodes\").that.is.an(\"array\");",
+											"",
+											"    // Validate 'page_info' exists and has expected structure",
+											"    pm.expect(transactions).to.have.property(\"page_info\").that.is.an(\"object\");",
+											"    const pageInfo = transactions.page_info;",
+											"",
+											"    pm.expect(pageInfo).to.have.property(\"start_cursor\").that.is.null;",
+											"    pm.expect(pageInfo).to.have.property(\"end_cursor\").that.is.null;",
+											"    pm.expect(pageInfo).to.have.property(\"has_next_page\", false);",
+											"    pm.expect(pageInfo).to.have.property(\"has_previous_page\", false);",
+											"    pm.expect(pageInfo).to.have.property(\"__typename\", \"PageInfo\");",
+											"",
+											"    // Validate top-level __typename",
+											"    pm.expect(transactions).to.have.property(\"__typename\", \"InsuranceTransactionConnection\");",
+											"",
+											"    console.log(\"✅ Validate Pending insurance_transactions response is valid!\");",
+											"});",
+											"",
+											"",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_transactions\",\n    \"variables\": {\n        \"reverse\": true,\n        \"sort_keys\": \"CREATED_AT\",\n        \"query\": \"status:PENDING\"\n    },\n    \"query\": \"query insurance_transactions($after: String, $before: String, $first: Int, $last: Int, $reverse: Boolean, $sort_keys: InsurancePolicySortKeys, $query: String) {\\n  insurance_transactions(\\n    after: $after\\n    before: $before\\n    first: $first\\n    last: $last\\n    reverse: $reverse\\n    sort_keys: $sort_keys\\n    query: $query\\n  ) {\\n    nodes {\\n      id\\n      created_at\\n      updated_at\\n      user_id\\n      policy_id\\n      policy_name\\n      amount\\n      status\\n      payment_method\\n      transfer_message\\n      reference_id\\n      reference_code\\n      paid_at\\n      __typename\\n    }\\n    page_info {\\n      start_cursor\\n      end_cursor\\n      has_next_page\\n      has_previous_page\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Moto",
+					"item": [
+						{
+							"name": "insurance_policy_plan_policy_extra_info_list (Moto)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Validate response status code",
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"// Validate response structure",
+											"pm.test(\"Response has correct structure\", function() {",
+											"    const response = pm.response.json();",
+											"    ",
+											"    // Check top-level structure",
+											"    pm.expect(response).to.have.property('data');",
+											"    pm.expect(response.data).to.have.property('insurance_policy_plan_policy_extra_info_list').that.is.an('array');",
+											"});",
+											"",
+											"// Validate each extra info item structure",
+											"pm.test(\"All extra info items have required fields\", function() {",
+											"    const items = pm.response.json().data.insurance_policy_plan_policy_extra_info_list;",
+											"    ",
+											"    items.forEach(item => {",
+											"        // Required fields check",
+											"        pm.expect(item).to.have.all.keys(",
+											"            'id', 'plan_id', 'insurer_id', 'is_required', ",
+											"            'is_multiple', 'extra_info', '__typename'",
+											"        );",
+											"        ",
+											"        // Type checks",
+											"        pm.expect(item.id).to.be.a('string');",
+											"        pm.expect(item.plan_id).to.be.a('string');",
+											"        pm.expect(item.insurer_id).to.be.a('string');",
+											"        pm.expect(item.is_required).to.be.a('boolean');",
+											"        pm.expect(item.is_multiple).to.be.a('boolean');",
+											"        pm.expect(item.__typename).to.equal('InsurancePolicyPlanPolicyExtraInfo');",
+											"        ",
+											"        // Validate extra_info object",
+											"        pm.expect(item.extra_info).to.be.an('object');",
+											"        pm.expect(item.extra_info).to.have.all.keys(",
+											"            'id', 'created_at', 'updated_at', 'code', 'data_type', '__typename'",
+											"        );",
+											"        pm.expect(item.extra_info.__typename).to.equal('InsurancePolicyExtraInfo');",
+											"    });",
+											"});",
+											"",
+											"// Validate specific field values",
+											"pm.test(\"Validate specific field values and requirements\", function() {",
+											"    const items = pm.response.json().data.insurance_policy_plan_policy_extra_info_list;",
+											"    const motoPlanId = items[0].plan_id;",
+											"    pm.collectionVariables.set(\"motoPlanId\", motoPlanId);",
+											"    const motoInsureId = items[0].insurer_id;",
+											"    pm.collectionVariables.set(\"motoInsureId\", motoInsureId);",
+											"    ",
+											"    ",
+											"    // Check required fields",
+											"    const requiredFields = [",
+											"        // 'VEHICLE_INSURANCE_DRIVER_NAME',",
+											"        'COMMON_ADDRESS',",
+											"        'VEHICLE_INSURANCE_MOTOR_TYPE',",
+											"        'VEHICLE_INSURANCE_VIN_NUMBER'",
+											"    ];",
+											"    ",
+											"    requiredFields.forEach(fieldCode => {",
+											"        const field = items.find(item => item.extra_info.code === fieldCode);",
+											"        pm.expect(field, `Required field ${fieldCode} not found`).to.exist;",
+											"        pm.expect(field.is_required, `${fieldCode} should be required`).to.be.true;",
+											"    });",
+											"    ",
+											"    // Check optional fields",
+											"    const optionalFields = [",
+											"        'VEHICLE_INSURANCE_REGISTRATION_PLATE',",
+											"        'VEHICLE_INSURANCE_ENGINE_NUMBER'",
+											"    ];",
+											"    ",
+											"    optionalFields.forEach(fieldCode => {",
+											"        const field = items.find(item => item.extra_info.code === fieldCode);",
+											"        pm.expect(field, `Optional field ${fieldCode} not found`).to.exist;",
+											"        pm.expect(field.is_required, `${fieldCode} should not be required`).to.be.false;",
+											"    });",
+											"});",
+											"",
+											"// Validate data types",
+											"pm.test(\"Validate data types for extra info fields\", function() {",
+											"    const items = pm.response.json().data.insurance_policy_plan_policy_extra_info_list;",
+											"    ",
+											"    const expectedDataTypes = {",
+											"        'VEHICLE_INSURANCE_DRIVER_NAME': 'STRING',",
+											"        'COMMON_ADDRESS': 'STRING',",
+											"        'VEHICLE_INSURANCE_REGISTRATION_PLATE': 'STRING',",
+											"        'VEHICLE_INSURANCE_ENGINE_NUMBER': 'STRING',",
+											"        'VEHICLE_INSURANCE_MOTOR_TYPE': 'METADATA',",
+											"        'VEHICLE_INSURANCE_VIN_NUMBER': 'STRING'",
+											"    };",
+											"    ",
+											"    items.forEach(item => {",
+											"        const expectedType = expectedDataTypes[item.extra_info.code];",
+											"        if (expectedType) {",
+											"            pm.expect(item.extra_info.data_type).to.equal(expectedType);",
+											"        }",
+											"    });",
+											"});",
+											"",
+											"// Validate timestamps format",
+											"pm.test(\"All timestamps are in ISO 8601 format\", function() {",
+											"    const items = pm.response.json().data.insurance_policy_plan_policy_extra_info_list;",
+											"    ",
+											"    items.forEach(item => {",
+											"        pm.expect(item.extra_info.created_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+											"        pm.expect(item.extra_info.updated_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+											"    });",
+											"});",
+											"",
+											"// Validate all items belong to the same plan and insurer",
+											"pm.test(\"All items belong to same plan and insurer\", function() {",
+											"    const items = pm.response.json().data.insurance_policy_plan_policy_extra_info_list;",
+											"    const firstItem = items[0];",
+											"    ",
+											"    items.forEach(item => {",
+											"        pm.expect(item.plan_id).to.equal(firstItem.plan_id);",
+											"        pm.expect(item.insurer_id).to.equal(firstItem.insurer_id);",
+											"    });",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policy_plan_policy_extra_info_list\",\n    \"variables\": {\n        \"plan_id\": \"clm8w3cax000008mm54uf73xg\",\n        \"insurer_id\": \"clm8vpju1000008idhiaxd0uz\"\n    },\n    \"query\": \"query insurance_policy_plan_policy_extra_info_list($plan_id: ID!, $insurer_id: ID!) {\\n  insurance_policy_plan_policy_extra_info_list(\\n    plan_id: $plan_id\\n    insurer_id: $insurer_id\\n  ) {\\n    id\\n    plan_id\\n    insurer_id\\n    is_required\\n    is_multiple\\n    extra_info {\\n      id\\n      created_at\\n      updated_at\\n      code\\n      data_type\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_policy_extra_info_metadata_list (Moto#1)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"✅ Validate insurance_policy_extra_info_metadata_list response\", function () {",
+											"    const jsonData = pm.response.json();",
+											"",
+											"    // Ensure the list exists and is an array",
+											"    pm.expect(jsonData).to.have.nested.property(\"data.insurance_policy_extra_info_metadata_list\").that.is.an(\"array\");",
+											"",
+											"    const metadataList = jsonData.data.insurance_policy_extra_info_metadata_list;",
+											"",
+											"    // Optional: Ensure the array is not empty",
+											"    pm.expect(metadataList.length).to.be.above(0);",
+											"",
+											"    // Validate each item in the array",
+											"    metadataList.forEach((item) => {",
+											"        pm.expect(item).to.have.property(\"id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"extra_info_id\").that.is.a(\"string\");",
+											"        //pm.expect(item).to.have.property(\"parent_id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"name\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"__typename\", \"InsurancePolicyExtraInfoMetadata\");",
+											"    });",
+											"",
+											"    console.log(\"✅ Validate MOTO insurance_policy_extra_info_metadata_list response is valid!\");",
+											"});",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policy_extra_info_metadata_list\",\n    \"variables\": {\n        \"extra_info_id\": \"cln3bot7n000a08mh35high2g\"\n    },\n    \"query\": \"query insurance_policy_extra_info_metadata_list($extra_info_id: ID!, $parent_id: ID) {\\n  insurance_policy_extra_info_metadata_list(\\n    extra_info_id: $extra_info_id\\n    parent_id: $parent_id\\n  ) {\\n    id\\n    extra_info_id\\n    parent_id\\n    name\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_policy_extra_info_metadata_list (Moto#2)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"✅ Validate insurance_policy_extra_info_metadata_list response\", function () {",
+											"    const jsonData = pm.response.json();",
+											"",
+											"    // Ensure the list exists and is an array",
+											"    pm.expect(jsonData).to.have.nested.property(\"data.insurance_policy_extra_info_metadata_list\").that.is.an(\"array\");",
+											"",
+											"    const metadataList = jsonData.data.insurance_policy_extra_info_metadata_list;",
+											"",
+											"    // Optional: Ensure the array is not empty",
+											"    pm.expect(metadataList.length).to.be.above(0);",
+											"",
+											"    // Validate each item in the array",
+											"    metadataList.forEach((item) => {",
+											"        pm.expect(item).to.have.property(\"id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"extra_info_id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"parent_id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"name\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"__typename\", \"InsurancePolicyExtraInfoMetadata\");",
+											"    });",
+											"",
+											"    console.log(\"✅ Validate MOTO insurance_policy_extra_info_metadata_list response is valid!\");",
+											"});",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policy_extra_info_metadata_list\",\n    \"variables\": {\n        \"extra_info_id\": \"cln3boeas000908mh50vj2n4b\"\n    },\n    \"query\": \"query insurance_policy_extra_info_metadata_list($extra_info_id: ID!, $parent_id: ID) {\\n  insurance_policy_extra_info_metadata_list(\\n    extra_info_id: $extra_info_id\\n    parent_id: $parent_id\\n  ) {\\n    id\\n    extra_info_id\\n    parent_id\\n    name\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_policy_extra_info_metadata_list (Moto - parent_id)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"✅ Validate insurance_policy_extra_info_metadata_list response\", function () {",
+											"    const jsonData = pm.response.json();",
+											"",
+											"    // Ensure the list exists and is an array",
+											"    pm.expect(jsonData).to.have.nested.property(\"data.insurance_policy_extra_info_metadata_list\").that.is.an(\"array\");",
+											"",
+											"    const metadataList = jsonData.data.insurance_policy_extra_info_metadata_list;",
+											"",
+											"    // Optional: Ensure the array is not empty",
+											"    pm.expect(metadataList.length).to.be.above(0);",
+											"",
+											"    // Validate each item in the array",
+											"    metadataList.forEach((item) => {",
+											"        pm.expect(item).to.have.property(\"id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"extra_info_id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"parent_id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"name\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"__typename\", \"InsurancePolicyExtraInfoMetadata\");",
+											"    });",
+											"",
+											"    console.log(\"✅ Validate MOTO Parent insurance_policy_extra_info_metadata_list response is valid!\");",
+											"});",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policy_extra_info_metadata_list\",\n    \"variables\": {\n        \"extra_info_id\": \"cln3boeas000908mh50vj2n4b\",\n        \"parent_id\": \"clmh9uu22000308mi2c5x7ncy\"\n    },\n    \"query\": \"query insurance_policy_extra_info_metadata_list($extra_info_id: ID!, $parent_id: ID) {\\n  insurance_policy_extra_info_metadata_list(\\n    extra_info_id: $extra_info_id\\n    parent_id: $parent_id\\n  ) {\\n    id\\n    extra_info_id\\n    parent_id\\n    name\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_calculate_premium (Moto)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Set effectedAt",
+											"const now = new Date();",
+											"const endOfDay = new Date(",
+											"    now.getFullYear(),",
+											"    now.getMonth(),",
+											"    now.getDate(),",
+											"    24,  // 17:00 (5 PM UTC)",
+											"    0,   // 0 minutes",
+											"    0,   // 0 seconds",
+											"    0    // 0 milliseconds",
+											");",
+											"",
+											"// Format as ISO 8601 with milliseconds",
+											"const effectedAt = endOfDay.toISOString();",
+											"",
+											"// Get or initialize request body",
+											"let requestBody;",
+											"try {",
+											"    requestBody = JSON.parse(pm.request.body.raw);",
+											"} catch (e) {",
+											"    requestBody = {};",
+											"}",
+											"",
+											"// Update effected_at field",
+											"requestBody.variables.input.effected_at = effectedAt;",
+											"",
+											"// Set the modified body back to the request",
+											"pm.request.body.raw = JSON.stringify(requestBody, null, 2);",
+											"",
+											"// Log for debugging",
+											"console.log(\"Set effected_at to end of day:\", effectedAt);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"✅ Validate insurance_calculate_premium response\", function () {",
+											"    const jsonData = pm.response.json();",
+											"",
+											"    // Check the structure and presence of expected properties",
+											"    pm.expect(jsonData).to.have.nested.property(\"data.insurance_calculate_premium\");",
+											"",
+											"    // Validate that the premium is a number and >= 0",
+											"    const premium = jsonData.data.insurance_calculate_premium;",
+											"    pm.expect(premium).to.be.a(\"number\");",
+											"    pm.expect(premium).to.be.equal(66000);",
+											"",
+											"    console.log(\"✅ Validate MOTO insurance_calculate_premium response is valid!\");",
+											"});",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_calculate_premium\",\n    \"variables\": {\n        \"input\": {\n            \"plan_id\": \"{{motoPlanId}}\",\n            \"insurer_id\": \"{{motoInsureId}}\",\n            \"duration_year\": 1,\n            \"effected_at\": \"{{effectedAt}}\",\n            \"extra_info_list\": [\n                {\n                    \"code\": \"VEHICLE_INSURANCE_MOTOR_TYPE\",\n                    \"value\": \"clmekqlfl000008l02usz3hwc\"\n                }\n            ]\n        }\n    },\n    \"query\": \"query insurance_calculate_premium($input: InsuranceCalculatePremiumInput!) {\\n  insurance_calculate_premium(input: $input)\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_issue_policy (Buy Moto)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"//Set SHA256 x-request-signature and x-request-id",
+											"const requestId = require('uuid').v4();",
+											"// const requestId = 'a153a69b-90a7-4ecc-b09f-2727e125508d'",
+											"const secret = pm.collectionVariables.get('requestSecret');",
+											"const message = secret+requestId;",
+											"const signature =  CryptoJS.SHA256(message).toString();",
+											"pm.request.headers.add({key:'x-request-id',value: requestId});",
+											"pm.request.headers.add({key:'x-request-signature', value:signature})",
+											"",
+											"",
+											"",
+											"// Set effectedAt",
+											"const now = new Date();",
+											"const endOfDay = new Date(",
+											"    now.getFullYear(),",
+											"    now.getMonth(),",
+											"    now.getDate(),",
+											"    24,  // 17:00 (5 PM UTC)",
+											"    0,   // 0 minutes",
+											"    0,   // 0 seconds",
+											"    0    // 0 milliseconds",
+											");",
+											"",
+											"// Format as ISO 8601 with milliseconds",
+											"const effectedAt = endOfDay.toISOString();",
+											"",
+											"// Get or initialize request body",
+											"let requestBody;",
+											"try {",
+											"    requestBody = JSON.parse(pm.request.body.raw);",
+											"} catch (e) {",
+											"    requestBody = {};",
+											"}",
+											"",
+											"// Update effected_at field",
+											"requestBody.variables.input.effected_at = effectedAt;",
+											"",
+											"// Set the modified body back to the request",
+											"pm.request.body.raw = JSON.stringify(requestBody, null, 2);",
+											"",
+											"// Log for debugging",
+											"console.log(\"Set effected_at to end of day:\", effectedAt);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Basic response validation",
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response has valid JSON body\", function() {",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"// Parse the response",
+											"const response = pm.response.json();",
+											"",
+											"// Validate main structure",
+											"pm.test(\"Response has correct structure\", function() {",
+											"    pm.expect(response).to.be.an('object');",
+											"    pm.expect(response).to.have.property('data');",
+											"    pm.expect(response.data).to.have.property('insurance_issue_policy');",
+											"});",
+											"",
+											"const result = response.data.insurance_issue_policy;",
+											"",
+											"// Validate issue policy result",
+											"pm.test(\"Policy issuance result is valid\", function() {",
+											"    pm.expect(result).to.have.all.keys(",
+											"        'status',",
+											"        'error_message',",
+											"        'policy',",
+											"        '__typename'",
+											"    );",
+											"    pm.expect(result.status).to.equal('success');",
+											"    pm.expect(result.error_message).to.be.null;",
+											"    pm.expect(result.__typename).to.equal('InsuranceIssuePolicyResult');",
+											"});",
+											"",
+											"// Validate policy object",
+											"const policy = result.policy;",
+											"pm.test(\"Policy object is valid\", function() {",
+											"    pm.expect(policy).to.have.property('transaction').that.is.an('object');",
+											"    pm.expect(policy.__typename).to.equal('InsurancePolicy');",
+											"});",
+											"",
+											"// Validate transaction details",
+											"const transaction = policy.transaction;",
+											"pm.test(\"MOTO Transaction details are valid\", function() {",
+											"    // Required fields check",
+											"    pm.expect(transaction).to.have.all.keys(",
+											"        'id',",
+											"        'created_at',",
+											"        'updated_at',",
+											"        'user_id',",
+											"        'policy_id',",
+											"        'amount',",
+											"        'status',",
+											"        'payment_method',",
+											"        'transfer_message',",
+											"        'expired_at',",
+											"        'reference_id',",
+											"        'reference_code',",
+											"        'paid_at',",
+											"        'policy_name',",
+											"        '__typename'",
+											"    );",
+											"    ",
+											"    // Field value validation",
+											"    pm.expect(transaction.__typename).to.equal('InsuranceTransaction');",
+											"    //pm.expect(transaction.id).to.match(/^[a-z0-9]{20}$/); // ID format check",
+											"    pm.expect(new Date(transaction.created_at).toISOString()).to.equal(transaction.created_at);",
+											"    pm.expect(new Date(transaction.updated_at).toISOString()).to.equal(transaction.updated_at);",
+											"    pm.expect(transaction.user_id).to.match(/^[a-f0-9]{24}$/); // MongoDB ID format",
+											"    //pm.expect(transaction.policy_id).to.match(/^[a-z0-9]{20}$/);",
+											"    pm.expect(transaction.amount).to.be.a('number').and.to.equal(66000);",
+											"    pm.expect(transaction.status).to.equal('PENDING');",
+											"    pm.expect(transaction.payment_method).to.equal('NORMAL_FLEXIBLE_SAVINGS');",
+											"    pm.expect(transaction.policy_name).to.equal('BH bắt buộc TNDS xe máy');",
+											"    pm.expect(new Date(transaction.expired_at).toISOString()).to.equal(transaction.expired_at);",
+											"    ",
+											"    // Nullable fields",
+											"    pm.expect(transaction.reference_id).to.be.null;",
+											"    pm.expect(transaction.reference_code).to.be.null;",
+											"    pm.expect(transaction.paid_at).to.be.null;",
+											"    ",
+											"    // Policy name validation",
+											"    //pm.expect(transaction.policy_name).to.equal('BH bắt buộc TNDS xe máy');",
+											"});",
+											"",
+											"// Validate timestamps sequence",
+											"pm.test(\"Timestamps are in correct sequence\", function() {",
+											"    const createdAt = new Date(transaction.created_at);",
+											"    const updatedAt = new Date(transaction.updated_at);",
+											"    const expiredAt = new Date(transaction.expired_at);",
+											"    ",
+											"    pm.expect(createdAt.getTime()).to.equal(updatedAt.getTime()); // created_at should equal updated_at",
+											"    pm.expect(expiredAt.getTime()).to.be.greaterThan(createdAt.getTime()); // expired_at should be after created_at",
+											"});",
+											"",
+											"// Store important values for future tests",
+											"pm.test(\"Store transaction details\", function() {",
+											"    pm.collectionVariables.set(\"insurance_transaction_id\", transaction.id);",
+											"    pm.collectionVariables.set(\"insurance_policy_id\", transaction.policy_id);",
+											"    pm.collectionVariables.set(\"insurance_transfer_message\", transaction.transfer_message);",
+											"    ",
+											"    console.log(\"Stored transaction ID:\", transaction.id);",
+											"    console.log(\"Stored policy ID:\", transaction.policy_id);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}",
+										"type": "text"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-Id",
+										"value": "{{x-request-id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-Signature",
+										"value": "{{x-request-signature}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_issue_policy\",\n    \"variables\": {\n        \"input\": {\n            \"is_renew\": false,\n            \"plan_id\": \"{{motoPlanId}}\",\n            \"insurer_id\": \"{{motoInsureId}}\",\n            \"email\": \"diep.huynh@realstake.io\",\n            \"duration_year\": 1,\n            \"effected_at\": \"{{effectedAt}}\",\n            \"payment_method\": \"NORMAL_FLEXIBLE_SAVINGS\",\n            \"extra_info_list\": [\n                {\n                    \"code\": \"VEHCILE_INSURANCE_DRIVER_NAME\",\n                    \"value\": \"HUỲNH NGỌC A\"\n                },\n                {\n                    \"code\": \"COMMON_ADDRESS\",\n                    \"value\": \"TP. HỒ CHÍ MINH\"\n                },\n                {\n                    \"code\": \"VEHICLE_INSURANCE_MOTOR_TYPE\",\n                    \"value\": \"clmekqlfl000008l02usz3hwc\"\n                },\n                {\n                    \"code\": \"VEHICLE_INSURANCE_VIN_NUMBER\",\n                    \"value\": \"11112222\"\n                },\n                {\n                    \"code\": \"VEHICLE_INSURANCE_REGISTRATION_PLATE\",\n                    \"value\": \"59N-12345\"\n                }\n            ]\n        }\n    },\n    \"query\": \"mutation insurance_issue_policy($input: InsuranceIssuePolicyInput!) {\\n  insurance_issue_policy(input: $input) {\\n    status\\n    error_message\\n    policy {\\n      transaction {\\n        id\\n        created_at\\n        updated_at\\n        user_id\\n        policy_id\\n        amount\\n        status\\n        payment_method\\n        transfer_message\\n        expired_at\\n        reference_id\\n        reference_code\\n        paid_at\\n        policy_name\\n        __typename\\n      }\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_policies (cert list)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"setTimeout(function(){}, 10000);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"// Validate response structure",
+											"pm.test(\"Response has correct structure\", function() {",
+											"    const response = pm.response.json();",
+											"    ",
+											"    // Check top-level structure",
+											"    pm.expect(response).to.have.property('data');",
+											"    pm.expect(response.data).to.have.property('insurance_policies');",
+											"    pm.expect(response.data.insurance_policies).to.have.property('nodes').that.is.an('array');",
+											"    pm.expect(response.data.insurance_policies).to.have.property('page_info');",
+											"    pm.expect(response.data.insurance_policies).to.have.property('__typename', 'InsurancePolicyConnection');",
+											"});",
+											"",
+											"// Validate policy nodes structure",
+											"pm.test(\"All policy nodes have required fields\", function() {",
+											"    const policies = pm.response.json().data.insurance_policies.nodes;",
+											"    const policyId = policies[0].id",
+											"    pm.collectionVariables.set(\"policyId\", policyId);",
+											"    ",
+											"    policies.forEach(policy => {",
+											"        // Required fields check",
+											"        pm.expect(policy).to.have.all.keys(",
+											"            'id', 'created_at', 'updated_at', 'user_id', 'plan_id', 'insurer_id',",
+											"            'policy_number', 'serial_number', 'premium', 'document_url', 'status',",
+											"            'email', 'effected_at', 'expired_at', 'extra_info_list', 'plan', '__typename'",
+											"        );",
+											"        ",
+											"        // Type checks",
+											"        pm.expect(policy.id).to.be.a('string');",
+											"        pm.expect(policy.created_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+											"        pm.expect(policy.premium).to.be.a('number');",
+											"        pm.expect(policy.status).to.be.oneOf(['SUCCESS', 'PROCESSING', 'FAILED']);",
+											"        ",
+											"        // Conditional checks based on status",
+											"        if (policy.status === 'SUCCESS') {",
+											"            pm.expect(policy.policy_number).to.be.a('string').that.is.not.empty;",
+											"            pm.expect(policy.serial_number).to.be.a('string').that.is.not.empty;",
+											"            pm.expect(policy.document_url).to.be.a('string').that.is.not.empty;",
+											"            pm.expect(policy.document_url).to.include('http');",
+											"        }",
+											"    });",
+											"});",
+											"",
+											"// Validate extra_info_list items",
+											"pm.test(\"Extra info list items have correct structure\", function() {",
+											"    const policies = pm.response.json().data.insurance_policies.nodes;",
+											"    ",
+											"    policies.forEach(policy => {",
+											"        policy.extra_info_list.forEach(extraInfo => {",
+											"            pm.expect(extraInfo).to.have.all.keys(",
+											"                'id', 'created_at', 'updated_at', 'code', 'value', ",
+											"                'data_type', 'metadata_value', '__typename'",
+											"            );",
+											"            ",
+											"        });",
+											"    });",
+											"});",
+											"",
+											"// Validate plan information",
+											"pm.test(\"Plan information is valid\", function() {",
+											"    const policies = pm.response.json().data.insurance_policies.nodes;",
+											"    ",
+											"    policies.forEach(policy => {",
+											"        const plan = policy.plan;",
+											"        pm.expect(plan).to.have.all.keys(",
+											"            'id', 'created_at', 'updated_at', 'type_id', 'name', ",
+											"            'description', 'status', 'insurers', 'policy_type', '__typename'",
+											"        );",
+											"        ",
+											"        pm.expect(plan.insurers).to.be.an('array');",
+											"        plan.insurers.forEach(insurer => {",
+											"            pm.expect(insurer.insurer).to.have.property('code', 'PVI');",
+											"        });",
+											"    });",
+											"});",
+											"",
+											"// Validate date ranges",
+											"pm.test(\"Policy date ranges are valid\", function() {",
+											"    const policies = pm.response.json().data.insurance_policies.nodes;",
+											"    ",
+											"    policies.forEach(policy => {",
+											"        const effected = new Date(policy.effected_at);",
+											"        const expired = new Date(policy.expired_at);",
+											"        ",
+											"        pm.expect(expired > effected, `Policy ${policy.id} has invalid date range`).to.be.true;",
+											"        ",
+											"        // Check if expired date is approximately 1 year after effected date",
+											"        const oneYearMs = 365 * 24 * 60 * 60 * 1000;",
+											"        const diff = expired - effected;",
+											"        pm.expect(diff).to.be.closeTo(oneYearMs, 24 * 60 * 60 * 1000); // Allow ±1 day variance",
+											"    });",
+											"});",
+											"",
+											"// Validate page info",
+											"pm.test(\"Page info is valid\", function() {",
+											"    const pageInfo = pm.response.json().data.insurance_policies.page_info;",
+											"    ",
+											"    pm.expect(pageInfo).to.have.all.keys(",
+											"        'start_cursor', 'end_cursor', 'has_next_page', 'has_previous_page', '__typename'",
+											"    );",
+											"    ",
+											"    pm.expect(pageInfo.start_cursor).to.be.a('string');",
+											"    pm.expect(pageInfo.has_next_page).to.be.a('boolean');",
+											"});",
+											"",
+											"// Validate test data flags",
+											"pm.test(\"Check for test data patterns\", function() {",
+											"    const policies = pm.response.json().data.insurance_policies.nodes;",
+											"    ",
+											"    policies.forEach(policy => {",
+											"        policy.extra_info_list.forEach(extraInfo => {",
+											"            if (extraInfo.code.includes('REGISTRATION_PLATE') || extraInfo.code.includes('VIN_NUMBER')) {",
+											"                const value = extraInfo.value.toString();",
+											"                if (value.match(/TEST|temp|dummy|sample|12345|00000/i)) {",
+											"                    console.warn(`Potential test data found in policy ${policy.id}: ${extraInfo.code}=${value}`);",
+											"                }",
+											"            }",
+											"        });",
+											"    });",
+											"});",
+											"",
+											"// Validate premium amounts against plan types",
+											"pm.test(\"Premium amounts match expected values\", function() {",
+											"    const policies = pm.response.json().data.insurance_policies.nodes;",
+											"    ",
+											"    policies.forEach(policy => {",
+											"        if (policy.plan.name.includes('xe máy') || policy.plan.name.includes('MOTO')) {",
+											"            pm.expect(policy.premium).to.be.oneOf([66000, 60500]);",
+											"        } else if (policy.plan.name.includes('ô tô') || policy.plan.name.includes('AUTO')) {",
+											"            pm.expect(policy.premium).to.equal(480700);",
+											"        }",
+											"    });",
+											"",
+											"        console.log(\"✅ Validate insurance_policies response is valid!\");",
+											"});",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policies\",\n    \"variables\": {\n        \"reverse\": true,\n        \"sort_keys\": \"CREATED_AT\",\n        \"query\": \"status:SUCCESS,PROCESSING,EXPIRED,CANCELLED\"\n    },\n    \"query\": \"query insurance_policies($after: String, $before: String, $first: Int, $last: Int, $reverse: Boolean, $sort_keys: InsurancePolicySortKeys, $query: String) {\\n  insurance_policies(\\n    after: $after\\n    before: $before\\n    first: $first\\n    last: $last\\n    reverse: $reverse\\n    sort_keys: $sort_keys\\n    query: $query\\n  ) {\\n    nodes {\\n      id\\n      created_at\\n      updated_at\\n      user_id\\n      plan_id\\n      insurer_id\\n      policy_number\\n      serial_number\\n      premium\\n      document_url\\n      status\\n      email\\n      effected_at\\n      expired_at\\n      extra_info_list {\\n        id\\n        created_at\\n        updated_at\\n        code\\n        value\\n        data_type\\n        metadata_value\\n        __typename\\n      }\\n      plan {\\n        id\\n        created_at\\n        updated_at\\n        type_id\\n        name\\n        description\\n        status\\n        insurers {\\n          insurer_id\\n          premium\\n          insurer {\\n            id\\n            created_at\\n            updated_at\\n            code\\n            name\\n            status\\n            description\\n            logo\\n            __typename\\n          }\\n          __typename\\n        }\\n        policy_type {\\n          id\\n          created_at\\n          updated_at\\n          name\\n          code\\n          icon\\n          status\\n          __typename\\n        }\\n        __typename\\n      }\\n      __typename\\n    }\\n    page_info {\\n      start_cursor\\n      end_cursor\\n      has_next_page\\n      has_previous_page\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_policy (cert detail)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"//setTimeout(function(){}, 10000);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"// ===== STRUCTURE VALIDATION =====",
+											"pm.test(\"Response has correct structure\", function() {",
+											"    const response = pm.response.json();",
+											"    pm.expect(response).to.be.an('object');",
+											"    pm.expect(response).to.have.property('data');",
+											"    pm.expect(response.data).to.have.property('insurance_policy');",
+											"});",
+											"",
+											"// ===== POLICY OBJECT VALIDATION =====",
+											"pm.test(\"Policy object has all required fields\", function() {",
+											"    const policy = pm.response.json().data.insurance_policy;",
+											"    ",
+											"    // Top-level fields",
+											"    const requiredFields = [",
+											"        'id', 'created_at', 'updated_at', 'user_id', 'plan_id', 'insurer_id',",
+											"        'policy_number', 'serial_number', 'premium', 'document_url', 'status',",
+											"        'email', 'effected_at', 'expired_at', 'extra_info_list', 'plan',",
+											"        'transaction', '__typename'",
+											"    ];",
+											"    ",
+											"    pm.expect(policy).to.be.an('object').that.has.all.keys(requiredFields);",
+											"    ",
+											"    // Field type validation",
+											"    pm.expect(policy.id).to.be.a('string').that.is.not.empty;",
+											"    pm.expect(policy.created_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+											"    //pm.expect(policy.policy_number).to.be.a('string').that.is.not.empty;",
+											"    pm.expect(policy.premium).to.be.a('number').that.is.above(0);",
+											"    //pm.expect(policy.status).to.equal('SUCCESS');",
+											"    pm.expect(policy.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);",
+											"    pm.expect(policy.__typename).to.equal('InsurancePolicy');",
+											"});",
+											"",
+											"// ===== DATE VALIDATION =====",
+											"pm.test(\"Policy dates are valid\", function() {",
+											"    const policy = pm.response.json().data.insurance_policy;",
+											"    const effected = new Date(policy.effected_at);",
+											"    const expired = new Date(policy.expired_at);",
+											"    ",
+											"    // Check date formats",
+											"    pm.expect(policy.effected_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+											"    pm.expect(policy.expired_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+											"    ",
+											"    // Check date range (should be 1 year)",
+											"    const oneYearMs = 365 * 24 * 60 * 60 * 1000;",
+											"    const diff = expired - effected;",
+											"    pm.expect(diff).to.be.closeTo(oneYearMs, 24 * 60 * 60 * 1000); // Allow ±1 day",
+											"});",
+											"",
+											"// ===== DOCUMENT URL VALIDATION =====",
+											"// pm.test(\"Document URL is valid\", function() {",
+											"//     const policy = pm.response.json().data.insurance_policy;",
+											"//     pm.expect(policy.document_url).to.be.a('string').that.is.not.empty;",
+											"//     pm.expect(policy.document_url).to.include('http');",
+											"//     pm.expect(policy.document_url).to.include(policy.policy_number);",
+											"// });",
+											"",
+											"// ===== EXTRA INFO LIST VALIDATION =====",
+											"pm.test(\"Extra info list has required fields\", function() {",
+											"    const extraInfoList = pm.response.json().data.insurance_policy.extra_info_list;",
+											"    ",
+											"    pm.expect(extraInfoList).to.be.an('array').that.is.not.empty;",
+											"    ",
+											"    extraInfoList.forEach(item => {",
+											"        pm.expect(item).to.have.all.keys(",
+											"            'id', 'created_at', 'updated_at', 'code', 'value',",
+											"            'data_type', 'metadata_value', '__typename'",
+											"        );",
+											"        ",
+											"        ",
+											"        // Validate metadata fields",
+											"        if (item.data_type === 'METADATA') {",
+											"            pm.expect(item.metadata_value).to.not.be.null;",
+											"        }",
+											"    });",
+											"});",
+											"",
+											"// ===== PLAN OBJECT VALIDATION =====",
+											"pm.test(\"Plan object is valid\", function() {",
+											"    const plan = pm.response.json().data.insurance_policy.plan;",
+											"    ",
+											"    pm.expect(plan).to.have.all.keys(",
+											"        'id', 'created_at', 'updated_at', 'type_id', 'name',",
+											"        'description', 'status', 'insurers', 'policy_type', '__typename'",
+											"    );",
+											"    ",
+											"    // Validate insurer",
+											"    pm.expect(plan.insurers).to.be.an('array').that.is.not.empty;",
+											"    plan.insurers.forEach(insurer => {",
+											"        pm.expect(insurer.insurer.code).to.equal('PVI');",
+											"        pm.expect(insurer.premium).to.equal(60500);",
+											"    });",
+											"    ",
+											"    // Validate policy type",
+											"    pm.expect(plan.policy_type.code).to.equal('IMB');",
+											"    pm.expect(plan.policy_type.name).to.equal('Bảo hiểm xe máy');",
+											"});",
+											"",
+											"// ===== TRANSACTION VALIDATION =====",
+											"pm.test(\"Transaction object is valid\", function() {",
+											"    const transaction = pm.response.json().data.insurance_policy.transaction;",
+											"    pm.expect(transaction).to.have.all.keys('id', '__typename');",
+											"    pm.expect(transaction.__typename).to.equal('InsuranceTransaction');",
+											"});",
+											"",
+											"// ===== BUSINESS LOGIC VALIDATION =====",
+											"pm.test(\"Required extra info fields are present\", function() {",
+											"    const extraInfoList = pm.response.json().data.insurance_policy.extra_info_list;",
+											"    const requiredFields = [",
+											"        'VEHICLE_INSURANCE_MOTOR_TYPE',",
+											"        'VEHCILE_INSURANCE_DRIVER_NAME',",
+											"        'VEHICLE_INSURANCE_REGISTRATION_PLATE',",
+											"        'COMMON_ADDRESS',",
+											"        'VEHICLE_INSURANCE_VIN_NUMBER'",
+											"    ];",
+											"    ",
+											"    requiredFields.forEach(field => {",
+											"        const exists = extraInfoList.some(item => item.code === field);",
+											"        pm.expect(exists, `Required field ${field} missing`).to.be.true;",
+											"    });",
+											"});",
+											"",
+											"",
+											"",
+											"// ===== METADATA VALUE VALIDATION =====",
+											"pm.test(\"Metadata values are valid\", function() {",
+											"    const extraInfoList = pm.response.json().data.insurance_policy.extra_info_list;",
+											"    const metadataItems = extraInfoList.filter(item => item.data_type === 'METADATA');",
+											"    ",
+											"    metadataItems.forEach(item => {",
+											"        pm.expect(item.metadata_value).to.not.be.null;",
+											"        ",
+											"        // Validate specific metadata values",
+											"        // if (item.code === 'VEHICLE_INSURANCE_AUTO_USAGE_PURPOSE') {",
+											"        //     pm.expect(item.metadata_value).to.equal('Xe ô tô không kinh doanh vận tải');",
+											"        // }",
+											"        if (item.code === 'VEHICLE_INSURANCE_MOTOR_TYPE') {",
+											"            pm.expect(item.metadata_value).to.equal('Xe > 50 cc');",
+											"        }",
+											"    });",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policy\",\n    \"variables\": {\n        \"policy_id\": \"{{policyId}}\"\n    },\n    \"query\": \"query insurance_policy($policy_id: ID!) {\\n  insurance_policy(policy_id: $policy_id) {\\n    ... on InsurancePolicy {\\n      id\\n      created_at\\n      updated_at\\n      user_id\\n      plan_id\\n      insurer_id\\n      policy_number\\n      serial_number\\n      premium\\n      document_url\\n      status\\n      email\\n      effected_at\\n      expired_at\\n      extra_info_list {\\n        id\\n        created_at\\n        updated_at\\n        code\\n        value\\n        data_type\\n        metadata_value\\n        __typename\\n      }\\n      plan {\\n        id\\n        created_at\\n        updated_at\\n        type_id\\n        name\\n        description\\n        status\\n        insurers {\\n          insurer_id\\n          premium\\n          insurer {\\n            id\\n            created_at\\n            updated_at\\n            code\\n            name\\n            status\\n            description\\n            logo\\n            __typename\\n          }\\n          __typename\\n        }\\n        policy_type {\\n          id\\n          created_at\\n          updated_at\\n          name\\n          code\\n          icon\\n          status\\n          __typename\\n        }\\n        __typename\\n      }\\n      transaction {\\n        id\\n        __typename\\n      }\\n      __typename\\n    }\\n    ... on InsurancePolicyNotFoundError {\\n      error_message\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auto",
+					"item": [
+						{
+							"name": "insurance_policy_plan_policy_extra_info_list (Auto)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ===== BASIC RESPONSE VALIDATION =====",
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"// ===== STRUCTURE VALIDATION =====",
+											"pm.test(\"Response has correct structure\", function() {",
+											"    const response = pm.response.json();",
+											"    pm.expect(response).to.be.an('object');",
+											"    pm.expect(response).to.have.property('data');",
+											"    pm.expect(response.data).to.have.property('insurance_policy_plan_policy_extra_info_list').that.is.an('array');",
+											"});",
+											"",
+											"// ===== FIELD-LEVEL VALIDATION =====",
+											"// Validate specific field values",
+											"pm.test(\"Validate specific field values and requirements\", function() {",
+											"    const items = pm.response.json().data.insurance_policy_plan_policy_extra_info_list;",
+											"    const autoPlanId = items[0].plan_id;",
+											"    pm.collectionVariables.set(\"autoPlanId\", autoPlanId);",
+											"    const autoInsureId = items[0].insurer_id;",
+											"    pm.collectionVariables.set(\"autoInsureId\", autoInsureId);",
+											"    ",
+											"    items.forEach(item => {",
+											"        // Top-level fields",
+											"        pm.expect(item).to.be.an('object').that.has.all.keys(",
+											"            'id', 'plan_id', 'insurer_id', 'is_required', ",
+											"            'is_multiple', 'extra_info', '__typename'",
+											"        );",
+											"        pm.expect(item.id).to.be.a('string').that.is.not.empty;",
+											"        pm.expect(item.plan_id).to.be.a('string').that.is.not.empty;",
+											"        pm.expect(item.insurer_id).to.be.a('string').that.is.not.empty;",
+											"        pm.expect(item.is_required).to.be.a('boolean');",
+											"        pm.expect(item.is_multiple).to.be.a('boolean');",
+											"        pm.expect(item.__typename).to.equal('InsurancePolicyPlanPolicyExtraInfo');",
+											"        ",
+											"        // Extra info object validation",
+											"        pm.expect(item.extra_info).to.be.an('object').that.has.all.keys(",
+											"            'id', 'created_at', 'updated_at', 'code', 'data_type', '__typename'",
+											"        );",
+											"        pm.expect(item.extra_info.id).to.be.a('string').that.is.not.empty;",
+											"        pm.expect(item.extra_info.code).to.be.a('string').that.is.not.empty;",
+											"        pm.expect(item.extra_info.data_type).to.be.a('string').that.is.oneOf(['STRING', 'METADATA']);",
+											"        pm.expect(item.extra_info.__typename).to.equal('InsurancePolicyExtraInfo');",
+											"        ",
+											"        // Timestamp validation",
+											"        pm.expect(item.extra_info.created_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+											"        pm.expect(item.extra_info.updated_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+											"    });",
+											"});",
+											"",
+											"// ===== BUSINESS LOGIC VALIDATION =====",
+											"pm.test(\"Validate required fields for auto insurance plan\", function() {",
+											"    const items = pm.response.json().data.insurance_policy_plan_policy_extra_info_list;",
+											"    ",
+											"    const requiredFields = [",
+											"        //'VEHCILE_INSURANCE_DRIVER_NAME',",
+											"        'COMMON_ADDRESS',",
+											"        'VEHICLE_INSURANCE_VEHICLE_BRAND',",
+											"        'VEHICLE_INSURANCE_AUTO_USAGE_PURPOSE',",
+											"        'VEHICLE_INSURANCE_AUTO_SLOT',",
+											"        'VEHICLE_INSURANCE_VIN_NUMBER'",
+											"    ];",
+											"    ",
+											"    requiredFields.forEach(fieldCode => {",
+											"        const field = items.find(item => item.extra_info.code === fieldCode);",
+											"        pm.expect(field, `Required field ${fieldCode} missing`).to.exist;",
+											"        pm.expect(field.is_required, `${fieldCode} should be required`).to.be.true;",
+											"    });",
+											"});",
+											"",
+											"pm.test(\"Validate optional fields for auto insurance plan\", function() {",
+											"    const items = pm.response.json().data.insurance_policy_plan_policy_extra_info_list;",
+											"    ",
+											"    const optionalFields = [",
+											"        'VEHICLE_INSURANCE_REGISTRATION_PLATE',",
+											"        'VEHICLE_INSURANCE_ENGINE_NUMBER',",
+											"        'VEHICLE_INSURANCE_AUTO_TYPE'",
+											"    ];",
+											"    ",
+											"    optionalFields.forEach(fieldCode => {",
+											"        const field = items.find(item => item.extra_info.code === fieldCode);",
+											"        pm.expect(field, `Optional field ${fieldCode} missing`).to.exist;",
+											"        pm.expect(field.is_required, `${fieldCode} should be optional`).to.be.false;",
+											"    });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate all items belong to same plan and insurer\", function() {",
+											"    const items = pm.response.json().data.insurance_policy_plan_policy_extra_info_list;",
+											"    const expectedPlanId = \"clm8w62m0000108mmg0vg92n6\";",
+											"    const expectedInsurerId = \"clm8vpju1000008idhiaxd0uz\";",
+											"    ",
+											"    items.forEach(item => {",
+											"        pm.expect(item.plan_id).to.equal(expectedPlanId);",
+											"        pm.expect(item.insurer_id).to.equal(expectedInsurerId);",
+											"    });",
+											"});",
+											"",
+											"// ===== METADATA FIELD VALIDATION =====",
+											"pm.test(\"Validate METADATA type fields\", function() {",
+											"    const items = pm.response.json().data.insurance_policy_plan_policy_extra_info_list;",
+											"    const metadataFields = items.filter(item => ",
+											"        item.extra_info.data_type === 'METADATA'",
+											"    );",
+											"    ",
+											"    const expectedMetadataFields = [",
+											"        'VEHICLE_INSURANCE_AUTO_USAGE_PURPOSE',",
+											"        'VEHICLE_INSURANCE_AUTO_SLOT',",
+											"        'VEHICLE_INSURANCE_AUTO_TYPE'",
+											"    ];",
+											"    ",
+											"    metadataFields.forEach(field => {",
+											"        pm.expect(expectedMetadataFields).to.include(field.extra_info.code);",
+											"    });",
+											"});",
+											"",
+											"// ===== DUPLICATE CHECK =====",
+											"pm.test(\"Check for duplicate field codes\", function() {",
+											"    const items = pm.response.json().data.insurance_policy_plan_policy_extra_info_list;",
+											"    const fieldCodes = items.map(item => item.extra_info.code);",
+											"    const uniqueCodes = [...new Set(fieldCodes)];",
+											"    ",
+											"    pm.expect(fieldCodes.length).to.equal(uniqueCodes.length, ",
+											"        \"Duplicate field codes found in response\");",
+											"});",
+											"",
+											"// ===== CROSS-VALIDATION WITH PREVIOUS RESPONSE =====",
+											"pm.test(\"Consistency check with previous motorcycle plan response\", function() {",
+											"    const currentItems = pm.response.json().data.insurance_policy_plan_policy_extra_info_list;",
+											"    const previousResponse = pm.environment.get(\"previous_motorcycle_plan_response\");",
+											"    ",
+											"    if (previousResponse) {",
+											"        const previousItems = JSON.parse(previousResponse).data.insurance_policy_plan_policy_extra_info_list;",
+											"        ",
+											"        // Check that common fields exist in both plans",
+											"        const commonFields = [",
+											"            'VEHICLE_INSURANCE_DRIVER_NAME',",
+											"            'COMMON_ADDRESS',",
+											"            'VEHICLE_INSURANCE_VIN_NUMBER'",
+											"        ];",
+											"        ",
+											"        commonFields.forEach(fieldCode => {",
+											"            const inCurrent = currentItems.some(item => item.extra_info.code === fieldCode);",
+											"            const inPrevious = previousItems.some(item => item.extra_info.code === fieldCode);",
+											"            pm.expect(inCurrent && inPrevious, ",
+											"                `Common field ${fieldCode} missing in one of the plans`).to.be.true;",
+											"        });",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policy_plan_policy_extra_info_list\",\n    \"variables\": {\n        \"plan_id\": \"clm8w62m0000108mmg0vg92n6\",\n        \"insurer_id\": \"clm8vpju1000008idhiaxd0uz\"\n    },\n    \"query\": \"query insurance_policy_plan_policy_extra_info_list($plan_id: ID!, $insurer_id: ID!) {\\n  insurance_policy_plan_policy_extra_info_list(\\n    plan_id: $plan_id\\n    insurer_id: $insurer_id\\n  ) {\\n    id\\n    plan_id\\n    insurer_id\\n    is_required\\n    is_multiple\\n    extra_info {\\n      id\\n      created_at\\n      updated_at\\n      code\\n      data_type\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_policy_extra_info_metadata_list (Auto#1)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"✅ Validate insurance_policy_extra_info_metadata_list response\", function () {",
+											"    const jsonData = pm.response.json();",
+											"",
+											"    // Ensure the list exists and is an array",
+											"    pm.expect(jsonData).to.have.nested.property(\"data.insurance_policy_extra_info_metadata_list\").that.is.an(\"array\");",
+											"",
+											"    const metadataList = jsonData.data.insurance_policy_extra_info_metadata_list;",
+											"",
+											"    // Optional: Ensure the array is not empty",
+											"    pm.expect(metadataList.length).to.be.above(0);",
+											"",
+											"    // Validate each item in the array",
+											"    metadataList.forEach((item) => {",
+											"        pm.expect(item).to.have.property(\"id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"extra_info_id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"parent_id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"name\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"__typename\", \"InsurancePolicyExtraInfoMetadata\");",
+											"    });",
+											"",
+											"    console.log(\"✅ Validate AUTO insurance_policy_extra_info_metadata_list response is valid!\");",
+											"});",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policy_extra_info_metadata_list\",\n    \"variables\": {\n        \"extra_info_id\": \"cln3clq07000c08jo8o4g0us4\"\n    },\n    \"query\": \"query insurance_policy_extra_info_metadata_list($extra_info_id: ID!, $parent_id: ID) {\\n  insurance_policy_extra_info_metadata_list(\\n    extra_info_id: $extra_info_id\\n    parent_id: $parent_id\\n  ) {\\n    id\\n    extra_info_id\\n    parent_id\\n    name\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_policy_extra_info_metadata_list (Auto#2)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"✅ Validate insurance_policy_extra_info_metadata_list response\", function () {",
+											"    const jsonData = pm.response.json();",
+											"",
+											"    // Ensure the list exists and is an array",
+											"    pm.expect(jsonData).to.have.nested.property(\"data.insurance_policy_extra_info_metadata_list\").that.is.an(\"array\");",
+											"",
+											"    const metadataList = jsonData.data.insurance_policy_extra_info_metadata_list;",
+											"",
+											"    // Optional: Ensure the array is not empty",
+											"    pm.expect(metadataList.length).to.be.above(0);",
+											"",
+											"    // Validate each item in the array",
+											"    metadataList.forEach((item) => {",
+											"        pm.expect(item).to.have.property(\"id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"extra_info_id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"parent_id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"name\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"__typename\", \"InsurancePolicyExtraInfoMetadata\");",
+											"    });",
+											"",
+											"    console.log(\"✅ Validate AUTO insurance_policy_extra_info_metadata_list response is valid!\");",
+											"});",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policy_extra_info_metadata_list\",\n    \"variables\": {\n        \"extra_info_id\": \"cln3boeas000908mh50vj2n4b\"\n    },\n    \"query\": \"query insurance_policy_extra_info_metadata_list($extra_info_id: ID!, $parent_id: ID) {\\n  insurance_policy_extra_info_metadata_list(\\n    extra_info_id: $extra_info_id\\n    parent_id: $parent_id\\n  ) {\\n    id\\n    extra_info_id\\n    parent_id\\n    name\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_policy_extra_info_metadata_list (Auto#3)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"✅ Validate insurance_policy_extra_info_metadata_list response\", function () {",
+											"    const jsonData = pm.response.json();",
+											"",
+											"    // Ensure the list exists and is an array",
+											"    pm.expect(jsonData).to.have.nested.property(\"data.insurance_policy_extra_info_metadata_list\").that.is.an(\"array\");",
+											"",
+											"    const metadataList = jsonData.data.insurance_policy_extra_info_metadata_list;",
+											"",
+											"    // Optional: Ensure the array is not empty",
+											"    pm.expect(metadataList.length).to.be.above(0);",
+											"",
+											"    // Validate each item in the array",
+											"    metadataList.forEach((item) => {",
+											"        pm.expect(item).to.have.property(\"id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"extra_info_id\").that.is.a(\"string\");",
+											"        //pm.expect(item).to.have.property(\"parent_id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"name\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"__typename\", \"InsurancePolicyExtraInfoMetadata\");",
+											"    });",
+											"",
+											"    console.log(\"✅ Validate AUTO insurance_policy_extra_info_metadata_list response is valid!\");",
+											"});",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policy_extra_info_metadata_list\",\n    \"variables\": {\n        \"extra_info_id\": \"cln3bnpgz000808mh73z5fhmg\"\n    },\n    \"query\": \"query insurance_policy_extra_info_metadata_list($extra_info_id: ID!, $parent_id: ID) {\\n  insurance_policy_extra_info_metadata_list(\\n    extra_info_id: $extra_info_id\\n    parent_id: $parent_id\\n  ) {\\n    id\\n    extra_info_id\\n    parent_id\\n    name\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_policy_extra_info_metadata_list (Auto - parent_id)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"✅ Validate insurance_policy_extra_info_metadata_list response\", function () {",
+											"    const jsonData = pm.response.json();",
+											"",
+											"    // Ensure the list exists and is an array",
+											"    pm.expect(jsonData).to.have.nested.property(\"data.insurance_policy_extra_info_metadata_list\").that.is.an(\"array\");",
+											"",
+											"    const metadataList = jsonData.data.insurance_policy_extra_info_metadata_list;",
+											"",
+											"    // Optional: Ensure the array is not empty",
+											"    pm.expect(metadataList.length).to.be.above(0);",
+											"",
+											"    // Validate each item in the array",
+											"    metadataList.forEach((item) => {",
+											"        pm.expect(item).to.have.property(\"id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"extra_info_id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"parent_id\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"name\").that.is.a(\"string\");",
+											"        pm.expect(item).to.have.property(\"__typename\", \"InsurancePolicyExtraInfoMetadata\");",
+											"    });",
+											"",
+											"    console.log(\"✅ Validate AUTO Parent insurance_policy_extra_info_metadata_list response is valid!\");",
+											"});",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policy_extra_info_metadata_list\",\n    \"variables\": {\n        \"extra_info_id\": \"cln3clq07000c08jo8o4g0us4\",\n        \"parent_id\": \"clmh9rfa4000008mi6wd85n4u\"\n    },\n    \"query\": \"query insurance_policy_extra_info_metadata_list($extra_info_id: ID!, $parent_id: ID) {\\n  insurance_policy_extra_info_metadata_list(\\n    extra_info_id: $extra_info_id\\n    parent_id: $parent_id\\n  ) {\\n    id\\n    extra_info_id\\n    parent_id\\n    name\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_calculate_premium (Auto)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Set effectedAt",
+											"const now = new Date();",
+											"const endOfDay = new Date(",
+											"    now.getFullYear(),",
+											"    now.getMonth(),",
+											"    now.getDate(),",
+											"    24,  // 17:00 (5 PM UTC)",
+											"    0,   // 0 minutes",
+											"    0,   // 0 seconds",
+											"    0    // 0 milliseconds",
+											");",
+											"",
+											"// Format as ISO 8601 with milliseconds",
+											"const effectedAt = endOfDay.toISOString();",
+											"",
+											"// Get or initialize request body",
+											"let requestBody;",
+											"try {",
+											"    requestBody = JSON.parse(pm.request.body.raw);",
+											"} catch (e) {",
+											"    requestBody = {};",
+											"}",
+											"",
+											"// Update effected_at field",
+											"requestBody.variables.input.effected_at = effectedAt;",
+											"",
+											"// Set the modified body back to the request",
+											"pm.request.body.raw = JSON.stringify(requestBody, null, 2);",
+											"",
+											"// Log for debugging",
+											"console.log(\"Set effected_at to end of day:\", effectedAt);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"✅ Validate insurance_calculate_premium response\", function () {",
+											"    const jsonData = pm.response.json();",
+											"",
+											"    // Check the structure and presence of expected properties",
+											"    pm.expect(jsonData).to.have.nested.property(\"data.insurance_calculate_premium\");",
+											"",
+											"    // Validate that the premium is a number and >= 0",
+											"    const premium = jsonData.data.insurance_calculate_premium;",
+											"    pm.expect(premium).to.be.a(\"number\");",
+											"    pm.expect(premium).to.be.equal(480700);",
+											"",
+											"    console.log(\"✅ Validate AUTO insurance_calculate_premium response is valid!\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_calculate_premium\",\n    \"variables\": {\n        \"input\": {\n            \"plan_id\": \"{{autoPlanId}}\",\n            \"insurer_id\": \"{{autoInsureId}}\",\n            \"duration_year\": 1,\n            \"extra_info_list\": [\n                {\n                    \"code\": \"VEHICLE_INSURANCE_AUTO_USAGE_PURPOSE\",\n                    \"value\": \"clmh9rfa4000008mi6wd85n4u\"\n                },\n                {\n                    \"code\": \"VEHICLE_INSURANCE_AUTO_SLOT\",\n                    \"value\": \"clmokjhdn0002ffpmbnw8fn3p\"\n                }\n            ],\n            \"effected_at\": \"{{effectedAt}}\"\n        }\n    },\n    \"query\": \"query insurance_calculate_premium($input: InsuranceCalculatePremiumInput!) {\\n  insurance_calculate_premium(input: $input)\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_issue_policy (Buy Auto)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"//Set SHA256 x-request-signature and x-request-id",
+											"const requestId = require('uuid').v4();",
+											"// const requestId = 'a153a69b-90a7-4ecc-b09f-2727e125508d'",
+											"const secret = pm.collectionVariables.get('requestSecret');",
+											"const message = secret+requestId;",
+											"const signature =  CryptoJS.SHA256(message).toString();",
+											"pm.request.headers.add({key:'x-request-id',value: requestId});",
+											"pm.request.headers.add({key:'x-request-signature', value:signature})",
+											"",
+											"",
+											"",
+											"// Set effectedAt",
+											"const now = new Date();",
+											"const endOfDay = new Date(",
+											"    now.getFullYear(),",
+											"    now.getMonth(),",
+											"    now.getDate(),",
+											"    24,  // 17:00 (5 PM UTC)",
+											"    0,   // 0 minutes",
+											"    0,   // 0 seconds",
+											"    0    // 0 milliseconds",
+											");",
+											"",
+											"// Format as ISO 8601 with milliseconds",
+											"const effectedAt = endOfDay.toISOString();",
+											"",
+											"// Get or initialize request body",
+											"let requestBody;",
+											"try {",
+											"    requestBody = JSON.parse(pm.request.body.raw);",
+											"} catch (e) {",
+											"    requestBody = {};",
+											"}",
+											"",
+											"// Update effected_at field",
+											"requestBody.variables.input.effected_at = effectedAt;",
+											"",
+											"// Set the modified body back to the request",
+											"pm.request.body.raw = JSON.stringify(requestBody, null, 2);",
+											"",
+											"// Log for debugging",
+											"console.log(\"Set effected_at to end of day:\", effectedAt);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Basic response validation",
+											"pm.test(\"Status code is 200\", function() {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response has valid JSON body\", function() {",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"// Parse the response",
+											"const response = pm.response.json();",
+											"",
+											"// Validate main structure",
+											"pm.test(\"Response has correct structure\", function() {",
+											"    pm.expect(response).to.be.an('object');",
+											"    pm.expect(response).to.have.property('data');",
+											"    pm.expect(response.data).to.have.property('insurance_issue_policy');",
+											"});",
+											"",
+											"const result = response.data.insurance_issue_policy;",
+											"",
+											"// Validate issue policy result",
+											"pm.test(\"Policy issuance result is valid\", function() {",
+											"    pm.expect(result).to.have.all.keys(",
+											"        'status',",
+											"        'error_message',",
+											"        'policy',",
+											"        '__typename'",
+											"    );",
+											"    pm.expect(result.status).to.equal('success');",
+											"    pm.expect(result.error_message).to.be.null;",
+											"    pm.expect(result.__typename).to.equal('InsuranceIssuePolicyResult');",
+											"});",
+											"",
+											"// Validate policy object",
+											"const policy = result.policy;",
+											"pm.test(\"Policy object is valid\", function() {",
+											"    pm.expect(policy).to.have.property('transaction').that.is.an('object');",
+											"    pm.expect(policy.__typename).to.equal('InsurancePolicy');",
+											"});",
+											"",
+											"// Validate transaction details",
+											"const transaction = policy.transaction;",
+											"pm.test(\"AUTO Transaction details are valid\", function() {",
+											"    // Required fields check",
+											"    pm.expect(transaction).to.have.all.keys(",
+											"        'id',",
+											"        'created_at',",
+											"        'updated_at',",
+											"        'user_id',",
+											"        'policy_id',",
+											"        'amount',",
+											"        'status',",
+											"        'payment_method',",
+											"        'transfer_message',",
+											"        'expired_at',",
+											"        'reference_id',",
+											"        'reference_code',",
+											"        'paid_at',",
+											"        'policy_name',",
+											"        '__typename'",
+											"    );",
+											"    ",
+											"    // Field value validation",
+											"    pm.expect(transaction.__typename).to.equal('InsuranceTransaction');",
+											"    //pm.expect(transaction.id).to.match(/^[a-z0-9]{20}$/); // ID format check",
+											"    pm.expect(new Date(transaction.created_at).toISOString()).to.equal(transaction.created_at);",
+											"    pm.expect(new Date(transaction.updated_at).toISOString()).to.equal(transaction.updated_at);",
+											"    pm.expect(transaction.user_id).to.match(/^[a-f0-9]{24}$/); // MongoDB ID format",
+											"    //pm.expect(transaction.policy_id).to.match(/^[a-z0-9]{20}$/);",
+											"    pm.expect(transaction.amount).to.be.a('number').and.to.equal(480700);",
+											"    pm.expect(transaction.status).to.equal('PENDING');",
+											"    pm.expect(transaction.payment_method).to.equal('NORMAL_FLEXIBLE_SAVINGS');",
+											"    pm.expect(transaction.policy_name).to.equal('BH bắt buộc TNDS ô tô');",
+											"    pm.expect(new Date(transaction.expired_at).toISOString()).to.equal(transaction.expired_at);",
+											"    ",
+											"    // Nullable fields",
+											"    pm.expect(transaction.reference_id).to.be.null;",
+											"    pm.expect(transaction.reference_code).to.be.null;",
+											"    pm.expect(transaction.paid_at).to.be.null;",
+											"    ",
+											"    // Policy name validation",
+											"    //pm.expect(transaction.policy_name).to.equal('BH bắt buộc TNDS xe máy');",
+											"});",
+											"",
+											"// Validate timestamps sequence",
+											"pm.test(\"Timestamps are in correct sequence\", function() {",
+											"    const createdAt = new Date(transaction.created_at);",
+											"    const updatedAt = new Date(transaction.updated_at);",
+											"    const expiredAt = new Date(transaction.expired_at);",
+											"    ",
+											"    pm.expect(createdAt.getTime()).to.equal(updatedAt.getTime()); // created_at should equal updated_at",
+											"    pm.expect(expiredAt.getTime()).to.be.greaterThan(createdAt.getTime()); // expired_at should be after created_at",
+											"});",
+											"",
+											"// Store important values for future tests",
+											"pm.test(\"Store transaction details\", function() {",
+											"    pm.collectionVariables.set(\"insurance_transaction_id\", transaction.id);",
+											"    pm.collectionVariables.set(\"insurance_policy_id\", transaction.policy_id);",
+											"    pm.collectionVariables.set(\"insurance_transfer_message\", transaction.transfer_message);",
+											"    ",
+											"    console.log(\"Stored transaction ID:\", transaction.id);",
+											"    console.log(\"Stored policy ID:\", transaction.policy_id);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}",
+										"type": "text"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-Id",
+										"value": "{{x-request-id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-Signature",
+										"value": "{{x-request-signature}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_issue_policy\",\n    \"variables\": {\n        \"input\": {\n            \"is_renew\": false,\n            \"effected_at\": \"{{effectedAt}}\",\n            \"plan_id\": \"{{autoPlanId}}\",\n            \"insurer_id\": \"{{autoInsureId}}\",\n            \"email\": \"diep.huynh@realstake.io\",\n            \"duration_year\": 1,\n            \"payment_method\": \"NORMAL_FLEXIBLE_SAVINGS\",\n            \"extra_info_list\": [\n                {\n                    \"code\": \"VEHCILE_INSURANCE_DRIVER_NAME\",\n                    \"value\": \"HUỲNH NGỌC A\"\n                },\n                {\n                    \"code\": \"COMMON_ADDRESS\",\n                    \"value\": \"TP. HỒ CHÍ MINH\"\n                },\n                {\n                    \"code\": \"VEHICLE_INSURANCE_VEHICLE_BRAND\",\n                    \"value\": \"Honda\"\n                },\n                {\n                    \"code\": \"VEHICLE_INSURANCE_AUTO_USAGE_PURPOSE\",\n                    \"value\": \"clmh9rfa4000008mi6wd85n4u\"\n                },\n                {\n                    \"code\": \"VEHICLE_INSURANCE_AUTO_TYPE\",\n                    \"value\": \"clmh9uu22000308mi2c5x7ncy\"\n                },\n                {\n                    \"code\": \"VEHICLE_INSURANCE_AUTO_SLOT\",\n                    \"value\": \"clmokjhdn0002ffpmbnw8fn3p\"\n                },\n                {\n                    \"code\": \"VEHICLE_INSURANCE_VIN_NUMBER\",\n                    \"value\": \"88889999\"\n                },\n                {\n                    \"code\": \"VEHICLE_INSURANCE_REGISTRATION_PLATE\",\n                    \"value\": \"59A-56789\"\n                }\n            ]\n        }\n    },\n    \"query\": \"mutation insurance_issue_policy($input: InsuranceIssuePolicyInput!) {\\n  insurance_issue_policy(input: $input) {\\n    status\\n    error_message\\n    policy {\\n      transaction {\\n        id\\n        created_at\\n        updated_at\\n        user_id\\n        policy_id\\n        amount\\n        status\\n        payment_method\\n        transfer_message\\n        expired_at\\n        reference_id\\n        reference_code\\n        paid_at\\n        policy_name\\n        __typename\\n      }\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_policies (cert list)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"setTimeout(function(){}, 10000);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"// Validate response structure",
+											"pm.test(\"Response has correct structure\", function() {",
+											"    const response = pm.response.json();",
+											"    ",
+											"    // Check top-level structure",
+											"    pm.expect(response).to.have.property('data');",
+											"    pm.expect(response.data).to.have.property('insurance_policies');",
+											"    pm.expect(response.data.insurance_policies).to.have.property('nodes').that.is.an('array');",
+											"    pm.expect(response.data.insurance_policies).to.have.property('page_info');",
+											"    pm.expect(response.data.insurance_policies).to.have.property('__typename', 'InsurancePolicyConnection');",
+											"});",
+											"",
+											"// Validate policy nodes structure",
+											"pm.test(\"All policy nodes have required fields\", function() {",
+											"    const policies = pm.response.json().data.insurance_policies.nodes;",
+											"    const policyId = policies[0].id",
+											"    pm.collectionVariables.set(\"policyId\", policyId);",
+											"    ",
+											"    policies.forEach(policy => {",
+											"        // Required fields check",
+											"        pm.expect(policy).to.have.all.keys(",
+											"            'id', 'created_at', 'updated_at', 'user_id', 'plan_id', 'insurer_id',",
+											"            'policy_number', 'serial_number', 'premium', 'document_url', 'status',",
+											"            'email', 'effected_at', 'expired_at', 'extra_info_list', 'plan', '__typename'",
+											"        );",
+											"        ",
+											"        // Type checks",
+											"        pm.expect(policy.id).to.be.a('string');",
+											"        pm.expect(policy.created_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+											"        pm.expect(policy.premium).to.be.a('number');",
+											"        pm.expect(policy.status).to.be.oneOf(['SUCCESS', 'PROCESSING', 'FAILED']);",
+											"        ",
+											"        // Conditional checks based on status",
+											"        if (policy.status === 'SUCCESS') {",
+											"            pm.expect(policy.policy_number).to.be.a('string').that.is.not.empty;",
+											"            pm.expect(policy.serial_number).to.be.a('string').that.is.not.empty;",
+											"            pm.expect(policy.document_url).to.be.a('string').that.is.not.empty;",
+											"            pm.expect(policy.document_url).to.include('http');",
+											"        }",
+											"    });",
+											"});",
+											"",
+											"// Validate extra_info_list items",
+											"pm.test(\"Extra info list items have correct structure\", function() {",
+											"    const policies = pm.response.json().data.insurance_policies.nodes;",
+											"    ",
+											"    policies.forEach(policy => {",
+											"        policy.extra_info_list.forEach(extraInfo => {",
+											"            pm.expect(extraInfo).to.have.all.keys(",
+											"                'id', 'created_at', 'updated_at', 'code', 'value', ",
+											"                'data_type', 'metadata_value', '__typename'",
+											"            );",
+											"            ",
+											"        });",
+											"    });",
+											"});",
+											"",
+											"// Validate plan information",
+											"pm.test(\"Plan information is valid\", function() {",
+											"    const policies = pm.response.json().data.insurance_policies.nodes;",
+											"    ",
+											"    policies.forEach(policy => {",
+											"        const plan = policy.plan;",
+											"        pm.expect(plan).to.have.all.keys(",
+											"            'id', 'created_at', 'updated_at', 'type_id', 'name', ",
+											"            'description', 'status', 'insurers', 'policy_type', '__typename'",
+											"        );",
+											"        ",
+											"        pm.expect(plan.insurers).to.be.an('array');",
+											"        plan.insurers.forEach(insurer => {",
+											"            pm.expect(insurer.insurer).to.have.property('code', 'PVI');",
+											"        });",
+											"    });",
+											"});",
+											"",
+											"// Validate date ranges",
+											"pm.test(\"Policy date ranges are valid\", function() {",
+											"    const policies = pm.response.json().data.insurance_policies.nodes;",
+											"    ",
+											"    policies.forEach(policy => {",
+											"        const effected = new Date(policy.effected_at);",
+											"        const expired = new Date(policy.expired_at);",
+											"        ",
+											"        pm.expect(expired > effected, `Policy ${policy.id} has invalid date range`).to.be.true;",
+											"        ",
+											"        // Check if expired date is approximately 1 year after effected date",
+											"        const oneYearMs = 365 * 24 * 60 * 60 * 1000;",
+											"        const diff = expired - effected;",
+											"        pm.expect(diff).to.be.closeTo(oneYearMs, 24 * 60 * 60 * 1000); // Allow ±1 day variance",
+											"    });",
+											"});",
+											"",
+											"// Validate page info",
+											"pm.test(\"Page info is valid\", function() {",
+											"    const pageInfo = pm.response.json().data.insurance_policies.page_info;",
+											"    ",
+											"    pm.expect(pageInfo).to.have.all.keys(",
+											"        'start_cursor', 'end_cursor', 'has_next_page', 'has_previous_page', '__typename'",
+											"    );",
+											"    ",
+											"    pm.expect(pageInfo.start_cursor).to.be.a('string');",
+											"    pm.expect(pageInfo.has_next_page).to.be.a('boolean');",
+											"});",
+											"",
+											"// Validate test data flags",
+											"pm.test(\"Check for test data patterns\", function() {",
+											"    const policies = pm.response.json().data.insurance_policies.nodes;",
+											"    ",
+											"    policies.forEach(policy => {",
+											"        policy.extra_info_list.forEach(extraInfo => {",
+											"            if (extraInfo.code.includes('REGISTRATION_PLATE') || extraInfo.code.includes('VIN_NUMBER')) {",
+											"                const value = extraInfo.value.toString();",
+											"                if (value.match(/TEST|temp|dummy|sample|12345|00000/i)) {",
+											"                    console.warn(`Potential test data found in policy ${policy.id}: ${extraInfo.code}=${value}`);",
+											"                }",
+											"            }",
+											"        });",
+											"    });",
+											"});",
+											"",
+											"// Validate premium amounts against plan types",
+											"pm.test(\"Premium amounts match expected values\", function() {",
+											"    const policies = pm.response.json().data.insurance_policies.nodes;",
+											"    ",
+											"    policies.forEach(policy => {",
+											"        if (policy.plan.name.includes('xe máy') || policy.plan.name.includes('MOTO')) {",
+											"            pm.expect(policy.premium).to.be.oneOf([66000, 60500]);",
+											"        } else if (policy.plan.name.includes('ô tô') || policy.plan.name.includes('AUTO')) {",
+											"            pm.expect(policy.premium).to.equal(480700);",
+											"        }",
+											"    });",
+											"",
+											"        console.log(\"✅ Validate insurance_policies response is valid!\");",
+											"});",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policies\",\n    \"variables\": {\n        \"reverse\": true,\n        \"sort_keys\": \"CREATED_AT\",\n        \"query\": \"status:SUCCESS,PROCESSING,EXPIRED,CANCELLED\"\n    },\n    \"query\": \"query insurance_policies($after: String, $before: String, $first: Int, $last: Int, $reverse: Boolean, $sort_keys: InsurancePolicySortKeys, $query: String) {\\n  insurance_policies(\\n    after: $after\\n    before: $before\\n    first: $first\\n    last: $last\\n    reverse: $reverse\\n    sort_keys: $sort_keys\\n    query: $query\\n  ) {\\n    nodes {\\n      id\\n      created_at\\n      updated_at\\n      user_id\\n      plan_id\\n      insurer_id\\n      policy_number\\n      serial_number\\n      premium\\n      document_url\\n      status\\n      email\\n      effected_at\\n      expired_at\\n      extra_info_list {\\n        id\\n        created_at\\n        updated_at\\n        code\\n        value\\n        data_type\\n        metadata_value\\n        __typename\\n      }\\n      plan {\\n        id\\n        created_at\\n        updated_at\\n        type_id\\n        name\\n        description\\n        status\\n        insurers {\\n          insurer_id\\n          premium\\n          insurer {\\n            id\\n            created_at\\n            updated_at\\n            code\\n            name\\n            status\\n            description\\n            logo\\n            __typename\\n          }\\n          __typename\\n        }\\n        policy_type {\\n          id\\n          created_at\\n          updated_at\\n          name\\n          code\\n          icon\\n          status\\n          __typename\\n        }\\n        __typename\\n      }\\n      __typename\\n    }\\n    page_info {\\n      start_cursor\\n      end_cursor\\n      has_next_page\\n      has_previous_page\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insurance_policy (cert detail)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"//setTimeout(function(){}, 60000);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"// ===== STRUCTURE VALIDATION =====",
+											"pm.test(\"Response has correct structure\", function() {",
+											"    const response = pm.response.json();",
+											"    pm.expect(response).to.be.an('object');",
+											"    pm.expect(response).to.have.property('data');",
+											"    pm.expect(response.data).to.have.property('insurance_policy');",
+											"});",
+											"",
+											"// ===== POLICY OBJECT VALIDATION =====",
+											"pm.test(\"Policy object has all required fields\", function() {",
+											"    const policy = pm.response.json().data.insurance_policy;",
+											"    ",
+											"    // Top-level fields",
+											"    const requiredFields = [",
+											"        'id', 'created_at', 'updated_at', 'user_id', 'plan_id', 'insurer_id',",
+											"        'policy_number', 'serial_number', 'premium', 'document_url', 'status',",
+											"        'email', 'effected_at', 'expired_at', 'extra_info_list', 'plan',",
+											"        'transaction', '__typename'",
+											"    ];",
+											"    ",
+											"    pm.expect(policy).to.be.an('object').that.has.all.keys(requiredFields);",
+											"    ",
+											"    // Field type validation",
+											"    pm.expect(policy.id).to.be.a('string').that.is.not.empty;",
+											"    pm.expect(policy.created_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+											"    //pm.expect(policy.policy_number).to.be.a('string').that.is.not.empty;",
+											"    pm.expect(policy.premium).to.be.a('number').that.is.above(0);",
+											"    //pm.expect(policy.status).to.equal('SUCCESS');",
+											"    pm.expect(policy.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);",
+											"    pm.expect(policy.__typename).to.equal('InsurancePolicy');",
+											"});",
+											"",
+											"// ===== DATE VALIDATION =====",
+											"pm.test(\"Policy dates are valid\", function() {",
+											"    const policy = pm.response.json().data.insurance_policy;",
+											"    const effected = new Date(policy.effected_at);",
+											"    const expired = new Date(policy.expired_at);",
+											"    ",
+											"    // Check date formats",
+											"    pm.expect(policy.effected_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+											"    pm.expect(policy.expired_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+											"    ",
+											"    // Check date range (should be 1 year)",
+											"    const oneYearMs = 365 * 24 * 60 * 60 * 1000;",
+											"    const diff = expired - effected;",
+											"    pm.expect(diff).to.be.closeTo(oneYearMs, 24 * 60 * 60 * 1000); // Allow ±1 day",
+											"});",
+											"",
+											"// ===== DOCUMENT URL VALIDATION =====",
+											"// pm.test(\"Document URL is valid\", function() {",
+											"//     const policy = pm.response.json().data.insurance_policy;",
+											"//     pm.expect(policy.document_url).to.be.a('string').that.is.not.empty;",
+											"//     pm.expect(policy.document_url).to.include('http');",
+											"//     pm.expect(policy.document_url).to.include(policy.policy_number);",
+											"// });",
+											"",
+											"// ===== EXTRA INFO LIST VALIDATION =====",
+											"pm.test(\"Extra info list has required fields\", function() {",
+											"    const extraInfoList = pm.response.json().data.insurance_policy.extra_info_list;",
+											"    ",
+											"    pm.expect(extraInfoList).to.be.an('array').that.is.not.empty;",
+											"    ",
+											"    extraInfoList.forEach(item => {",
+											"        pm.expect(item).to.have.all.keys(",
+											"            'id', 'created_at', 'updated_at', 'code', 'value',",
+											"            'data_type', 'metadata_value', '__typename'",
+											"        );",
+											"        ",
+											"        ",
+											"        // Validate metadata fields",
+											"        if (item.data_type === 'METADATA') {",
+											"            pm.expect(item.metadata_value).to.not.be.null;",
+											"        }",
+											"    });",
+											"});",
+											"",
+											"// ===== PLAN OBJECT VALIDATION =====",
+											"pm.test(\"Plan object is valid\", function() {",
+											"    const plan = pm.response.json().data.insurance_policy.plan;",
+											"    ",
+											"    pm.expect(plan).to.have.all.keys(",
+											"        'id', 'created_at', 'updated_at', 'type_id', 'name',",
+											"        'description', 'status', 'insurers', 'policy_type', '__typename'",
+											"    );",
+											"    ",
+											"    // Validate insurer",
+											"    pm.expect(plan.insurers).to.be.an('array').that.is.not.empty;",
+											"    plan.insurers.forEach(insurer => {",
+											"        pm.expect(insurer.insurer.code).to.equal('PVI');",
+											"        pm.expect(insurer.premium).to.equal(480700);",
+											"    });",
+											"    ",
+											"    // Validate policy type",
+											"    pm.expect(plan.policy_type.code).to.equal('IA');",
+											"    pm.expect(plan.policy_type.name).to.equal('Bảo hiểm ô tô');",
+											"});",
+											"",
+											"// ===== TRANSACTION VALIDATION =====",
+											"pm.test(\"Transaction object is valid\", function() {",
+											"    const transaction = pm.response.json().data.insurance_policy.transaction;",
+											"    pm.expect(transaction).to.have.all.keys('id', '__typename');",
+											"    pm.expect(transaction.__typename).to.equal('InsuranceTransaction');",
+											"});",
+											"",
+											"// ===== BUSINESS LOGIC VALIDATION =====",
+											"pm.test(\"Required extra info fields are present\", function() {",
+											"    const extraInfoList = pm.response.json().data.insurance_policy.extra_info_list;",
+											"    const requiredFields = [",
+											"        'VEHICLE_INSURANCE_AUTO_USAGE_PURPOSE',",
+											"        'VEHICLE_INSURANCE_AUTO_SLOT',",
+											"        'COMMON_ADDRESS',",
+											"        'VEHICLE_INSURANCE_VEHICLE_BRAND',",
+											"        'VEHICLE_INSURANCE_VIN_NUMBER'",
+											"    ];",
+											"    ",
+											"    requiredFields.forEach(field => {",
+											"        const exists = extraInfoList.some(item => item.code === field);",
+											"        pm.expect(exists, `Required field ${field} missing`).to.be.true;",
+											"    });",
+											"});",
+											"",
+											"// ===== PREMIUM VALIDATION =====",
+											"pm.test(\"Premium matches plan insurer premium\", function() {",
+											"    const policy = pm.response.json().data.insurance_policy;",
+											"    const planPremium = policy.plan.insurers[0].premium;",
+											"    ",
+											"    pm.expect(policy.premium).to.equal(planPremium);",
+											"});",
+											"",
+											"// ===== METADATA VALUE VALIDATION =====",
+											"pm.test(\"Metadata values are valid\", function() {",
+											"    const extraInfoList = pm.response.json().data.insurance_policy.extra_info_list;",
+											"    const metadataItems = extraInfoList.filter(item => item.data_type === 'METADATA');",
+											"    ",
+											"    metadataItems.forEach(item => {",
+											"        pm.expect(item.metadata_value).to.not.be.null;",
+											"        ",
+											"        // Validate specific metadata values",
+											"        if (item.code === 'VEHICLE_INSURANCE_AUTO_USAGE_PURPOSE') {",
+											"            pm.expect(item.metadata_value).to.equal('Xe ô tô không kinh doanh vận tải');",
+											"        }",
+											"        if (item.code === 'VEHICLE_INSURANCE_AUTO_TYPE') {",
+											"            pm.expect(item.metadata_value).to.equal('Dưới 6 chỗ ngồi');",
+											"        }",
+											"    });",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"operationName\": \"insurance_policy\",\n    \"variables\": {\n        \"policy_id\": \"{{policyId}}\"\n    },\n    \"query\": \"query insurance_policy($policy_id: ID!) {\\n  insurance_policy(policy_id: $policy_id) {\\n    ... on InsurancePolicy {\\n      id\\n      created_at\\n      updated_at\\n      user_id\\n      plan_id\\n      insurer_id\\n      policy_number\\n      serial_number\\n      premium\\n      document_url\\n      status\\n      email\\n      effected_at\\n      expired_at\\n      extra_info_list {\\n        id\\n        created_at\\n        updated_at\\n        code\\n        value\\n        data_type\\n        metadata_value\\n        __typename\\n      }\\n      plan {\\n        id\\n        created_at\\n        updated_at\\n        type_id\\n        name\\n        description\\n        status\\n        insurers {\\n          insurer_id\\n          premium\\n          insurer {\\n            id\\n            created_at\\n            updated_at\\n            code\\n            name\\n            status\\n            description\\n            logo\\n            __typename\\n          }\\n          __typename\\n        }\\n        policy_type {\\n          id\\n          created_at\\n          updated_at\\n          name\\n          code\\n          icon\\n          status\\n          __typename\\n        }\\n        __typename\\n      }\\n      transaction {\\n        id\\n        __typename\\n      }\\n      __typename\\n    }\\n    ... on InsurancePolicyNotFoundError {\\n      error_message\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stock-api-v2.infina.dev/graphql",
+									"protocol": "https",
+									"host": [
+										"stock-api-v2",
+										"infina",
+										"dev"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SignOut",
+					"item": [
+						{
+							"name": "signout",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"// 1. Validate status 200OK and the response structure",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"✅ Validate Signout Response\", function () {",
+											"    let response = pm.response.json();",
+											"",
+											"    // Validate top-level structure",
+											"    pm.expect(response).to.have.property(\"data\").that.is.an(\"object\");",
+											"    pm.expect(response).to.have.property(\"extensions\").that.is.an(\"object\");",
+											"",
+											"    // Validate \"signout\" property in the \"data\" object",
+											"    pm.expect(response.data).to.have.property(\"signout\").that.is.a(\"string\").and.equals(\"success\");",
+											"",
+											"    // Validate \"extensions\"",
+											"    pm.expect(response.extensions).to.have.property(\"timing\").that.is.a(\"number\").and.to.be.above(0);",
+											"",
+											"    console.log(\"✅ Signout Response is valid!\");",
+											"});",
+											"",
+											"",
+											"// 2. Clear collection variables",
+											"pm.test(\"Clear all collection variables after signout\", function() {",
+											"    // Get current variables",
+											"    const vars = pm.collectionVariables.toObject();",
+											"    const varCount = Object.keys(vars).length;",
+											"    ",
+											"    if (varCount > 0) {",
+											"        // Log which variables are being cleared",
+											"        console.log(`Clearing ${varCount} collection variables:`, Object.keys(vars));",
+											"        ",
+											"        // Clear all variables",
+											"        pm.collectionVariables.clear();",
+											"        ",
+											"        // Verify they're gone",
+											"        pm.expect(Object.keys(pm.collectionVariables.toObject()).length).to.equal(0);",
+											"    } else {",
+											"        console.log(\"No collection variables to clear\");",
+											"        pm.expect(true).to.be.true; // dummy assertion so test doesn't fail",
+											"    }",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-infina-app-version",
+										"value": "{{x-infina-app-version}}",
+										"type": "text"
+									},
+									{
+										"key": "x-infina-api-key",
+										"value": "{{x-infina-api-key}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"variables\": {\n        \"onesignal_id\": \"d94a83aa-4a3c-4c1a-9171-ac36900e0523\"\n    },\n    \"query\": \"mutation ($onesignal_id: String) {\\n  signout(input: {onesignal_id: $onesignal_id})\\n}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://staging.realstake.co/api/graphiql",
+									"protocol": "https",
+									"host": [
+										"staging",
+										"realstake",
+										"co"
+									],
+									"path": [
+										"api",
+										"graphiql"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.collectionVariables.set('baseUrl', \"https://staging.realstake.co/api\");",
+					"pm.collectionVariables.set('x-infina-api-key', \"zTW9S4LF5qGQfCAJzOiKGAR0Y2dTuAKs\");",
+					"pm.collectionVariables.set('x-infina-app-version', \"9.26.13\");",
+					"pm.collectionVariables.set('requestSecret', \"476f85ba2d4bc9a3caea55813e14dac9\");",
+					"",
+					"",
+					"// // Set the maximum number of retries",
+					"// pm.collectionVariables.set(\"maxRetries\", 3);",
+					"",
+					"// // Set the delay between retries (in milliseconds)",
+					"// pm.collectionVariables.set(\"retryDelay\", 2000); // 2 seconds",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": ""
+		},
+		{
+			"key": "x-infina-api-key",
+			"value": ""
+		},
+		{
+			"key": "x-infina-app-version",
+			"value": ""
+		},
+		{
+			"key": "requestSecret",
+			"value": ""
+		},
+		{
+			"key": "phoneNumber",
+			"value": ""
+		},
+		{
+			"key": "password",
+			"value": ""
+		},
+		{
+			"key": "pinCode",
+			"value": ""
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		},
+		{
+			"key": "refresh_token",
+			"value": ""
+		},
+		{
+			"key": "userid",
+			"value": ""
+		},
+		{
+			"key": "uid",
+			"value": ""
+		},
+		{
+			"key": "MapId",
+			"value": ""
+		},
+		{
+			"key": "motoPlanId",
+			"value": ""
+		},
+		{
+			"key": "motoInsureId",
+			"value": ""
+		},
+		{
+			"key": "insurance_transaction_id",
+			"value": ""
+		},
+		{
+			"key": "insurance_policy_id",
+			"value": ""
+		},
+		{
+			"key": "insurance_transfer_message",
+			"value": ""
+		},
+		{
+			"key": "policyId",
+			"value": ""
+		},
+		{
+			"key": "autoPlanId",
+			"value": ""
+		},
+		{
+			"key": "autoInsureId",
+			"value": ""
+		}
+	]
+}

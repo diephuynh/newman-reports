@@ -1,0 +1,31 @@
+{
+  "id": "b2c-api-environment",
+  "name": "B2C API Staging Environment",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "https://staging.realstake.co/api/graphiql",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "auth_token",
+      "value": "Bearer {{access_token}}",
+      "type": "secret",
+      "enabled": true
+    },
+    {
+      "key": "email",
+      "value": "{{phoneNumber}}",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "password",
+      "value": "{{password}}",
+      "type": "secret",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+} 
