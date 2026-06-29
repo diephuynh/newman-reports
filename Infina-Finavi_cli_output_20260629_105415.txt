@@ -1,0 +1,3540 @@
+newman
+
+Infina-Finavi
+
+❏ FRS & Finavi / SignIn
+↳ SignIn & Relogin
+  POST https://staging.realstake.co/api/graphiql  
+  200 OK ★ 3.7s time ★ 2.61kB↑ 496B↓ size ★ 11↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 2.23kB
+  │ {
+  │     "operationName": "signin_v2",
+  │     "variables": {
+  │         "email": "0931895560",
+  │         "password": "123456",
+  │         "fcm_token": "b89f0a08-3e1d-4938-9de0-78913d95
+  │ 2832:APA91bFVsdSihx4iIvzKHqkmnSg15GpP2QyQwvMx6-Zrj-A3b
+  │ 9OGozt1Sg2NNdr0mfqBGENGhDyt8Dh0P_XEi6gjrDP0D-yyOjErOUt
+  │ Y8KNZ__gu0LP3rHs",
+  │         "app_instance_id": "0997b544-44be-48b9-91ac-d2
+  │ 01ec3dfc0b",
+  │         "platform":"PostmanTest"
+  │     },
+  │     "query":"mutation signin_v2($email: String, $passw
+  │ ord: String, $app_instance_id: String, $fcm_token: Str
+  │ ing, $platform: String) {\n  signin_v2(\n    input: {e
+  │ mail: $email, password: $password, app_instance_id: $a
+  │ pp_instance_id, fcm_token: $fcm_token, platform: $plat
+  │ form}\n  ) {\n    access_token\n    ip_address\n    re
+  │ fresh_token\n    user {\n      id\n      ip_address\n 
+  │      uid\n      email\n      phone\n      first_name\n
+  │       last_name\n      status\n      has_pin_code\n   
+  │    pin_type\n      pin_blocking_duration\n      pin_al
+  │ lowed_attempts\n      freshchat_restore_id\n      avat
+  │ ar\n      confirm_contract\n      contract_signed_at\n
+  │       kyc {\n        status\n        address\n        
+  │ passport_issue_date\n        passport_issue_place\n   
+  │      document_type\n        document_number\n        i
+  │ dcard_issue_date\n        idcard_issue_place\n        
+  │ idcard_type\n        cmnd\n        first_name\n       
+  │  manual_review\n        last_name\n        full_name\n
+  │         idcard_back_page\n        idcard_front_page\n 
+  │        __typename\n      }\n      user_credits {\n    
+  │     id\n        reward_balance\n        expired_at\n  
+  │       __typename\n      }\n      documents {\n        
+  │ url\n        created_at\n        __typename\n      }\n
+  │       verified_phone\n      verified_email\n      refe
+  │ rral_code\n      referral_url\n      custom_referral_c
+  │ ode\n      bank_info {\n        bank_name\n        ban
+  │ k_city\n        bank_branch\n        account_number\n 
+  │        account_owner\n        bank_support\n        ve
+  │ rified\n        __typename\n      }\n      referred_co
+  │ de\n      created_at\n      discourse {\n        is_si
+  │ gn_up\n        sign_up_a
+  │ (showing 2.05kB/2.23kB)
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 205B
+  │ {"errors":[{"message":"Multiple active sessions","key"
+  │ :"multiple_active_sessions","details":{"reLoginToken":
+  │ "486f1382-466a-45a6-ab06-cf0bd425df4a"}}],"data":{"sig
+  │ nin_v2":null},"extensions":{"timing":2819}}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  5ms       18ms   85ms         51ms            110ms           3.4s             15ms       414µs     3.7s  
+
+  ✓  Handle login response
+  ✓  Status code is 200
+  ✓  Body matches signin_v2
+  POST https://staging.realstake.co/api  
+  200 OK ★ 1053ms time ★ 2.28kB↑ 3.36kB↓ size ★ 11↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.91kB
+  │ {"variables":{"input":{"re_login_token":"486f1382-466a
+  │ -45a6-ab06-cf0bd425df4a"}},"query":"mutation ($input: 
+  │ ReLoginInput) {\n  re_login(input: $input) {\n    api_
+  │ client {\n      access_token\n      ip_address\n      
+  │ refresh_token\n      user {\n        id\n        ip_ad
+  │ dress\n        uid\n        email\n        phone\n    
+  │     first_name\n        last_name\n        status\n   
+  │      has_pin_code\n        pin_type\n        pin_block
+  │ ing_duration\n        pin_allowed_attempts\n        fr
+  │ eshchat_restore_id\n        avatar\n        confirm_co
+  │ ntract\n        contract_signed_at\n        kyc {\n   
+  │        status\n          address\n          passport_i
+  │ ssue_date\n          passport_issue_place\n          d
+  │ ocument_type\n          document_number\n          idc
+  │ ard_issue_date\n          idcard_issue_place\n        
+  │   idcard_type\n          cmnd\n          first_name\n 
+  │          manual_review\n          last_name\n         
+  │  full_name\n          idcard_back_page\n          idca
+  │ rd_front_page\n          __typename\n        }\n      
+  │   user_credits {\n          id\n          reward_balan
+  │ ce\n          expired_at\n          __typename\n      
+  │   }\n        documents {\n          url\n          cre
+  │ ated_at\n          __typename\n        }\n        veri
+  │ fied_phone\n        verified_email\n        referral_c
+  │ ode\n        referral_url\n        custom_referral_cod
+  │ e\n        bank_info {\n          bank_name\n         
+  │  bank_city\n          bank_branch\n          account_n
+  │ umber\n          account_owner\n          bank_support
+  │ \n          verified\n          __typename\n        }\
+  │ n        referred_code\n        created_at\n        di
+  │ scourse {\n          is_sign_up\n          sign_up_at\
+  │ n          __typename\n        }\n        completed_ch
+  │ allenge\n        synced_ii_at\n        pin_unblock_at\
+  │ n        pin_enable_manual_unblock\n        __typename
+  │ \n      }\n      __typename\n    }\n    flow\n    __ty
+  │ pename\n  }\n}"}
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 3.07kB
+  │ {"data":{"re_login":{"api_client":{"access_token":"eyJ
+  │ hbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjNh
+  │ NDNlNzg3YzQ1MzU0NzkyNzEyMTk5IiwiY2xpZW50X2lkIjoiNmE0MW
+  │ VkYmI0NGQ5NWJlNzgxYTBmNzFlIiwiaWF0IjoxNzgyNzA1NTk1LCJl
+  │ eHAiOjE3ODI3MTk5OTV9.-iaX-nJQkbUnKBRdUeU4Q4itVuWDyv1iw
+  │ JETOqaeSWY","ip_address":"52.77.39.125","refresh_token
+  │ ":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIj
+  │ oiNjNhNDNlNzg3YzQ1MzU0NzkyNzEyMTk5IiwiY2xpZW50X2lkIjoi
+  │ NmE0MWVkYmI0NGQ5NWJlNzgxYTBmNzFlIiwidG9rZW5UeXBlIjoicm
+  │ VmcmVzaCIsImlhdCI6MTc4MjcwNTU5NSwiZXhwIjoxNzg1Mjk3NTk1
+  │ fQ.iHaAr1YPHCsjjNyK1Oeu32TVL-6cbiWoBrMjkjH4PEA","user"
+  │ :{"id":"63a43e787c45354792712199","ip_address":null,"u
+  │ id":"U5666252087","email":"diep.huynh@realstake.io","p
+  │ hone":"0931895560","first_name":"NGỌC ĐIỆP","last_name
+  │ ":"HUỲNH","status":"invested","has_pin_code":true,"pin
+  │ _type":"6-digit","pin_blocking_duration":12,"pin_allow
+  │ ed_attempts":5,"freshchat_restore_id":"efe6dfa1-4539-4
+  │ 7cd-b90a-42f3bb873b22","avatar":"https://djemclypbm8gi
+  │ .cloudfront.net/images/1753329065-6A6F9BB7_1D32_40E2_B
+  │ C93_2B2E60B9EBAC.jpg","confirm_contract":true,"contrac
+  │ t_signed_at":"2024-05-06 06:46:46+0000","kyc":{"status
+  │ ":"approved","address":"B6/146, ẤP 2 ĐA PHƯỚC, BÌNH CH
+  │ ÁNH, TP. HỒ CHÍ MINH","passport_issue_date":null,"pass
+  │ port_issue_place":null,"document_type":"IDCARD","docum
+  │ ent_number":"1110931895560","idcard_issue_date":"2022-
+  │ 01-16 00:00:00+0000","idcard_issue_place":"CỤC TRƯỞNG 
+  │ CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI","id
+  │ card_type":"cccd_chip_ms","cmnd":"1110931895560","firs
+  │ t_name":"NGỌC ĐIỆP","manual_review":"success","last_na
+  │ me":"HUỲNH","full_name":"HUỲNH NGỌC ĐIỆP","idcard_back
+  │ _page":"https://d1b9m82b7i6paa.cloudfront.net/images/k
+  │ yc/63a43e787c45354792712199/1755750064462-id-back","id
+  │ card_front_page":"https://d1b9m82b7i6paa.cloudfront.ne
+  │ t/images/kyc/63a43e787c45354792712199/1755750062459-id
+  │ -front","__typename":"KycResult"},"user_credits":[{"id
+  │ ":"63a43e787c453578e271219e","reward_balance":0,"expir
+  │ ed_at":"2025-06-26 08:00:42+0000","__typename":"UserCr
+  │ editResult"}],"documents":[{"url":"https://d1b9m82
+  │ (showing 2.05kB/3.07kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total  
+  456µs     385µs   (cache)      (cache)         (cache)         1049ms           2ms        169µs     1053ms 
+
+
+❏ FRS & Finavi / Home
+↳ portfolio (Finavi stock_total_balance)
+  POST https://staging.realstake.co/api  
+  200 OK ★ 2.5s time ★ 947B↑ 601B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 322B
+  │ {
+  │     "variables": {},
+  │     "query": "{\n  portfolio(input: {get_performance: 
+  │ false}) {\n    certificate_of_deposit_balance\n    cer
+  │ tificate_of_deposit_temp_interest\n    real_estate_bal
+  │ ance\n    real_estate_interest\n    mf_balance\n    mf
+  │ _profit\n    stock_total_balance\n    stock_total_grow
+  │ th\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 309B
+  │ {"data":{"portfolio":{"certificate_of_deposit_balance"
+  │ :0,"certificate_of_deposit_temp_interest":0,"real_esta
+  │ te_balance":20000000,"real_estate_interest":0,"mf_bala
+  │ nce":348483427,"mf_profit":2407096458,"stock_total_bal
+  │ ance":0,"stock_total_growth":0,"__typename":"Portfolio
+  │ Result"}},"extensions":{"timing":2418}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  880µs     663µs   (cache)      (cache)         (cache)         2.5s             2ms        212µs     2.5s  
+
+  ✓  Status code is 200
+  ✓  Response has valid JSON body
+  ✓  Response has correct structure
+  ✓  Extensions are valid
+  ✓  Portfolio structure is valid
+  ┌
+  │ 'Stock balance stored:', 0
+  │ 'MF balance stored:', 348483427
+  └
+  ✓  Store portfolio values
+
+↳ st_partner_maintenance_config
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 400ms time ★ 752B↑ 380B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 120B
+  │ {
+  │     "variables": {},
+  │     "query": "{\n  st_partner_maintenance_config {\n  
+  │   is_maintenance\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 110B
+  │ {"data":{"st_partner_maintenance_config":{"is_maintena
+  │ nce":false,"__typename":"StPartnerMaintenanceConfig"}}
+  │ }
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  869µs     1ms    63ms         52ms            110ms           168ms            1ms        59µs      399ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Maintenance config object exists
+  ✓  Contains all required fields
+  ✓  Field types are correct
+  ✓  Correct __typename value
+  ✓  No extra fields in response
+  ✓  Service is operational (not in maintenance)
+
+↳ st_partner_beneficiary_bank_accounts
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 942B↑ 292B↓ size ★ 12↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 310B
+  │ {
+  │     "operationName": "st_partner_beneficiary_bank_acco
+  │ unts",
+  │     "variables": {},
+  │     "query": "query st_partner_beneficiary_bank_accoun
+  │ ts {\n  st_partner_beneficiary_bank_accounts {\n    su
+  │ b_account\n    bank_name\n    short_bank_name\n    ful
+  │ l_name\n    bank_account\n    bank_id\n    __typename\
+  │ n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  806µs     561µs   (cache)      (cache)         (cache)         1m               5ms        234µs     1m    
+
+  1. Status code is 200
+  2. Response structure valid
+  3. Bank account validation
+
+↳ get_frs_stock_account (status)
+  POST https://stock-api-v2.infina.dev/alpha/frs/graphql  
+  200 OK ★ 143ms time ★ 796B↑ 530B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 154B
+  │ {
+  │     "query": "query get_frs_stock_account{get_frs_stoc
+  │ k_account{id user_id status frs_partner_convert_promot
+  │ ion_type frs_migration_accept_timestamp}}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 259B
+  │ {"data":{"get_frs_stock_account":{"id":"64096c6256a4a3
+  │ 0017db0e86","user_id":"63a43e787c45354792712199","stat
+  │ us":"APPROVED","frs_partner_convert_promotion_type":"R
+  │ EWARD","frs_migration_accept_timestamp":"2024-06-20T10
+  │ :38:10.960Z"}},"extensions":{"timing":48}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       714µs   (cache)      (cache)         (cache)         140ms            947µs      85µs      143ms 
+
+  ✓  Status code is 200
+  ✓  Content-Type header is application/json
+  ✓  Response time is reasonable (<300ms)
+  ✓  Response has correct structure
+  ✓  Extensions timing exists and is valid
+  ✓  FRS stock account object exists
+  ✓  FRS account has all required fields
+  ✓  IDs have correct format
+  ✓  Status is valid
+  ✓  Promotion type is valid
+  ✓  Migration timestamp is valid
+  ✓  Approved account has valid migration timestamp
+
+↳ st_partner_main_account
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 138ms time ★ 757B↑ 535B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 125B
+  │ {
+  │     "query": "query{st_partner_main_account{id created
+  │ _at updated_at uid custody_code status binding_method 
+  │ vsd_status}}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 264B
+  │ {"data":{"st_partner_main_account":{"id":"clt75125v007
+  │ 1240efdfy8471","created_at":"2024-06-20T10:37:02.972Z"
+  │ ,"updated_at":"2026-06-28T17:31:47.469Z","uid":"U56662
+  │ 52087","custody_code":"050C122911","status":"APPROVED"
+  │ ,"binding_method":"REGISTER","vsd_status":""}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  338µs     255µs   (cache)      (cache)         (cache)         136ms            672µs      47µs      137ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Main account object exists
+  ✓  Contains all required fields
+  ✓  ID has correct format
+  ✓  Timestamps are valid
+  ✓  UID has correct format
+  ✓  Custody code has correct format
+  ✓  Status is valid
+  ✓  Binding method is valid
+
+↳ watch_list_categories
+  POST https://stock-api-v2.infina.dev/alpha/frs/graphql  
+  200 OK ★ 377ms time ★ 1.38kB↑ 3.52kB↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 739B
+  │ {
+  │     "operationName": "watch_list_categories",
+  │     "variables": {
+  │         "limit": 10,
+  │         "skip": 0
+  │     },
+  │     "query": "query watch_list_categories($limit: Int,
+  │  $skip: Int, $stock_asset_id: ID, $is_include: Boolean
+  │ ) {\n  watch_list_categories(\n    limit: $limit\n    
+  │ skip: $skip\n    stock_asset_id: $stock_asset_id\n    
+  │ is_include: $is_include\n  ) {\n    categories {\n    
+  │   id\n      name\n      order\n      stocks {\n       
+  │  id\n        code\n        logo\n        exchange\n   
+  │      industry\n        name\n        price_data {\n   
+  │        change\n          latest_price\n          perce
+  │ ntage_change\n          __typename\n        }\n       
+  │  __typename\n      }\n      __typename\n    }\n    has
+  │ _next\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 3.24kB
+  │ {"data":{"watch_list_categories":{"categories":[{"id":
+  │ "68592e7af01795e57ecaf21b","name":"Test WatchList","or
+  │ der":1,"stocks":[{"id":"621de88fd734d70009edb508","cod
+  │ e":"AAA","logo":"https://djemclypbm8gi.cloudfront.net/
+  │ stock/assets/logos/stock_logo_AAA.png","exchange":"HOS
+  │ E","industry":"Nhựa & Cao su","name":"CTCP Nhựa An Phá
+  │ t Xanh","price_data":{"change":-130,"latest_price":799
+  │ 0,"percentage_change":-1.6,"__typename":"StockPriceDat
+  │ aResult"},"__typename":"StockDetailsResult"},{"id":"62
+  │ 1de88fd734d70009edb57a","code":"FPT","logo":"https://d
+  │ jemclypbm8gi.cloudfront.net/stock/assets/logos/stock_l
+  │ ogo_FPT.png","exchange":"HOSE","industry":"Công nghệ t
+  │ hông tin","name":"CTCP FPT","price_data":{"change":-16
+  │ 00,"latest_price":92400,"percentage_change":-1.7,"__ty
+  │ pename":"StockPriceDataResult"},"__typename":"StockDet
+  │ ailsResult"},{"id":"621de88fd734d70009edb5a6","code":"
+  │ HPG","logo":"https://djemclypbm8gi.cloudfront.net/stoc
+  │ k/assets/logos/stock_logo_HPG.png","exchange":"HOSE","
+  │ industry":"Tài nguyên","name":"CTCP Tập đoàn Hòa Phát"
+  │ ,"price_data":{"change":-650,"latest_price":28350,"per
+  │ centage_change":-2.24,"__typename":"StockPriceDataResu
+  │ lt"},"__typename":"StockDetailsResult"}],"__typename":
+  │ "WatchListCategory"},{"id":"6982fe84a987ad656380e3dc",
+  │ "name":"Test create new FAV list","order":2,"stocks":[
+  │ {"id":"621de88fd734d70009edb529","code":"BRC","logo":"
+  │ https://djemclypbm8gi.cloudfront.net/stock/assets/logo
+  │ s/stock_logo_BRC.png","exchange":"HOSE","industry":"Nh
+  │ ựa & Cao su","name":"CTCP Cao su Bến Thành","price_dat
+  │ a":{"change":0,"latest_price":12800,"percentage_change
+  │ ":0,"__typename":"StockPriceDataResult"},"__typename":
+  │ "StockDetailsResult"},{"id":"621de88fd734d70009edb547"
+  │ ,"code":"CTF","logo":"https://djemclypbm8gi.cloudfront
+  │ .net/stock/assets/logos/stock_logo_CTF.png","exchange"
+  │ :"HOSE","industry":"Ôtô & Phụ tùng","name":"CTCP City 
+  │ Auto","price_data":{"change":-100,"latest_price":20600
+  │ ,"percentage_change":-0.48,"__typename":"StockPriceDat
+  │ aResult"},"__typename":"StockDetailsResult"},{"id":"62
+  │ 1de88fd734d70009edb552","code":"DBT","logo":"https
+  │ (showing 2.05kB/3.24kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  580µs     353µs   (cache)      (cache)         (cache)         375ms            1ms        85µs      377ms 
+
+  ✓  Status code is 200
+  4. Watchlist structure valid
+  ✓  Stock data validation
+
+↳ get_user_total_account_balance
+  POST https://stock-api-v2.infina.dev/alpha/frs/graphql  
+  200 OK ★ 78ms time ★ 877B↑ 554B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 235B
+  │ {
+  │     "variables": {},
+  │     "query": "{\n  get_user_total_account_balance {\n 
+  │    status\n    message\n    payload {\n      total_acc
+  │ ount_balance\n      growth_amount\n      growth_rate\n
+  │       __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 283B
+  │ {"data":{"get_user_total_account_balance":{"status":"s
+  │ uccess","message":null,"payload":{"total_account_balan
+  │ ce":1315000,"growth_amount":1315000,"growth_rate":0,"_
+  │ _typename":"UserStockTotalAccountBalance"},"__typename
+  │ ":"GetUserStockAccountBalanceResult"}},"extensions":{"
+  │ timing":11}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  413µs     312µs   (cache)      (cache)         (cache)         76ms             878µs      49µs      78ms  
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Extensions timing is valid
+  ✓  Account balance object exists
+  ✓  Contains all required fields
+  ✓  Status is 'success'
+  ✓  Message is null
+  ✓  Correct __typename values
+  ✓  Payload has correct structure
+  5. Numeric values are valid
+  ✓  No extra fields in payload
+
+↳ get_frs_stock_account (FrsPortfolioType)
+  POST https://stock-api-v2.infina.dev/alpha/frs/graphql  
+  200 OK ★ 92ms time ★ 1.55kB↑ 1.34kB↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 912B
+  │ {
+  │     "operationName": "get_frs_stock_account",
+  │     "variables": {},
+  │     "query": "query get_frs_stock_account {\n  get_frs
+  │ _stock_account {\n    id\n    user_id\n    status\n   
+  │  trading_account_number\n    cash_holdings {\n      bu
+  │ ying_power\n      total_available_market_value\n      
+  │ total_account_balance\n      __typename\n    }\n    po
+  │ rtfolio {\n      logo\n      code\n      quantity\n   
+  │    sellable_quantity\n      average_price\n      name\
+  │ n      price_data {\n        previous_close\n        l
+  │ atest_price\n        percentage_change\n        total_
+  │ current_value\n        total_growth {\n          growt
+  │ h_amount\n          growth_rate\n          __typename\
+  │ n        }\n        __typename\n      }\n      pending
+  │ _buy\n      pending_sell\n      __typename\n    }\n   
+  │  proportion {\n      code\n      percentage\n      amo
+  │ unt\n      __typename\n    }\n    created_at\n    upda
+  │ ted_at\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 1.07kB
+  │ {"data":{"get_frs_stock_account":{"id":"64096c6256a4a3
+  │ 0017db0e86","user_id":"63a43e787c45354792712199","stat
+  │ us":"APPROVED","trading_account_number":"INST60R30DTT6
+  │ 0","cash_holdings":{"buying_power":0,"total_available_
+  │ market_value":1315000,"total_account_balance":1315000,
+  │ "__typename":"FrsCashHoldings"},"portfolio":[{"logo":"
+  │ https://djemclypbm8gi.cloudfront.net/stock/assets/logo
+  │ s/stock_logo_ACB.png","code":"ACB","quantity":50,"sell
+  │ able_quantity":0,"average_price":0,"name":"Ngân hàng T
+  │ MCP Á Châu","price_data":{"previous_close":26750,"late
+  │ st_price":26300,"percentage_change":-1.68,"total_curre
+  │ nt_value":1315000,"total_growth":{"growth_amount":1315
+  │ 000,"growth_rate":0,"__typename":"FrsPortfolioTotalGro
+  │ wth"},"__typename":"FrsPortfolioPriceData"},"pending_b
+  │ uy":0,"pending_sell":0,"__typename":"FrsPortfolioType"
+  │ }],"proportion":[{"code":"ACB","percentage":100,"amoun
+  │ t":1315000,"__typename":"FrsStockAccountProportionType
+  │ "}],"created_at":"2023-03-09T05:19:30.492Z","updated_a
+  │ t":"2026-06-26T12:00:07.969Z","__typename":"FrsStockAc
+  │ count"}},"extensions":{"timing":21}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  994µs     613µs   (cache)      (cache)         (cache)         89ms             1ms        114µs     92ms  
+
+  ✓  Status code is 200
+  ✓  Content-Type header is application/json
+  ✓  Response has correct structure
+  ✓  Extensions timing exists and is valid
+  ✓  FRS stock account object exists
+  ✓  FRS account has all required fields
+  ✓  IDs have correct format
+  ✓  Status is valid
+  ✓  Trading account number is valid
+  ✓  Timestamps are valid
+  ✓  Correct __typename
+  ✓  Cash holdings structure is valid
+  ✓  Portfolio has valid structure
+  ✓  Proportion array exists
+  ✓  Approved account has valid trading account number
+
+↳ get_user_total_account_balance
+  POST https://stock-api-v2.infina.dev/alpha/frs/graphql  
+  200 OK ★ 73ms time ★ 877B↑ 553B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 235B
+  │ {
+  │     "variables": {},
+  │     "query": "{\n  get_user_total_account_balance {\n 
+  │    status\n    message\n    payload {\n      total_acc
+  │ ount_balance\n      growth_amount\n      growth_rate\n
+  │       __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 282B
+  │ {"data":{"get_user_total_account_balance":{"status":"s
+  │ uccess","message":null,"payload":{"total_account_balan
+  │ ce":1315000,"growth_amount":1315000,"growth_rate":0,"_
+  │ _typename":"UserStockTotalAccountBalance"},"__typename
+  │ ":"GetUserStockAccountBalanceResult"}},"extensions":{"
+  │ timing":6}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  2ms       572µs   (cache)      (cache)         (cache)         70ms             1ms        51µs      74ms  
+
+  ✓  Status code is 200
+  ✓  Response structure valid
+  ✓  Success state validation
+  6. Balance data validation
+
+↳ get_frs_stock_account_total_balance_history
+  POST https://stock-api-v2.infina.dev/alpha/frs/graphql  
+  200 OK ★ 1127ms time ★ 1.05kB↑ 507B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 412B
+  │ {
+  │     "operationName": "get_frs_stock_account_total_bala
+  │ nce_history",
+  │     "variables": {
+  │         "from": 0,
+  │         "to": 0
+  │     },
+  │     "query": "query get_frs_stock_account_total_balanc
+  │ e_history($from: Int!, $to: Int!) {\n  get_frs_stock_a
+  │ ccount_total_balance_history(input: {from: $from, to: 
+  │ $to}) {\n    total_growth {\n      growth_rate\n      
+  │ growth_amount\n      __typename\n    }\n    __typename
+  │ \n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 237B
+  │ {"data":{"get_frs_stock_account_total_balance_history"
+  │ :{"total_growth":{"growth_rate":0,"growth_amount":1315
+  │ 000,"__typename":"FrsTotalGrowthResult"},"__typename":
+  │ "FrsStockAccountTotalBalanceHistoryResult"}},"extensio
+  │ ns":{"timing":1041}}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total  
+  2ms       1ms    (cache)      (cache)         (cache)         1120ms           4ms        72µs      1128ms 
+
+  ✓  Status code is 200
+  ✓  Response structure valid
+  7. Growth data validation
+  ✓  Type name validation
+  ✓  Extensions structure
+
+↳ get_mfs_invested_in_stock
+  POST https://stock-api-v2.infina.dev/alpha/frs/graphql  
+  200 OK ★ 372ms time ★ 1.16kB↑ 5.97kB↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 516B
+  │ {
+  │     "operationName": "get_mfs_invested_in_stock",
+  │     "variables": {
+  │         "stock_code": "HPG"
+  │     },
+  │     "query": "query get_mfs_invested_in_stock($stock_c
+  │ ode: String!) {\n  get_mfs_invested_in_stock(stock_cod
+  │ e: $stock_code) {\n    status\n    message\n    mfs {\
+  │ n      id\n      code\n      name\n      class\n      
+  │ status\n      type\n      issuer {\n        id\n      
+  │   name\n        image\n        __typename\n      }\n  
+  │     weight\n      year_growth_rate\n      __typename\n
+  │     }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 5.7kB
+  │ {"data":{"get_mfs_invested_in_stock":{"status":"succes
+  │ s","message":null,"mfs":[{"id":"61bd515853f6e591d74ddc
+  │ 0b","code":"SSI-SCA","name":"Quỹ Đầu Tư Lợi Thế Cạnh T
+  │ ranh Bền Vững SSI","class":"high_growth","status":"ina
+  │ ctive","type":"equity","issuer":{"id":"61bd4ce253f6e59
+  │ 2034ddbfc","name":"Công Ty TNHH Quản Lý Quỹ SSI","imag
+  │ e":"https://djemclypbm8gi.cloudfront.net/images/166357
+  │ 0828-ssi.png","__typename":"FundIssuerResult"},"weight
+  │ ":0.0843,"year_growth_rate":0.074,"__typename":"MFInve
+  │ stedInStock"},{"id":"60c1c5a1ad6ebb1a999fdd51","code":
+  │ "DCDE","name":"Dragon VF4","class":"high_growth","stat
+  │ us":"inactive","type":"equity","issuer":{"id":"6075239
+  │ 7e855242d3c2bb20c","name":"CTY CP QL Quỹ Đầu Tư Dragon
+  │  Capital Việt Nam","image":"https://djemclypbm8gi.clou
+  │ dfront.net/images/1663570936-dragron_capital.png","__t
+  │ ypename":"FundIssuerResult"},"weight":0.0803,"year_gro
+  │ wth_rate":0.0159,"__typename":"MFInvestedInStock"},{"i
+  │ d":"61bff02e53f6e5483d4de93e","code":"E1VFVN30","name"
+  │ :"Quỹ Đầu tư ETF E1VFVN30","class":"etf","status":"ina
+  │ ctive","type":"equity","issuer":{"id":"60752397e855242
+  │ d3c2bb20c","name":"CTY CP QL Quỹ Đầu Tư Dragon Capital
+  │  Việt Nam","image":"https://djemclypbm8gi.cloudfront.n
+  │ et/images/1663570936-dragron_capital.png","__typename"
+  │ :"FundIssuerResult"},"weight":0.0788,"year_growth_rate
+  │ ":0.7914,"__typename":"MFInvestedInStock"},{"id":"621d
+  │ efad498067eaddc3fdcc","code":"VNDAF","name":"Quỹ ĐT ch
+  │ ủ động VND","class":"high_growth","status":"inactive",
+  │ "type":"equity","issuer":{"id":"621ded5849806749a8c3fc
+  │ 7f","name":"IPAAM (VNDirect)","image":"https://djemcly
+  │ pbm8gi.cloudfront.net/images/1663570804-vndirect.png",
+  │ "__typename":"FundIssuerResult"},"weight":0.0732,"year
+  │ _growth_rate":0.2468,"__typename":"MFInvestedInStock"}
+  │ ,{"id":"60793426bc6e93375c7e2bc9","code":"MAGEF","name
+  │ ":"Miare Asset","class":"high_growth","status":"active
+  │ ","type":"equity","issuer":{"id":"60755338e85524709f2b
+  │ c07d","name":"CTY TNHH QL Quỹ Mirae Asset Việt Nam","i
+  │ mage":"https://djemclypbm8gi.cloudfront.net/images/166
+  │ 3570853-mirae_asset.png","__typename":"FundIssuerR
+  │ (showing 2.05kB/5.7kB)
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  510µs     1ms    (cache)      (cache)         (cache)         369ms            820µs      68µs      372ms 
+
+  ✓  Status code is 200
+  ✓  Response has JSON content type
+  ✓  Response has correct structure
+  ✓  Extensions timing is valid
+  ✓  MF data has correct typename
+  ✓  Status is success and message is null
+  ✓  MFs array exists and has items
+  ✓  SSI-SCA fund has correct values
+  ✓  DCDE fund has correct values
+  ✓  No extra fields in response
+
+↳ orders
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 307ms time ★ 2.18kB↑ 469B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.55kB
+  │ {
+  │     "operationName": "orders",
+  │     "variables": {
+  │         "first": 10,
+  │         "reverse": true,
+  │         "sort_keys": "CREATED_AT",
+  │         "query": "status:QUEUED,PENDING_ACCEPTED"
+  │     },
+  │     "query": "query orders($after: String, $before: St
+  │ ring, $first: Int, $last: Int, $reverse: Boolean, $sor
+  │ t_keys: OrderSortKeys, $query: String) {\n  orders(\n 
+  │    after: $after\n    before: $before\n    first: $fir
+  │ st\n    last: $last\n    reverse: $reverse\n    sort_k
+  │ eys: $sort_keys\n    query: $query\n  ) {\n    edges {
+  │ \n      cursor\n      node {\n        id\n        crea
+  │ ted_at\n        updated_at\n        instrument\n      
+  │   quantity\n        executed_quantity\n        matchin
+  │ g_price\n        total_amount_placed\n        reward_a
+  │ mount\n        total_pending_amount\n        status\n 
+  │        price\n        origin\n        tax_amount\n    
+  │     matching_type\n        bidask_type\n        cancel
+  │ lable_at\n        matching_time\n        commission\n 
+  │        __typename\n      }\n      __typename\n    }\n 
+  │    nodes {\n      id\n      created_at\n      updated_
+  │ at\n      instrument\n      quantity\n      executed_q
+  │ uantity\n      matching_price\n      total_amount_plac
+  │ ed\n      reward_amount\n      total_pending_amount\n 
+  │      status\n      price\n      origin\n      tax_amou
+  │ nt\n      matching_type\n      bidask_type\n      canc
+  │ ellable_at\n      matching_time\n      commission\n   
+  │    __typename\n    }\n    page_info {\n      start_cur
+  │ sor\n      end_cursor\n      has_next_page\n      has_
+  │ previous_page\n      __typename\n    }\n    __typename
+  │ \n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 199B
+  │ {"data":{"orders":{"edges":[],"nodes":[],"page_info":{
+  │ "start_cursor":null,"end_cursor":null,"has_next_page":
+  │ false,"has_previous_page":false,"__typename":"PageInfo
+  │ "},"__typename":"OrderConnection"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       849µs   (cache)      (cache)         (cache)         305ms            619µs      27µs      308ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Orders object exists
+  ✓  Contains all required fields
+  ✓  Edges and nodes are empty arrays
+  ✓  Page info has correct structure
+  ✓  Correct __typename values
+  ✓  No extra fields in orders object
+  ✓  Pagination indicates no results
+
+↳ order_trading_fee_rate
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 70ms time ★ 702B↑ 307B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 71B
+  │ {
+  │     "query": "query order_trading_fee_rate{order_tradi
+  │ ng_fee_rate}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 38B
+  │ {"data":{"order_trading_fee_rate":0}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  575µs     394µs   (cache)      (cache)         (cache)         68ms             848µs      60µs      69ms  
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Fee rate data exists
+  ✓  Fee rate is valid
+  ✓  No extra fields in response
+  ┌
+  │ 'Current trading fee rate: ', 0
+  └
+
+↳ termination_reports
+  POST https://stock-api-v2.infina.dev/alpha/frs/graphql  
+  200 OK ★ 127ms time ★ 779B↑ 367B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 137B
+  │ {
+  │     "operationName": "termination_reports",
+  │     "variables": {},
+  │     "query": "query termination_reports {\n  terminati
+  │ on_reports\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 98B
+  │ {"data":{"termination_reports":["HUYNH_NGOC_DIEP_17709
+  │ 76817476.pdf"]},"extensions":{"timing":60}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  776µs     663µs   (cache)      (cache)         (cache)         125ms            843µs      43µs      127ms 
+
+  ✓  Status code is 200
+  ✓  Response structure valid
+  8. Empty reports validation
+  ✓  Extensions structure
+
+↳ get_frs_stock_account (FrsCashHoldings)
+  POST https://stock-api-v2.infina.dev/alpha/frs/graphql  
+  200 OK ★ 81ms time ★ 939B↑ 502B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 297B
+  │ {
+  │     "operationName": "get_frs_stock_account",
+  │     "variables": {},
+  │     "query": "query get_frs_stock_account {\n  get_frs
+  │ _stock_account {\n    cash_holdings {\n      buying_po
+  │ wer\n      total_available_market_value\n      total_a
+  │ ccount_balance\n      __typename\n    }\n    __typenam
+  │ e\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 232B
+  │ {"data":{"get_frs_stock_account":{"cash_holdings":{"bu
+  │ ying_power":0,"total_available_market_value":1315000,"
+  │ total_account_balance":1315000,"__typename":"FrsCashHo
+  │ ldings"},"__typename":"FrsStockAccount"}},"extensions"
+  │ :{"timing":15}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  580µs     423µs   (cache)      (cache)         (cache)         79ms             1ms        48µs      81ms  
+
+  ✓  Status code is 200
+  ✓  Content-Type header is application/json
+  ✓  Response has correct structure
+  ✓  Extensions timing exists and is valid
+  ✓  FRS stock account object exists
+  ✓  Correct __typename
+  ✓  Cash holdings structure is valid
+
+↳ notifications Stock (Realstake api)
+  POST https://staging.realstake.co/api  
+  200 OK ★ 977ms time ★ 1.03kB↑ 6.46kB↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 410B
+  │ {
+  │     "operationName": "notifications",
+  │     "variables": {
+  │         "input": {
+  │             "limit": 100,
+  │             "page": 1,
+  │             "filter": {
+  │                 "category": "STOCK"
+  │             }
+  │         }
+  │     },
+  │     "query": "query notifications($input: GetNotificat
+  │ ionsInput) {\n  notifications(input: $input) {\n    do
+  │ cs {\n      id\n      __typename\n    }\n    unread_co
+  │ unt\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 6.17kB
+  │ {"data":{"notifications":{"docs":[{"id":"69a6b830a5b10
+  │ 31f8b963db5","__typename":"NotificationResult"},{"id":
+  │ "69a6b5d724f04da2383ff01f","__typename":"NotificationR
+  │ esult"},{"id":"69a69e6804a29e013d35317e","__typename":
+  │ "NotificationResult"},{"id":"698ef643e40f54745244db05"
+  │ ,"__typename":"NotificationResult"},{"id":"698ed6bf824
+  │ e29ac5729f292","__typename":"NotificationResult"},{"id
+  │ ":"698eafe67355e642f2f10f83","__typename":"Notificatio
+  │ nResult"},{"id":"698c5b741cdeb58601fbdbdd","__typename
+  │ ":"NotificationResult"},{"id":"67557d5050c60abc53500a4
+  │ 4","__typename":"NotificationResult"},{"id":"6752db450
+  │ 7f84643bb4cac1b","__typename":"NotificationResult"},{"
+  │ id":"674df5cd6011f0349289aa73","__typename":"Notificat
+  │ ionResult"},{"id":"66740943f6820f36a406a8f6","__typena
+  │ me":"NotificationResult"},{"id":"6674093df6820f36a406a
+  │ 8f5","__typename":"NotificationResult"},{"id":"6674081
+  │ 8f6820f36a406a8f4","__typename":"NotificationResult"},
+  │ {"id":"66740811f6820f36a406a8f3","__typename":"Notific
+  │ ationResult"},{"id":"667406ebf6820f36a406a8f2","__type
+  │ name":"NotificationResult"},{"id":"667406e8f6820f36a40
+  │ 6a8f1","__typename":"NotificationResult"},{"id":"66067
+  │ c185ba34cc00aa88ea9","__typename":"NotificationResult"
+  │ },{"id":"65deef18fbc6830008d1873b","__typename":"Notif
+  │ icationResult"},{"id":"65dc4c1b4d0d9000082b2865","__ty
+  │ pename":"NotificationResult"},{"id":"6554819446eb2c000
+  │ 8912329","__typename":"NotificationResult"},{"id":"654
+  │ de4b61ded7a00084b6e65","__typename":"NotificationResul
+  │ t"},{"id":"6528e0f86f7c060009cde07a","__typename":"Not
+  │ ificationResult"},{"id":"6528e0f8bded79000871023f","__
+  │ typename":"NotificationResult"},{"id":"6523ba1744f5dc0
+  │ 008b8d1ee","__typename":"NotificationResult"},{"id":"6
+  │ 523a2a009d49400081b9d34","__typename":"NotificationRes
+  │ ult"},{"id":"651d270350154500083a9dcc","__typename":"N
+  │ otificationResult"},{"id":"650416166c74ad0008fcfeb2","
+  │ __typename":"NotificationResult"},{"id":"6502c497ca752
+  │ c0008a8b60c","__typename":"NotificationResult"},{"id":
+  │ "6502c4928b8128000927b090","__typename":"NotificationR
+  │ esult"},{"id":"6502c48d8b8128000927b082","__typena
+  │ (showing 2.05kB/6.17kB)
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  348µs     2ms    65ms         52ms            52ms            801ms            2ms        160µs     977ms 
+
+  ✓  Status code is 200
+  ✓  Content-Type header is application/json
+  ✓  Response has correct structure
+  ✓  Extensions timing exists and is valid
+  ✓  Notifications object exists
+  ✓  Notifications has all required fields
+  ✓  Correct __typename values
+  ✓  Docs array is valid
+  ✓  Unread count is valid
+
+↳ st_partner_sub_account_assets_over_view
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 136ms time ★ 1.07kB↑ 461B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 440B
+  │ {
+  │     "variables": {},
+  │     "query": "{\n  st_partner_sub_account_assets_over_
+  │ view {\n    sub_account_assets_over_view {\n      id\n
+  │       created_at\n      updated_at\n      custody_code
+  │ \n      sub_account_id\n      sub_account_no\n      su
+  │ b_account_type\n      market_value\n      cost_value\n
+  │       gain_loss_percent\n      gain_loss_value\n      
+  │ total_loan\n      total_money\n      cash\n      __typ
+  │ ename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 191B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_sub_account_assets_over_view"],"e
+  │ xtensions":{"code":"INTERNAL_SERVER_ERROR","serviceNam
+  │ e":"partner"}}],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  518µs     365µs   (cache)      (cache)         (cache)         134ms            819µs      32µs      135ms 
+
+  ✓  Status code is 200
+  9. Response has correct structure
+ 10. Assets overview object exists
+ 11. Correct __typename values
+
+↳ get_market_information
+  POST https://stock-api-v2.infina.dev/alpha/graphql  
+  200 OK ★ 68ms time ★ 838B↑ 412B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 200B
+  │ {
+  │     "operationName": "getMarketInformation",
+  │     "variables": {},
+  │     "query": "query getMarketInformation {\n  get_mark
+  │ et_information {\n    status\n    is_eod_settlement\n 
+  │    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 142B
+  │ {"data":{"get_market_information":{"status":"OPENING",
+  │ "is_eod_settlement":false,"__typename":"MarketInformat
+  │ ion"}},"extensions":{"timing":2}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  720µs     419µs   (cache)      (cache)         (cache)         66ms             1ms        72µs      68ms  
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Extensions timing is valid
+  ✓  Market information object exists
+  ✓  Contains all required fields
+  ✓  Status is either OPENING or CLOSED or ATC
+  ✓  is_eod_settlement is boolean
+  ✓  Correct __typename value
+  ✓  No extra fields in response
+
+↳ get_stock_categories
+  POST https://stock-api-v2.infina.dev/alpha/graphql  
+  200 OK ★ 126ms time ★ 992B↑ 7.92kB↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 354B
+  │ {
+  │     "operationName": "GetStockCategories",
+  │     "variables": {
+  │         "filter": ""
+  │     },
+  │     "query": "query GetStockCategories($filter: String
+  │ !) {\n  get_stock_categories(input: {filter: $filter})
+  │  {\n    docs {\n      id\n      name\n      descriptio
+  │ n\n      icon\n      count\n      is_highlighted\n    
+  │   __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 7.65kB
+  │ {"data":{"get_stock_categories":{"docs":[{"id":"624bc8
+  │ 69defdef0009277097","name":"Lựa chọn bởi các quỹ","des
+  │ cription":"Dưới đây là danh sách những cổ phiếu chiếm 
+  │ tỉ trọng lớn trong danh mục đầu tư Chứng chỉ quỹ của c
+  │ ác quỹ đầu tư uy tín. Có thể coi đây là những cổ phiếu
+  │  được đánh giá cao nhất bởi các chuyên gia.","icon":"/
+  │ static/infina_b2c/stock/stock_categories_v2/mf_choice.
+  │ svg","count":30,"is_highlighted":true,"__typename":"St
+  │ ockCategoryDetailsResult"},{"id":"624bc869defdef000927
+  │ 7098","name":"VN30","description":"Nhóm 30 cổ phiếu có
+  │  chỉ số vốn hóa lớn, tính thanh khoản cao, được đánh g
+  │ iá hàng đầu thị trường chứng khoán Việt Nam dựa trên b
+  │ ộ chỉ số được Sở Giao dịch Chứng khoán TP. HCM triển k
+  │ hai, bắt đầu từ năm 2012.","icon":"/static/infina_b2c/
+  │ stock/stock_categories_v2/vn30.svg","count":30,"is_hig
+  │ hlighted":true,"__typename":"StockCategoryDetailsResul
+  │ t"},{"id":"624bc869defdef0009277099","name":"Cổ phiếu 
+  │ trong khoảng 10K","description":"Bạn mới đầu tư chứng 
+  │ khoán và chưa có vốn nhiều thì có thể chọn các mã cổ p
+  │ hiếu giá rẻ trong khoảng 10,000 đồng; thường là các mã
+  │  cổ phiếu của các doanh nghiệp mới, những công ty có q
+  │ uy mô nhỏ hoặc đang trong quá trình phát triển.","icon
+  │ ":"/static/infina_b2c/stock/stock_categories_v2/10k.sv
+  │ g","count":19,"is_highlighted":true,"__typename":"Stoc
+  │ kCategoryDetailsResult"},{"id":"624bc869defdef00092770
+  │ 9a","name":"VN100","description":"Nhóm 100 mã cổ phiếu
+  │  có khả năng thanh khoản cao và có giá trị vốn hóa hàn
+  │ g đầu trên sàn chứng khoán TP. HCM. Chỉ số VN100 được 
+  │ Sở Giao dịch Chứng khoán TP. HCM dựa trên thông lệ quố
+  │ c tế FTSE 100 của Vương quốc Anh để lựa chọn xây dựng 
+  │ bộ chỉ số phù hợp với thị trường Việt Nam.","icon":"/s
+  │ tatic/infina_b2c/stock/stock_categories_v2/vn100.svg",
+  │ "count":100,"is_highlighted":true,"__typename":"StockC
+  │ ategoryDetailsResult"},{"id":"624bc869defdef000927709b
+  │ ","name":"Quỹ ETF","description":"Quỹ hoán đổi danh mụ
+  │ c (ETF, Exchange Traded Fund) là quỹ hoạt động mô phỏn
+  │ g theo sự biến động của một chỉ số tham chiếu, như chỉ
+  │  số chứng khoán. Nhà đầu tư sở hữu ETF không cần p
+  │ (showing 2.05kB/7.65kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  509µs     366µs   (cache)      (cache)         (cache)         125ms            582µs      77µs      126ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Extensions timing is valid
+  ✓  Stock categories object exists
+  ✓  Contains all required fields
+  ✓  Categories array has items
+  ✓  Correct __typename values
+  ✓  First category is 'Lựa chọn bởi các quỹ'
+  ✓  Second category is 'VN30'
+  ✓  No extra fields in response
+
+↳ get_broker_house_recommendations
+  POST https://stock-api-v2.infina.dev/alpha/graphql  
+  200 OK ★ 83ms time ★ 1.29kB↑ 464B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 647B
+  │ {
+  │     "operationName": "get_broker_house_recommendations
+  │ ",
+  │     "variables": {
+  │         "limit": 10
+  │     },
+  │     "query": "query get_broker_house_recommendations($
+  │ limit: Int) {\n  get_broker_house_recommendations(limi
+  │ t: $limit) {\n    status\n    message\n    broker_hous
+  │ e_recommendations {\n      stock_asset {\n        name
+  │ \n        code\n        logo\n        trading_info {\n
+  │           last_price\n          __typename\n        }\
+  │ n        __typename\n      }\n      analyst {\n       
+  │  sell\n        buy\n        hold\n        average_targ
+  │ et_price\n        expectation\n        __typename\n   
+  │    }\n      __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 194B
+  │ {"data":{"get_broker_house_recommendations":{"status":
+  │ "success","message":null,"broker_house_recommendations
+  │ ":[],"__typename":"GetBrokerHouseRecommendationsResult
+  │ "}},"extensions":{"timing":12}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  433µs     379µs   (cache)      (cache)         (cache)         81ms             793µs      38µs      82ms  
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Extensions timing is valid
+  ✓  Recommendations object exists
+  ✓  Contains all required fields
+  ✓  Field types are correct
+  ✓  Status is 'success'
+  ✓  Recommendations array is empty
+  ✓  Correct __typename value
+  ✓  No extra fields in response
+
+↳ get_hot_stock_category
+  POST https://stock-api-v2.infina.dev/alpha/graphql  
+  200 OK ★ 135ms time ★ 1.13kB↑ 3.55kB↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 493B
+  │ {
+  │     "operationName": "get_hot_stock_category",
+  │     "variables": {},
+  │     "query": "query get_hot_stock_category {\n  get_ho
+  │ t_stock_category {\n    status\n    message\n    categ
+  │ ory {\n      updated_at\n      id\n      description\n
+  │       list {\n        code\n        name\n        logo
+  │ \n        price_data {\n          latest_price\n      
+  │     change\n          percentage_change\n          __t
+  │ ypename\n        }\n        __typename\n      }\n     
+  │  __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 3.28kB
+  │ {"data":{"get_hot_stock_category":{"status":"success",
+  │ "message":null,"category":{"updated_at":"2022-11-09T16
+  │ :04:56.732Z","id":"624e88c88559b10009f9ac2a","descript
+  │ ion":"Dưới đây là nhóm cổ phiếu có khối lượng giao dịc
+  │ h lớn nhất trên ứng dụng Infina trong 5 phiên giao dịc
+  │ h gần nhất.","list":[{"code":"FLC","name":"CTCP Tập đo
+  │ àn FLC","logo":"https://djemclypbm8gi.cloudfront.net/s
+  │ tock/assets/logos/stock_logo_FLC.png","price_data":{"l
+  │ atest_price":3500,"change":0,"percentage_change":0,"__
+  │ typename":"StockPriceDataResult"},"__typename":"StockD
+  │ etailsResult"},{"code":"FPT","name":"CTCP FPT","logo":
+  │ "https://djemclypbm8gi.cloudfront.net/stock/assets/log
+  │ os/stock_logo_FPT.png","price_data":{"latest_price":92
+  │ 400,"change":-1600,"percentage_change":-1.7,"__typenam
+  │ e":"StockPriceDataResult"},"__typename":"StockDetailsR
+  │ esult"},{"code":"FUEVFVND","name":"Quỹ ETF DCVFMVN DIA
+  │ MOND","logo":"https://djemclypbm8gi.cloudfront.net/sto
+  │ ck/assets/logos/dragon_capital.png","price_data":{"lat
+  │ est_price":39620,"change":20,"percentage_change":0.05,
+  │ "__typename":"StockPriceDataResult"},"__typename":"Sto
+  │ ckDetailsResult"},{"code":"HNG","name":"CTCP Nông nghi
+  │ ệp Quốc tế Hoàng Anh Gia Lai","logo":"https://djemclyp
+  │ bm8gi.cloudfront.net/stock/assets/logos/stock_logo_HNG
+  │ .png","price_data":{"latest_price":6100,"change":0,"pe
+  │ rcentage_change":0,"__typename":"StockPriceDataResult"
+  │ },"__typename":"StockDetailsResult"},{"code":"HPG","na
+  │ me":"CTCP Tập đoàn Hòa Phát","logo":"https://djemclypb
+  │ m8gi.cloudfront.net/stock/assets/logos/stock_logo_HPG.
+  │ png","price_data":{"latest_price":28350,"change":-650,
+  │ "percentage_change":-2.24,"__typename":"StockPriceData
+  │ Result"},"__typename":"StockDetailsResult"},{"code":"M
+  │ BB","name":"Ngân hàng TMCP Quân Đội","logo":"https://d
+  │ jemclypbm8gi.cloudfront.net/stock/assets/logos/stock_l
+  │ ogo_MBB.png","price_data":{"latest_price":27050,"chang
+  │ e":-300,"percentage_change":-1.1,"__typename":"StockPr
+  │ iceDataResult"},"__typename":"StockDetailsResult"},{"c
+  │ ode":"PNJ","name":"CTCP Vàng bạc Đá quý Phú Nhuận","lo
+  │ go":"https://djemclypbm8gi.cloudfront.net/stock/as
+  │ (showing 2.05kB/3.28kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       402µs   (cache)      (cache)         (cache)         133ms            1ms        98µs      136ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Extensions timing is valid
+  ✓  Hot stock category object exists
+  ✓  Contains all required fields
+  ✓  Status is 'success'
+  ✓  Message is null for successful response
+  ✓  Correct __typename values
+  ✓  Category has valid structure
+  ✓  Stock list has items
+  ✓  No extra fields in response
+
+↳ search_stocks
+  POST https://stock-api-v2.infina.dev/alpha/graphql  
+  200 OK ★ 243ms time ★ 1.06kB↑ 5.59kB↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 423B
+  │ {
+  │     "operationName": "searchStock",
+  │     "variables": {
+  │         "keywords": "HP"
+  │     },
+  │     "query": "query searchStock($keywords: String!) {\
+  │ n  search_stocks(keywords: $keywords) {\n    status\n 
+  │    message\n    stocks {\n      code\n      name\n    
+  │   logo\n      price_data {\n        latest_price\n    
+  │     change\n        percentage_change\n        __typen
+  │ ame\n      }\n      __typename\n    }\n    __typename\
+  │ n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 5.32kB
+  │ {"data":{"search_stocks":{"status":"success","message"
+  │ :null,"stocks":[{"code":"BHP","name":"CTCP Bia Hà Nội 
+  │ - Hải Phòng","logo":"https://djemclypbm8gi.cloudfront.
+  │ net/stock/assets/logos/stock_logo_BHP.png","price_data
+  │ ":{"latest_price":8000,"change":0,"percentage_change":
+  │ 0,"__typename":"StockPriceDataResult"},"__typename":"S
+  │ tockDetailsResult"},{"code":"CHP","name":"CTCP Thủy đi
+  │ ện Miền Trung","logo":"https://djemclypbm8gi.cloudfron
+  │ t.net/stock/assets/logos/stock_logo_CHP.png","price_da
+  │ ta":{"latest_price":32050,"change":0,"percentage_chang
+  │ e":0,"__typename":"StockPriceDataResult"},"__typename"
+  │ :"StockDetailsResult"},{"code":"DHP","name":"CTCP Điện
+  │  cơ Hải Phòng","logo":"https://djemclypbm8gi.cloudfron
+  │ t.net/stock/assets/logos/stock_logo_DHP.png","price_da
+  │ ta":{"latest_price":11700,"change":0,"percentage_chang
+  │ e":0,"__typename":"StockPriceDataResult"},"__typename"
+  │ :"StockDetailsResult"},{"code":"HHP","name":"CTCP Giấy
+  │  Hoàng Hà Hải Phòng","logo":"https://djemclypbm8gi.clo
+  │ udfront.net/stock/assets/logos/stock_logo_HHP.png","pr
+  │ ice_data":{"latest_price":10850,"change":150,"percenta
+  │ ge_change":1.4,"__typename":"StockPriceDataResult"},"_
+  │ _typename":"StockDetailsResult"},{"code":"HPB","name":
+  │ "CTCP Bao bì PP","logo":"","price_data":{"latest_price
+  │ ":15300,"change":0,"percentage_change":0,"__typename":
+  │ "StockPriceDataResult"},"__typename":"StockDetailsResu
+  │ lt"},{"code":"HPD","name":"CTCP Thủy điện ĐăK Đoa","lo
+  │ go":"","price_data":{"latest_price":17400,"change":100
+  │ ,"percentage_change":0.58,"__typename":"StockPriceData
+  │ Result"},"__typename":"StockDetailsResult"},{"code":"H
+  │ PG","name":"CTCP Tập đoàn Hòa Phát","logo":"https://dj
+  │ emclypbm8gi.cloudfront.net/stock/assets/logos/stock_lo
+  │ go_HPG.png","price_data":{"latest_price":28350,"change
+  │ ":-650,"percentage_change":-2.24,"__typename":"StockPr
+  │ iceDataResult"},"__typename":"StockDetailsResult"},{"c
+  │ ode":"HPH","name":"CTCP Hóa Chất Hưng Phát Hà Bắc","lo
+  │ go":"https://djemclypbm8gi.cloudfront.net/stock/assets
+  │ /logos/stock_logo_HPH.png","price_data":{"latest_price
+  │ ":12600,"change":0,"percentage_change":0,"__typena
+  │ (showing 2.05kB/5.32kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  496µs     363µs   (cache)      (cache)         (cache)         239ms            2ms        64µs      242ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Extensions timing is valid
+  ✓  Search results object exists
+  ✓  Contains all required fields
+  ✓  Status is 'success'
+  ✓  Message is null for successful response
+  ✓  Correct __typename values
+  ✓  Stocks array has items
+  ✓  No extra fields in response
+  ✓  All stocks have Vietnamese company names starting with CTCP
+
+❏ FRS & Finavi / Normal (NM)
+↳ st_partner_sub_account_portfolio (Normal)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 138ms time ★ 1.47kB↑ 454B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 835B
+  │ {
+  │     "operationName": "st_partner_sub_account_portfolio
+  │ ",
+  │     "variables": {
+  │         "input": {
+  │             "sub_account_no": "0001122911NM",
+  │             "sort_by": "ALLOCATION",
+  │             "sort_type": "DESC"
+  │         }
+  │     },
+  │     "query": "query st_partner_sub_account_portfolio($
+  │ input: GetSubAccountPortfolioInput!) {\n  st_partner_s
+  │ ub_account_portfolio(input: $input) {\n    sub_account
+  │ _portfolio {\n      id\n      created_at\n      update
+  │ d_at\n      custody_code\n      sub_account_id\n      
+  │ sub_account_no\n      sub_account_type\n      symbol\n
+  │       restrict_quantity\n      await_restrict_quantity
+  │ \n      trade_quantity\n      total_volume\n      cost
+  │ _price\n      market_value\n      cost_value\n      ga
+  │ in_loss_percent\n      gain_loss_value\n      allocati
+  │ on\n      logo\n      __typename\n    }\n    __typenam
+  │ e\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 184B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_sub_account_portfolio"],"extensio
+  │ ns":{"code":"INTERNAL_SERVER_ERROR","serviceName":"par
+  │ tner"}}],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  398µs     242µs   (cache)      (cache)         (cache)         136ms            548µs      24µs      137ms 
+
+  ✓  Status code is 200
+  ✓  Content-Type header is application/json
+ 12. Response has correct structure
+ 13. Portfolio object exists
+ 14. Correct __typename values
+ 15⠄ TypeError in test-script
+
+↳ st_partner_sub_account_asset_detail (Normal)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 180ms time ★ 1.5kB↑ 457B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 866B
+  │ {
+  │     "operationName": "st_partner_sub_account_asset_det
+  │ ail",
+  │     "variables": {
+  │         "input": {
+  │             "sub_account_no": "0001122911NM"
+  │         }
+  │     },
+  │     "query": "query st_partner_sub_account_asset_detai
+  │ l($input: GetSubAccountAssetDetailInput!) {\n  st_part
+  │ ner_sub_account_asset_detail(input: $input) {\n    id\
+  │ n    created_at\n    updated_at\n    custody_code\n   
+  │  sub_account_id\n    sub_account_no\n    sub_account_t
+  │ ype\n    market_value\n    cost_value\n    gain_loss_p
+  │ ercent\n    gain_loss_value\n    total_loan\n    total
+  │ _money\n    cash\n    t0\n    t1\n    t2\n    buying_p
+  │ ower\n    pending_match_value\n    pending_receive_val
+  │ ue\n    loan_inday\n    margin_debt\n    custody_fee\n
+  │     other_fee\n    dividend_value\n    blocked_value\n
+  │     holding_stock\n    total_asset\n    nav\n    fee\n
+  │     cash_advanced\n    status\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 187B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_sub_account_asset_detail"],"exten
+  │ sions":{"code":"INTERNAL_SERVER_ERROR","serviceName":"
+  │ partner"}}],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  619µs     496µs   (cache)      (cache)         (cache)         177ms            1ms        64µs      180ms 
+
+  ✓  Status code is 200
+  ✓  Content-Type header is application/json
+ 16. Response has correct structure
+ 17. Asset detail object exists
+ 18⠄ TypeError in test-script
+
+↳ st_partner_order_webview (SELL - Normal)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 95ms time ★ 1.11kB↑ 446B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 477B
+  │ {
+  │     "operationName": "st_partner_order_webview",
+  │     "variables": {
+  │         "sub_account_no": "0001122911NM",
+  │         "symbol": "HPG",
+  │         "action": "SELL"
+  │     },
+  │     "query": "query st_partner_order_webview($sub_acco
+  │ unt_no: String!, $symbol: String, $action: ST_PARTNER_
+  │ ORDER_WEBVIEW_ACTION!) {\n  st_partner_order_webview(\
+  │ n    input: {sub_account_no: $sub_account_no, symbol: 
+  │ $symbol, action: $action}\n  ) {\n    webview_url\n   
+  │  expired_at\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 176B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_order_webview"],"extensions":{"co
+  │ de":"INTERNAL_SERVER_ERROR","serviceName":"partner"}}]
+  │ ,"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  389µs     274µs   (cache)      (cache)         (cache)         93ms             1ms        121µs     95ms  
+
+  ✓  Status code is 200
+ 19. Webview response structure valid
+ 20. URL validation
+ 21. Expiration time valid
+ 22. JWT token basic validation
+
+↳ st_partner_order_webview (BUY - Normal)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 82ms time ★ 1.11kB↑ 446B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 476B
+  │ {
+  │     "operationName": "st_partner_order_webview",
+  │     "variables": {
+  │         "sub_account_no": "0001122911NM",
+  │         "symbol": "HPG",
+  │         "action": "BUY"
+  │     },
+  │     "query": "query st_partner_order_webview($sub_acco
+  │ unt_no: String!, $symbol: String, $action: ST_PARTNER_
+  │ ORDER_WEBVIEW_ACTION!) {\n  st_partner_order_webview(\
+  │ n    input: {sub_account_no: $sub_account_no, symbol: 
+  │ $symbol, action: $action}\n  ) {\n    webview_url\n   
+  │  expired_at\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 176B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_order_webview"],"extensions":{"co
+  │ de":"INTERNAL_SERVER_ERROR","serviceName":"partner"}}]
+  │ ,"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  819µs     648µs   (cache)      (cache)         (cache)         79ms             960µs      40µs      82ms  
+
+  ✓  Status code is 200
+ 23. Webview response structure valid
+ 24. URL validation
+ 25. Expiration time valid
+ 26. JWT token basic validation
+
+↳ get_finavi_withdraw_fees (0001122911NM)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 95ms time ★ 1.21kB↑ 460B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 573B
+  │ {
+  │     "operationName": "get_finavi_withdraw_fees",
+  │     "variables": {
+  │         "subAccountNo": "0001122911NM",
+  │         "amount": 50000,
+  │         "bankID": "VIETCAPITALBANK"
+  │     },
+  │     "query": "query get_finavi_withdraw_fees($subAccou
+  │ ntNo: String!, $bankID: String!, $amount: Float!) {\n 
+  │  st_partner_sub_account_withdrawal_info(subAccountNo: 
+  │ $subAccountNo) {\n    cash\n    withdrawable_balance\n
+  │     transfer_fee(bankID: $bankID, amount: $amount)\n  
+  │   advance_fee(amount: $amount) {\n      advance_amount
+  │ \n      fee_advance\n      __typename\n    }\n    __ty
+  │ pename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 190B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_sub_account_withdrawal_info"],"ex
+  │ tensions":{"code":"INTERNAL_SERVER_ERROR","serviceName
+  │ ":"partner"}}],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  491µs     371µs   (cache)      (cache)         (cache)         93ms             926µs      38µs      95ms  
+
+  ✓  Status code is 200
+ 27. Withdrawal info structure valid
+ 28. Balance validation
+ 29. Fee validation
+
+↳ get_finavi_transfer_internal_fees (0001122911NM)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 92ms time ★ 1.12kB↑ 460B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 484B
+  │ {
+  │     "operationName": "get_finavi_transfer_internal_fee
+  │ s",
+  │     "variables": {
+  │         "subAccountNo": "0001122911NM",
+  │         "amount": 10000
+  │     },
+  │     "query": "query get_finavi_transfer_internal_fees(
+  │ $subAccountNo: String!, $amount: Float!) {\n  st_partn
+  │ er_sub_account_withdrawal_info(subAccountNo: $subAccou
+  │ ntNo) {\n    cash\n    withdrawable_balance\n    advan
+  │ ce_fee(amount: $amount) {\n      advance_amount\n     
+  │  fee_advance\n      __typename\n    }\n    __typename\
+  │ n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 190B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_sub_account_withdrawal_info"],"ex
+  │ tensions":{"code":"INTERNAL_SERVER_ERROR","serviceName
+  │ ":"partner"}}],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  382µs     308µs   (cache)      (cache)         (cache)         90ms             682µs      29µs      91ms  
+
+  ✓  Status code is 200
+ 30. Withdrawal info structure valid
+ 31. Advance fee validation
+ 32. Balance difference check
+
+↳ st_partner_validate_withdrawal_info (0001122911NM)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.3kB↑ 292B↓ size ★ 16↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 451B
+  │ {
+  │     "operationName": "st_partner_validate_withdrawal_i
+  │ nfo",
+  │     "variables": {
+  │         "input": {
+  │             "amount": 50000,
+  │             "sub_account": "0001122911NM",
+  │             "bank_id": "VIETCAPITALBANK"
+  │         }
+  │     },
+  │     "query": "mutation st_partner_validate_withdrawal_
+  │ info($input: StPartnerValidateWithdrawalInfoInput!) {\
+  │ n  st_partner_validate_withdrawal_info(input: $input) 
+  │ {\n    status\n    error_message\n    __typename\n  }\
+  │ n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  435µs     337µs   (cache)      (cache)         (cache)         1m               12ms       152µs     1m    
+
+ 33. Status code is 200
+ 34. Validation response structure
+ 35. Success state validation
+ 36. Type consistency
+
+↳ st_partner_send_withdrawal_otp (0001122911NM)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.25kB↑ 292B↓ size ★ 16↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 396B
+  │ {
+  │     "operationName": "st_partner_send_withdrawal_otp",
+  │     "variables": {
+  │         "amount": 5000,
+  │         "sub_account": "0001122911NM"
+  │     },
+  │     "query": "mutation st_partner_send_withdrawal_otp(
+  │ $sub_account: String!, $amount: Int!) {\n  st_partner_
+  │ send_withdrawal_otp(sub_account: $sub_account, amount:
+  │  $amount) {\n    status\n    error_message\n    transa
+  │ ction_id\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  630µs     935µs   (cache)      (cache)         (cache)         1m               4ms        136µs     1m    
+
+ 37. Status code is 200
+ 38. Response has valid JSON body
+ 39⠄ JSONError in test-script
+
+↳ st_partner_verify_withdrawal_otp (0001122911NM)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.38kB↑ 292B↓ size ★ 16↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 531B
+  │ {
+  │     "operationName": "st_partner_verify_withdrawal_otp
+  │ ",
+  │     "variables": {
+  │         "input": {
+  │             "amount": 50000,
+  │             "bank_id": "VIETCAPITALBANK",
+  │             "otp": "111111",
+  │             "sub_account": "0001122911NM",
+  │             "transaction_id": "{{withdrawal_transactio
+  │ n_id}}"
+  │         }
+  │     },
+  │     "query": "mutation st_partner_verify_withdrawal_ot
+  │ p($input: StPartnerVerifyWithdrawalOTPInput!) {\n  st_
+  │ partner_verify_withdrawal_otp(input: $input) {\n    st
+  │ atus\n    error_message\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  750µs     876µs   (cache)      (cache)         (cache)         1m               7ms        145µs     1m    
+
+ 40. Status code is 200
+ 41. Response has valid JSON body
+ 42⠄ JSONError in test-script
+
+↳ get_finavi_withdrawable_balance (0001122911NM)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 155ms time ★ 1.03kB↑ 460B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 397B
+  │ {
+  │     "operationName": "get_finavi_withdrawable_balance"
+  │ ,
+  │     "variables": {
+  │         "subAccountNo": "0001122911NM"
+  │     },
+  │     "query": "query get_finavi_withdrawable_balance($s
+  │ ubAccountNo: String!) {\n  st_partner_sub_account_with
+  │ drawal_info(subAccountNo: $subAccountNo) {\n    cash\n
+  │     withdrawable_balance\n    withdrawal_limit_per_tim
+  │ e\n    withdrawal_limit_per_day\n    __typename\n  }\n
+  │ }"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 190B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_sub_account_withdrawal_info"],"ex
+  │ tensions":{"code":"INTERNAL_SERVER_ERROR","serviceName
+  │ ":"partner"}}],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  764µs     533µs   (cache)      (cache)         (cache)         152ms            904µs      41µs      154ms 
+
+  ✓  Status code is 200
+ 43. Withdrawal info structure valid
+ 44. Balance validation
+ 45. Withdrawal limits check
+
+↳ st_partner_transfer_cash_internal (NM -> MG)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.3kB↑ 292B↓ size ★ 16↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 447B
+  │ {
+  │     "operationName": "st_partner_transfer_cash_interna
+  │ l",
+  │     "variables": {
+  │         "input": {
+  │             "amount": 10000,
+  │             "source_account": "0001122911NM", 
+  │             "destination_account": "0001122911MG"
+  │         }
+  │     },
+  │     "query": "mutation st_partner_transfer_cash_intern
+  │ al($input: TransferCashInternalInput!) {\n  st_partner
+  │ _transfer_cash_internal(input: $input) {\n    status\n
+  │     error_message\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  547µs     434µs   (cache)      (cache)         (cache)         1m               4ms        135µs     1m    
+
+ 46. Status code is 200
+ 47. Transfer result structure valid
+ 48. Success state validation
+ 49. Type name consistency
+ 50. Status value is valid
+
+↳ st_partner_internal_stock_transfer_list (NM -> MG)
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.26kB↑ 292B↓ size ★ 12↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 630B
+  │ {
+  │     "operationName": "st_partner_internal_stock_transf
+  │ er_list",
+  │     "variables": {
+  │         "subAccountNo": "0001122911NM" 
+  │     },
+  │     "query": "query st_partner_internal_stock_transfer
+  │ _list($subAccountNo: String!) {\n  st_partner_internal
+  │ _stock_transfer_list(subAccountNo: $subAccountNo) {\n 
+  │    ... on StPartnerSubAccountNotFoundError {\n      er
+  │ ror_message\n      __typename\n    }\n    ... on StPar
+  │ tnerInternalStockTransferListResult {\n      internal_
+  │ stock_transfer_list {\n        stock_code\n        sub
+  │ _account\n        can_transfer_quantity\n        __typ
+  │ ename\n      }\n      __typename\n    }\n    __typenam
+  │ e\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  713µs     502µs   (cache)      (cache)         (cache)         1m               6ms        295µs     1m    
+
+ 51. Status code is 200
+ 52. Response has correct structure
+ 53. All transfer quantities are positive
+
+↳ st_partner_transfer_internal_stock (NM -> MG)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.34kB↑ 292B↓ size ★ 16↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 493B
+  │ {
+  │     "operationName": "st_partner_transfer_internal_sto
+  │ ck",
+  │     "variables": {
+  │         "input": {
+  │             "quantity": 1,
+  │             "stock_code": "AAA",
+  │             "sub_account_no": "0001122911NM",
+  │             "receive_sub_account_no": "0001122911MG"
+  │         }
+  │     },
+  │     "query": "mutation st_partner_transfer_internal_st
+  │ ock($input: StPartnerTransferInternalStockInput!) {\n 
+  │  st_partner_transfer_internal_stock(input: $input) {\n
+  │     status\n    error_message\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       545µs   (cache)      (cache)         (cache)         1m               5ms        227µs     1m    
+
+ 54. Status code is 200 (OK)
+ 55. Content-Type is application/json
+ 56⠄ JSONError in test-script
+
+↳ st_partner_open_order_history
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 156ms time ★ 1.57kB↑ 451B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 935B
+  │ {
+  │     "operationName": "st_partner_open_order_history",
+  │     "variables": {
+  │         "sub_account": "0001122911NM"
+  │     },
+  │     "query": "query st_partner_open_order_history($sub
+  │ _account: String!) {\n  st_partner_open_order_history(
+  │ input: {sub_account: $sub_account}) {\n    st_partner_
+  │ orders {\n      id\n      created_at\n      updated_at
+  │ \n      stt\n      order_id\n      symbol\n      sub_a
+  │ ccount\n      custody_code\n      transaction_number\n
+  │       transaction_date\n      transaction_time\n      
+  │ execute_type\n      price_type\n      quote_price\n   
+  │    order_quantity\n      remain_quantity\n      execut
+  │ e_quantity\n      match_price\n      cancel_quantity\n
+  │       adjust_quantity\n      trade_place\n      place_
+  │ value\n      execute_value\n      order_status\n      
+  │ order_type\n      cost_price\n      fee\n      tax_fee
+  │ \n      actual_fee\n      provisional_value\n      rea
+  │ l_value\n      __typename\n    }\n    __typename\n  }\
+  │ n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 181B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_open_order_history"],"extensions"
+  │ :{"code":"INTERNAL_SERVER_ERROR","serviceName":"partne
+  │ r"}}],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       578µs   (cache)      (cache)         (cache)         154ms            671µs      25µs      156ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+ 57. Response has valid JSON structure
+ 58. Open order history object exists
+ 59⠄ TypeError in test-script
+
+↳ st_partner_order_history
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 248ms time ★ 1.8kB↑ 446B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 1.17kB
+  │ {
+  │     "operationName": "st_partner_order_history",
+  │     "variables": {
+  │         "input": {
+  │             "end_date": "01/01/2026",
+  │             "start_date": "01/01/2025",
+  │             "from": 0,
+  │             "to": 1000,
+  │             "execute_type": "ALL",
+  │             "order_status": "ALL",
+  │             "sort": "LAST_DATE",
+  │             "sub_account": "0001122911NM"
+  │         }
+  │     },
+  │     "query": "query st_partner_order_history($input: G
+  │ etListOrderInput!) {\n  st_partner_order_history(input
+  │ : $input) {\n    st_partner_orders {\n      id\n      
+  │ created_at\n      updated_at\n      stt\n      order_i
+  │ d\n      symbol\n      sub_account\n      custody_code
+  │ \n      transaction_number\n      transaction_date\n  
+  │     transaction_time\n      execute_type\n      price_
+  │ type\n      quote_price\n      order_quantity\n      r
+  │ emain_quantity\n      execute_quantity\n      match_pr
+  │ ice\n      cancel_quantity\n      adjust_quantity\n   
+  │    trade_place\n      place_value\n      execute_value
+  │ \n      order_status\n      order_type\n      cost_pri
+  │ ce\n      fee\n      tax_fee\n      actual_fee\n      
+  │ provisional_value\n      real_value\n      __typename\
+  │ n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 176B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_order_history"],"extensions":{"co
+  │ de":"INTERNAL_SERVER_ERROR","serviceName":"partner"}}]
+  │ ,"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  194µs     250µs   (cache)      (cache)         (cache)         245ms            1ms        48µs      247ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+ 60. Response has valid JSON structure
+ 61. Order history object exists
+ 62⠄ TypeError in test-script
+
+↳ st_partner_internal_stock_transfer_history
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.61kB↑ 292B↓ size ★ 12↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 973B
+  │ {
+  │     "operationName": "st_partner_internal_stock_transf
+  │ er_history",
+  │     "variables": {
+  │         "sub_account_no": "0001122911NM",
+  │         "to_date": "2026-01-01",
+  │         "from_date": "2025-05-26"
+  │     },
+  │     "query": "query st_partner_internal_stock_transfer
+  │ _history($sub_account_no: String!, $from_date: String!
+  │ , $to_date: String!) {\n  st_partner_internal_stock_tr
+  │ ansfer_history(\n    input: {sub_account_no: $sub_acco
+  │ unt_no, from_date: $from_date, to_date: $to_date}\n  )
+  │  {\n    ... on StPartnerGetInternalStockTransferHistor
+  │ yError {\n      error_message\n      __typename\n    }
+  │ \n    ... on StPartnerGetInternalStockTransferHistoryR
+  │ esult {\n      stock_transfer_history {\n        sub_a
+  │ ccount\n        transaction_date\n        transaction_
+  │ time\n        transaction_name\n        stock_code\n  
+  │       quantity\n        receive_sub_account\n        r
+  │ eceive_account_name\n        description\n        __ty
+  │ pename\n      }\n      __typename\n    }\n    __typena
+  │ me\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  524µs     263µs   (cache)      (cache)         (cache)         1m               5ms        314µs     1m    
+
+ 63. Status code is 200 (OK)
+ 64. Content-Type is application/json
+ 65⠄ JSONError in test-script
+
+❏ FRS & Finavi / Margin (MG)
+↳ st_partner_sub_account_portfolio (Margin)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 128ms time ★ 1.47kB↑ 454B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 835B
+  │ {
+  │     "operationName": "st_partner_sub_account_portfolio
+  │ ",
+  │     "variables": {
+  │         "input": {
+  │             "sub_account_no": "0001122911MG",
+  │             "sort_by": "ALLOCATION",
+  │             "sort_type": "DESC"
+  │         }
+  │     },
+  │     "query": "query st_partner_sub_account_portfolio($
+  │ input: GetSubAccountPortfolioInput!) {\n  st_partner_s
+  │ ub_account_portfolio(input: $input) {\n    sub_account
+  │ _portfolio {\n      id\n      created_at\n      update
+  │ d_at\n      custody_code\n      sub_account_id\n      
+  │ sub_account_no\n      sub_account_type\n      symbol\n
+  │       restrict_quantity\n      await_restrict_quantity
+  │ \n      trade_quantity\n      total_volume\n      cost
+  │ _price\n      market_value\n      cost_value\n      ga
+  │ in_loss_percent\n      gain_loss_value\n      allocati
+  │ on\n      logo\n      __typename\n    }\n    __typenam
+  │ e\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 184B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_sub_account_portfolio"],"extensio
+  │ ns":{"code":"INTERNAL_SERVER_ERROR","serviceName":"par
+  │ tner"}}],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  320µs     262µs   (cache)      (cache)         (cache)         125ms            1ms        46µs      127ms 
+
+  ✓  Status code is 200
+  ✓  Content-Type header is application/json
+ 66. Response has correct structure
+ 67. Portfolio object exists
+ 68. Correct __typename values
+ 69⠄ TypeError in test-script
+
+↳ st_partner_sub_account_asset_detail (Margin)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 88ms time ★ 1.5kB↑ 457B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 866B
+  │ {
+  │     "operationName": "st_partner_sub_account_asset_det
+  │ ail",
+  │     "variables": {
+  │         "input": {
+  │             "sub_account_no": "0001122911MG"
+  │         }
+  │     },
+  │     "query": "query st_partner_sub_account_asset_detai
+  │ l($input: GetSubAccountAssetDetailInput!) {\n  st_part
+  │ ner_sub_account_asset_detail(input: $input) {\n    id\
+  │ n    created_at\n    updated_at\n    custody_code\n   
+  │  sub_account_id\n    sub_account_no\n    sub_account_t
+  │ ype\n    market_value\n    cost_value\n    gain_loss_p
+  │ ercent\n    gain_loss_value\n    total_loan\n    total
+  │ _money\n    cash\n    t0\n    t1\n    t2\n    buying_p
+  │ ower\n    pending_match_value\n    pending_receive_val
+  │ ue\n    loan_inday\n    margin_debt\n    custody_fee\n
+  │     other_fee\n    dividend_value\n    blocked_value\n
+  │     holding_stock\n    total_asset\n    nav\n    fee\n
+  │     cash_advanced\n    status\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 187B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_sub_account_asset_detail"],"exten
+  │ sions":{"code":"INTERNAL_SERVER_ERROR","serviceName":"
+  │ partner"}}],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  449µs     401µs   (cache)      (cache)         (cache)         86ms             590µs      28µs      88ms  
+
+  ✓  Status code is 200
+  ✓  Content-Type header is application/json
+ 70. Response has correct structure
+ 71. Asset detail object exists
+ 72⠄ TypeError in test-script
+
+↳ st_partner_order_webview (SELL - Margin)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 85ms time ★ 1.11kB↑ 446B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 477B
+  │ {
+  │     "operationName": "st_partner_order_webview",
+  │     "variables": {
+  │         "sub_account_no": "0001122911MG",
+  │         "symbol": "HPG",
+  │         "action": "SELL"
+  │     },
+  │     "query": "query st_partner_order_webview($sub_acco
+  │ unt_no: String!, $symbol: String, $action: ST_PARTNER_
+  │ ORDER_WEBVIEW_ACTION!) {\n  st_partner_order_webview(\
+  │ n    input: {sub_account_no: $sub_account_no, symbol: 
+  │ $symbol, action: $action}\n  ) {\n    webview_url\n   
+  │  expired_at\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 176B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_order_webview"],"extensions":{"co
+  │ de":"INTERNAL_SERVER_ERROR","serviceName":"partner"}}]
+  │ ,"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  534µs     437µs   (cache)      (cache)         (cache)         83ms             737µs      35µs      85ms  
+
+  ✓  Status code is 200
+ 73. Webview response structure valid
+ 74. URL validation
+ 75. Expiration time valid
+ 76. JWT token basic validation
+
+↳ st_partner_order_webview (BUY - Margin)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 85ms time ★ 1.11kB↑ 446B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 476B
+  │ {
+  │     "operationName": "st_partner_order_webview",
+  │     "variables": {
+  │         "sub_account_no": "0001122911MG",
+  │         "symbol": "HPG",
+  │         "action": "BUY"
+  │     },
+  │     "query": "query st_partner_order_webview($sub_acco
+  │ unt_no: String!, $symbol: String, $action: ST_PARTNER_
+  │ ORDER_WEBVIEW_ACTION!) {\n  st_partner_order_webview(\
+  │ n    input: {sub_account_no: $sub_account_no, symbol: 
+  │ $symbol, action: $action}\n  ) {\n    webview_url\n   
+  │  expired_at\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 176B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_order_webview"],"extensions":{"co
+  │ de":"INTERNAL_SERVER_ERROR","serviceName":"partner"}}]
+  │ ,"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  264µs     201µs   (cache)      (cache)         (cache)         83ms             835µs      35µs      84ms  
+
+  ✓  Status code is 200
+ 77. Webview response structure valid
+ 78. URL validation
+ 79. Expiration time valid
+ 80. JWT token basic validation
+
+↳ get_finavi_withdrawable_balance (0001122911MG)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 107ms time ★ 1.03kB↑ 460B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 397B
+  │ {
+  │     "operationName": "get_finavi_withdrawable_balance"
+  │ ,
+  │     "variables": {
+  │         "subAccountNo": "0001122911MG"
+  │     },
+  │     "query": "query get_finavi_withdrawable_balance($s
+  │ ubAccountNo: String!) {\n  st_partner_sub_account_with
+  │ drawal_info(subAccountNo: $subAccountNo) {\n    cash\n
+  │     withdrawable_balance\n    withdrawal_limit_per_tim
+  │ e\n    withdrawal_limit_per_day\n    __typename\n  }\n
+  │ }"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 190B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_sub_account_withdrawal_info"],"ex
+  │ tensions":{"code":"INTERNAL_SERVER_ERROR","serviceName
+  │ ":"partner"}}],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  561µs     552µs   (cache)      (cache)         (cache)         104ms            1ms        56µs      107ms 
+
+  ✓  Status code is 200
+ 81. Withdrawal info structure valid
+ 82. Balance validation
+ 83. Withdrawal limits check
+
+↳ st_partner_validate_withdrawal_info (0001122911MG)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.3kB↑ 292B↓ size ★ 16↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 451B
+  │ {
+  │     "operationName": "st_partner_validate_withdrawal_i
+  │ nfo",
+  │     "variables": {
+  │         "input": {
+  │             "amount": 50000,
+  │             "sub_account": "0001122911MG",
+  │             "bank_id": "VIETCAPITALBANK"
+  │         }
+  │     },
+  │     "query": "mutation st_partner_validate_withdrawal_
+  │ info($input: StPartnerValidateWithdrawalInfoInput!) {\
+  │ n  st_partner_validate_withdrawal_info(input: $input) 
+  │ {\n    status\n    error_message\n    __typename\n  }\
+  │ n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  458µs     419µs   (cache)      (cache)         (cache)         1m               4ms        138µs     1m    
+
+ 84. Status code is 200
+ 85. Validation response structure
+ 86. Success state validation
+ 87. Type consistency
+
+↳ st_partner_send_withdrawal_otp (0001122911MG)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.25kB↑ 292B↓ size ★ 16↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 396B
+  │ {
+  │     "operationName": "st_partner_send_withdrawal_otp",
+  │     "variables": {
+  │         "amount": 5000,
+  │         "sub_account": "0001122911MG"
+  │     },
+  │     "query": "mutation st_partner_send_withdrawal_otp(
+  │ $sub_account: String!, $amount: Int!) {\n  st_partner_
+  │ send_withdrawal_otp(sub_account: $sub_account, amount:
+  │  $amount) {\n    status\n    error_message\n    transa
+  │ ction_id\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  558µs     466µs   (cache)      (cache)         (cache)         1m               2ms        74µs      1m    
+
+ 88. Status code is 200
+ 89. Response has valid JSON body
+ 90⠄ JSONError in test-script
+
+↳ st_partner_verify_withdrawal_otp (0001122911MG)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.38kB↑ 292B↓ size ★ 16↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 531B
+  │ {
+  │     "operationName": "st_partner_verify_withdrawal_otp
+  │ ",
+  │     "variables": {
+  │         "input": {
+  │             "amount": 50000,
+  │             "bank_id": "VIETCAPITALBANK",
+  │             "otp": "111111",
+  │             "sub_account": "0001122911MG",
+  │             "transaction_id": "{{withdrawal_transactio
+  │ n_id}}"
+  │         }
+  │     },
+  │     "query": "mutation st_partner_verify_withdrawal_ot
+  │ p($input: StPartnerVerifyWithdrawalOTPInput!) {\n  st_
+  │ partner_verify_withdrawal_otp(input: $input) {\n    st
+  │ atus\n    error_message\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       561µs   (cache)      (cache)         (cache)         1m               4ms        152µs     1m    
+
+ 91. Status code is 200
+ 92. Response has valid JSON body
+ 93⠄ JSONError in test-script
+
+↳ get_finavi_withdraw_fees (0001122911MG)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 131ms time ★ 1.21kB↑ 460B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 573B
+  │ {
+  │     "operationName": "get_finavi_withdraw_fees",
+  │     "variables": {
+  │         "subAccountNo": "0001122911MG",
+  │         "amount": 50000,
+  │         "bankID": "VIETCAPITALBANK"
+  │     },
+  │     "query": "query get_finavi_withdraw_fees($subAccou
+  │ ntNo: String!, $bankID: String!, $amount: Float!) {\n 
+  │  st_partner_sub_account_withdrawal_info(subAccountNo: 
+  │ $subAccountNo) {\n    cash\n    withdrawable_balance\n
+  │     transfer_fee(bankID: $bankID, amount: $amount)\n  
+  │   advance_fee(amount: $amount) {\n      advance_amount
+  │ \n      fee_advance\n      __typename\n    }\n    __ty
+  │ pename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 190B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_sub_account_withdrawal_info"],"ex
+  │ tensions":{"code":"INTERNAL_SERVER_ERROR","serviceName
+  │ ":"partner"}}],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  698µs     419µs   (cache)      (cache)         (cache)         129ms            750µs      37µs      131ms 
+
+  ✓  Status code is 200
+ 94. Withdrawal info structure valid
+ 95. Balance validation
+ 96. Fee validation
+
+↳ get_finavi_transfer_internal_fees (0001122911MG)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 100ms time ★ 1.12kB↑ 460B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 484B
+  │ {
+  │     "operationName": "get_finavi_transfer_internal_fee
+  │ s",
+  │     "variables": {
+  │         "subAccountNo": "0001122911MG",
+  │         "amount": 10000
+  │     },
+  │     "query": "query get_finavi_transfer_internal_fees(
+  │ $subAccountNo: String!, $amount: Float!) {\n  st_partn
+  │ er_sub_account_withdrawal_info(subAccountNo: $subAccou
+  │ ntNo) {\n    cash\n    withdrawable_balance\n    advan
+  │ ce_fee(amount: $amount) {\n      advance_amount\n     
+  │  fee_advance\n      __typename\n    }\n    __typename\
+  │ n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 190B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_sub_account_withdrawal_info"],"ex
+  │ tensions":{"code":"INTERNAL_SERVER_ERROR","serviceName
+  │ ":"partner"}}],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       405µs   (cache)      (cache)         (cache)         96ms             2ms        125µs     101ms 
+
+  ✓  Status code is 200
+ 97. Withdrawal info structure valid
+ 98. Advance fee validation
+ 99. Balance difference check
+
+↳ st_partner_transfer_cash_internal (MG -> NM)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.3kB↑ 292B↓ size ★ 16↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 447B
+  │ {
+  │     "operationName": "st_partner_transfer_cash_interna
+  │ l",
+  │     "variables": {
+  │         "input": {
+  │             "amount": 10000,
+  │             "source_account": "0001122911MG", 
+  │             "destination_account": "0001122911NM"
+  │         }
+  │     },
+  │     "query": "mutation st_partner_transfer_cash_intern
+  │ al($input: TransferCashInternalInput!) {\n  st_partner
+  │ _transfer_cash_internal(input: $input) {\n    status\n
+  │     error_message\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  463µs     402µs   (cache)      (cache)         (cache)         1m               3ms        139µs     1m    
+
+100. Status code is 200
+101. Transfer result structure valid
+102. Success state validation
+103. Type name consistency
+104. Status value is valid
+
+↳ st_partner_internal_stock_transfer_list (MG -> NM)
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.26kB↑ 292B↓ size ★ 12↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 630B
+  │ {
+  │     "operationName": "st_partner_internal_stock_transf
+  │ er_list",
+  │     "variables": {
+  │         "subAccountNo": "0001122911MG" 
+  │     },
+  │     "query": "query st_partner_internal_stock_transfer
+  │ _list($subAccountNo: String!) {\n  st_partner_internal
+  │ _stock_transfer_list(subAccountNo: $subAccountNo) {\n 
+  │    ... on StPartnerSubAccountNotFoundError {\n      er
+  │ ror_message\n      __typename\n    }\n    ... on StPar
+  │ tnerInternalStockTransferListResult {\n      internal_
+  │ stock_transfer_list {\n        stock_code\n        sub
+  │ _account\n        can_transfer_quantity\n        __typ
+  │ ename\n      }\n      __typename\n    }\n    __typenam
+  │ e\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  907µs     490µs   (cache)      (cache)         (cache)         1m               5ms        230µs     1m    
+
+105. Status code is 200
+106. Response has correct structure
+107. All transfer quantities are positive
+
+↳ st_partner_transfer_internal_stock (MG -> NM)
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  504 Gateway Time-out ★ 1m time ★ 1.34kB↑ 292B↓ size ★ 16↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 493B
+  │ {
+  │     "operationName": "st_partner_transfer_internal_sto
+  │ ck",
+  │     "variables": {
+  │         "input": {
+  │             "quantity": 1,
+  │             "stock_code": "AAA",
+  │             "sub_account_no": "0001122911MG",
+  │             "receive_sub_account_no": "0001122911NM"
+  │         }
+  │     },
+  │     "query": "mutation st_partner_transfer_internal_st
+  │ ock($input: StPartnerTransferInternalStockInput!) {\n 
+  │  st_partner_transfer_internal_stock(input: $input) {\n
+  │     status\n    error_message\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 132B
+  │ <html>
+  │ <head><title>504 Gateway Time-out</title></head>
+  │ <body>
+  │ <center><h1>504 Gateway Time-out</h1></center>
+  │ </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  2ms       554µs   (cache)      (cache)         (cache)         1m               3ms        97µs      1m    
+
+108. Status code is 200 (OK)
+109. Content-Type is application/json
+110⠄ JSONError in test-script
+
+↳ st_partner_loan_contracts (INDUE)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 574ms time ★ 1.33kB↑ 447B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 700B
+  │ {
+  │     "operationName": "st_partner_loan_contracts",
+  │     "variables": {
+  │         "input": {
+  │             "sort": "DUEDATE_DESC",
+  │             "status": "INDUE",
+  │             "sub_account_no": "0001122911MG",
+  │             "to_date": "01/01/2026",
+  │             "from_date": "01/05/2025"
+  │         }
+  │     },
+  │     "query": "query st_partner_loan_contracts($input: 
+  │ GetLoanContractsInput!) {\n  st_partner_loan_contracts
+  │ (input: $input) {\n    loan_contracts {\n      sub_acc
+  │ ount_id\n      loan_id\n      tx_date\n      due_date\
+  │ n      interest_rate\n      remain_original_loan_amoun
+  │ t\n      remain_interest_amount\n      overdue_day\n  
+  │     paid_amount\n      status\n      __typename\n    }
+  │ \n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 177B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_loan_contracts"],"extensions":{"c
+  │ ode":"INTERNAL_SERVER_ERROR","serviceName":"partner"}}
+  │ ],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       301µs   (cache)      (cache)         (cache)         572ms            617µs      31µs      574ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+111. Response has valid JSON structure
+112. Loan contracts object exists
+113⠄ TypeError in test-script
+
+↳ st_partner_loan_contracts (PASSDUE)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 200ms time ★ 1.33kB↑ 447B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 702B
+  │ {
+  │     "operationName": "st_partner_loan_contracts",
+  │     "variables": {
+  │         "input": {
+  │             "sort": "DUEDATE_DESC",
+  │             "status": "PASSDUE",
+  │             "sub_account_no": "0001122911MG",
+  │             "to_date": "01/01/2026",
+  │             "from_date": "01/05/2025"
+  │         }
+  │     },
+  │     "query": "query st_partner_loan_contracts($input: 
+  │ GetLoanContractsInput!) {\n  st_partner_loan_contracts
+  │ (input: $input) {\n    loan_contracts {\n      sub_acc
+  │ ount_id\n      loan_id\n      tx_date\n      due_date\
+  │ n      interest_rate\n      remain_original_loan_amoun
+  │ t\n      remain_interest_amount\n      overdue_day\n  
+  │     paid_amount\n      status\n      __typename\n    }
+  │ \n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 177B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_loan_contracts"],"extensions":{"c
+  │ ode":"INTERNAL_SERVER_ERROR","serviceName":"partner"}}
+  │ ],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  216µs     168µs   (cache)      (cache)         (cache)         198ms            587µs      30µs      199ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+114. Response has valid JSON structure
+115. Loan contracts object exists
+116⠄ TypeError in test-script
+
+↳ st_partner_loan_contracts (PAID)
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 114ms time ★ 1.33kB↑ 447B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 699B
+  │ {
+  │     "operationName": "st_partner_loan_contracts",
+  │     "variables": {
+  │         "input": {
+  │             "sort": "DUEDATE_DESC",
+  │             "status": "PAID",
+  │             "sub_account_no": "0001122911MG",
+  │             "to_date": "01/01/2026",
+  │             "from_date": "01/05/2025"
+  │         }
+  │     },
+  │     "query": "query st_partner_loan_contracts($input: 
+  │ GetLoanContractsInput!) {\n  st_partner_loan_contracts
+  │ (input: $input) {\n    loan_contracts {\n      sub_acc
+  │ ount_id\n      loan_id\n      tx_date\n      due_date\
+  │ n      interest_rate\n      remain_original_loan_amoun
+  │ t\n      remain_interest_amount\n      overdue_day\n  
+  │     paid_amount\n      status\n      __typename\n    }
+  │ \n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 177B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_loan_contracts"],"extensions":{"c
+  │ ode":"INTERNAL_SERVER_ERROR","serviceName":"partner"}}
+  │ ],"data":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  347µs     237µs   (cache)      (cache)         (cache)         112ms            640µs      31µs      113ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+117. Response has valid JSON structure
+118. Loan contracts object exists
+119⠄ TypeError in test-script
+
+↳ st_partner_debt_asset
+  ┌
+  │ `Using "CryptoJS" is deprecated. Use "require('crypto-
+  │ js')" instead.`
+  └
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 102ms time ★ 1.33kB↑ 443B↓ size ★ 16↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 477B
+  │ {
+  │     "operationName": "st_partner_debt_asset",
+  │     "variables": {
+  │         "sub_account_no": "0001122911MG"
+  │     },
+  │     "query": "query st_partner_debt_asset($sub_account
+  │ _no: String!) {\n  st_partner_debt_asset(input: {sub_a
+  │ ccount_no: $sub_account_no}) {\n    sub_account_id\n  
+  │   remain_original_loan_amount\n    remain_interest_amo
+  │ unt\n    loan_custody_fee\n    other_loan\n    total_l
+  │ oan_value\n    paid_amount\n    rtt\n    need_pay\n   
+  │  used_limit\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 173B
+  │ {"errors":[{"message":"invalid_customer_refresh_token"
+  │ ,"path":["st_partner_debt_asset"],"extensions":{"code"
+  │ :"INTERNAL_SERVER_ERROR","serviceName":"partner"}}],"d
+  │ ata":null}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  716µs     450µs   (cache)      (cache)         (cache)         100ms            799µs      62µs      102ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+120. Response has valid JSON structure
+121. Debt asset object exists
+122⠄ TypeError in test-script
+
+❏ FRS & Finavi / Stock Detail
+↳ stock_pricing_alerts_by_stock_asset
+  POST https://stock-api-v2.infina.dev/alpha/frs/graphql  
+  200 OK ★ 92ms time ★ 965B↑ 348B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 323B
+  │ {
+  │     "operationName": "stock_pricing_alerts_by_stock_as
+  │ set",
+  │     "variables": {
+  │         "stockAssetId": "62261d6c2de804000953f596"
+  │     },
+  │     "query": "query stock_pricing_alerts_by_stock_asse
+  │ t($stockAssetId: ID!) {\n  stock_pricing_alerts_by_sto
+  │ ck_asset(stock_asset_id: $stockAssetId) {\n    id\n   
+  │  __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 79B
+  │ {"data":{"stock_pricing_alerts_by_stock_asset":[]},"ex
+  │ tensions":{"timing":19}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  353µs     221µs   (cache)      (cache)         (cache)         89ms             1ms        84µs      91ms  
+
+  ✓  Status code is 200
+  ✓  Response structure valid
+  ✓  Empty alerts array
+  ✓  Performance timing valid
+  ✓  Extensions structure
+
+↳ total_stock_pricing_alert_by_user
+  POST https://stock-api-v2.infina.dev/alpha/frs/graphql  
+  200 OK ★ 75ms time ★ 855B↑ 408B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 213B
+  │ {
+  │     "operationName": "total_stock_pricing_alert_by_use
+  │ r",
+  │     "variables": {},
+  │     "query": "query total_stock_pricing_alert_by_user 
+  │ {\n  total_stock_pricing_alert_by_user {\n    total\n 
+  │    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 138B
+  │ {"data":{"total_stock_pricing_alert_by_user":{"total":
+  │ 0,"__typename":"GetTotalStockPricingAlertByUserResult"
+  │ }},"extensions":{"timing":6}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  584µs     404µs   (cache)      (cache)         (cache)         73ms             725µs      41µs      75ms  
+
+  ✓  Status code is 200
+  ✓  Response structure valid
+  ✓  Total alerts count
+  ✓  Type name validation
+  ✓  Performance timing
+  ✓  Extensions structure
+
+↳ get_stock_details
+  POST https://stock-api-v2.infina.dev/alpha/graphql  
+  200 OK ★ 132ms time ★ 1.11kB↑ 649B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 472B
+  │ {
+  │     "operationName": "GetStockDetails",
+  │     "variables": {
+  │         "stock_code": "HPG"
+  │     },
+  │     "query": "query GetStockDetails($stock_code: Strin
+  │ g!) {\n  get_stock_details(input: {stock_code: $stock_
+  │ code}) {\n    sector {\n      metrics {\n        id\n 
+  │        avg_pb\n        avg_pe\n        max_pb\n       
+  │  max_pe\n        min_pb\n        min_pe\n        creat
+  │ ed_at\n        updated_at\n        __typename\n      }
+  │ \n      __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 378B
+  │ {"data":{"get_stock_details":{"sector":{"metrics":{"id
+  │ ":"68ee0a0c7c785aae30eee6d0","avg_pb":0.9,"avg_pe":-5.
+  │ 5,"max_pb":2.2,"max_pe":132.3,"min_pb":0.1,"min_pe":-9
+  │ 54.5,"created_at":"2025-10-14T08:30:04.083Z","updated_
+  │ at":"2025-10-14T08:30:04.083Z","__typename":"StockIndu
+  │ stryMetrics"},"__typename":"StockIndustry"},"__typenam
+  │ e":"StockDetailsResult"}},"extensions":{"timing":60}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  694µs     443µs   (cache)      (cache)         (cache)         130ms            1ms        53µs      132ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Extensions timing is valid
+  ✓  Stock details object exists
+  ✓  Contains all required fields
+  ✓  Correct __typename values
+  ✓  Sector metrics has correct structure
+  ✓  Metric values have correct relationships
+  ✓  No extra fields in response
+  ✓  Negative PE values are valid
+
+↳ stock_evaluation
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 178ms time ★ 1.29kB↑ 1.79kB↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 658B
+  │ {
+  │     "operationName": "stock_evaluation",
+  │     "variables": {
+  │         "stock_asset_id": "621de88fd734d70009edb5a6"
+  │     },
+  │     "query": "query stock_evaluation($stock_asset_id: 
+  │ ID) {\n  stock_evaluation(stock_asset_id: $stock_asset
+  │ _id) {\n    ... on StockEvaluation {\n      id\n      
+  │ created_at\n      updated_at\n      stock_asset_id\n  
+  │     evaluation_score\n      eval_valuation\n      eval
+  │ _growth_potential\n      eval_performance\n      eval_
+  │ financial_health\n      eval_dividend\n      advantage
+  │ _1\n      advantage_2\n      advantage_3\n      disadv
+  │ antage_1\n      disadvantage_2\n      disadvantage_3\n
+  │       __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 1.52kB
+  │ {"data":{"stock_evaluation":{"id":"cl9pl4zqr000a5el0ap
+  │ a1ep41","created_at":"2022-10-26T12:00:46.323Z","updat
+  │ ed_at":"2022-11-14T03:03:22.029Z","stock_asset_id":"62
+  │ 1de88fd734d70009edb5a6","evaluation_score":2.8,"eval_v
+  │ aluation":5,"eval_growth_potential":1,"eval_performanc
+  │ e":2,"eval_financial_health":3,"eval_dividend":3,"adva
+  │ ntage_1":"Tính đến hết Q3/2022, HPG có biên lợi nhuận 
+  │ gộp 12 tháng gần nhất (26.47%) cao hơn biên lợi nhuận 
+  │ gộp 12 tháng gần nhất trung bình ngành Sắt thép Việt N
+  │ am (22.12%)","advantage_2":"HPG có tỷ suất lợi nhuận t
+  │ rên vốn chủ sở hữu (ROE) 12 tháng gần nhất đạt 33.52 %
+  │ . Warren Buffett thường đầu tư vào những doanh nghiệp 
+  │ có ROE trên 15% và tỷ lệ này được duy trì ít nhất tron
+  │ g 3 năm","advantage_3":"Toàn bộ cổ tức của HPG trong 3
+  │  năm tiếp theo đều được chi trả từ nguồn lợi nhuận của
+  │  công ty. Tỷ lệ chi trả cổ tức được dự phóng bằng 15.2
+  │ % lợi nhuận sau thuế","disadvantage_1":"LNST của HPG d
+  │ ự kiến suy giảm -23.16%/năm, trong 3 năm tiếp theo. Hi
+  │ ện tại LNST 12 tháng gần nhất giảm -43.76% so với cùng
+  │  kỳ","disadvantage_2":"Ước tính HPG có tăng trưởng doa
+  │ nh thu (6.38%/năm) trong 3 năm tiếp theo thấp hơn mức 
+  │ tăng trưởng doanh thu 12 tháng gần nhất (22.6%)","disa
+  │ dvantage_3":"HPG có tỷ lệ Nợ vay trên Vốn chủ sở hữu ở
+  │  mức cao (70.08%)","__typename":"StockEvaluation"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  349µs     289µs   (cache)      (cache)         (cache)         176ms            756µs      38µs      177ms 
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response has valid JSON structure
+  ✓  Stock evaluation object exists
+  ✓  Contains all required fields
+  ✓  IDs have correct format
+  ✓  Timestamps are valid
+  ✓  Evaluation scores are valid
+  ✓  Advantages and disadvantages are valid
+  ✓  Correct __typename
+  ✓  Evaluation score is consistent with category scores
+  ✓  Disadvantages contain financial metrics
+
+↳ stock_contents
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 439ms time ★ 1.51kB↑ 1.45kB↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 876B
+  │ {
+  │     "operationName": "stock_contents",
+  │     "variables": {
+  │         "sort_keys": "PUBLISHED_AT",
+  │         "stock_asset_id": "621de88fd734d70009edb5a6",
+  │         "query": "code:PE_1,PB_1 stockAssetId:62261d6c
+  │ 2de804000953f596 status:ACTIVE publishedAt:2025-06-25T
+  │ 08:39:11.192Z"
+  │     },
+  │     "query": "query stock_contents($after: String, $be
+  │ fore: String, $first: Int, $last: Int, $reverse: Boole
+  │ an, $sort_keys: StockContentSortKeys, $query: String, 
+  │ $stock_asset_id: ID!) {\n  stock_contents(\n    after:
+  │  $after\n    before: $before\n    first: $first\n    l
+  │ ast: $last\n    reverse: $reverse\n    sort_keys: $sor
+  │ t_keys\n    query: $query\n  ) {\n    nodes {\n      i
+  │ d\n      created_at\n      updated_at\n      code\n   
+  │    icon\n      status\n      content\n      published_
+  │ at\n      parsed_content(stock_asset_id: $stock_asset_
+  │ id)\n      __typename\n    }\n    __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 1.18kB
+  │ {"data":{"stock_contents":{"nodes":[{"id":"cla9f520700
+  │ 003b6s3mpnriid","created_at":"2022-11-13T03:50:55.887Z
+  │ ","updated_at":"2022-11-25T06:57:26.799Z","code":"PB_1
+  │ ","icon":"https://djemclypbm8gi.cloudfront.net/stock/a
+  │ ssets/icons/pb-1.svg","status":"ACTIVE","content":"%s 
+  │ đang giao dịch ở mức định giá P/B (%.1f) %s so với các
+  │  cổ phiếu khác trong ngành (%.1f).","published_at":"20
+  │ 22-11-25T06:57:26.799Z","parsed_content":"HPG đang gia
+  │ o dịch ở mức định giá P/B (1.5) cao hơn so với các cổ 
+  │ phiếu khác trong ngành (0.9).","__typename":"StockCont
+  │ ent"},{"id":"cla9f520700013b6s4mlwit8o","created_at":"
+  │ 2022-11-13T03:50:55.887Z","updated_at":"2022-11-25T06:
+  │ 57:26.799Z","code":"PE_1","icon":"https://djemclypbm8g
+  │ i.cloudfront.net/stock/assets/icons/pe-1.svg","status"
+  │ :"ACTIVE","content":"%s đang giao dịch ở mức định giá 
+  │ P/E (%.1f) %s so với các cổ phiếu khác trong ngành (%.
+  │ 1f).","published_at":"2022-11-25T06:57:26.799Z","parse
+  │ d_content":"HPG đang giao dịch ở mức định giá P/E (13.
+  │ 8) cao hơn so với các cổ phiếu khác trong ngành (-5.5)
+  │ .","__typename":"StockContent"}],"__typename":"StockCo
+  │ ntentConnection"}}}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  6ms       3ms    (cache)      (cache)         (cache)         433ms            1ms        106µs     445ms 
+
+  ✓  Status code is 200
+  ✓  Response has JSON content type
+  ✓  Response has correct structure
+  ✓  StockContents has correct typename
+  ✓  Nodes array exists and has items
+  ✓  No extra fields in response
+
+↳ get_stock_details
+  POST https://stock-api-v2.infina.dev/alpha/graphql  
+  200 OK ★ 81ms time ★ 1.03kB↑ 2.89kB↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 388B
+  │ {
+  │     "operationName": "GetStockDetails",
+  │     "variables": {
+  │         "stock_code": "HPG"
+  │     },
+  │     "query": "query GetStockDetails($stock_code: Strin
+  │ g!) {\n  get_stock_details(input: {stock_code: $stock_
+  │ code}) {\n    categories {\n      is_highlighted\n    
+  │   count\n      description\n      name\n      updated_
+  │ at\n      icon\n      id\n      __typename\n    }\n   
+  │  __typename\n  }\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 2.62kB
+  │ {"data":{"get_stock_details":{"categories":[{"is_highl
+  │ ighted":false,"count":22,"description":"Cổ phiếu của c
+  │ ác công ty trồng và khai thác rừng, sản xuất và phân p
+  │ hối giấy; các công ty khai thác chế biến kim loại, kha
+  │ i thác khoáng sản.","name":"Tài nguyên","updated_at":"
+  │ 2022-04-07T06:46:32.065Z","icon":"/static/infina_b2c/s
+  │ tock/stock_categories_v2/tai_nguyen.svg","id":"624bc86
+  │ 9defdef00092770a4","__typename":"StockCategoryDetailsR
+  │ esult"},{"is_highlighted":true,"count":30,"description
+  │ ":"Dưới đây là danh sách những cổ phiếu chiếm tỉ trọng
+  │  lớn trong danh mục đầu tư Chứng chỉ quỹ của các quỹ đ
+  │ ầu tư uy tín. Có thể coi đây là những cổ phiếu được đá
+  │ nh giá cao nhất bởi các chuyên gia.","name":"Lựa chọn 
+  │ bởi các quỹ","updated_at":"2022-05-04T08:22:53.146Z","
+  │ icon":"/static/infina_b2c/stock/stock_categories_v2/mf
+  │ _choice.svg","id":"624bc869defdef0009277097","__typena
+  │ me":"StockCategoryDetailsResult"},{"is_highlighted":tr
+  │ ue,"count":30,"description":"Nhóm 30 cổ phiếu có chỉ s
+  │ ố vốn hóa lớn, tính thanh khoản cao, được đánh giá hàn
+  │ g đầu thị trường chứng khoán Việt Nam dựa trên bộ chỉ 
+  │ số được Sở Giao dịch Chứng khoán TP. HCM triển khai, b
+  │ ắt đầu từ năm 2012.","name":"VN30","updated_at":"2022-
+  │ 05-31T16:52:49.816Z","icon":"/static/infina_b2c/stock/
+  │ stock_categories_v2/vn30.svg","id":"624bc869defdef0009
+  │ 277098","__typename":"StockCategoryDetailsResult"},{"i
+  │ s_highlighted":true,"count":100,"description":"Nhóm 10
+  │ 0 mã cổ phiếu có khả năng thanh khoản cao và có giá tr
+  │ ị vốn hóa hàng đầu trên sàn chứng khoán TP. HCM. Chỉ s
+  │ ố VN100 được Sở Giao dịch Chứng khoán TP. HCM dựa trên
+  │  thông lệ quốc tế FTSE 100 của Vương quốc Anh để lựa c
+  │ họn xây dựng bộ chỉ số phù hợp với thị trường Việt Nam
+  │ .","name":"VN100","updated_at":"2022-04-07T06:46:32.03
+  │ 9Z","icon":"/static/infina_b2c/stock/stock_categories_
+  │ v2/vn100.svg","id":"624bc869defdef000927709a","__typen
+  │ ame":"StockCategoryDetailsResult"},{"is_highlighted":f
+  │ alse,"count":10,"description":"Dưới đây là nhóm cổ phi
+  │ ếu có khối lượng giao dịch lớn nhất trên ứng dụng Infi
+  │ na trong 5 phiên giao dịch gần nhất.","name":"Nhóm
+  │ (showing 2.05kB/2.62kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  259µs     180µs   (cache)      (cache)         (cache)         79ms             637µs      94µs      80ms  
+
+  ✓  Status code is 200
+  ✓  Response structure valid
+  ✓  Category validation
+  ✓  Highlighted categories
+  ✓  VN100 category check
+  ✓  VN30 category check
+
+❏ FRS & Finavi / Webview Finavi
+↳ st_partner_login_webview
+  POST https://stock-api-v2.infina.dev/graphql  
+  200 OK ★ 81ms time ★ 694B↑ 366B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 63B
+  │ {
+  │     "query": "query{st_partner_login_webview{webview_u
+  │ rl}}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 97B
+  │ {"data":{"st_partner_login_webview":{"webview_url":"ht
+  │ tps://uat-webview.jbsv.com.vn/vi/login"}}}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  760µs     242µs   (cache)      (cache)         (cache)         79ms             772µs      47µs      81ms  
+
+  ✓  Status code is 200 (OK)
+  ✓  Content-Type is application/json
+  ✓  Response time is under 500ms
+  ✓  Response has valid JSON structure
+  ✓  Login webview object exists
+  ✓  Webview URL exists and is valid
+  ✓  Webview URL points to UAT environment
+  ✓  Webview URL is reachable (HTTP 200)
+  ✓  No extra fields in response
+  GET https://uat-webview.jbsv.com.vn/vi/login  
+  200 OK ★ 509ms time ★ 243B↑ 14.84kB↓ size ★ 7↑ 18↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 13.94kB
+  │ <!DOCTYPE html><html class="__className_e2cc8c __varia
+  │ ble_e2cc8c"><head><meta charSet="utf-8"/><meta name="v
+  │ iewport" content="width=device-width, initial-scale=1"
+  │ /><link rel="preload" href="/_next/static/media/1ad50b
+  │ 89ab7c557e-s.p.ttf" as="font" crossorigin="" type="fon
+  │ t/ttf"/><link rel="preload" href="/_next/static/media/
+  │ 266c1538bae4d3be-s.p.ttf" as="font" crossorigin="" typ
+  │ e="font/ttf"/><link rel="preload" href="/_next/static/
+  │ media/6ed32619a5671842-s.p.ttf" as="font" crossorigin=
+  │ "" type="font/ttf"/><link rel="preload" href="/_next/s
+  │ tatic/media/7f28fc0765fccab4-s.p.ttf" as="font" crosso
+  │ rigin="" type="font/ttf"/><link rel="preload" href="/_
+  │ next/static/media/87070ab6efa84427-s.p.ttf" as="font" 
+  │ crossorigin="" type="font/ttf"/><link rel="preload" hr
+  │ ef="/_next/static/media/9204c2aa0a88c808-s.p.ttf" as="
+  │ font" crossorigin="" type="font/ttf"/><link rel="prelo
+  │ ad" href="/_next/static/media/93679a4f0d810027-s.p.ttf
+  │ " as="font" crossorigin="" type="font/ttf"/><link rel=
+  │ "preload" href="/_next/static/media/a0eb13619368af8d-s
+  │ .p.ttf" as="font" crossorigin="" type="font/ttf"/><lin
+  │ k rel="preload" href="/_next/static/media/adb2344dba11
+  │ 6b3b-s.p.ttf" as="font" crossorigin="" type="font/ttf"
+  │ /><link rel="preload" href="/_next/static/media/bfeb6e
+  │ 8b20c639f3-s.p.ttf" as="font" crossorigin="" type="fon
+  │ t/ttf"/><link rel="preload" href="/_next/static/media/
+  │ c36a3fe042b96dc3-s.p.ttf" as="font" crossorigin="" typ
+  │ e="font/ttf"/><link rel="preload" href="/_next/static/
+  │ media/d0bc87a819730d23-s.p.ttf" as="font" crossorigin=
+  │ "" type="font/ttf"/><link rel="stylesheet" href="/_nex
+  │ t/static/css/b2fa92354f8b0deb.css" crossorigin="" data
+  │ -precedence="next"/><link rel="stylesheet" href="/_nex
+  │ t/static/css/4603c20c18a8f9eb.css" crossorigin="" data
+  │ -precedence="next"/><link rel="stylesheet" href="/_nex
+  │ t/static/css/e5373671ed736b22.css" crossorigin="" data
+  │ -precedence="next"/><link rel="preload" as="script" fe
+  │ tchPriority="low" href="/_next/static/chunks/webpack-a
+  │ 81527249ee46212.js" crossorigin=""/><script src="/_nex
+  │ t/static/chunks/fd9d1056-099f4ea467c67a3e.js" asyn
+  │ (showing 2.05kB/13.94kB)
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  417µs     12ms   172ms        100ms           106ms           104ms            12ms       3ms       512ms 
+
+
+❏ FRS & Finavi / SignOut
+↳ signout
+  POST https://staging.realstake.co/api/graphiql  
+  200 OK ★ 1364ms time ★ 828B↑ 349B↓ size ★ 12↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 194B
+  │ {
+  │     "variables": {
+  │         "onesignal_id": "d94a83aa-4a3c-4c1a-9171-ac369
+  │ 00e0523"
+  │     },
+  │     "query": "mutation ($onesignal_id: String) {\n  si
+  │ gnout(input: {onesignal_id: $onesignal_id})\n}"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 59B
+  │ {"data":{"signout":"success"},"extensions":{"timing":1
+  │ 043}}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total  
+  522µs     1ms    63ms         53ms            113ms           1129ms           2ms        243µs     1364ms 
+
+  ✓  Status code is 200
+  ┌
+  │ '✅ Signout Response is valid!'
+  └
+  ✓  ✅ Validate Signout Response
+  ┌
+  │ 'Clearing 14 collection variables:', [
+  │   'baseUrl',
+  │   'x-infina-api-key',
+  │   'x-infina-app-version',
+  │   'requestSecret',
+  │   'phoneNumber',
+  │   'password',
+  │   'pinCode',
+  │   'access_token',
+  │   'refresh_token',
+  │   'userid',
+  │   'uid',
+  │   'MapId',
+  │   'stock_balance',
+  │   'mf_balance'
+  │ ]
+  └
+  ✓  Clear all collection variables after signout
+
+┌─────────────────────────┬─────────────────────┬───────────────────┐
+│                         │            executed │            failed │
+├─────────────────────────┼─────────────────────┼───────────────────┤
+│              iterations │                   1 │                 0 │
+├─────────────────────────┼─────────────────────┼───────────────────┤
+│                requests │                  66 │                 0 │
+├─────────────────────────┼─────────────────────┼───────────────────┤
+│            test-scripts │                 128 │                17 │
+├─────────────────────────┼─────────────────────┼───────────────────┤
+│      prerequest-scripts │                 128 │                 0 │
+├─────────────────────────┼─────────────────────┼───────────────────┤
+│              assertions │                 371 │               105 │
+├─────────────────────────┴─────────────────────┴───────────────────┤
+│ total run duration: 15m 26.2s                                     │
+├───────────────────────────────────────────────────────────────────┤
+│ total data received: 64.04kB (approx)                             │
+├───────────────────────────────────────────────────────────────────┤
+│ average response time: 13s [min: 68ms, max: 1m, s.d.: 24.4s]      │
+├───────────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 80ms [min: 63ms, max: 172ms, s.d.: 14ms] │
+├───────────────────────────────────────────────────────────────────┤
+│ average first byte time: 12.9s [min: 66ms, max: 1m, s.d.: 24.4s]  │
+└───────────────────────────────────────────────────────────────────┘
+
+    #  failure         detail                                                                                   
+                                                                                                                
+ 001.  AssertionError  Status code is 200                                                                       
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Home / st_partner_beneficiary_bank_accounts"                      
+                                                                                                                
+ 002.  JSONError       Response structure valid                                                                 
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Home / st_partner_beneficiary_bank_accounts"                      
+                                                                                                                
+ 003.  JSONError       Bank account validation                                                                  
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Home / st_partner_beneficiary_bank_accounts"                      
+                                                                                                                
+ 004.  AssertionError  Watchlist structure valid                                                                
+                       expected [ { …(5) }, { …(5) } ] to have a length of 1 but got 2                          
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Home / watch_list_categories"                                     
+                                                                                                                
+ 005.  AssertionError  Numeric values are valid                                                                 
+                       expected +0 to be close to Infinity +/- 0.01                                             
+                       at assertion:10 in test-script                                                           
+                       inside "FRS & Finavi / Home / get_user_total_account_balance"                            
+                                                                                                                
+ 006.  AssertionError  Balance data validation                                                                  
+                       expected 1315000 to equal +0                                                             
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Home / get_user_total_account_balance"                            
+                                                                                                                
+ 007.  AssertionError  Growth data validation                                                                   
+                       expected 1315000 to equal +0                                                             
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Home / get_frs_stock_account_total_balance_history"               
+                                                                                                                
+ 008.  AssertionError  Empty reports validation                                                                 
+                       expected [ 'HUYNH_NGOC_DIEP_1770976817476.pdf' ] to be empty                             
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Home / termination_reports"                                       
+                                                                                                                
+ 009.  AssertionError  Response has correct structure                                                           
+                       expected null to be an object                                                            
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Home / st_partner_sub_account_assets_over_view"                   
+                                                                                                                
+ 010.  AssertionError  Assets overview object exists                                                            
+                       Target cannot be null or undefined.                                                      
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Home / st_partner_sub_account_assets_over_view"                   
+                                                                                                                
+ 011.  TypeError       Correct __typename values                                                                
+                       Cannot read properties of null (reading 'st_partner_sub_account_assets_over_view')       
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Home / st_partner_sub_account_assets_over_view"                   
+                                                                                                                
+ 012.  AssertionError  Response has correct structure                                                           
+                       expected null to be an object                                                            
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_sub_account_portfolio (Normal)"          
+                                                                                                                
+ 013.  AssertionError  Portfolio object exists                                                                  
+                       Target cannot be null or undefined.                                                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_sub_account_portfolio (Normal)"          
+                                                                                                                
+ 014.  TypeError       Correct __typename values                                                                
+                       Cannot read properties of null (reading 'st_partner_sub_account_portfolio')              
+                       at assertion:4 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_sub_account_portfolio (Normal)"          
+                                                                                                                
+ 015.  TypeError                                                                                                
+                       Cannot read properties of null (reading 'st_partner_sub_account_portfolio')              
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Normal (NM) / st_partner_sub_account_portfolio (Normal)"          
+                                                                                                                
+ 016.  AssertionError  Response has correct structure                                                           
+                       expected null to be an object                                                            
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_sub_account_asset_detail (Normal)"       
+                                                                                                                
+ 017.  AssertionError  Asset detail object exists                                                               
+                       Target cannot be null or undefined.                                                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_sub_account_asset_detail (Normal)"       
+                                                                                                                
+ 018.  TypeError                                                                                                
+                       Cannot read properties of null (reading 'st_partner_sub_account_asset_detail')           
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Normal (NM) / st_partner_sub_account_asset_detail (Normal)"       
+                                                                                                                
+ 019.  TypeError       Webview response structure valid                                                         
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_order_webview (SELL - Normal)"           
+                                                                                                                
+ 020.  TypeError       URL validation                                                                           
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_order_webview (SELL - Normal)"           
+                                                                                                                
+ 021.  TypeError       Expiration time valid                                                                    
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_order_webview (SELL - Normal)"           
+                                                                                                                
+ 022.  TypeError       JWT token basic validation                                                               
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:4 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_order_webview (SELL - Normal)"           
+                                                                                                                
+ 023.  TypeError       Webview response structure valid                                                         
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_order_webview (BUY - Normal)"            
+                                                                                                                
+ 024.  TypeError       URL validation                                                                           
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_order_webview (BUY - Normal)"            
+                                                                                                                
+ 025.  TypeError       Expiration time valid                                                                    
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_order_webview (BUY - Normal)"            
+                                                                                                                
+ 026.  TypeError       JWT token basic validation                                                               
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:4 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_order_webview (BUY - Normal)"            
+                                                                                                                
+ 027.  TypeError       Withdrawal info structure valid                                                          
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / get_finavi_withdraw_fees (0001122911NM)"            
+                                                                                                                
+ 028.  TypeError       Balance validation                                                                       
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / get_finavi_withdraw_fees (0001122911NM)"            
+                                                                                                                
+ 029.  TypeError       Fee validation                                                                           
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / get_finavi_withdraw_fees (0001122911NM)"            
+                                                                                                                
+ 030.  TypeError       Withdrawal info structure valid                                                          
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / get_finavi_transfer_internal_fees (0001122911NM)"   
+                                                                                                                
+ 031.  TypeError       Advance fee validation                                                                   
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / get_finavi_transfer_internal_fees (0001122911NM)"   
+                                                                                                                
+ 032.  TypeError       Balance difference check                                                                 
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / get_finavi_transfer_internal_fees (0001122911NM)"   
+                                                                                                                
+ 033.  AssertionError  Status code is 200                                                                       
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_validate_withdrawal_info (0001122911NM)" 
+                                                                                                                
+ 034.  JSONError       Validation response structure                                                            
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_validate_withdrawal_info (0001122911NM)" 
+                                                                                                                
+ 035.  JSONError       Success state validation                                                                 
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_validate_withdrawal_info (0001122911NM)" 
+                                                                                                                
+ 036.  JSONError       Type consistency                                                                         
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_validate_withdrawal_info (0001122911NM)" 
+                                                                                                                
+ 037.  AssertionError  Status code is 200                                                                       
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_send_withdrawal_otp (0001122911NM)"      
+                                                                                                                
+ 038.  AssertionError  Response has valid JSON body                                                             
+                       expected response body to be a valid json but got error Unexpected token '<' at 1:1      
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_send_withdrawal_otp (0001122911NM)"      
+                                                                                                                
+ 039.  JSONError                                                                                                
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Normal (NM) / st_partner_send_withdrawal_otp (0001122911NM)"      
+                                                                                                                
+ 040.  AssertionError  Status code is 200                                                                       
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_verify_withdrawal_otp (0001122911NM)"    
+                                                                                                                
+ 041.  AssertionError  Response has valid JSON body                                                             
+                       expected response body to be a valid json but got error Unexpected token '<' at 1:1      
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_verify_withdrawal_otp (0001122911NM)"    
+                                                                                                                
+ 042.  JSONError                                                                                                
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Normal (NM) / st_partner_verify_withdrawal_otp (0001122911NM)"    
+                                                                                                                
+ 043.  TypeError       Withdrawal info structure valid                                                          
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / get_finavi_withdrawable_balance (0001122911NM)"     
+                                                                                                                
+ 044.  TypeError       Balance validation                                                                       
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / get_finavi_withdrawable_balance (0001122911NM)"     
+                                                                                                                
+ 045.  TypeError       Withdrawal limits check                                                                  
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / get_finavi_withdrawable_balance (0001122911NM)"     
+                                                                                                                
+ 046.  AssertionError  Status code is 200                                                                       
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_transfer_cash_internal (NM -> MG)"       
+                                                                                                                
+ 047.  JSONError       Transfer result structure valid                                                          
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_transfer_cash_internal (NM -> MG)"       
+                                                                                                                
+ 048.  JSONError       Success state validation                                                                 
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_transfer_cash_internal (NM -> MG)"       
+                                                                                                                
+ 049.  JSONError       Type name consistency                                                                    
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_transfer_cash_internal (NM -> MG)"       
+                                                                                                                
+ 050.  JSONError       Status value is valid                                                                    
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:4 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_transfer_cash_internal (NM -> MG)"       
+                                                                                                                
+ 051.  AssertionError  Status code is 200                                                                       
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_internal_stock_transfer_list (NM -> MG)" 
+                                                                                                                
+ 052.  JSONError       Response has correct structure                                                           
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_internal_stock_transfer_list (NM -> MG)" 
+                                                                                                                
+ 053.  JSONError       All transfer quantities are positive                                                     
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_internal_stock_transfer_list (NM -> MG)" 
+                                                                                                                
+ 054.  AssertionError  Status code is 200 (OK)                                                                  
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_transfer_internal_stock (NM -> MG)"      
+                                                                                                                
+ 055.  AssertionError  Content-Type is application/json                                                         
+                       expected 'text/html' to include 'application/json'                                       
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_transfer_internal_stock (NM -> MG)"      
+                                                                                                                
+ 056.  JSONError                                                                                                
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Normal (NM) / st_partner_transfer_internal_stock (NM -> MG)"      
+                                                                                                                
+ 057.  AssertionError  Response has valid JSON structure                                                        
+                       expected null to be an object                                                            
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_open_order_history"                      
+                                                                                                                
+ 058.  AssertionError  Open order history object exists                                                         
+                       Target cannot be null or undefined.                                                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_open_order_history"                      
+                                                                                                                
+ 059.  TypeError                                                                                                
+                       Cannot read properties of null (reading 'st_partner_open_order_history')                 
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Normal (NM) / st_partner_open_order_history"                      
+                                                                                                                
+ 060.  AssertionError  Response has valid JSON structure                                                        
+                       expected null to be an object                                                            
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_order_history"                           
+                                                                                                                
+ 061.  AssertionError  Order history object exists                                                              
+                       Target cannot be null or undefined.                                                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_order_history"                           
+                                                                                                                
+ 062.  TypeError                                                                                                
+                       Cannot read properties of null (reading 'st_partner_order_history')                      
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Normal (NM) / st_partner_order_history"                           
+                                                                                                                
+ 063.  AssertionError  Status code is 200 (OK)                                                                  
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_internal_stock_transfer_history"         
+                                                                                                                
+ 064.  AssertionError  Content-Type is application/json                                                         
+                       expected 'text/html' to include 'application/json'                                       
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Normal (NM) / st_partner_internal_stock_transfer_history"         
+                                                                                                                
+ 065.  JSONError                                                                                                
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Normal (NM) / st_partner_internal_stock_transfer_history"         
+                                                                                                                
+ 066.  AssertionError  Response has correct structure                                                           
+                       expected null to be an object                                                            
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_sub_account_portfolio (Margin)"          
+                                                                                                                
+ 067.  AssertionError  Portfolio object exists                                                                  
+                       Target cannot be null or undefined.                                                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_sub_account_portfolio (Margin)"          
+                                                                                                                
+ 068.  TypeError       Correct __typename values                                                                
+                       Cannot read properties of null (reading 'st_partner_sub_account_portfolio')              
+                       at assertion:4 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_sub_account_portfolio (Margin)"          
+                                                                                                                
+ 069.  TypeError                                                                                                
+                       Cannot read properties of null (reading 'st_partner_sub_account_portfolio')              
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Margin (MG) / st_partner_sub_account_portfolio (Margin)"          
+                                                                                                                
+ 070.  AssertionError  Response has correct structure                                                           
+                       expected null to be an object                                                            
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_sub_account_asset_detail (Margin)"       
+                                                                                                                
+ 071.  AssertionError  Asset detail object exists                                                               
+                       Target cannot be null or undefined.                                                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_sub_account_asset_detail (Margin)"       
+                                                                                                                
+ 072.  TypeError                                                                                                
+                       Cannot read properties of null (reading 'st_partner_sub_account_asset_detail')           
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Margin (MG) / st_partner_sub_account_asset_detail (Margin)"       
+                                                                                                                
+ 073.  TypeError       Webview response structure valid                                                         
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_order_webview (SELL - Margin)"           
+                                                                                                                
+ 074.  TypeError       URL validation                                                                           
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_order_webview (SELL - Margin)"           
+                                                                                                                
+ 075.  TypeError       Expiration time valid                                                                    
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_order_webview (SELL - Margin)"           
+                                                                                                                
+ 076.  TypeError       JWT token basic validation                                                               
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:4 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_order_webview (SELL - Margin)"           
+                                                                                                                
+ 077.  TypeError       Webview response structure valid                                                         
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_order_webview (BUY - Margin)"            
+                                                                                                                
+ 078.  TypeError       URL validation                                                                           
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_order_webview (BUY - Margin)"            
+                                                                                                                
+ 079.  TypeError       Expiration time valid                                                                    
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_order_webview (BUY - Margin)"            
+                                                                                                                
+ 080.  TypeError       JWT token basic validation                                                               
+                       Cannot read properties of null (reading 'st_partner_order_webview')                      
+                       at assertion:4 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_order_webview (BUY - Margin)"            
+                                                                                                                
+ 081.  TypeError       Withdrawal info structure valid                                                          
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / get_finavi_withdrawable_balance (0001122911MG)"     
+                                                                                                                
+ 082.  TypeError       Balance validation                                                                       
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / get_finavi_withdrawable_balance (0001122911MG)"     
+                                                                                                                
+ 083.  TypeError       Withdrawal limits check                                                                  
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / get_finavi_withdrawable_balance (0001122911MG)"     
+                                                                                                                
+ 084.  AssertionError  Status code is 200                                                                       
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_validate_withdrawal_info (0001122911MG)" 
+                                                                                                                
+ 085.  JSONError       Validation response structure                                                            
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_validate_withdrawal_info (0001122911MG)" 
+                                                                                                                
+ 086.  JSONError       Success state validation                                                                 
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_validate_withdrawal_info (0001122911MG)" 
+                                                                                                                
+ 087.  JSONError       Type consistency                                                                         
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_validate_withdrawal_info (0001122911MG)" 
+                                                                                                                
+ 088.  AssertionError  Status code is 200                                                                       
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_send_withdrawal_otp (0001122911MG)"      
+                                                                                                                
+ 089.  AssertionError  Response has valid JSON body                                                             
+                       expected response body to be a valid json but got error Unexpected token '<' at 1:1      
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_send_withdrawal_otp (0001122911MG)"      
+                                                                                                                
+ 090.  JSONError                                                                                                
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Margin (MG) / st_partner_send_withdrawal_otp (0001122911MG)"      
+                                                                                                                
+ 091.  AssertionError  Status code is 200                                                                       
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_verify_withdrawal_otp (0001122911MG)"    
+                                                                                                                
+ 092.  AssertionError  Response has valid JSON body                                                             
+                       expected response body to be a valid json but got error Unexpected token '<' at 1:1      
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_verify_withdrawal_otp (0001122911MG)"    
+                                                                                                                
+ 093.  JSONError                                                                                                
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Margin (MG) / st_partner_verify_withdrawal_otp (0001122911MG)"    
+                                                                                                                
+ 094.  TypeError       Withdrawal info structure valid                                                          
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / get_finavi_withdraw_fees (0001122911MG)"            
+                                                                                                                
+ 095.  TypeError       Balance validation                                                                       
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / get_finavi_withdraw_fees (0001122911MG)"            
+                                                                                                                
+ 096.  TypeError       Fee validation                                                                           
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / get_finavi_withdraw_fees (0001122911MG)"            
+                                                                                                                
+ 097.  TypeError       Withdrawal info structure valid                                                          
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / get_finavi_transfer_internal_fees (0001122911MG)"   
+                                                                                                                
+ 098.  TypeError       Advance fee validation                                                                   
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / get_finavi_transfer_internal_fees (0001122911MG)"   
+                                                                                                                
+ 099.  TypeError       Balance difference check                                                                 
+                       Cannot read properties of null (reading 'st_partner_sub_account_withdrawal_info')        
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / get_finavi_transfer_internal_fees (0001122911MG)"   
+                                                                                                                
+ 100.  AssertionError  Status code is 200                                                                       
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_transfer_cash_internal (MG -> NM)"       
+                                                                                                                
+ 101.  JSONError       Transfer result structure valid                                                          
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_transfer_cash_internal (MG -> NM)"       
+                                                                                                                
+ 102.  JSONError       Success state validation                                                                 
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_transfer_cash_internal (MG -> NM)"       
+                                                                                                                
+ 103.  JSONError       Type name consistency                                                                    
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_transfer_cash_internal (MG -> NM)"       
+                                                                                                                
+ 104.  JSONError       Status value is valid                                                                    
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:4 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_transfer_cash_internal (MG -> NM)"       
+                                                                                                                
+ 105.  AssertionError  Status code is 200                                                                       
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_internal_stock_transfer_list (MG -> NM)" 
+                                                                                                                
+ 106.  JSONError       Response has correct structure                                                           
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_internal_stock_transfer_list (MG -> NM)" 
+                                                                                                                
+ 107.  JSONError       All transfer quantities are positive                                                     
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_internal_stock_transfer_list (MG -> NM)" 
+                                                                                                                
+ 108.  AssertionError  Status code is 200 (OK)                                                                  
+                       expected response to have status code 200 but got 504                                    
+                       at assertion:0 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_transfer_internal_stock (MG -> NM)"      
+                                                                                                                
+ 109.  AssertionError  Content-Type is application/json                                                         
+                       expected 'text/html' to include 'application/json'                                       
+                       at assertion:1 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_transfer_internal_stock (MG -> NM)"      
+                                                                                                                
+ 110.  JSONError                                                                                                
+                       Unexpected token '<' at 1:1                                                              
+                       <html>                                                                                   
+                       ^                                                                                        
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Margin (MG) / st_partner_transfer_internal_stock (MG -> NM)"      
+                                                                                                                
+ 111.  AssertionError  Response has valid JSON structure                                                        
+                       expected null to be an object                                                            
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_loan_contracts (INDUE)"                  
+                                                                                                                
+ 112.  AssertionError  Loan contracts object exists                                                             
+                       Target cannot be null or undefined.                                                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_loan_contracts (INDUE)"                  
+                                                                                                                
+ 113.  TypeError                                                                                                
+                       Cannot read properties of null (reading 'st_partner_loan_contracts')                     
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Margin (MG) / st_partner_loan_contracts (INDUE)"                  
+                                                                                                                
+ 114.  AssertionError  Response has valid JSON structure                                                        
+                       expected null to be an object                                                            
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_loan_contracts (PASSDUE)"                
+                                                                                                                
+ 115.  AssertionError  Loan contracts object exists                                                             
+                       Target cannot be null or undefined.                                                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_loan_contracts (PASSDUE)"                
+                                                                                                                
+ 116.  TypeError                                                                                                
+                       Cannot read properties of null (reading 'st_partner_loan_contracts')                     
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Margin (MG) / st_partner_loan_contracts (PASSDUE)"                
+                                                                                                                
+ 117.  AssertionError  Response has valid JSON structure                                                        
+                       expected null to be an object                                                            
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_loan_contracts (PAID)"                   
+                                                                                                                
+ 118.  AssertionError  Loan contracts object exists                                                             
+                       Target cannot be null or undefined.                                                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_loan_contracts (PAID)"                   
+                                                                                                                
+ 119.  TypeError                                                                                                
+                       Cannot read properties of null (reading 'st_partner_loan_contracts')                     
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Margin (MG) / st_partner_loan_contracts (PAID)"                   
+                                                                                                                
+ 120.  AssertionError  Response has valid JSON structure                                                        
+                       expected null to be an object                                                            
+                       at assertion:2 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_debt_asset"                              
+                                                                                                                
+ 121.  AssertionError  Debt asset object exists                                                                 
+                       Target cannot be null or undefined.                                                      
+                       at assertion:3 in test-script                                                            
+                       inside "FRS & Finavi / Margin (MG) / st_partner_debt_asset"                              
+                                                                                                                
+ 122.  TypeError                                                                                                
+                       Cannot read properties of null (reading 'st_partner_debt_asset')                         
+                       at test-script                                                                           
+                       inside "FRS & Finavi / Margin (MG) / st_partner_debt_asset"                              
